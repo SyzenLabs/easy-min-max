@@ -1,0 +1,21 @@
+.dataviews-view-table__row th {
+	padding: 16px 12px !important;
+}
+
+.dataviews-view-table__row th:first-child,
+.dataviews-view-table tr td:first-child {
+	padding-inline-start: 32px !important;
+}
+
+.components-card__body:has(> .dataviews-wrapper) {
+	padding-top: 0 !important;
+}
+
+th.dataviews-view-table__actions-column {
+	padding-right: 24px !important;
+}
+
+.dataviews-wrapper thead th {
+	font-size: 12px !important;
+	font-weight: 600 !important;
+}

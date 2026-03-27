@@ -1,0 +1,41 @@
+{
+	"editor.codeActionsOnSave": {
+		"source.organizeImports": "always"
+	},
+	"editor.defaultFormatter": "esbenp.prettier-vscode",
+	"[javascriptreact]": {
+		"editor.defaultFormatter": "esbenp.prettier-vscode"
+	},
+	"[json]": {
+		"editor.defaultFormatter": "esbenp.prettier-vscode"
+	},
+	"[jsonc]": {
+		"editor.defaultFormatter": "vscode.json-language-features"
+	},
+	"[scss]": {
+		"editor.defaultFormatter": "esbenp.prettier-vscode"
+	},
+	"[php]": {
+		"editor.defaultFormatter": "valeryanm.vscode-phpsab"
+	},
+	"[javascript]": {
+		"editor.defaultFormatter": "esbenp.prettier-vscode"
+	},
+	"editor.formatOnSave": true,
+	"editor.formatOnPaste": true,
+	// "phpsab.executablePathCBF": "/home/mahmudun-nabi-kajal/.config/composer/vendor/bin/phpcbf",
+	// "phpsab.executablePathCS": "/home/mahmudun-nabi-kajal/.config/composer/vendor/bin/phpcs",
+	"phpsab.fixerEnable": true,
+	"phpsab.autoRulesetSearch": false,
+	"phpsab.standard": "WordPress",
+	"phpsab.snifferMode": "onType",
+	"phpsab.snifferShowSources": true,
+	"files.eol": "\n",
+	"phpsab.snifferArguments": [
+		"--ignore=*/wp-admin/*,*/wp-includes/*"
+	],
+	"intelephense.environment.phpVersion": "7.4", // Replace with your PHP version
+	"intelephense.format.braces": "k&r", // WordPress uses K&R brace style
+	"intelephense.completion.fullyQualifyGlobalConstantsAndFunctions": false,
+	"scss.lint.unknownAtRules": "ignore"
+}

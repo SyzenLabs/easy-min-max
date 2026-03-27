@@ -1,0 +1,55 @@
+{
+	"extends": [
+		"eslint:recommended",
+		"plugin:react/jsx-runtime",
+		"plugin:@wordpress/eslint-plugin/recommended",
+		"plugin:react-you-might-not-need-an-effect/legacy-recommended"
+	],
+	"overrides": [
+		{
+			"files": [
+				"**/*.{js,mjs,cjs,jsx,ts,tsx}"
+			],
+			"globals": {
+				"wp": "readonly",
+				"eammAdmin": "readonly"
+			},
+			"parserOptions": {
+				"requireConfigFile": false,
+				"babelOptions": {
+					"presets": [
+						"@babel/preset-react"
+					]
+				}
+			},
+			"env": {
+				"browser": true
+			},
+			"settings": {
+				"react": {
+					"version": "detect"
+				}
+			},
+			"rules": {
+				"react/react-in-jsx-scope": "off",
+				"import/no-unresolved": "off",
+				"prettier/prettier": [
+					"error",
+					{
+						"endOfLine": "auto"
+					}
+				],
+				"react/prop-types": "off",
+				"no-unused-expressions": "off",
+				"import/no-extraneous-dependencies": "off",
+				"camelcase": [
+					"error",
+					{
+						"properties": "always"
+					}
+				],
+				"@wordpress/no-unsafe-wp-apis": "off"
+			}
+		}
+	]
+}

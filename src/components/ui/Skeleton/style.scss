@@ -1,0 +1,30 @@
+.eamm-skeleton-group-container {
+	@apply flex flex-col gap-4 border border-solid rounded-md p-4;
+	border-color: var(--eamm-stroke-sub);
+}
+
+.eamm-skeleton-items-container {
+	@apply flex gap-4;
+}
+
+.eamm-skeleton-container {
+	background: linear-gradient(
+		90deg,
+		var(--eamm-bg-soft) 0%,
+		var(--eamm-bg-sub) 50%,
+		var(--eamm-bg-soft) 100%
+	);
+	@apply relative rounded-md overflow-hidden isolate;
+
+	&::after {
+		content: "";
+		@apply absolute inset-0 bg-linear-to-r from-transparent via-white/50 to-transparent animate-[shimmer_1.5s_ease-in-out_infinite];
+		transform: translateX(-100%);
+	}
+}
+
+@keyframes shimmer {
+	100% {
+		transform: translateX(100%);
+	}
+}

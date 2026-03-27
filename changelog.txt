@@ -1,0 +1,48 @@
+= 1.1.1 - 24 Nov 2025 =
+* New: "Always" condition in flexible rates to apply rates unconditionally
+* Fix: Rules were being overwritten when saved
+* Fix: Flexible rates were not applying if price is set to 0
+* Fix: Import and export of shipping rules not working properly
+* Fix: Optimized code for better performance and reduced memory usage
+* Fix: Border and placeholder text color visibility issue in admin UI
+* Fix: Product specific filters were not working as expected
+
+= 1.1.0 - 17 Nov 2025 =
+* New: Major UI overhaul for better user experience in the rules builder page
+* New: Added display rules for individual shipping methods
+* New: Improved flexible shipping rate calculation engine
+
+= 1.0.7 - 30 Oct 2025 =
+* Fix: Cart Total condition not working as expected
+* Fix: Product criteria not applying correctly in some cases
+
+= 1.0.6 - 20 Oct 2025 =
+* New: New condition based on Coupon code
+* New: New condition based on Weekday and Time
+
+= 1.0.5 - 14 Oct 2025 =
+* New: Added live rate support Sendle and Australia Post (beta)
+* New: Added zip/post code condition
+* Update: Removed unused dependencies
+* Fix: Some strings were not being translated
+* Fix: Shipping class condition not working
+
+= 1.0.4 - 15 Sep 2025 =
+* Fixed shipping rate calculation errors when using weight-based conditions
+
+= 1.0.3 - 12 Sep 2025 =
+* Corrected handling fee application for multiple shipping rules
+
+= 1.0.2 - 10 Sep 2025 =
+* Resolved issue with shipping class conditions not applying correctly
+
+= 1.0.1 - 08 Sep 2025 =
+* New: Added flat rate pricing formula support
+* New: Added shipping method description and delivery date support for classic cart
+
+= 1.0.0 - 01 Sep 2025 =
+* New: Shipping zone creation 
+* New: Shipping rules builder 
+* New: Shipping Rate customizer 
+* New: User Role-based Shipping 
+* New: Handling Fee for Shipping

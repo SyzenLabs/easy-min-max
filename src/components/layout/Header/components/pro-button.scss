@@ -1,0 +1,14 @@
+.eamm-upgrade-pro-button {
+	& {
+		box-shadow:
+			inset 0 0 0 1px #f37500,
+			0 0 0 currentColor !important;
+		color: #f37500 !important;
+		background: #f3750014 !important;
+		transition: background 0.1s ease-in-out !important;
+	}
+
+	&:hover {
+		background: #f3750026 !important;
+	}
+}

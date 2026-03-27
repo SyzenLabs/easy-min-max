@@ -1,0 +1,14 @@
+{
+	"recommendations": [
+		"esbenp.prettier-vscode",
+		"dbaeumer.vscode-eslint",
+		"formulahendry.auto-complete-tag",
+		"usernamehw.errorlens",
+		"heybourn.headwind",
+		"pkief.material-icon-theme",
+		"bmewburn.vscode-intelephense-client",
+		"valeryanm.vscode-phpsab",
+		"gencer.html-slim-scss-css-class-completion",
+		"bradlc.vscode-tailwindcss"
+	]
+}

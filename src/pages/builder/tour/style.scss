@@ -1,0 +1,55 @@
+.driver-overlay {
+	z-index: 9999999 !important;
+}
+
+.eamm-driver-popover {
+	& {
+		padding: 16px 20px !important;
+	}
+
+	.driver-popover-navigation-btns button {
+		font: unset;
+		width: 80px;
+		height: 36px;
+		border-radius: var(--eamm-border-radius-md);
+		padding-top: 8px;
+		padding-right: 10px;
+		padding-bottom: 8px;
+		padding-left: 10px;
+		font-weight: 500;
+		font-size: 14px !important;
+		line-height: 20px;
+		letter-spacing: -0.08px;
+		text-shadow: none;
+		text-align: center;
+	}
+
+	header.driver-popover-title {
+		font: unset;
+		font-weight: 600 !important;
+		font-size: 16px !important;
+		line-height: 24px;
+		letter-spacing: -0.18px;
+		color: var(--eamm-text-strong);
+	}
+
+	.driver-popover-next-btn {
+		background: var(--eamm-blue-500);
+		color: var(--eamm-text-white);
+	}
+
+	.driver-popover-next-btn:hover {
+		background: var(--eamm-blue-600);
+		color: var(--eamm-text-white);
+	}
+
+	.driver-popover-description {
+		font: unset;
+		font-weight: 400;
+		font-size: 14px !important;
+		line-height: 20px;
+		letter-spacing: -0.08px;
+		color: var(--eamm-text-sub);
+		margin-top: 8px !important;
+	}
+}

@@ -1,0 +1,17 @@
+.eamm-pro-modal-component {
+	@media (min-width: 600px) {
+		&.components-modal__frame.has-size-large {
+			max-width: 722px !important;
+		}
+	}
+
+	.components-modal__content {
+		margin-top: 0px;
+		padding: 16px;
+	}
+	.components-modal__header {
+		position: absolute;
+		top: -18px;
+		left: 24px;
+	}
+}

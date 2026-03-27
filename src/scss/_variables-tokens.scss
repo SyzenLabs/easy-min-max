@@ -1,0 +1,168 @@
+/**
+ * Design Tokens
+ *
+ * This file contains design tokens for fonts, colors, shadows, and other UI elements.
+ * These tokens are used throughout the application to ensure consistency in design.
+
+ * ⚠️❗Each color variable here should map to an actual color value in _variables.scss file.
+ * ⚠️❗Each color variable has both light and dark theme values defined in _variables.scss file.
+ * ⚠️❗Use these token variables in components instead of direct color values.
+ */
+
+:root {
+	/* === Font === */
+	--eamm-font-family: "Inter", sans-serif;
+	--eamm-default-font-size: 14px;
+	--eamm-default-line-height: 20px;
+
+	/* === Font Sizes === */
+	--eamm-font-size-2xs: 11px;
+	--eamm-font-size-xs: 12px;
+	--eamm-font-size-sm: 14px;
+	--eamm-font-size-md: 16px;
+	--eamm-font-size-lg: 18px;
+	--eamm-font-size-xl: 20px;
+	--eamm-font-size-2xl: 24px;
+	--eamm-font-size-3xl: 28px;
+	--eamm-font-size-4xl: 32px;
+	--eamm-font-size-5xl: 36px;
+	--eamm-font-size-6xl: 40px;
+
+	/* === Font Line Heights === */
+	--eamm-font-line-height-2xs: 12px; // 11 / 12
+	--eamm-font-line-height-xs: 16px; // 12 / 16
+	--eamm-font-line-height-sm: 20px; // 14 / 20
+	--eamm-font-line-height-md: 24px; // 16 / 24
+	--eamm-font-line-height-lg: 28px; // 18 / 28
+	--eamm-font-line-height-xl: 28px; // 20 / 28
+	--eamm-font-line-height-2xl: 32px; // 24 / 32
+	--eamm-font-line-height-3xl: 36px; // 28 / 36
+	--eamm-font-line-height-4xl: 40px; // 32 / 40
+	--eamm-font-line-height-5xl: 44px; // 36 / 44
+	--eamm-font-line-height-6xl: 48px; // 40 / 48
+
+	/* === Font Weights === */
+	--eamm-font-weight-bold: 700;
+	--eamm-font-weight-semibold: 600;
+	--eamm-font-weight-medium: 500;
+	--eamm-font-weight-regular: 400;
+
+	/* === Transitions === */
+	--eamm-transition-lg: 0.5s;
+	--eamm-transition-md: 0.3s;
+	--eamm-transition-sm: 0.2s;
+
+	/* === Container === */
+	--eamm-container-max-width: 1352px;
+
+	/* === Border Radius === */
+	--eamm-border-radius-xs: 2px;
+	--eamm-border-radius-sm: 4px;
+	// --eamm-border-radius-sm: 0px;
+	--eamm-border-radius-md: 8px;
+	// --eamm-border-radius-md: 0px;
+	--eamm-border-radius-lg: 12px;
+	// --eamm-border-radius-lg: 0px;
+	--eamm-border-radius-full: 9999px;
+
+	/* === State Tokens === */
+	--eamm-state-faded-dark: var(--eamm-neutral-800);
+	--eamm-state-faded-base: var(--eamm-neutral-500);
+	--eamm-state-faded-light: var(--eamm-neutral-200);
+	--eamm-state-faded-lighter: var(--eamm-neutral-100);
+
+	--eamm-state-information-dark: var(--eamm-blue-950);
+	--eamm-state-information-base: var(--eamm-blue-500);
+	--eamm-state-information-light: var(--eamm-blue-200);
+	--eamm-state-information-lighter: var(--eamm-blue-50);
+
+	--eamm-state-warning-dark: var(--eamm-orange-950);
+	--eamm-state-warning-base: var(--eamm-orange-500);
+	--eamm-state-warning-light: var(--eamm-orange-200);
+	--eamm-state-warning-lighter: var(--eamm-orange-50);
+
+	--eamm-state-error-dark: var(--eamm-red-950);
+	--eamm-state-error-base: var(--eamm-red-500);
+	--eamm-state-error-light: var(--eamm-red-200);
+	--eamm-state-error-lighter: var(--eamm-red-50);
+
+	--eamm-state-success-dark: var(--eamm-green-950);
+	--eamm-state-success-base: var(--eamm-green-500);
+	--eamm-state-success-light: var(--eamm-green-200);
+	--eamm-state-success-lighter: var(--eamm-green-50);
+
+	--eamm-state-away-dark: var(--eamm-yellow-950);
+	--eamm-state-away-base: var(--eamm-yellow-500);
+	--eamm-state-away-light: var(--eamm-yellow-200);
+	--eamm-state-away-lighter: var(--eamm-yellow-50);
+
+	--eamm-state-feature-dark: var(--eamm-purple-950);
+	--eamm-state-feature-base: var(--eamm-purple-500);
+	--eamm-state-feature-light: var(--eamm-purple-200);
+	--eamm-state-feature-lighter: var(--eamm-purple-50);
+
+	--eamm-state-verified-dark: var(--eamm-sky-950);
+	--eamm-state-verified-base: var(--eamm-sky-500);
+	--eamm-state-verified-light: var(--eamm-sky-200);
+	--eamm-state-verified-lighter: var(--eamm-sky-50);
+
+	--eamm-state-highlighted-dark: var(--eamm-pink-950);
+	--eamm-state-highlighted-base: var(--eamm-pink-500);
+	--eamm-state-highlighted-light: var(--eamm-pink-200);
+	--eamm-state-highlighted-lighter: var(--eamm-pink-50);
+
+	--eamm-state-stable-dark: var(--eamm-teal-950);
+	--eamm-state-stable-base: var(--eamm-teal-500);
+	--eamm-state-stable-light: var(--eamm-teal-200);
+	--eamm-state-stable-lighter: var(--eamm-teal-50);
+
+	/* === Primary Color ===*/
+	--eamm-color-primary-dark: var(--eamm-sky-blue-800);
+	--eamm-color-primary-darker: var(--eamm-sky-blue-700);
+	--eamm-color-primary-base: var(--eamm-sky-blue-500);
+	--eamm-color-primary-alpha-16: var(--eamm-sky-blue-alpha-16);
+	--eamm-color-primary-alpha-10: var(--eamm-sky-blue-alpha-10);
+
+	/* === Static Tokens === */
+	--eamm-static-black: var(--eamm-neutral-950);
+	--eamm-static-white: var(--eamm-neutral-0);
+
+	/* === Background Tokens === */
+	--eamm-bg-strong: var(--eamm-neutral-950);
+	--eamm-bg-surface: var(--eamm-neutral-800);
+	--eamm-bg-sub: var(--eamm-neutral-300);
+	--eamm-bg-soft: var(--eamm-neutral-200);
+	--eamm-bg-weak: var(--eamm-neutral-50);
+	--eamm-bg-white: var(--eamm-neutral-0);
+	--eamm-bg-special: var(--eamm-sky-blue-500);
+
+	/* === Text Tokens === */
+	--eamm-text-strong: var(--eamm-neutral-950);
+	--eamm-text-sub: var(--eamm-neutral-600);
+	--eamm-text-soft: var(--eamm-neutral-400);
+	--eamm-text-disabled: var(--eamm-neutral-400);
+	--eamm-text-white: var(--eamm-neutral-0);
+	--eamm-text-special: var(--eamm-sky-blue-500);
+	--eamm-text-placeholder: var(--eamm-neutral-600);
+
+	/* === Stroke/Border Tokens === */
+	--eamm-stroke-strong: var(--eamm-neutral-950);
+	--eamm-stroke-sub: var(--eamm-neutral-400);
+	--eamm-stroke-soft: var(--eamm-neutral-200);
+	--eamm-stroke-white: var(--eamm-neutral-0);
+	--eamm-stroke-transparent: transparent;
+	--eamm-stroke-special: var(--eamm-sky-blue-500);
+
+	/* === Shadow Tokens === */
+	--eamm-shadow-xsm: 0px 1px 2px 0px var(--eamm-shadow-bg-xsm);
+	--eamm-shadow-sm: 0px 2px 6px 0px var(--eamm-shadow-bg-sm);
+	--eamm-shadow-md: 0px 16px 32px -12px var(--eamm-shadow-bg-md);
+	--eamm-shadow-lg: 0px 16px 40px -8px var(--eamm-shadow-bg-lg);
+	--eamm-shadow-xl: 0px 24px 56px -4px var(--eamm-shadow-bg-xl);
+	--eamm-shadow-2xl: 0px 40px 96px -8px var(--eamm-shadow-bg-2xl);
+	--eamm-shadow-right: 16px 0px 32px 0px var(--eamm-shadow-bg-right);
+	--eamm-shadow-left: -16px 0px 32px 0px var(--eamm-shadow-bg-left);
+	--eamm-shadow-btn-sm: 0px 2px 2px 0px var(--eamm-shadow-bg-btn-sm);
+	--eamm-shadow-btn-lg: 0px 6px 10px 0px var(--eamm-shadow-bg-btn-lg),
+		0px 2px 4px 0px var(--eamm-shadow-bg-btn-lg);
+}

@@ -1,0 +1,12 @@
+.eamm-header-menu-items {
+	button.components-button {
+		font-size: 15px !important;
+		color: #757575 !important;
+	}
+
+	button.components-button.is-pressed {
+		color: var(--wp-admin-theme-color) !important;
+		background: rgba(var(--wp-admin-theme-color--rgb), 0.08) !important;
+		border-radius: 4px !important;
+	}
+}
