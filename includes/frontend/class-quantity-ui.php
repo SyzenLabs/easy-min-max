@@ -18,7 +18,7 @@ class QuantityUi {
 	public function __construct( $rules ) {
 		$this->rules = $this->normalize_rules( $rules );
 
-		add_filter( 'woocommerce_quantity_input_args', array( $this, 'quantity_input_args' ), 10, 2 );
+		add_filter( 'woocommerce_quantity_input_args', array( $this, 'quantity_input_args' ), 9999, 2 );
 		add_filter( 'woocommerce_quantity_input', array( $this, 'maybe_render_dropdown' ), 10, 2 );
 		add_filter( 'woocommerce_available_variation', array( $this, 'variation_data' ), 10, 3 );
 		add_action( 'woocommerce_after_shop_loop_item', array( $this, 'archive_quantity_input' ), 15 );
