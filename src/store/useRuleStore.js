@@ -245,7 +245,7 @@ export const RuleStoreProvider = ( { children } ) => {
 				setState( ( prev ) => ( {
 					...prev,
 					hasUnsavedChanges: false,
-					rulesForm: responseData,
+					// rulesForm: responseData,
 				} ) );
 				setCurrentNav?.( `rule-edit/${ state.rulesForm.id }` );
 				return responseData;
@@ -262,7 +262,7 @@ export const RuleStoreProvider = ( { children } ) => {
 				setState( ( prev ) => ( {
 					...prev,
 					hasUnsavedChanges: false,
-					rulesForm: responseData,
+					// rulesForm: responseData,
 				} ) );
 			}
 		},

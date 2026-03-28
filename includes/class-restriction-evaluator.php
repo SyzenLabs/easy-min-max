@@ -15,7 +15,6 @@ class RestrictionEvaluator {
 			'min_price'   => is_numeric( $rule['minPrice'] ?? null ) ? (float) $rule['minPrice'] : null,
 			'max_price'   => is_numeric( $rule['maxPrice'] ?? null ) ? (float) $rule['maxPrice'] : null,
 			'initial_qty' => is_numeric( $rule['initialQuantity'] ?? null ) ? (float) $rule['initialQuantity'] : null,
-			// 'fixed_qty'   => is_numeric( $rule['fixedQuantity'] ?? null ) ? (float) $rule['fixedQuantity'] : null,
 		);
 
 		if ( ! empty( $rule['enableFixedQuantity'] ) ) {

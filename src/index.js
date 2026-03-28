@@ -22,6 +22,7 @@ import { RuleStoreProvider } from '@/store/useRuleStore';
 import Support from './utils/support';
 
 import { Builder } from './pages/builder';
+import Settings from './pages/settings';
 import './style-generated.css';
 const App = () => {
 	const { currentNav, setCurrentNav, handlePageHash } = useNav();
@@ -109,18 +110,12 @@ const App = () => {
 					</RuleStoreProvider>
 				),
 			},
-			// {
-			// 	id: 'settings',
-			// 	condition: currentNav === 'settings',
-			// 	header: true,
-			// 	component: (
-			// 		<ShippingRegionProvider>
-			// 			<ShippingZoneProvider>
-			// 				<Settings />
-			// 			</ShippingZoneProvider>
-			// 		</ShippingRegionProvider>
-			// 	),
-			// },
+			{
+				id: 'settings',
+				condition: currentNav === 'settings',
+				header: true,
+				component: <Settings />,
+			},
 		];
 
 		return _routes;

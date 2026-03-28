@@ -32,7 +32,7 @@ class SettingsController {
 					'permission_callback' => array( $this, 'can_manage' ),
 				),
 				array(
-					'methods'             => 'PUT',
+					'methods'             => 'POST',
 					'callback'            => array( $this, 'update_settings' ),
 					'permission_callback' => array( $this, 'can_manage' ),
 					'args'                => array(
@@ -50,10 +50,12 @@ class SettingsController {
 	}
 
 	public function get_settings() {
-		return rest_ensure_response( array(
-			'success' => true,
-			'data' => $this->db->get_rules()
-		) );
+		return rest_ensure_response(
+			array(
+				'success' => true,
+				'data'    => $this->db->get_rules(),
+			)
+		);
 	}
 
 	public function update_settings( WP_REST_Request $request ) {
@@ -62,8 +64,10 @@ class SettingsController {
 
 		$this->db->update_rule( $incoming );
 
-		return rest_ensure_response( array(
-			'success' => true,
-		) );
+		return rest_ensure_response(
+			array(
+				'success' => true,
+			)
+		);
 	}
 }

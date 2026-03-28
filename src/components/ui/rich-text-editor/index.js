@@ -32,6 +32,9 @@ export function TinyEditor( {
 			mediaButtons: false,
 			quicktags: true,
 			tinymce: {
+				forced_root_block: 'div',
+				force_br_newlines: true,
+				force_p_newlines: false,
 				branding: false,
 				menubar: false,
 				toolbar1:

@@ -1,40 +1,27 @@
-import { useShippingRegion } from '@/context/ShippingRegionContext';
-import { useShippingZone } from '@/context/ShippingZoneContext';
 import { useToast } from '@/context/ToastContext';
 import { getSettings } from '@/utils';
 import { wpConfig } from '@/utils/wpc-config';
 import apiFetch from '@wordpress/api-fetch';
 import {
-    Button,
-    Card,
-    CardBody,
-    CheckboxControl,
-    __experimentalDivider as Divider,
-    __experimentalGrid as Grid,
-    __experimentalHStack as HStack,
-    __experimentalInputControl as InputControl,
-    RadioControl,
-    __experimentalText as Text,
-    __experimentalVStack as VStack,
+	Button,
+	Card,
+	CardBody,
+	CheckboxControl,
+	__experimentalDivider as Divider,
+	__experimentalHStack as HStack,
+	__experimentalText as Text,
+	__experimentalVStack as VStack
 } from '@wordpress/components';
-import { useCallback, useEffect, useState } from '@wordpress/element';
+import { useCallback, useState } from '@wordpress/element';
 import { __ } from '@wordpress/i18n';
 
 export default function Settings() {
-	const { fetchShippingZones } = useShippingZone();
-	const { fetchRegions } = useShippingRegion();
-
 	const [ state, setState ] = useState( getSettings );
 	const [ saving, setSaving ] = useState( false );
 
 	const { showToast } = useToast();
 
-	useEffect( () => {
-		fetchShippingZones();
-		fetchRegions();
-	}, [ fetchShippingZones, fetchRegions ] );
-
-	const handleGetSettings = useCallback(
+	const handleSaveSettings = useCallback(
 		async ( data ) => {
 			setSaving( true );
 			try {
@@ -51,18 +38,12 @@ export default function Settings() {
 				}
 
 				showToast(
-					__(
-						'Settings updated successfully',
-						'easy-min-max'
-					),
+					__( 'Settings updated successfully', 'easy-min-max' ),
 					'success'
 				);
 			} catch ( error ) {
 				showToast(
-					__(
-						'Failed to update settings',
-						'easy-min-max'
-					),
+					__( 'Failed to update settings', 'easy-min-max' ),
 					'error'
 				);
 			} finally {
@@ -84,50 +65,14 @@ export default function Settings() {
 									size={ wpConfig.size.xl }
 									lineHeight={ wpConfig.lineHeight.m }
 								>
-									{ __(
-										'General Settings',
-										'easy-min-max'
-									) }
-								</Text>
-								<Text
-									variant="muted"
-									weight={ wpConfig.weight.regular }
-									size={ wpConfig.size.s }
-									lineHeight={ wpConfig.lineHeight.xs }
-								>
-									{ __(
-										'Configure general settings for shipping behavior and debugging.',
-										'easy-min-max'
-									) }
+									{ __( 'General Settings', 'easy-min-max' ) }
 								</Text>
 							</VStack>
 							<VStack spacing={ 6 }>
-								<RadioControl
-									label={ __(
-										'Default Shipping Tax Status',
-										'easy-min-max'
-									) }
-									selected={
-										state.taxDefault ? 'taxable' : 'none'
-									}
-									options={ [
-										{ label: 'Taxable', value: 'taxable' },
-										{ label: 'None', value: 'none' },
-									] }
-									onChange={ ( value ) => {
-										const newValue = value === 'taxable';
-										setState( ( prev ) => ( {
-											...prev,
-											taxDefault: newValue,
-										} ) );
-									} }
-								/>
+
 								<CheckboxControl
 									__nextHasNoMarginBottom
-									label={ __(
-										'Debug Mode',
-										'easy-min-max'
-									) }
+									label={ __( 'Debug Mode', 'easy-min-max' ) }
 									checked={ state.debugMode }
 									onChange={ ( value ) => {
 										setState( ( prev ) => ( {
@@ -173,120 +118,15 @@ export default function Settings() {
 							</VStack>
 						</VStack>
 						<Divider />
-						<VStack spacing={ 4 }>
-							<VStack alignment="topLeft" spacing={ 2 }>
-								<Text
-									weight={ wpConfig.weight.medium }
-									size={ wpConfig.size.xl }
-									lineHeight={ wpConfig.lineHeight.m }
-								>
-									{ __(
-										'Shipping Origin',
-										'easy-min-max'
-									) }
-								</Text>
-								<Text
-									variant="muted"
-									weight={ wpConfig.weight.regular }
-									size={ wpConfig.size.s }
-									lineHeight={ wpConfig.lineHeight.xs }
-								>
-									{ __(
-										'These values will override the default WooCommerce Store Address and will be used as the shipping origin.',
-										'easy-min-max'
-									) }
-								</Text>
-							</VStack>
-							<Grid alignment="bottom" columns={ 2 } gap={ 4 }>
-								<InputControl
-									__next40pxDefaultSize
-									label="Address line 1"
-									value={ state.eammAddress1 || '' }
-									onChange={ ( value ) => {
-										const newValue = value ?? '';
-										setState( ( prev ) => ( {
-											...prev,
-											eammAddress1: newValue,
-										} ) );
-									} }
-								/>
-								<InputControl
-									__next40pxDefaultSize
-									label="Address line 2"
-									value={ state.eammAddress2 || '' }
-									onChange={ ( value ) => {
-										const newValue = value ?? '';
-										setState( ( prev ) => ( {
-											...prev,
-											eammAddress2: newValue,
-										} ) );
-									} }
-								/>
-								<InputControl
-									__next40pxDefaultSize
-									label="City"
-									value={ state.eammCity || '' }
-									onChange={ ( value ) => {
-										const newValue = value ?? '';
-										setState( ( prev ) => ( {
-											...prev,
-											eammCity: newValue,
-										} ) );
-									} }
-								/>
-								<InputControl
-									__next40pxDefaultSize
-									label="State"
-									value={ state.eammState || '' }
-									onChange={ ( value ) => {
-										const newValue = value ?? '';
-										setState( ( prev ) => ( {
-											...prev,
-											eammState: newValue,
-										} ) );
-									} }
-								/>
-								<InputControl
-									__next40pxDefaultSize
-									label="Postcode"
-									value={ state.eammPostcode || '' }
-									onChange={ ( value ) => {
-										const newValue = value ?? '';
-										setState( ( prev ) => ( {
-											...prev,
-											eammPostcode: newValue,
-										} ) );
-									} }
-								/>
-								<InputControl
-									__next40pxDefaultSize
-									label="Country (ISO Code)"
-									value={ state.eammCountry || '' }
-									onChange={ ( value ) => {
-										const newValue = value ?? '';
-										setState( ( prev ) => ( {
-											...prev,
-											eammCountry: newValue,
-										} ) );
-									} }
-								/>
-							</Grid>
-						</VStack>
-						<Divider />
 						<HStack justify="end" spacing={ 5 }>
 							<Button
 								__next40pxDefaultSize
 								variant="primary"
-								onClick={ () => handleGetSettings( state ) }
+								onClick={ () => handleSaveSettings( state ) }
 								isBusy={ saving }
 							>
 								{ saving ? (
-									<>
-										{ __(
-											'Saving…',
-											'easy-min-max'
-										) }
-									</>
+									<>{ __( 'Saving…', 'easy-min-max' ) }</>
 								) : (
 									__( 'Save', 'easy-min-max' )
 								) }

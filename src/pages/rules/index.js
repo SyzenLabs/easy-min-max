@@ -114,7 +114,7 @@ export default function ShippingRules() {
 					__next40pxDefaultSize
 					iconPosition="left"
 					icon={ 'plus-alt2' }
-					href="#rules-add"
+					href="#rule-add"
 					variant="primary"
 				>
 					{ __( 'Add Rule', 'easy-min-max' ) }

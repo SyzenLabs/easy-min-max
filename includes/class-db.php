@@ -38,7 +38,10 @@ class DB {
 
 		return wp_parse_args(
 			$settings,
-			array()
+			array(
+				'debugMode' => false,
+				'cleanUpOnUninstall' => false,
+			)
 		);
 	}
 
