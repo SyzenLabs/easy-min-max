@@ -8,6 +8,10 @@ defined( 'ABSPATH' ) || exit;
  * Zone Validation.
  */
 class ZoneValidator {
+
+	public const DELIMITER       = '.';
+	public const DELIMITER_STATE = '#';
+
 	/**
 	 * Get customer region with enhanced logic.
 	 *
