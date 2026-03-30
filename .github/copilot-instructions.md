@@ -1,0 +1,38 @@
+# Easy Min Max Project Guidelines
+
+## Architecture
+
+-   This plugin mixes a PHP WooCommerce backend with a React admin app and a small frontend runtime.
+-   Start from [easy-min-max.php](\app\public\wp-content\plugins\easy-min-max\easy-min-max.php): it bootstraps the autoloader and calls `Init::load()`.
+-   Keep PHP business logic in `includes/`, REST controllers in `includes/rest/`, storefront behavior in `includes/frontend/`, and shared utility code in `includes/utils/`.
+-   Edit source files in `src/` and `src/scss/`; treat `assets/` as generated build output unless the task is explicitly about packaged assets.
+
+## Build And Validation
+
+-   Run commands from the plugin root: `c:\Users\hp\Local Sites\shippingrule\app\public\wp-content\plugins\easy-min-max`.
+-   Use `npm install` or `npm run setup` for initial setup.
+-   Use `npm run dev` for normal development, `npm run start` for JS-only watch mode, and `gulp watch` when only SCSS/Tailwind output matters.
+-   Use `npm run build` for a production package and `npm run release` only after updating the version and changelog.
+-   Use `npm run lint` and `npm run format` for changes under `src/`.
+-   There is no dedicated automated test suite in this plugin. After edits, prefer the narrowest available validation: lint/format for frontend changes, then manual verification in the local WordPress + WooCommerce site.
+
+## Conventions
+
+-   PHP classes use the `EAMM\` namespace and are autoloaded from kebab-case files such as `includes/class-init.php` and `includes/frontend/class-quantity-ui.php`.
+-   Reuse `traits/trait-singleton.php` for long-lived service classes instead of inventing new lifecycle patterns.
+-   Rule and settings data live in WordPress options as JSON through `includes/class-db.php`; do not introduce new storage patterns unless the task requires it.
+-   React source can import from `@/` because the alias maps to `src/`.
+-   Follow existing REST patterns: register routes in `includes/rest/`, gate admin operations with the existing permission helpers, and return `WP_Error` for request failures.
+
+## Pitfalls
+
+-   Versioning is strict: keep `package.json`, the plugin header/version constant in `easy-min-max.php`, and `readme.txt` in sync. Use `scripts/ver-updater.js` and add the changelog entry before running `npm run release`.
+-   The admin UI depends on generated asset metadata such as `assets/js/eamm-backend.asset.php`; if webpack output is missing, the admin app will not enqueue correctly.
+-   `includes/utils/class-hooks.php` wires WooCommerce shipping integration and references `WowShippingMethod::class`; verify that path before changing shipping-zone behavior because that integration surface appears incomplete.
+-   REST endpoints use both `eamm/v1` and `easy-min-max/v1`. Check the existing namespace before adding or consuming endpoints.
+
+## Key References
+
+-   See `README.md` for the rule data shape used by the builder.
+-   See `package.json` for the canonical script list.
+-   See `scripts/ver-updater.js` for release/version synchronization rules.
