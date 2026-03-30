@@ -225,6 +225,7 @@ class Validation {
 			'[step_quantity]'    => $limits['step_qty'],
 			'[inputed_quantity]' => $quantity,
 			'[variation_name]'   => $product->is_type( 'variation' ) ? $product->get_name() : '',
+			'[fixed_quanitity]'  => $limits['fixed_qty'],
 		);
 		return strtr( $template, $replacements );
 	}

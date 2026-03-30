@@ -6,6 +6,9 @@ use EAMM\Includes\RestrictionEvaluator;
 
 defined( 'ABSPATH' ) || exit;
 
+/**
+ * Quantity UI
+ */
 class QuantityUi {
 
 	/**
@@ -15,6 +18,14 @@ class QuantityUi {
 	 */
 	private $rules = array();
 
+	/**
+	 * Constructor.
+	 *
+	 * Normalises the provided rules and registers all WooCommerce hooks
+	 * needed to apply quantity limits and UI customisations on the storefront.
+	 *
+	 * @param array|mixed $rules A single rule array or a list of rule arrays.
+	 */
 	public function __construct( $rules ) {
 		$this->rules = $this->normalize_rules( $rules );
 
@@ -22,11 +33,21 @@ class QuantityUi {
 		add_filter( 'woocommerce_quantity_input', array( $this, 'maybe_render_dropdown' ), 10, 2 );
 		add_filter( 'woocommerce_available_variation', array( $this, 'variation_data' ), 10, 3 );
 		add_action( 'woocommerce_after_shop_loop_item', array( $this, 'archive_quantity_input' ), 15 );
-		// add_action( 'wp_enqueue_scripts', array( $this, 'enqueue_assets' ) );
+		add_action( 'wp_enqueue_scripts', array( $this, 'enqueue_assets' ) );
 		add_action( 'wp_head', array( $this, 'custom_css' ) );
 		add_action( 'woocommerce_before_add_to_cart_button', array( $this, 'total_price_markup' ) );
 	}
 
+	/**
+	 * Filter WooCommerce quantity input arguments.
+	 *
+	 * Applies the combined min, max, step, and initial quantity limits from
+	 * all matching rules to the quantity field arguments.
+	 *
+	 * @param array       $args    Quantity input arguments.
+	 * @param \WC_Product $product Current product.
+	 * @return array Modified quantity input arguments.
+	 */
 	public function quantity_input_args( $args, $product ) {
 		$limits = $this->get_combined_limits( $product );
 
@@ -45,6 +66,17 @@ class QuantityUi {
 		return $args;
 	}
 
+	/**
+	 * Optionally replace the quantity input with a dropdown.
+	 *
+	 * When the `showQuantityDropdown` flag is enabled by any active rule, the
+	 * standard text input is replaced with a `<select>` element populated with
+	 * the resolved quantity options.
+	 *
+	 * @param string      $html    Original quantity input HTML.
+	 * @param \WC_Product $product Current product.
+	 * @return string Either the original HTML or a dropdown `<select>` element.
+	 */
 	public function maybe_render_dropdown( $html, $product ) {
 		if ( ! $this->has_enabled_rule_flag( 'showQuantityDropdown' ) ) {
 			return $html;
@@ -92,18 +124,39 @@ class QuantityUi {
 			$options .= '<option value="' . esc_attr( $value ) . '"' . $selected . '>' . esc_html( $value ) . '</option>';
 		}
 
-		return '<select name="quantity" class="eamm-qty-select">' . $options . '</select>';
+		return '<select name="quantity" class="qty eamm-qty-select">' . $options . '</select>';
 	}
 
+	/**
+	 * Append EAMM quantity limits to variation data.
+	 *
+	 * Adds `eamm_min_qty`, `eamm_max_qty`, `eamm_step_qty`,
+	 * `eamm_initial_qty`, and `eamm_dropdown_values` keys to the variation data array so the frontend
+	 * script can update the quantity field when a variation is selected.
+	 *
+	 * @param array                 $data      Variation data array.
+	 * @param \WC_Product_Variable  $product   Parent variable product.
+	 * @param \WC_Product_Variation $variation Selected variation.
+	 * @return array Modified variation data.
+	 */
 	public function variation_data( $data, $product, $variation ) {
 		$limits                   = $this->get_combined_limits( $variation );
 		$data['eamm_min_qty']     = $limits['min_qty'];
 		$data['eamm_max_qty']     = $limits['max_qty'];
 		$data['eamm_step_qty']    = $limits['step_qty'];
 		$data['eamm_initial_qty'] = $limits['initial_qty'];
+		$data['eamm_dropdown_values'] = $this->get_dropdown_values( $variation );
 		return $data;
 	}
 
+	/**
+	 * Render a quantity input on shop/archive pages.
+	 *
+	 * Outputs a WooCommerce quantity input after each product in the loop when
+	 * the `showQuantityInArchive` flag is enabled by any active rule.
+	 *
+	 * @return void
+	 */
 	public function archive_quantity_input() {
 		if ( ! $this->has_enabled_rule_flag( 'showQuantityInArchive' ) ) {
 			return;
@@ -115,19 +168,52 @@ class QuantityUi {
 		woocommerce_quantity_input( array(), $product, false );
 	}
 
-	// public function enqueue_assets() {
-	// 	wp_enqueue_style( 'eamm-frontend', EAMM_URL . 'assets/css/frontend.css', array(), '0.1.0' );
-	// 	wp_enqueue_script( 'eamm-frontend', EAMM_URL . 'assets/js/frontend.js', array( 'jquery' ), '0.1.0', true );
-	// 	wp_localize_script(
-	// 		'eamm-frontend',
-	// 		'eammSettings',
-	// 		array(
-	// 			'totalPriceEnabled' => $this->settings->get( 'total_price_by_qty' ) === 'yes',
-	// 			'qtyDropdown'       => $this->settings->get( 'qty_dropdown' ) === 'yes',
-	// 		)
-	// 	);
-	// }
+	/**
+	 * Enqueue Scripts.
+	 *
+	 * @return void
+	 */
+	public function enqueue_assets() {
+		if ( ! $this->should_enqueue_assets() ) {
+			return;
+		}
 
+		$asset = require EAMM_PATH . 'assets/js/eamm-frontend.asset.php';
+
+		$dependencies = ! empty( $asset['dependencies'] ) && is_array( $asset['dependencies'] )
+			? $asset['dependencies']
+			: array();
+
+		if ( ! in_array( 'jquery', $dependencies, true ) ) {
+			$dependencies[] = 'jquery';
+		}
+
+		$css_file = is_rtl() ? 'style-eamm-frontend-rtl.css' : 'style-eamm-frontend.css';
+		$css_path = EAMM_PATH . 'assets/js/' . $css_file;
+		$js_path  = EAMM_PATH . 'assets/js/eamm-frontend.js';
+
+		$script_version = file_exists( $js_path ) ? (string) filemtime( $js_path ) : ( $asset['version'] ?? EAMM_VER );
+		$style_version  = file_exists( $css_path ) ? (string) filemtime( $css_path ) : $script_version;
+
+		wp_enqueue_style( 'eamm-frontend', EAMM_URL . 'assets/js/' . $css_file, array(), $style_version );
+
+		wp_enqueue_script( 'eamm-frontend', EAMM_URL . 'assets/js/eamm-frontend.js', $dependencies, $script_version, true );
+
+		wp_localize_script(
+			'eamm-frontend',
+			'eammSettings',
+			$this->get_frontend_settings()
+		);
+	}
+
+	/**
+	 * Output custom CSS from active rules.
+	 *
+	 * Collects `customCss` values from all rules and prints them inside a
+	 * `<style>` tag in the page `<head>`.
+	 *
+	 * @return void
+	 */
 	public function custom_css() {
 		$css_chunks = array();
 
@@ -144,6 +230,15 @@ class QuantityUi {
 		}
 	}
 
+	/**
+	 * Render the dynamic total-price container on single product pages.
+	 *
+	 * Outputs an empty `<div>` with the unit price stored in a `data-price`
+	 * attribute. The frontend script listens to quantity changes and updates
+	 * the displayed total when the `showPriceByQuantity` flag is active.
+	 *
+	 * @return void
+	 */
 	public function total_price_markup() {
 		if ( ! $this->has_enabled_rule_flag( 'showPriceByQuantity' ) ) {
 			return;
@@ -157,7 +252,7 @@ class QuantityUi {
 	}
 
 	/**
-	 * Normalize the constructor input to a list of rule arrays.
+	 * Normalize the constructor input to a li2st of rule arrays.
 	 *
 	 * @param mixed $rules Rules input.
 	 * @return array
@@ -193,6 +288,54 @@ class QuantityUi {
 		}
 
 		return false;
+	}
+
+	/**
+	 * Determine whether storefront assets are needed for the current request.
+	 *
+	 * @return bool
+	 */
+	private function should_enqueue_assets() {
+		if ( is_admin() ) {
+			return false;
+		}
+
+		if ( function_exists( 'is_product' ) && is_product() ) {
+			return true;
+		}
+
+		if ( ! $this->has_enabled_rule_flag( 'showQuantityInArchive' ) ) {
+			return false;
+		}
+
+		if ( function_exists( 'is_shop' ) && is_shop() ) {
+			return true;
+		}
+
+		return function_exists( 'is_product_taxonomy' ) && is_product_taxonomy();
+	}
+
+	/**
+	 * Build localized frontend settings for the storefront script.
+	 *
+	 * @return array
+	 */
+	private function get_frontend_settings() {
+		return array(
+			'totalPriceEnabled'       => $this->has_enabled_rule_flag( 'showPriceByQuantity' ),
+			'quantityDropdownEnabled' => $this->has_enabled_rule_flag( 'showQuantityDropdown' ),
+			'currency'                => array(
+				'symbol'            => html_entity_decode( get_woocommerce_currency_symbol(), ENT_QUOTES, 'UTF-8' ),
+				'format'            => html_entity_decode( get_woocommerce_price_format(), ENT_QUOTES, 'UTF-8' ),
+				'decimalSeparator'  => wc_get_price_decimal_separator(),
+				'thousandSeparator' => wc_get_price_thousand_separator(),
+				'decimals'          => wc_get_price_decimals(),
+				'trimZeros'         => (bool) apply_filters( 'woocommerce_price_trim_zeros', false ),
+			),
+			'i18n'                    => array(
+				'totalLabel' => __( 'Total:', 'easy-min-max' ),
+			),
+		);
 	}
 
 	/**

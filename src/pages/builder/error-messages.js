@@ -12,7 +12,7 @@ import {
 import { __ } from '@wordpress/i18n';
 
 const messageTokenHelp = __(
-	'Available placeholders: [min_quantity], [max_quantity], [min_price], [max_price].',
+	'Available placeholders: [current_quantity], [min_quantity], [max_quantity], [min_price], [max_price], [product_name], [step_quantity], [inputed_quantity], [variation_name], [fixed_quanitity].',
 	'easy-min-max'
 );
 

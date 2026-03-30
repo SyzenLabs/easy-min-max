@@ -27,7 +27,7 @@ class Init {
 	 */
 	public function __construct() {
 		add_action( 'activated_plugin', array( $this, 'activation_redirect' ) );
-		add_action('plugins_loaded', array($this, 'load'));
+		add_action( 'plugins_loaded', array( $this, 'load' ) );
 	}
 
 	/**
@@ -117,7 +117,7 @@ class Init {
 
 		// Main CSS.
 		$main_css_file = is_rtl() ? 'eamm-backend-rtl.css' : 'eamm-backend.css';
-		wp_enqueue_style( 'eamm-editor-css', EAMM_URL . "assets/css/{$main_css_file}", array(), $asset['version'] );
+		wp_enqueue_style( 'eamm-editor-css', EAMM_URL . "assets/js/{$main_css_file}", array(), $asset['version'] );
 	}
 
 	/**

@@ -195,12 +195,16 @@ gulp.task( 'watch', function () {
 		],
 		{ shell: true, stdio: 'inherit' }
 	);
-	watch( 'src/**/*.scss', { ignoreInitial: false }, function ( vinyl ) {
-		if ( vinyl.path.indexOf( 'backend.scss' ) === -1 ) {
-			cached.caches.scss = {};
+	watch(
+		[ 'src/**/*.scss', '!src/frontend/**/*.scss' ],
+		{ ignoreInitial: false },
+		function ( vinyl ) {
+			if ( vinyl.path.indexOf( 'backend.scss' ) === -1 ) {
+				cached.caches.scss = {};
+			}
+			runSass();
 		}
-		runSass();
-	} );
+	);
 } );
 
 /**

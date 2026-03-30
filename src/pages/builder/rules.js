@@ -177,38 +177,41 @@ export function Rules() {
 					<div className="rounded-(--eamm-border-radius-md) border border-[#DCDCDE] bg-white p-4">
 						<div className="mb-4">
 							<p className="m-0 font-medium text-(--eamm-text-main)">
-								{ __(
-									'Quantity And Price Limits',
-									'easy-min-max'
-								) }
+								{ __( 'Quantity Limits', 'easy-min-max' ) }
 							</p>
 							<p className="mt-1 mb-0 text-sm text-(--eamm-text-sub)">
 								{ __(
-									'Define the allowed quantities and amount thresholds for matching products.',
+									'Define the allowed quantity thresholds for matching products.',
 									'easy-min-max'
 								) }
 							</p>
 						</div>
 
-						<div className="grid gap-4 md:grid-cols-2 xl:grid-cols-3">
-							<NumberField
-								label={ __(
-									'Minimum Quantity',
-									'easy-min-max'
-								) }
-								value={ rulesForm.minQuantity }
-								disabled={ quantityRulesDisabled }
-								onChange={ handleFieldChange( 'minQuantity' ) }
-							/>
-							<NumberField
-								label={ __(
-									'Maximum Quantity',
-									'easy-min-max'
-								) }
-								value={ rulesForm.maxQuantity }
-								disabled={ quantityRulesDisabled }
-								onChange={ handleFieldChange( 'maxQuantity' ) }
-							/>
+						<div className="space-y-4">
+							<div className="grid gap-4 md:grid-cols-2">
+								<NumberField
+									label={ __(
+										'Minimum Quantity',
+										'easy-min-max'
+									) }
+									value={ rulesForm.minQuantity }
+									disabled={ quantityRulesDisabled }
+									onChange={ handleFieldChange(
+										'minQuantity'
+									) }
+								/>
+								<NumberField
+									label={ __(
+										'Maximum Quantity',
+										'easy-min-max'
+									) }
+									value={ rulesForm.maxQuantity }
+									disabled={ quantityRulesDisabled }
+									onChange={ handleFieldChange(
+										'maxQuantity'
+									) }
+								/>
+							</div>
 							<NumberField
 								label={ __( 'Step Quantity', 'easy-min-max' ) }
 								value={ rulesForm.step }
@@ -234,35 +237,7 @@ export function Rules() {
 									'initialQuantity'
 								) }
 							/>
-							<NumberField
-								label={ __( 'Minimum Price', 'easy-min-max' ) }
-								value={ rulesForm.minPrice }
-								suffix={ __( 'Price', 'easy-min-max' ) }
-								onChange={ handleFieldChange( 'minPrice' ) }
-							/>
-							<NumberField
-								label={ __( 'Maximum Price', 'easy-min-max' ) }
-								value={ rulesForm.maxPrice }
-								suffix={ __( 'Price', 'easy-min-max' ) }
-								onChange={ handleFieldChange( 'maxPrice' ) }
-							/>
-						</div>
-					</div>
 
-					<div className="rounded-(--eamm-border-radius-md) border border-[#DCDCDE] bg-white p-4">
-						<div className="mb-4">
-							<p className="m-0 font-medium text-(--eamm-text-main)">
-								{ __( 'Quantity Behaviour', 'easy-min-max' ) }
-							</p>
-							<p className="mt-1 mb-0 text-sm text-(--eamm-text-sub)">
-								{ __(
-									'Control how quantity inputs and purchase actions behave when this rule matches.',
-									'easy-min-max'
-								) }
-							</p>
-						</div>
-
-						<div className="grid gap-4 md:grid-cols-2">
 							<ToggleControl
 								{ ...toggleControlDefaults }
 								checked={ !! rulesForm.enableFixedQuantity }
@@ -276,46 +251,22 @@ export function Rules() {
 								) }
 								onChange={ handleFixedQuantityToggle }
 							/>
-							<NumberField
-								label={ __( 'Fixed Quantity', 'easy-min-max' ) }
-								value={ rulesForm.fixedQuantity }
-								disabled={ ! rulesForm.enableFixedQuantity }
-								min={ 1 }
-								step={ 1 }
-								onChange={ handleFieldChange(
-									'fixedQuantity'
-								) }
-							/>
-							<ToggleControl
-								{ ...toggleControlDefaults }
-								checked={ !! rulesForm.hideCheckoutButton }
-								help={ __(
-									'Hide the checkout button until the customer meets this rule.',
-									'easy-min-max'
-								) }
-								label={ __(
-									'Hide Checkout Button',
-									'easy-min-max'
-								) }
-								onChange={ handleFieldChange(
-									'hideCheckoutButton'
-								) }
-							/>
-							<ToggleControl
-								{ ...toggleControlDefaults }
-								checked={ !! rulesForm.showPriceByQuantity }
-								help={ __(
-									'Show a live total price that updates with the selected quantity.',
-									'easy-min-max'
-								) }
-								label={ __(
-									'Show Total Price By Quantity',
-									'easy-min-max'
-								) }
-								onChange={ handleFieldChange(
-									'showPriceByQuantity'
-								) }
-							/>
+							{ rulesForm.enableFixedQuantity && (
+								<NumberField
+									label={ __(
+										'Fixed Quantity',
+										'easy-min-max'
+									) }
+									value={ rulesForm.fixedQuantity }
+									disabled={ ! rulesForm.enableFixedQuantity }
+									min={ 1 }
+									step={ 1 }
+									onChange={ handleFieldChange(
+										'fixedQuantity'
+									) }
+								/>
+							) }
+
 							<ToggleControl
 								{ ...toggleControlDefaults }
 								checked={
@@ -333,7 +284,75 @@ export function Rules() {
 									'disableMinQuantityOnLowStock'
 								) }
 							/>
-							<ToggleControl
+						</div>
+					</div>
+
+					<div className="rounded-(--eamm-border-radius-md) border border-[#DCDCDE] bg-white p-4">
+						<div className="mb-4">
+							<p className="m-0 font-medium text-(--eamm-text-main)">
+								{ __( 'Price Limits', 'easy-min-max' ) }
+							</p>
+							<p className="mt-1 mb-0 text-sm text-(--eamm-text-sub)">
+								{ __(
+									'Define the allowed price thresholds for matching products.',
+									'easy-min-max'
+								) }
+							</p>
+						</div>
+
+						<div className="space-y-4">
+							<div className="grid gap-4 md:grid-cols-2">
+								<NumberField
+									label={ __(
+										'Minimum Price',
+										'easy-min-max'
+									) }
+									value={ rulesForm.minPrice }
+									suffix={ __( 'Price', 'easy-min-max' ) }
+									onChange={ handleFieldChange( 'minPrice' ) }
+								/>
+								<NumberField
+									label={ __(
+										'Maximum Price',
+										'easy-min-max'
+									) }
+									value={ rulesForm.maxPrice }
+									suffix={ __( 'Price', 'easy-min-max' ) }
+									onChange={ handleFieldChange( 'maxPrice' ) }
+								/>
+							</div>
+
+							{ /* <ToggleControl
+								{ ...toggleControlDefaults }
+								checked={ !! rulesForm.hideCheckoutButton }
+								help={ __(
+									'Hide the checkout button until the customer meets this rule.',
+									'easy-min-max'
+								) }
+								label={ __(
+									'Hide Checkout Button',
+									'easy-min-max'
+								) }
+								onChange={ handleFieldChange(
+									'hideCheckoutButton'
+								) }
+							/> */ }
+							{ /* <ToggleControl
+								{ ...toggleControlDefaults }
+								checked={ !! rulesForm.showPriceByQuantity }
+								help={ __(
+									'Show a live total price that updates with the selected quantity.',
+									'easy-min-max'
+								) }
+								label={ __(
+									'Show Total Price By Quantity',
+									'easy-min-max'
+								) }
+								onChange={ handleFieldChange(
+									'showPriceByQuantity'
+								) }
+							/> */ }
+							{ /* <ToggleControl
 								{ ...toggleControlDefaults }
 								checked={ !! rulesForm.showQuantityInArchive }
 								help={ __(
@@ -347,8 +366,8 @@ export function Rules() {
 								onChange={ handleFieldChange(
 									'showQuantityInArchive'
 								) }
-							/>
-							<ToggleControl
+							/> */ }
+							{ /* <ToggleControl
 								{ ...toggleControlDefaults }
 								checked={ !! rulesForm.showQuantityDropdown }
 								help={ __(
@@ -362,25 +381,29 @@ export function Rules() {
 								onChange={ handleFieldChange(
 									'showQuantityDropdown'
 								) }
-							/>
+							/> */ }
 						</div>
 
-						<div className="mt-4">
-							<TextField
-								label={ __(
-									'Quantity Dropdown Options',
-									'easy-min-max'
-								) }
-								value={ quantityDropdownText }
-								disabled={ ! rulesForm.showQuantityDropdown }
-								help={ __(
-									'Enter one quantity option per line. Duplicate values are ignored.',
-									'easy-min-max'
-								) }
-								rows={ 5 }
-								onChange={ handleQuantityDropdownChange }
-							/>
-						</div>
+						{ /* { rulesForm.showQuantityDropdown && (
+							<div className="mt-4">
+								<TextField
+									label={ __(
+										'Quantity Dropdown Options',
+										'easy-min-max'
+									) }
+									value={ quantityDropdownText }
+									disabled={
+										! rulesForm.showQuantityDropdown
+									}
+									help={ __(
+										'Enter one quantity option per line. Duplicate values are ignored.',
+										'easy-min-max'
+									) }
+									rows={ 5 }
+									onChange={ handleQuantityDropdownChange }
+								/>
+							</div>
+						) } */ }
 					</div>
 
 					<div className="rounded-(--eamm-border-radius-md) border border-[#DCDCDE] bg-white p-4">

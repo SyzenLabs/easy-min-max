@@ -7,6 +7,9 @@ use EAMM\Includes\DB;
 
 defined( 'ABSPATH' ) || exit;
 
+/**
+ * Frontend
+ */
 class Frontend {
 
 	/**
@@ -14,13 +17,26 @@ class Frontend {
 	 */
 	private $db;
 
+	/**
+	 * Constructor
+	 *
+	 * Hooks the init method to the WordPress 'init' action.
+	 */
 	public function __construct() {
 		add_action( 'init', array( $this, 'init' ) );
 	}
 
+	/**
+	 * Initialize frontend functionality
+	 *
+	 * Retrieves applicable rules and initializes QuantityUi and Validation classes
+	 * if rules are available.
+	 *
+	 * @return void
+	 */
 	public function init() {
 		$this->db = DB::get_instance();
-		$rules     = $this->get_applicable_rules();
+		$rules    = $this->get_applicable_rules();
 
 		if ( empty( $rules ) ) {
 			return;
