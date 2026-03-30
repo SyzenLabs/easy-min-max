@@ -550,9 +550,6 @@ class ConditionEvaluator {
 				);
 
 			case 'Attribute':
-				if ( empty( self::get_current_product_data( $method ) ) ) {
-					return null;
-				}
 				return self::collect_attribute_term_ids( $field, $rate, $method );
 		}
 
