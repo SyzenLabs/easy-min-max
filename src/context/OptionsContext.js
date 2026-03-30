@@ -4,17 +4,17 @@
 
 import { useToast } from '@/context/ToastContext';
 import {
-	getCurrencyCode,
-	getDimensionUnit,
-	getFlags,
-	getWeightUnit,
+    getCurrencyCode,
+    getDimensionUnit,
+    getFlags,
+    getWeightUnit,
 } from '@/utils';
 import apiFetch from '@wordpress/api-fetch';
 import {
-	createContext,
-	useCallback,
-	useContext,
-	useState,
+    createContext,
+    useCallback,
+    useContext,
+    useState,
 } from '@wordpress/element';
 import { __ } from '@wordpress/i18n';
 
@@ -116,7 +116,7 @@ export const ShippingOptionsProvider = ( { children } ) => {
 
 	const [ optionsData, setOptionsData ] = useState( {
 		// eslint-disable-next-line camelcase
-		cart_contains_products: [],
+		current_product: [],
 		// eslint-disable-next-line camelcase
 		category_products: [],
 		// eslint-disable-next-line camelcase
@@ -138,7 +138,7 @@ export const ShippingOptionsProvider = ( { children } ) => {
 		async ( { field, searchTerm = '' } ) => {
 			const fieldMap = {
 				// eslint-disable-next-line camelcase
-				cart_contains_products: 'products',
+				current_product: 'products',
 				// eslint-disable-next-line camelcase
 				category_products: 'categories',
 				// eslint-disable-next-line camelcase
@@ -315,11 +315,11 @@ export const ShippingOptionsProvider = ( { children } ) => {
 				children: [
 					{
 						label: __( 'Product', 'easy-min-max' ),
-						value: 'cart_contains_products',
+						value: 'current_product',
 						operatorType: 'Type2',
 						component: 'MultiSelect',
 						lazy: true,
-						data: optionsData?.cart_contains_products || [],
+						data: optionsData?.current_product || [],
 					},
 					{
 						label: __( 'Product Categories', 'easy-min-max' ),

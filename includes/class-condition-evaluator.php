@@ -23,7 +23,7 @@ class ConditionEvaluator {
 	 * @param mixed      $method          Optional method or product context.
 	 * @return array
 	 */
-	private static function extract_product_ids_from_rate( $condition_group, $method = null ) {
+	private static function extract_product_ids_from_condition_group( $condition_group, $method = null ) {
 
 		if ( empty( $condition_group ) || ! is_array( $condition_group ) ) {
 			return array();
@@ -31,7 +31,7 @@ class ConditionEvaluator {
 
 		$product_ids = array();
 
-		$source_items = self::get_condition_source_items( $method );
+		$source_items = self::get_current_product_data( $method );
 
 		foreach ( $condition_group as $condition ) {
 
@@ -67,7 +67,7 @@ class ConditionEvaluator {
 			$field = $condition['field'];
 
 			switch ( $field ) {
-				case 'cart_contains_products':
+				case 'current_product':
 					if ( in_array( $condition['operator'], array( 'equal', 'contains' ), true ) ) {
 						$product_ids = array_merge( $product_ids, $condition['value'] );
 					} else {
@@ -227,7 +227,7 @@ class ConditionEvaluator {
 	 * @param mixed $method Optional method or product context.
 	 * @return array
 	 */
-	private static function get_condition_source_items( $method = null ) {
+	private static function get_current_product_data( $method = null ) {
 		$current_product = self::get_current_condition_product( $method );
 
 		if ( $current_product instanceof \WC_Product ) {
@@ -249,10 +249,6 @@ class ConditionEvaluator {
 					'variation'    => $variation_attributes,
 				),
 			);
-		}
-
-		if ( function_exists( 'WC' ) && WC()->cart ) {
-			return WC()->cart->get_cart();
 		}
 
 		return array();
@@ -356,7 +352,7 @@ class ConditionEvaluator {
 				break;
 
 			case 'Product':
-				$product_items = self::get_filtered_cart_items( $rate, $method );
+				$product_items = self::get_current_product_data();
 
 				switch ( $field ) {
 					case 'price':
@@ -370,7 +366,7 @@ class ConditionEvaluator {
 						}
 						return $prices;
 
-					case 'cart_contains_products':
+					case 'current_product':
 						$ids = array();
 						foreach ( $product_items as $ci ) {
 							$ids[] = (int) ( isset( $ci['product_id'] ) ? $ci['product_id'] : 0 );
@@ -554,7 +550,7 @@ class ConditionEvaluator {
 				);
 
 			case 'Attribute':
-				if ( empty( self::get_condition_source_items( $method ) ) ) {
+				if ( empty( self::get_current_product_data( $method ) ) ) {
 					return null;
 				}
 				return self::collect_attribute_term_ids( $field, $rate, $method );
@@ -622,7 +618,7 @@ class ConditionEvaluator {
 
 			case 'Product':
 				switch ( $field ) {
-					case 'cart_contains_products':
+					case 'current_product':
 						return self::compare_array_conditions( (array) $resolved_value, $operator, $condition_value, 'products' );
 					case 'category_products':
 						return self::compare_array_conditions( (array) $resolved_value, $operator, $condition_value, 'categories' );
@@ -1597,8 +1593,8 @@ class ConditionEvaluator {
 	 * @return array
 	 */
 	private static function get_filtered_cart_items( $rate, $method = null ) {
-		$source_items     = self::get_condition_source_items( $method );
-		$rate_product_ids = self::extract_product_ids_from_rate( $rate, $method );
+		$source_items     = self::get_current_product_data( $method );
+		$rate_product_ids = self::extract_product_ids_from_condition_group( $rate, $method );
 
 		if ( ! empty( $rate_product_ids ) && is_array( $rate_product_ids ) ) {
 			$source_items = array_filter(
