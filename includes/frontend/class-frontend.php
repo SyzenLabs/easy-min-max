@@ -65,9 +65,7 @@ class Frontend {
 				continue;
 			}
 
-			if ( ConditionEvaluator::evaluate_condition_groups( $rule['conditionGroups'] ?? array() ) ) {
-				$valid_rules[] = $rule;
-			}
+			$valid_rules[] = $rule;
 		}
 
 		return $valid_rules;

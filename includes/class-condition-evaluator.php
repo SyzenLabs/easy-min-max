@@ -20,9 +20,10 @@ class ConditionEvaluator {
 	 * Extract product IDs from a condition group.
 	 *
 	 * @param array|null $condition_group Condition group.
+	 * @param mixed      $method          Optional method or product context.
 	 * @return array
 	 */
-	private static function extract_product_ids_from_rate( $condition_group ) {
+	private static function extract_product_ids_from_rate( $condition_group, $method = null ) {
 
 		if ( empty( $condition_group ) || ! is_array( $condition_group ) ) {
 			return array();
@@ -30,13 +31,15 @@ class ConditionEvaluator {
 
 		$product_ids = array();
 
+		$source_items = self::get_condition_source_items( $method );
+
 		foreach ( $condition_group as $condition ) {
 
-			if ( 'Attribute' === $condition['type'] && ! empty( $condition['field'] ) && WC()->cart ) {
+			if ( 'Attribute' === $condition['type'] && ! empty( $condition['field'] ) ) {
 
-				$cart_items = WC()->cart->get_cart();
+				$condition_items = $source_items;
 
-				foreach ( $cart_items as $ci ) {
+				foreach ( $condition_items as $ci ) {
 
 					$term_ids = self::get_attribute_term_ids_from_cart_item( $ci, $condition['field'] );
 
@@ -68,9 +71,9 @@ class ConditionEvaluator {
 					if ( in_array( $condition['operator'], array( 'equal', 'contains' ), true ) ) {
 						$product_ids = array_merge( $product_ids, $condition['value'] );
 					} else {
-						$cart_items = WC()->cart->get_cart();
-						$ids        = array();
-						foreach ( $cart_items as $ci ) {
+						$condition_items = $source_items;
+						$ids             = array();
+						foreach ( $condition_items as $ci ) {
 							if ( in_array( (int) ( isset( $ci['product_id'] ) ? $ci['product_id'] : 0 ), $condition['value'], true ) ) {
 								continue;
 							}
@@ -82,19 +85,19 @@ class ConditionEvaluator {
 					break;
 
 				case 'category_products':
-					if ( ! WC()->cart ) {
+					if ( empty( $source_items ) ) {
 						return array();
 					}
-					$cart_items    = WC()->cart->get_cart();
-					$selected_cats = array();
+					$condition_items = $source_items;
+					$selected_cats   = array();
 					if ( isset( $condition['value'] ) ) {
 						$selected_cats = is_array( $condition['value'] ) ? $condition['value'] : explode( ',', (string) $condition['value'] );
 					}
 					$selected_cats = array_map( 'intval', array_filter( $selected_cats, 'strlen' ) );
 
 					$ids = array();
-					foreach ( $cart_items as $cart_item ) {
-						$pid          = isset( $cart_item['product_id'] ) ? (int) $cart_item['product_id'] : 0;
+					foreach ( $condition_items as $condition_item ) {
+						$pid          = isset( $condition_item['product_id'] ) ? (int) $condition_item['product_id'] : 0;
 						$product_cats = wp_get_post_terms( $pid, 'product_cat', array( 'fields' => 'ids' ) );
 						$product_cats = is_wp_error( $product_cats ) ? array() : array_map( 'intval', (array) $product_cats );
 						$has_match    = ! empty( array_intersect( $product_cats, $selected_cats ) );
@@ -104,7 +107,7 @@ class ConditionEvaluator {
 								$ids[] = $pid;
 							}
 						} elseif ( ! $has_match ) {
-								$ids[] = $pid;
+							$ids[] = $pid;
 						}
 					}
 
@@ -113,19 +116,19 @@ class ConditionEvaluator {
 					break;
 
 				case 'tag_products':
-					if ( ! WC()->cart ) {
+					if ( empty( $source_items ) ) {
 						return array();
 					}
-					$cart_items    = WC()->cart->get_cart();
-					$selected_tags = array();
+					$condition_items = $source_items;
+					$selected_tags   = array();
 					if ( isset( $condition['value'] ) ) {
 						$selected_tags = is_array( $condition['value'] ) ? $condition['value'] : explode( ',', (string) $condition['value'] );
 					}
 					$selected_tags = array_map( 'intval', array_filter( $selected_tags, 'strlen' ) );
 
 					$ids = array();
-					foreach ( $cart_items as $cart_item ) {
-						$pid          = isset( $cart_item['product_id'] ) ? (int) $cart_item['product_id'] : 0;
+					foreach ( $condition_items as $condition_item ) {
+						$pid          = isset( $condition_item['product_id'] ) ? (int) $condition_item['product_id'] : 0;
 						$product_tags = wp_get_post_terms( $pid, 'product_tag', array( 'fields' => 'ids' ) );
 						$product_tags = is_wp_error( $product_tags ) ? array() : array_map( 'intval', (array) $product_tags );
 						$has_match    = ! empty( array_intersect( $product_tags, $selected_tags ) );
@@ -145,10 +148,10 @@ class ConditionEvaluator {
 
 				case 'shippingClass': // fall-through.
 				case 'shipping_class':
-					if ( ! WC()->cart ) {
+					if ( empty( $source_items ) ) {
 						return array();
 					}
-					$cart_items       = WC()->cart->get_cart();
+					$condition_items  = $source_items;
 					$selected_classes = array();
 					if ( isset( $condition['value'] ) ) {
 						$selected_classes = is_array( $condition['value'] ) ? $condition['value'] : explode( ',', (string) $condition['value'] );
@@ -161,9 +164,9 @@ class ConditionEvaluator {
 					);
 
 					$ids = array();
-					foreach ( $cart_items as $cart_item ) {
-						$pid            = isset( $cart_item['product_id'] ) ? (int) $cart_item['product_id'] : 0;
-						$product        = isset( $cart_item['data'] ) ? $cart_item['data'] : null;
+					foreach ( $condition_items as $condition_item ) {
+						$pid            = isset( $condition_item['product_id'] ) ? (int) $condition_item['product_id'] : 0;
+						$product        = isset( $condition_item['data'] ) ? $condition_item['data'] : null;
 						$shipping_class = $product ? $product->get_shipping_class() : '';
 						$shipping_class = strtolower( (string) $shipping_class );
 						$has_match      = ( '' !== $shipping_class ) && in_array( $shipping_class, $selected_classes, true );
@@ -185,6 +188,74 @@ class ConditionEvaluator {
 		}
 
 		return array_values( array_unique( $product_ids ) );
+	}
+
+	/**
+	 * Get the current product context when product rules are being evaluated.
+	 *
+	 * @param mixed $method Optional method or product context.
+	 * @return \WC_Product|null
+	 */
+	private static function get_current_condition_product( $method = null ) {
+		if ( $method instanceof \WC_Product ) {
+			return $method;
+		}
+
+		if ( is_array( $method ) && isset( $method['product'] ) && $method['product'] instanceof \WC_Product ) {
+			return $method['product'];
+		}
+
+		global $product;
+		if ( $product instanceof \WC_Product ) {
+			return $product;
+		}
+
+		$product_id = get_queried_object_id();
+		if ( $product_id > 0 ) {
+			$current_product = wc_get_product( $product_id );
+			if ( $current_product instanceof \WC_Product ) {
+				return $current_product;
+			}
+		}
+
+		return null;
+	}
+
+	/**
+	 * Get the item collection used by product and attribute conditions.
+	 *
+	 * @param mixed $method Optional method or product context.
+	 * @return array
+	 */
+	private static function get_condition_source_items( $method = null ) {
+		$current_product = self::get_current_condition_product( $method );
+
+		if ( $current_product instanceof \WC_Product ) {
+			$product_id           = $current_product->is_type( 'variation' )
+				? (int) $current_product->get_parent_id()
+				: (int) $current_product->get_id();
+			$variation_attributes = array();
+
+			if ( $current_product instanceof \WC_Product_Variation ) {
+				$variation_attributes = (array) $current_product->get_variation_attributes();
+			}
+
+			return array(
+				array(
+					'product_id'   => $product_id,
+					'variation_id' => $current_product->is_type( 'variation' ) ? (int) $current_product->get_id() : 0,
+					'quantity'     => 1,
+					'data'         => $current_product,
+					'variation'    => $variation_attributes,
+				),
+			);
+		}
+
+		if ( function_exists( 'WC' ) && WC()->cart ) {
+			return WC()->cart->get_cart();
+		}
+
+		return array();
 	}
 
 	/**
@@ -285,18 +356,14 @@ class ConditionEvaluator {
 				break;
 
 			case 'Product':
-				if ( ! WC()->cart ) {
-					return null;
-				}
-
-				$cart_items = self::get_filtered_cart_items( $rate );
+				$product_items = self::get_filtered_cart_items( $rate, $method );
 
 				switch ( $field ) {
 					case 'price':
 					case 'product_price':
 						$prices = array();
-						foreach ( $cart_items as $cart_item ) {
-							$product = $cart_item['data'];
+						foreach ( $product_items as $product_item ) {
+							$product = $product_item['data'];
 							if ( $product ) {
 								$prices[] = (float) $product->get_price(); // unit price per product (no qty).
 							}
@@ -305,7 +372,7 @@ class ConditionEvaluator {
 
 					case 'cart_contains_products':
 						$ids = array();
-						foreach ( $cart_items as $ci ) {
+						foreach ( $product_items as $ci ) {
 							$ids[] = (int) ( isset( $ci['product_id'] ) ? $ci['product_id'] : 0 );
 						}
 						$ids = array_unique( $ids );
@@ -313,16 +380,16 @@ class ConditionEvaluator {
 
 					case 'category_products':
 						$cats = array();
-						foreach ( $cart_items as $cart_item ) {
-							$product_cats = wp_get_post_terms( $cart_item['product_id'], 'product_cat', array( 'fields' => 'ids' ) );
+						foreach ( $product_items as $product_item ) {
+							$product_cats = wp_get_post_terms( $product_item['product_id'], 'product_cat', array( 'fields' => 'ids' ) );
 							$cats         = array_merge( $cats, is_wp_error( $product_cats ) ? array() : (array) $product_cats );
 						}
 						return array_values( array_unique( array_map( 'intval', $cats ) ) );
 
 					case 'tag_products':
 						$tags = array();
-						foreach ( $cart_items as $cart_item ) {
-							$product_tags = wp_get_post_terms( $cart_item['product_id'], 'product_tag', array( 'fields' => 'ids' ) );
+						foreach ( $product_items as $product_item ) {
+							$product_tags = wp_get_post_terms( $product_item['product_id'], 'product_tag', array( 'fields' => 'ids' ) );
 							$tags         = array_merge( $tags, is_wp_error( $product_tags ) ? array() : (array) $product_tags );
 						}
 						return array_values( array_unique( array_map( 'intval', $tags ) ) );
@@ -330,8 +397,8 @@ class ConditionEvaluator {
 					case 'product_sku':
 					case 'sku':
 						$skus = array();
-						foreach ( $cart_items as $cart_item ) {
-							$product = $cart_item['data'];
+						foreach ( $product_items as $product_item ) {
+							$product = $product_item['data'];
 							if ( $product && $product->get_sku() ) {
 								$skus[] = (string) $product->get_sku();
 							}
@@ -341,8 +408,8 @@ class ConditionEvaluator {
 					case 'shippingClass':
 					case 'shipping_class':
 						$classes = array();
-						foreach ( $cart_items as $cart_item ) {
-							$product = $cart_item['data'];
+						foreach ( $product_items as $product_item ) {
+							$product = $product_item['data'];
 							if ( $product ) {
 								$sc = $product->get_shipping_class();
 								if ( $sc ) {
@@ -355,9 +422,9 @@ class ConditionEvaluator {
 					case 'product_quantity':
 						// Quantities of individual line items (all products, no filtering).
 						$quantities = array();
-						foreach ( $cart_items as $cart_item ) {
-							$product  = $cart_item['data'];
-							$quantity = (int) ( $cart_item['quantity'] ?? 0 );
+						foreach ( $product_items as $product_item ) {
+							$product  = $product_item['data'];
+							$quantity = (int) ( $product_item['quantity'] ?? 0 );
 							if ( $product && $quantity > 0 ) {
 								$quantities[] = (float) $quantity;
 							}
@@ -367,9 +434,9 @@ class ConditionEvaluator {
 					case 'product_total':
 						// Per-item total = unit price × quantity.
 						$totals = array();
-						foreach ( $cart_items as $cart_item ) {
-							$product  = $cart_item['data'];
-							$quantity = (int) ( $cart_item['quantity'] ?? 0 );
+						foreach ( $product_items as $product_item ) {
+							$product  = $product_item['data'];
+							$quantity = (int) ( $product_item['quantity'] ?? 0 );
 							if ( $product && $quantity > 0 ) {
 								$totals[] = (float) $product->get_price() * $quantity;
 							}
@@ -379,8 +446,8 @@ class ConditionEvaluator {
 					case 'product_weight':
 						// Unit weight per product (no qty multiplier).
 						$weights = array();
-						foreach ( $cart_items as $cart_item ) {
-							$product = $cart_item['data'];
+						foreach ( $product_items as $product_item ) {
+							$product = $product_item['data'];
 							if ( $product && $product->has_weight() ) {
 								$weights[] = (float) $product->get_weight();
 							}
@@ -389,8 +456,8 @@ class ConditionEvaluator {
 
 					case 'product_height':
 						$heights = array();
-						foreach ( $cart_items as $cart_item ) {
-							$product = $cart_item['data'];
+						foreach ( $product_items as $product_item ) {
+							$product = $product_item['data'];
 							if ( $product ) {
 								$heights[] = (float) $product->get_height();
 							}
@@ -399,8 +466,8 @@ class ConditionEvaluator {
 
 					case 'product_width':
 						$widths = array();
-						foreach ( $cart_items as $cart_item ) {
-							$product = $cart_item['data'];
+						foreach ( $product_items as $product_item ) {
+							$product = $product_item['data'];
 							if ( $product ) {
 								$widths[] = (float) $product->get_width();
 							}
@@ -408,8 +475,8 @@ class ConditionEvaluator {
 						return $widths;
 					case 'product_length':
 						$lengths = array();
-						foreach ( $cart_items as $cart_item ) {
-							$product = $cart_item['data'];
+						foreach ( $product_items as $product_item ) {
+							$product = $product_item['data'];
 							if ( $product ) {
 								$lengths[] = (float) $product->get_length();
 							}
@@ -417,8 +484,8 @@ class ConditionEvaluator {
 						return $lengths;
 					case 'product_volume':
 						$volumes = array();
-						foreach ( $cart_items as $cart_item ) {
-							$product = $cart_item['data'];
+						foreach ( $product_items as $product_item ) {
+							$product = $product_item['data'];
 							if ( $product ) {
 								$length    = (float) $product->get_length();
 								$width     = (float) $product->get_width();
@@ -487,10 +554,10 @@ class ConditionEvaluator {
 				);
 
 			case 'Attribute':
-				if ( ! WC()->cart ) {
+				if ( empty( self::get_condition_source_items( $method ) ) ) {
 					return null;
 				}
-				return self::collect_attribute_term_ids( $field, $rate );
+				return self::collect_attribute_term_ids( $field, $rate, $method );
 		}
 
 		return null;
@@ -683,18 +750,19 @@ class ConditionEvaluator {
 	 *
 	 * @param string $field Attribute field (slug, without pa_ prefix).
 	 * @param array  $rate  Condition group.
+	 * @param mixed  $method Optional method or product context.
 	 * @return array<int>
 	 */
-	private static function collect_attribute_term_ids( $field, $rate ) {
-		$cart_items            = self::get_filtered_cart_items( $rate );
-		$cart_attribute_values = array();
+	private static function collect_attribute_term_ids( $field, $rate, $method = null ) {
+		$source_items       = self::get_filtered_cart_items( $rate, $method );
+		$attribute_term_ids = array();
 
-		foreach ( $cart_items as $cart_item ) {
-			$term_ids              = self::get_attribute_term_ids_from_cart_item( $cart_item, $field );
-			$cart_attribute_values = array_merge( $cart_attribute_values, $term_ids );
+		foreach ( $source_items as $source_item ) {
+			$term_ids           = self::get_attribute_term_ids_from_cart_item( $source_item, $field );
+			$attribute_term_ids = array_merge( $attribute_term_ids, $term_ids );
 		}
 
-		return array_values( array_unique( $cart_attribute_values ) );
+		return array_values( array_unique( $attribute_term_ids ) );
 	}
 
 	/**
@@ -705,11 +773,11 @@ class ConditionEvaluator {
 	 * @return array
 	 */
 	private static function get_attribute_term_ids_from_cart_item( $cart_item, $field ) {
-		$cart_attribute_values = array();
+		$attribute_term_ids = array();
 
 		$product = $cart_item['data'] ?? null;
 		if ( ! $product ) {
-			return $cart_attribute_values;
+			return $attribute_term_ids;
 		}
 
 			// Variation attribute first.
@@ -724,8 +792,8 @@ class ConditionEvaluator {
 						$term = get_term_by( 'name', $variation_value, $taxonomy );
 					}
 					if ( $term && ! is_wp_error( $term ) ) {
-						$cart_attribute_values[] = (int) $term->term_id;
-						return $cart_attribute_values;
+						$attribute_term_ids[] = (int) $term->term_id;
+						return $attribute_term_ids;
 					}
 				}
 			}
@@ -742,12 +810,12 @@ class ConditionEvaluator {
 			foreach ( $term_names as $term_name ) {
 				$term = get_term_by( 'name', trim( $term_name ), $taxonomy );
 				if ( $term && ! is_wp_error( $term ) ) {
-					$cart_attribute_values[] = (int) $term->term_id;
+					$attribute_term_ids[] = (int) $term->term_id;
 				}
 			}
 		}
 
-		return $cart_attribute_values;
+		return $attribute_term_ids;
 	}
 
 	/**
@@ -1524,16 +1592,17 @@ class ConditionEvaluator {
 	/**
 	 * Get filtered cart item based on rate conditions.
 	 *
-	 * @param array $rate Condition group.
+	 * @param array $rate   Condition group.
+	 * @param mixed $method Optional method or product context.
 	 * @return array
 	 */
-	private static function get_filtered_cart_items( $rate ) {
-		$cart_items       = WC()->cart->get_cart();
-		$rate_product_ids = self::extract_product_ids_from_rate( $rate );
+	private static function get_filtered_cart_items( $rate, $method = null ) {
+		$source_items     = self::get_condition_source_items( $method );
+		$rate_product_ids = self::extract_product_ids_from_rate( $rate, $method );
 
 		if ( ! empty( $rate_product_ids ) && is_array( $rate_product_ids ) ) {
-			$cart_items = array_filter(
-				$cart_items,
+			$source_items = array_filter(
+				$source_items,
 				function ( $ci ) use ( $rate_product_ids ) {
 					$pid = isset( $ci['product_id'] ) ? (int) $ci['product_id'] : 0;
 					return in_array( $pid, $rate_product_ids, true );
@@ -1541,7 +1610,7 @@ class ConditionEvaluator {
 			);
 		}
 
-		return $cart_items;
+		return $source_items;
 	}
 
 	/**

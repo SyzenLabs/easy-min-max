@@ -2,6 +2,7 @@
 
 namespace EAMM\Includes\Frontend;
 
+use EAMM\Includes\ConditionEvaluator;
 use EAMM\Includes\RestrictionEvaluator;
 use WC_Product;
 
@@ -106,7 +107,7 @@ class Validation {
 	 * @return bool
 	 */
 	private function validate_quantity( $passed, $product, $quantity ) {
-		foreach ( $this->rules as $rule ) {
+		foreach ( $this->get_applicable_rules( $product ) as $rule ) {
 			$limits    = RestrictionEvaluator::get_limits( $rule, $product );
 			$min       = $limits['min_qty'];
 			$max       = $limits['max_qty'];
@@ -297,7 +298,7 @@ class Validation {
 	 * @return bool
 	 */
 	public function hide_widget_checkout( $hidden ) {
-		foreach ( $this->rules as $rule ) {
+		foreach ( $this->get_applicable_rules() as $rule ) {
 			if ( ! empty( $rule['hideCheckoutButton'] ) ) {
 				return true;
 			}
@@ -312,7 +313,7 @@ class Validation {
 	 * @return void
 	 */
 	public function maybe_hide_checkout_button() {
-		foreach ( $this->rules as $rule ) {
+		foreach ( $this->get_applicable_rules() as $rule ) {
 			if ( ! empty( $rule['hideCheckoutButton'] ) ) {
 				echo '<style>.checkout-button, a.checkout-button{display:none !important;}</style>';
 				return;
@@ -350,6 +351,24 @@ class Validation {
 	}
 
 	/**
+	 * Filter rules against the current request or product context.
+	 *
+	 * @param WC_Product|null $product Product context.
+	 * @return array
+	 */
+	private function get_applicable_rules( $product = null ) {
+		$applicable_rules = array();
+
+		foreach ( $this->rules as $rule ) {
+			if ( ConditionEvaluator::evaluate_condition_groups( $rule['conditionGroups'] ?? array(), $product ) ) {
+				$applicable_rules[] = $rule;
+			}
+		}
+
+		return $applicable_rules;
+	}
+
+	/**
 	 * Combine store API quantity limits across matching rules.
 	 *
 	 * @param WC_Product $product Product object.
@@ -368,7 +387,7 @@ class Validation {
 			'step_qty' => null,
 		);
 
-		foreach ( $this->rules as $rule ) {
+		foreach ( $this->get_applicable_rules( $product ) as $rule ) {
 			$limits = RestrictionEvaluator::get_limits( $rule, $product );
 
 			if ( null !== $limits['min_qty'] ) {

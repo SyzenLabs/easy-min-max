@@ -2,6 +2,7 @@
 
 namespace EAMM\Includes\Frontend;
 
+use EAMM\Includes\ConditionEvaluator;
 use EAMM\Includes\RestrictionEvaluator;
 
 defined( 'ABSPATH' ) || exit;
@@ -78,7 +79,7 @@ class QuantityUi {
 	 * @return string Either the original HTML or a dropdown `<select>` element.
 	 */
 	public function maybe_render_dropdown( $html, $product ) {
-		if ( ! $this->has_enabled_rule_flag( 'showQuantityDropdown' ) ) {
+		if ( ! $this->has_enabled_rule_flag( 'showQuantityDropdown', $product ) ) {
 			return $html;
 		}
 
@@ -158,10 +159,10 @@ class QuantityUi {
 	 * @return void
 	 */
 	public function archive_quantity_input() {
-		if ( ! $this->has_enabled_rule_flag( 'showQuantityInArchive' ) ) {
+		global $product;
+		if ( ! $this->has_enabled_rule_flag( 'showQuantityInArchive', $product ) ) {
 			return;
 		}
-		global $product;
 		if ( ! $product || ! $product->is_purchasable() ) {
 			return;
 		}
@@ -216,8 +217,9 @@ class QuantityUi {
 	 */
 	public function custom_css() {
 		$css_chunks = array();
+		$product    = $this->get_current_product();
 
-		foreach ( $this->rules as $rule ) {
+		foreach ( $this->get_applicable_rules( $product ) as $rule ) {
 			if ( empty( $rule['customCss'] ) ) {
 				continue;
 			}
@@ -240,11 +242,11 @@ class QuantityUi {
 	 * @return void
 	 */
 	public function total_price_markup() {
-		if ( ! $this->has_enabled_rule_flag( 'showPriceByQuantity' ) ) {
-			return;
-		}
 		global $product;
 		if ( ! $product ) {
+			return;
+		}
+		if ( ! $this->has_enabled_rule_flag( 'showPriceByQuantity', $product ) ) {
 			return;
 		}
 		$price = (float) $product->get_price();
@@ -277,11 +279,12 @@ class QuantityUi {
 	/**
 	 * Determine whether any applicable rule enables a boolean storefront flag.
 	 *
-	 * @param string $flag Flag key.
+	 * @param string           $flag    Flag key.
+	 * @param \WC_Product|null $product Product context.
 	 * @return bool
 	 */
-	private function has_enabled_rule_flag( $flag ) {
-		foreach ( $this->rules as $rule ) {
+	private function has_enabled_rule_flag( $flag, $product = null ) {
+		foreach ( $this->get_applicable_rules( $product ) as $rule ) {
 			if ( ! empty( $rule[ $flag ] ) ) {
 				return true;
 			}
@@ -301,7 +304,7 @@ class QuantityUi {
 		}
 
 		if ( function_exists( 'is_product' ) && is_product() ) {
-			return true;
+			return ! empty( $this->get_applicable_rules( $this->get_current_product() ) );
 		}
 
 		if ( ! $this->has_enabled_rule_flag( 'showQuantityInArchive' ) ) {
@@ -321,9 +324,11 @@ class QuantityUi {
 	 * @return array
 	 */
 	private function get_frontend_settings() {
+		$product = $this->get_current_product();
+
 		return array(
-			'totalPriceEnabled'       => $this->has_enabled_rule_flag( 'showPriceByQuantity' ),
-			'quantityDropdownEnabled' => $this->has_enabled_rule_flag( 'showQuantityDropdown' ),
+			'totalPriceEnabled'       => $this->has_enabled_rule_flag( 'showPriceByQuantity', $product ),
+			'quantityDropdownEnabled' => $this->has_enabled_rule_flag( 'showQuantityDropdown', $product ),
 			'currency'                => array(
 				'symbol'            => html_entity_decode( get_woocommerce_currency_symbol(), ENT_QUOTES, 'UTF-8' ),
 				'format'            => html_entity_decode( get_woocommerce_price_format(), ENT_QUOTES, 'UTF-8' ),
@@ -352,7 +357,7 @@ class QuantityUi {
 			'initial_qty' => null,
 		);
 
-		foreach ( $this->rules as $rule ) {
+		foreach ( $this->get_applicable_rules( $product ) as $rule ) {
 			$limits = RestrictionEvaluator::get_limits( $rule, $product );
 
 			if ( null !== $limits['min_qty'] ) {
@@ -406,7 +411,7 @@ class QuantityUi {
 	 * @return array
 	 */
 	private function get_dropdown_values( $product ) {
-		foreach ( $this->rules as $rule ) {
+		foreach ( $this->get_applicable_rules( $product ) as $rule ) {
 			if ( empty( $rule['showQuantityDropdown'] ) || empty( $rule['quantityDropdownOptions'] ) || ! is_array( $rule['quantityDropdownOptions'] ) ) {
 				continue;
 			}
@@ -446,5 +451,46 @@ class QuantityUi {
 		}
 
 		return array();
+	}
+
+	/**
+	 * Filter rules against the current request or product context.
+	 *
+	 * @param \WC_Product|null $product Product context.
+	 * @return array
+	 */
+	private function get_applicable_rules( $product = null ) {
+		$applicable_rules = array();
+
+		foreach ( $this->rules as $rule ) {
+			if ( ConditionEvaluator::evaluate_condition_groups( $rule['conditionGroups'] ?? array(), $product ) ) {
+				$applicable_rules[] = $rule;
+			}
+		}
+
+		return $applicable_rules;
+	}
+
+	/**
+	 * Resolve the current product from the main query when needed.
+	 *
+	 * @return \WC_Product|null
+	 */
+	private function get_current_product() {
+		global $product;
+
+		if ( $product instanceof \WC_Product ) {
+			return $product;
+		}
+
+		$product_id = get_queried_object_id();
+		if ( $product_id > 0 ) {
+			$current_product = wc_get_product( $product_id );
+			if ( $current_product instanceof \WC_Product ) {
+				return $current_product;
+			}
+		}
+
+		return null;
 	}
 }
