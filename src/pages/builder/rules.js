@@ -1,4 +1,5 @@
 import { useRuleStore } from '@/store/useRuleStore';
+import { getCurrencyCode } from '@/utils';
 import {
 	Card,
 	CardBody,
@@ -88,27 +89,6 @@ function NumberField( {
 					</InputControlSuffixWrapper>
 				) : null
 			}
-			onChange={ onChange }
-		/>
-	);
-}
-
-function TextField( {
-	label,
-	value,
-	onChange,
-	help,
-	rows = 4,
-	disabled = false,
-} ) {
-	return (
-		<TextareaControl
-			__nextHasNoMarginBottom
-			disabled={ disabled }
-			help={ help }
-			label={ label }
-			rows={ rows }
-			value={ value || '' }
 			onChange={ onChange }
 		/>
 	);
@@ -308,7 +288,7 @@ export function Rules() {
 										'easy-min-max'
 									) }
 									value={ rulesForm.minPrice }
-									suffix={ __( 'Price', 'easy-min-max' ) }
+									suffix={ getCurrencyCode() }
 									onChange={ handleFieldChange( 'minPrice' ) }
 								/>
 								<NumberField
@@ -317,7 +297,7 @@ export function Rules() {
 										'easy-min-max'
 									) }
 									value={ rulesForm.maxPrice }
-									suffix={ __( 'Price', 'easy-min-max' ) }
+									suffix={ getCurrencyCode() }
 									onChange={ handleFieldChange( 'maxPrice' ) }
 								/>
 							</div>
@@ -419,7 +399,7 @@ export function Rules() {
 							</p>
 						</div>
 
-						<TextField
+						<TextareaControl
 							label={ __( 'CSS Rules', 'easy-min-max' ) }
 							value={ rulesForm.customCss }
 							help={ __(
@@ -428,6 +408,8 @@ export function Rules() {
 							) }
 							rows={ 8 }
 							onChange={ handleFieldChange( 'customCss' ) }
+							spellCheck={ false }
+							className="font-mono"
 						/>
 					</div>
 				</div>

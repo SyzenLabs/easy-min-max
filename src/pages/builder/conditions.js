@@ -194,19 +194,25 @@ export function Conditions() {
 															)
 														}
 													/>
-													<ConditionItemOperationField
-														selected={ condition }
-														selectedOptions={
-															selectedOptions
-														}
-														onChange={ ( value ) =>
-															handleConditionChange(
-																groupIndex,
-																conditionIndex,
+													<div>
+														<ConditionItemOperationField
+															selected={
+																condition
+															}
+															selectedOptions={
+																selectedOptions
+															}
+															onChange={ (
 																value
-															)
-														}
-													/>
+															) =>
+																handleConditionChange(
+																	groupIndex,
+																	conditionIndex,
+																	value
+																)
+															}
+														/>
+													</div>
 													<div>
 														<ConditionItemValueField
 															selected={

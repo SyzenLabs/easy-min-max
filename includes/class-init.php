@@ -40,14 +40,18 @@ class Init {
 			return;
 		}
 
-		new Options();
-		new Notice();
-		new Deactive();
-		new PluginActions();
 		new Hooks();
 		new Rest();
-		new Frontend();
-		add_action( 'admin_enqueue_scripts', array( $this, 'admin_scripts_callback' ) );
+
+		if ( is_admin() ) {
+			new Options();
+			new Notice();
+			new Deactive();
+			new PluginActions();
+			add_action( 'admin_enqueue_scripts', array( $this, 'admin_scripts_callback' ) );
+		} else {
+			new Frontend();
+		}
 	}
 
 	/**

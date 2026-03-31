@@ -289,7 +289,7 @@ class Frontend {
 		}
 
 		if ( ! empty( $css_chunks ) ) {
-			echo '<style>' . esc_html( implode( "\n", $css_chunks ) ) . '</style>';
+			echo '<style id="eamm-custom-css">' . esc_html( implode( "\n", $css_chunks ) ) . '</style>';
 		}
 	}
 
@@ -379,7 +379,7 @@ class Frontend {
 			$max       = $limits['max_qty'];
 			$min_price = $limits['min_price'];
 			$max_price = $limits['max_price'];
-			$price     = (float) wc_get_price_excluding_tax( $product );
+			$price     = ( ( (float) wc_get_price_excluding_tax( $product ) ) * ( (float) $quantity ) );
 
 			if ( null !== $min_price && $price < $min_price ) {
 				wc_add_notice( $this->format_message( $rule['minPriceMessage'] ?? '', $product, $quantity, $limits ), 'error' );
@@ -476,8 +476,8 @@ class Frontend {
 			'[current_quantity]' => $quantity,
 			'[min_quantity]'     => $limits['min_qty'],
 			'[max_quantity]'     => $limits['max_qty'],
-			'[min_price]'        => $limits['min_price'],
-			'[max_price]'        => $limits['max_price'],
+			'[min_price]'        => wp_strip_all_tags( wc_price( $limits['min_price'] ) ),
+			'[max_price]'        => wp_strip_all_tags( wc_price( $limits['max_price'] ) ),
 			'[product_name]'     => $product->get_name(),
 			'[step_quantity]'    => $limits['step_qty'],
 			'[inputed_quantity]' => $quantity,
