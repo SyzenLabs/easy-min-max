@@ -29,11 +29,9 @@ export default function Header() {
 
 							{ /* eslint-disable-next-line jsx-a11y/click-events-have-key-events, jsx-a11y/no-noninteractive-element-interactions */ }
 							<img
-								className="cursor-pointer w-9! h-9! hidden! lg:block!"
+								className="cursor-pointer w-13! h-13! hidden! lg:block!"
 								src={ getBaseUrl( 'assets/img/logo-icon.svg' ) }
-								width="30px"
-								height="30px"
-								alt="wowshipping logo"
+								alt=""
 								onClick={ () => setCurrentNav( 'overview' ) }
 							/>
 							<span className="text-2xl font-semibold">

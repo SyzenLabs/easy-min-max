@@ -1,5 +1,5 @@
 import { __ } from '@wordpress/i18n';
-import { getFlags, getUuid, showLicensePage } from '.';
+import { getUuid, showLicensePage } from '.';
 
 export const SCENARIOS = [
 	{
@@ -432,35 +432,6 @@ export const SCENARIOS = [
 		],
 	},
 ];
-
-export const RATE_CALCULATION_TYPE = [
-	{
-		label: __( 'Sum', 'easy-min-max' ),
-		value: 'sum',
-	},
-	{
-		label: __( 'Highest', 'easy-min-max' ),
-		value: 'highest',
-	},
-	{
-		label: __( 'Lowest', 'easy-min-max' ),
-		value: 'lowest',
-	},
-	{
-		label: __( 'First', 'easy-min-max' ),
-		value: 'first',
-	},
-	{
-		label: __( 'Last', 'easy-min-max' ),
-		value: 'last',
-	},
-].map( ( option ) => ( {
-	...option,
-	label: getFlags()?.RATE_CALCULATION_FREE_OPTIONS?.includes( option.value )
-		? option.label
-		: `${ option.label } (Pro)`,
-	pro: ! getFlags()?.RATE_CALCULATION_FREE_OPTIONS?.includes( option.value ),
-} ) );
 
 export const CALCULATION_METHOD_OPTIONS = [
 	{

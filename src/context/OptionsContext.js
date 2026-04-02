@@ -3,18 +3,13 @@
  */
 
 import { useToast } from '@/context/ToastContext';
-import {
-    getCurrencyCode,
-    getDimensionUnit,
-    getFlags,
-    getWeightUnit,
-} from '@/utils';
+import { getCurrencyCode, getDimensionUnit, getWeightUnit } from '@/utils';
 import apiFetch from '@wordpress/api-fetch';
 import {
-    createContext,
-    useCallback,
-    useContext,
-    useState,
+	createContext,
+	useCallback,
+	useContext,
+	useState,
 } from '@wordpress/element';
 import { __ } from '@wordpress/i18n';
 
@@ -200,8 +195,6 @@ export const ShippingOptionsProvider = ( { children } ) => {
 	}, [ showToast ] );
 
 	const getDefaultOptions = useCallback( () => {
-		const { CONDITION_FREE_OPTIONS } = getFlags();
-
 		const _def = [
 			{
 				label: __( 'General', 'easy-min-max' ),
@@ -585,7 +578,6 @@ export const ShippingOptionsProvider = ( { children } ) => {
 			const newChildren = parent.children.map( ( child ) => {
 				return {
 					...child,
-					pro: ! CONDITION_FREE_OPTIONS.includes( child.value ),
 				};
 			} );
 

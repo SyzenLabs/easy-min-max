@@ -1,11 +1,9 @@
 import { useCallback, useEffect, useMemo, useState } from '@wordpress/element';
 
-import { Pro } from '@/components/ui';
 
 import { useNav } from '@/context/NavContext';
 import { useRuleStore } from '@/store/useRuleStore';
 
-import { getFlags } from '@/utils';
 import { DataViews } from '@wordpress/dataviews/wp';
 import { __, _n } from '@wordpress/i18n';
 
@@ -126,8 +124,6 @@ export default function RulesDataView( { state, setState, filteredRules } ) {
 								onClick={ () => redirectToEdit( item.id ) }
 							>
 								{ title }
-								{ item.__pageIndex >=
-									getFlags().MAX_SHIPPING_RULES && <Pro /> }
 							</Button>
 						</>
 					);
