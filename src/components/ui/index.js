@@ -1,7 +1,6 @@
 import { Badge } from './Badge';
 import { FileUploader } from './FileUploader';
 import { MultiSelect } from './MultiSelect';
-import { Pro } from './Pro';
 import { Prompt } from './Prompt';
 import {
 	Select,
@@ -31,7 +30,6 @@ import { WeekdayPicker } from './WeekdayPicker';
 export {
 	FileUploader,
 	MultiSelect,
-	Pro,
 	Prompt,
 	Select,
 	SelectCompact,
@@ -55,5 +53,6 @@ export {
 	TimeRangePicker,
 	ToastContainer,
 	WeekdayPicker,
-	Badge as WtrsBadge,
+	Badge as WtrsBadge
 };
+

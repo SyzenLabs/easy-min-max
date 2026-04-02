@@ -1,38 +1,36 @@
 import { cn, getUuid, isFreeUser } from '@/utils';
 import {
-    Children,
-    createContext,
-    createPortal,
-    useContext,
-    useEffect,
-    useLayoutEffect,
-    useRef,
-    useState,
+	Children,
+	createContext,
+	createPortal,
+	useContext,
+	useEffect,
+	useLayoutEffect,
+	useRef,
+	useState,
 } from '@wordpress/element';
 import { __ } from '@wordpress/i18n';
 import {
-    chevronDown,
-    chevronUp,
-    closeSmall,
-    search as wpSearchIcon,
+	chevronDown,
+	chevronUp,
+	closeSmall,
+	search as wpSearchIcon,
 } from '@wordpress/icons';
 
 // import './style.scss';
 
 import {
-    Button,
-    Icon,
-    __experimentalInputControl as InputControl,
-    __experimentalInputControlPrefixWrapper as InputControlPrefixWrapper,
-    __experimentalInputControlSuffixWrapper as InputControlSuffixWrapper,
-    MenuGroup,
-    MenuItem,
-    Spinner,
+	Button,
+	Icon,
+	__experimentalInputControl as InputControl,
+	__experimentalInputControlPrefixWrapper as InputControlPrefixWrapper,
+	__experimentalInputControlSuffixWrapper as InputControlSuffixWrapper,
+	MenuGroup,
+	MenuItem,
+	Spinner,
 } from '@wordpress/components';
 
 // import {chevronDown, chevronUp} from '@wordpress/icons';
-
-import { Pro } from '../Pro';
 
 const SelectContext = createContext();
 
@@ -237,10 +235,7 @@ export function SelectSearch( { ...props } ) {
 					{ state.searchQuery ? (
 						<Button
 							__next40pxDefaultSize
-							label={ __(
-								'Clear search',
-								'easy-min-max'
-							) }
+							label={ __( 'Clear search', 'easy-min-max' ) }
 							icon={ <Icon icon={ closeSmall } /> }
 							onClick={ () =>
 								setState( ( prev ) => ( {
@@ -432,10 +427,7 @@ function SelectContent( { children, className = '', search, ...props } ) {
 					return (
 						! hasVisibleOptions() && (
 							<div className="eamm-select-no-data">
-								{ __(
-									'No options found',
-									'easy-min-max'
-								) }
+								{ __( 'No options found', 'easy-min-max' ) }
 							</div>
 						)
 					);
@@ -572,7 +564,6 @@ function SelectItem( {
 			onClick={ handleClick }
 			onKeyDown={ handleClick }
 			role="menuitemradio"
-			icon={ showPro ? <Pro /> : null }
 			iconPosition="right"
 		>
 			{ children }
@@ -581,13 +572,13 @@ function SelectItem( {
 }
 
 export {
-    Select,
-    SelectContent,
-    SelectContext,
-    SelectGroupItem,
-    SelectItem,
-    SelectLabel,
-    SelectTrigger,
-    SelectValue
+	Select,
+	SelectContent,
+	SelectContext,
+	SelectGroupItem,
+	SelectItem,
+	SelectLabel,
+	SelectTrigger,
+	SelectValue
 };
 

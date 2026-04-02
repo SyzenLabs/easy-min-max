@@ -28,7 +28,6 @@
 
 -   Versioning is strict: keep `package.json`, the plugin header/version constant in `easy-min-max.php`, and `readme.txt` in sync. Use `scripts/ver-updater.js` and add the changelog entry before running `npm run release`.
 -   The admin UI depends on generated asset metadata such as `assets/js/eamm-backend.asset.php`; if webpack output is missing, the admin app will not enqueue correctly.
--   `includes/utils/class-hooks.php` wires WooCommerce shipping integration and references `WowShippingMethod::class`; verify that path before changing shipping-zone behavior because that integration surface appears incomplete.
 -   REST endpoints use both `eamm/v1` and `easy-min-max/v1`. Check the existing namespace before adding or consuming endpoints.
 
 ## Key References

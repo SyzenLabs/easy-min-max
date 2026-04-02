@@ -307,16 +307,6 @@ export function csvToJson( text, quoteChar = '"', delimiter = ',' ) {
 }
 
 /**
- * UTMLinkGenerator
- *
- * @param {Object} params
- *
- * @return {string} UTMLinkGenerator
- */
-import UTMLinkGenerator from './utm-link-generator';
-export { UTMLinkGenerator };
-
-/**
  * Get search params
  *
  * @param {string} key

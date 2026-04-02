@@ -194,8 +194,8 @@ const Overview = () => {
 
 				<div className="grid gap-4 lg:grid-cols-[1.2fr_.8fr]">
 					<Card className="h-full">
-						<CardBody>
-							<VStack spacing={ 4 } alignment="topLeft">
+						<CardBody className="h-full">
+							<VStack spacing={ 4 } alignment="topLeft" className="h-full justify-between">
 								<VStack spacing={ 2 } alignment="topLeft">
 									<Text
 										size={ wpConfig.size.xl }
@@ -242,20 +242,15 @@ const Overview = () => {
 										lineHeight={ wpConfig.lineHeight.m }
 									>
 										{ __(
-											'Quick actions',
+											'Enjoying Easy Min Max?',
 											'easy-min-max'
 										) }
 									</Text>
 									<Text variant="muted">
-										{ stats.total > 0
-											? __(
-													'Jump back into your rules or leave a quick review if the plugin is helping.',
-													'easy-min-max'
-											  )
-											: __(
-													'Start with your first rule, then come back here for a quick snapshot.',
-													'easy-min-max'
-											  ) }
+										{ __(
+											'If Easy Min Max is helping you manage quantity rules more smoothly, a quick review on WordPress.org helps more store owners discover it.',
+											'easy-min-max'
+										) }
 									</Text>
 								</VStack>
 
@@ -263,27 +258,6 @@ const Overview = () => {
 									<Button
 										__next40pxDefaultSize
 										variant="primary"
-										onClick={ () =>
-											setCurrentNav(
-												stats.total > 0
-													? 'rules'
-													: 'rule-add'
-											)
-										}
-									>
-										{ stats.total > 0
-											? __(
-													'Manage Rules',
-													'easy-min-max'
-											  )
-											: __(
-													'Create Your First Rule',
-													'easy-min-max'
-											  ) }
-									</Button>
-									<Button
-										__next40pxDefaultSize
-										variant="secondary"
 										href={ REVIEW_URL }
 										target="_blank"
 									>
@@ -292,45 +266,6 @@ const Overview = () => {
 											'easy-min-max'
 										) }
 									</Button>
-
-									{ stats.recent.length > 0 && (
-										<VStack
-											spacing={ 2 }
-											alignment="topLeft"
-										>
-											<Text
-												size={ wpConfig.size.s }
-												weight={
-													wpConfig.weight.medium
-												}
-												lineHeight={
-													wpConfig.lineHeight.s
-												}
-											>
-												{ __(
-													'Recent rules',
-													'easy-min-max'
-												) }
-											</Text>
-											{ stats.recent.map( ( rule ) => (
-												<Button
-													key={ rule.id }
-													variant="link"
-													onClick={ () =>
-														setCurrentNav(
-															`rule-edit/${ rule.id }`
-														)
-													}
-												>
-													{ rule.title ||
-														__(
-															'Untitled rule',
-															'easy-min-max'
-														) }
-												</Button>
-											) ) }
-										</VStack>
-									) }
 								</VStack>
 							</VStack>
 						</CardBody>

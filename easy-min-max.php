@@ -2,7 +2,7 @@
 /**
  * Plugin Name: Easy Min Max
  * Description: Epic Plugin
- * Version:     0.0.1
+ * Version:     1.0.0
  * Author:      WPXPO
  * Author URI:  https://www.wpxpo.com/about
  * Requires Plugins: woocommerce
@@ -19,11 +19,11 @@ use EAMM\Includes\Init;
 defined( 'ABSPATH' ) || exit;
 
 // Define Vars.
-define( 'EAMM_VER', '0.0.1' );
+define( 'EAMM_VER', '1.0.0' );
 define( 'EAMM_URL', plugin_dir_url( __FILE__ ) );
 define( 'EAMM_BASE', plugin_basename( __FILE__ ) );
 define( 'EAMM_PATH', plugin_dir_path( __FILE__ ) );
-define( 'EAMM_RULE_VER', '3' );
+define( 'EAMM_RULE_VER', '1' );
 define( 'EAMM_WOO_MARKETPLACE', false );
 
 if ( ! function_exists( 'eamm_autoloader' ) ) {
@@ -65,9 +65,6 @@ if ( ! function_exists( 'eamm_autoloader' ) ) {
 }
 
 spl_autoload_register( 'eamm_autoloader' );
-
-// Composer dependencies autoloading.
-// require_once EAMM_PATH . 'vendor_prefixed/vendor/autoload.php';
 
 if ( ! function_exists( 'eamm_init' ) ) {
 	/**

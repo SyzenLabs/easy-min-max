@@ -5,9 +5,6 @@
 
 namespace EAMM\Includes\Utils;
 
-use EAMM\Includes\DB;
-use EAMM\Includes\WowShippingMethod;
-
 if ( ! defined( 'ABSPATH' ) ) {
 	exit; // Exit if accessed directly.
 }
