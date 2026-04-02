@@ -7,42 +7,16 @@ defined( 'ABSPATH' ) || exit;
 /**
  * Core class for managing plugin actions and integrations.
  */
-class Xpo {
+class Utils {
+
 
 	/**
-	 * Gets license key
-	 *
-	 * @return string
-	 */
-	public static function get_lc_key() {
-		return get_option( 'edd_eamm_license_key', '' );
-	}
-
-	/**
-	 * Checks if the license is active.
+	 * Checks if user is admin or shop manager.
 	 *
 	 * @return boolean
 	 */
-	public static function is_lc_active() {
-		if ( defined( 'EAMM_PRO_VER' ) ) {
-			$license_data = get_option( 'edd_eamm_license_data', array() );
-			return isset( $license_data['license'] ) && 'valid' === $license_data['license'];
-		}
-		return false;
-	}
-
-	/**
-	 * Checks if the license has expired.
-	 *
-	 * This method checks the stored license data in the WordPress options table
-	 * and determines if the license status is set to 'expired'. It returns `true`
-	 * if the license is expired, otherwise `false`.
-	 *
-	 * @return bool True if the license is expired, otherwise false.
-	 */
-	public static function is_lc_expired() {
-		$license_data = get_option( 'edd_eamm_license_data', array() );
-		return isset( $license_data['license'] ) && 'expired' === $license_data['license'];
+	public static function is_user_admin() {
+		return current_user_can( 'manage_options' ) || current_user_can( 'manage_woocommerce' ); // phpcs:ignore
 	}
 
 	/**
@@ -207,19 +181,9 @@ class Xpo {
 	 */
 	public static function generate_utm_link( $params = array() ) {
 		$default_config = array(
-			'example'  => array(
+			'example' => array(
 				'source'   => 'db-wowshipping-featurename',
 				'medium'   => 'block-feature',
-				'campaign' => 'wowaddons-dashboard',
-			),
-			'summer'   => array(
-				'source'   => 'db-wowshipping-notice',
-				'medium'   => 'summer-sale',
-				'campaign' => 'wowaddons-dashboard',
-			),
-			'new_year' => array(
-				'source'   => 'db-wowshipping-notice',
-				'medium'   => 'new-year-sale',
 				'campaign' => 'wowaddons-dashboard',
 			),
 		);
@@ -268,124 +232,5 @@ class Xpo {
 		}
 
 		return $final_url;
-	}
-
-
-	/**
-	Get WOW Products Details
-
-	@return array
-	 */
-	public static function get_wow_products_details() {
-		return array(
-			'products'        => array(
-				'post_x'      => file_exists( WP_PLUGIN_DIR . '/ultimate-post/ultimate-post.php' ),
-				'wow_store'   => file_exists( WP_PLUGIN_DIR . '/product-blocks/product-blocks.php' ),
-				'wow_optin'   => file_exists( WP_PLUGIN_DIR . '/optin/optin.php' ),
-				'wow_revenue' => file_exists( WP_PLUGIN_DIR . '/revenue/revenue.php' ),
-				'wholesale_x' => file_exists( WP_PLUGIN_DIR . '/wholesalex/wholesalex.php' ),
-				'wow_addon'   => file_exists( WP_PLUGIN_DIR . '/product-addons/product-addons.php' ),
-			),
-			'products_active' => array(
-				'post_x'      => defined( 'ULTP_VER' ),
-				'wow_store'   => defined( 'WOPB_VER' ),
-				'wow_optin'   => defined( 'OPTN_VERSION' ),
-				'wow_revenue' => defined( 'REVENUE_VER' ),
-				'wholesale_x' => defined( 'WHOLESALEX_VER' ),
-				'wow_addon'   => defined( 'PRAD_VER' ),
-			),
-		);
-	}
-
-
-	/**
-	 * Installs and activates a plugin by its name only.
-	 *
-	 * @param string $name The name or slug of the plugin to install and activate.
-	 */
-	public static function install_and_active_plugin( $name ) {
-		$plugin_slug = $name;
-		switch ( $name ) {
-			case 'post_x':
-				$plugin_slug = 'ultimate-post';
-				break;
-			case 'wow_store':
-				$plugin_slug = 'product-blocks';
-				break;
-			case 'wow_optin':
-				$plugin_slug = 'optin';
-				break;
-			case 'wow_revenue':
-				$plugin_slug = 'revenue';
-				break;
-			case 'wholesale_x':
-				$plugin_slug = 'wholesalex';
-				break;
-			case 'wow_addon':
-				$plugin_slug = 'product-addons';
-				break;
-		}
-
-		if ( ! file_exists( WP_PLUGIN_DIR . '/' . $plugin_slug . '/' . $plugin_slug . '.php' ) ) {
-			if ( ! self::download_plugin( $plugin_slug . '/' . $plugin_slug . '.php', $plugin_slug ) ) {
-				return false;
-			}
-		}
-
-		$res = activate_plugin( $plugin_slug . '/' . $plugin_slug . '.php' );
-
-		return null === $res;
-	}
-
-	/**
-	 * Installs a plugin based on the provided plugin file and slug.
-	 *
-	 * This function is expected to handle the logic required to install a plugin,
-	 * such as downloading, unpacking, and activating the plugin using the provided
-	 * plugin file and slug.
-	 *
-	 * @param string $plugin The plugin file path or identifier (e.g., 'plugin-directory/plugin-file.php').
-	 * @param string $slug   The plugin slug (typically the directory name of the plugin).
-	 */
-	public static function download_plugin( $plugin, $slug ) {
-		include ABSPATH . 'wp-admin/includes/plugin-install.php';
-		include ABSPATH . 'wp-admin/includes/class-wp-upgrader.php';
-
-		if ( ! class_exists( 'Plugin_Upgrader' ) ) {
-			include ABSPATH . 'wp-admin/includes/class-plugin-upgrader.php';
-		}
-		if ( ! class_exists( 'WP_Ajax_Upgrader_Skin' ) ) {
-			include ABSPATH . 'wp-admin/includes/class-wp-ajax-upgrader-skin.php';
-		}
-
-		$api = plugins_api(
-			'plugin_information',
-			array(
-				'slug'   => $slug,
-				'fields' => array(
-					'short_description' => false,
-					'sections'          => false,
-					'requires'          => false,
-					'rating'            => false,
-					'ratings'           => false,
-					'downloaded'        => false,
-					'last_updated'      => false,
-					'added'             => false,
-					'tags'              => false,
-					'compatibility'     => false,
-					'homepage'          => false,
-					'donate_link'       => false,
-				),
-			)
-		);
-
-		if ( is_wp_error( $api ) ) {
-			return false;
-		}
-
-		$upgrader       = new \Plugin_Upgrader( new \WP_Ajax_Upgrader_Skin( compact( 'title', 'url', 'nonce', 'plugin', 'api' ) ) );
-		$install_result = $upgrader->install( $api->download_link );
-
-		return is_wp_error( $install_result ) || false === $install_result ? false : true;
 	}
 }

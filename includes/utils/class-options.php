@@ -27,7 +27,7 @@ class Options {
 		add_action( 'in_admin_header', array( $this, 'remove_all_notices' ) );
 
 		add_filter( 'admin_footer_text', array( $this, 'admin_footer_left_callback' ), 255, 1 );
-		add_filter( 'update_footer', array( $this, 'admin_footer_right_callback' ), 255, 1 );
+		// add_filter( 'update_footer', array( $this, 'admin_footer_right_callback' ), 255, 1 );
 	}
 
 	/**
@@ -42,7 +42,7 @@ class Options {
 		}
 
 		$html  = '<span>';
-		$html .= '<span>If you like <span style="color:#0062ff;font-weight:bold;">WowShipping</span>, please leave us a <a class="eamm-link" href="https://wordpress.org/support/plugin/easy-min-max/reviews?rate=5#new-post" target="_blank">★★★★★</a> rating!</span>';
+		$html .= '<span>If you like <span style="color:#0062ff;font-weight:bold;">Easy Min Max</span>, please leave us a <a class="eamm-link" href="https://wordpress.org/support/plugin/easy-min-max/reviews?rate=5#new-post" target="_blank">★★★★★</a> rating!</span>';
 		$html .= '</span>';
 
 		return $html;

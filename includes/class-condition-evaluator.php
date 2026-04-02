@@ -863,10 +863,6 @@ class ConditionEvaluator {
 		$type  = $condition['type'];
 		$field = isset( $condition['field'] ) ? $condition['field'] : '';
 
-		if ( ! Flags::is_pro_or_can_preview() && ! in_array( $field, Flags::CONDITION_FREE_OPTIONS, true ) ) {
-			return false;
-		}
-
 		$operator  = isset( $condition['operator'] ) ? $condition['operator'] : '';
 		$value     = isset( $condition['value'] ) ? $condition['value'] : '';
 		$min_range = isset( $condition['min_range'] ) ? $condition['min_range'] : '';

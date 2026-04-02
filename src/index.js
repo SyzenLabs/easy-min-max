@@ -19,7 +19,6 @@ import { PromptProvider } from '@/context/PromptContext';
 
 import { ToastProvider } from '@/context/ToastContext';
 import { RuleStoreProvider } from '@/store/useRuleStore';
-import Support from './utils/support';
 
 import { Builder } from './pages/builder';
 import Settings from './pages/settings';
@@ -149,7 +148,6 @@ const init = () => {
 			<PromptProvider>
 				<ToastProvider>
 					<App />
-					<Support />
 				</ToastProvider>
 			</PromptProvider>
 		</NavProvider>

@@ -3,7 +3,7 @@
 namespace EAMM\Includes\Rest;
 
 use EAMM\Includes\DB;
-use EAMM\Includes\Utils\Flags;
+use EAMM\Includes\Utils;
 use WP_REST_Request;
 
 defined( 'ABSPATH' ) || exit;
@@ -123,6 +123,6 @@ class RulesController {
 	}
 
 	public function can_manage() {
-		return Flags::is_user_admin();
+		return Utils::is_user_admin();
 	}
 }

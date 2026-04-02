@@ -357,7 +357,6 @@ class Conditions {
 				$data[] = array(
 					'value' => $term->term_id,
 					'label' => $term->name,
-					'pro'   => Flags::PRODUCT_ATTRIBUTES_PRO,
 				);
 			}
 		}
@@ -499,7 +498,6 @@ class Conditions {
 			$data[] = array(
 				'value' => 'pa_' . $attribute->attribute_name,
 				'label' => $attribute->attribute_label,
-				'pro'   => Flags::PRODUCT_ATTRIBUTES_PRO,
 			);
 		}
 

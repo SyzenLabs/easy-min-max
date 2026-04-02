@@ -8,12 +8,8 @@ namespace EAMM\Includes;
 
 use EAMM\Includes\Frontend\Frontend;
 use EAMM\Includes\Utils\Options;
-use EAMM\Includes\Utils\Notice;
-use EAMM\Includes\Utils\Hooks;
 use EAMM\Includes\Rest\Rest;
-use EAMM\Includes\Utils\Deactive;
-use EAMM\Includes\Utils\Flags;
-use EAMM\Includes\Utils\PluginActions;
+use EAMM\Includes\Utils\Hooks;
 
 defined( 'ABSPATH' ) || exit;
 
@@ -40,14 +36,11 @@ class Init {
 			return;
 		}
 
-		new Hooks();
 		new Rest();
+		new Hooks();
 
 		if ( is_admin() ) {
 			new Options();
-			new Notice();
-			new Deactive();
-			new PluginActions();
 			add_action( 'admin_enqueue_scripts', array( $this, 'admin_scripts_callback' ) );
 		} else {
 			new Frontend();
@@ -175,9 +168,9 @@ class Init {
 				),
 				'show_lic_page'    => defined( 'EAMM_PRO_VER' ) ? 'true' : 'false',
 				'settings'         => DB::get_instance()->get_settings(),
-				'flags'            => Flags::get_flags(),
+				'flags'            => array(),
 				'currentZoneId'    => $current_zone_id,
-				'helloBar'         => Xpo::get_transient_without_cache( 'eamm_helloBar_ysl_2026_1' ),
+				'helloBar'         => Utils::get_transient_without_cache( 'eamm_helloBar_ysl_2026_1' ),
 				'isWooMarketplace' => defined( 'EAMM_WOO_MARKETPLACE' ) && EAMM_WOO_MARKETPLACE === true ? 'true' : 'false',
 			)
 		);

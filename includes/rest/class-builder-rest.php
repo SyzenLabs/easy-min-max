@@ -3,7 +3,7 @@
 namespace EAMM\Includes\Rest;
 
 use EAMM\Includes\Conditions;
-use EAMM\Includes\Utils\Flags;
+use EAMM\Includes\Utils;
 
 defined( 'ABSPATH' ) || exit;
 
@@ -171,6 +171,6 @@ class BuilderRest {
 	 * @return boolean
 	 */
 	public function check_permission() {
-		return Flags::is_user_admin();
+		return Utils::is_user_admin();
 	}
 }
