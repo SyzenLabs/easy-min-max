@@ -10,6 +10,7 @@ import { Header } from '@/components/layout';
 
 // Pages
 // import DesignSystem from '@/pages/DesignSystem';
+import Overview from '@/pages/overview';
 import ShippingMethods from '@/pages/rules';
 
 // Context providers
@@ -67,7 +68,9 @@ const App = () => {
 				condition: currentNav === 'overview',
 				header: true,
 				component: (
-					<ShippingOptionsProvider>TODO</ShippingOptionsProvider>
+					<RuleStoreProvider>
+						<Overview />
+					</RuleStoreProvider>
 				),
 			},
 			{
