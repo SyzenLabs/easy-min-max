@@ -56,6 +56,12 @@ Typical use cases include:
 * Enforce a minimum or maximum product price threshold before purchase
 * Apply different restrictions for specific categories, user roles, or locations
 
+== Source Code ==
+
+Source code is available at:
+
+https://github.com/SyzenLabs/easy-min-max/tree/org
+
 == Installation ==
 
 = Minimum Requirements =
