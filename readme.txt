@@ -1,6 +1,6 @@
 === Easy Min Max ===
 Contributors: f00d
-Tags: min max, quantity, price, woocommerce, product restrictions
+Tags: minmax, quantity, price, product restrictions
 Requires at least: 6.4
 Tested up to: 6.9
 Requires PHP: 7.4
@@ -100,15 +100,7 @@ Yes. Validation is applied on add to cart, cart updates, checkout, and WooCommer
 
 The plugin does not load its main functionality until WooCommerce is available.
 
-== Screenshots ==
-
-1. Easy Min Max rules list in the WooCommerce admin
-2. Rule builder with quantity and price settings
-3. Condition group builder for targeting rule logic
-4. Validation messages on the storefront
-5. Settings screen for plugin options
-
 == Changelog ==
 
-= 1.0.0 - 02 Apr 2026 =
+= 1.0.0 - 03 Apr 2026 =
 * Initial release.
