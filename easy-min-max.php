@@ -4,7 +4,7 @@
  * Description: Set minimum and maximum quantity and price rules for WooCommerce products with flexible conditions and storefront validation.
  * Version:     1.0.0
  * Author:      SyzenLabs
- * Author URI:  https://yaser.com.bd
+ * Author URI:  https://profiles.wordpress.org/syzenlabs
  * Requires Plugins: woocommerce
  * Text Domain: easy-min-max
  * Domain Path: /languages
