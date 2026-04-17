@@ -1,10 +1,10 @@
 <?php
 /**
  * Plugin Name: Easy Min Max
- * Description: Epic Plugin
+ * Description: Set minimum and maximum quantity and price rules for WooCommerce products with flexible conditions and storefront validation.
  * Version:     1.0.0
- * Author:      WPXPO
- * Author URI:  https://www.wpxpo.com/about
+ * Author:      SyzenLabs
+ * Author URI:  https://yaser.com.bd
  * Requires Plugins: woocommerce
  * Text Domain: easy-min-max
  * Domain Path: /languages

@@ -62,14 +62,12 @@ class Frontend {
 		add_filter( 'woocommerce_available_variation', array( $this, 'variation_data' ), 10, 3 );
 		add_action( 'woocommerce_after_shop_loop_item', array( $this, 'archive_quantity_input' ), 15 );
 		add_action( 'wp_enqueue_scripts', array( $this, 'enqueue_assets' ) );
-		add_action( 'wp_head', array( $this, 'custom_css' ) );
 		add_action( 'woocommerce_before_add_to_cart_button', array( $this, 'total_price_markup' ) );
 		add_filter( 'woocommerce_add_to_cart_validation', array( $this, 'add_to_cart_validation' ), 10, 4 );
 		add_filter( 'woocommerce_update_cart_validation', array( $this, 'update_cart_validation' ), 10, 4 );
 		add_action( 'woocommerce_check_cart_items', array( $this, 'check_cart_items' ) );
 		add_action( 'woocommerce_checkout_process', array( $this, 'check_cart_items' ) );
 		add_filter( 'woocommerce_widget_cart_is_hidden', array( $this, 'hide_widget_checkout' ) );
-		add_action( 'wp_footer', array( $this, 'maybe_hide_checkout_button' ) );
 		add_filter( 'woocommerce_store_api_product_quantity_multiple_of', array( $this, 'store_api_quantity_multiple_of' ), 10, 2 );
 		add_filter( 'woocommerce_store_api_product_quantity_minimum', array( $this, 'store_api_quantity_minimum' ), 10, 2 );
 		add_filter( 'woocommerce_store_api_product_quantity_maximum', array( $this, 'store_api_quantity_maximum' ), 10, 2 );
@@ -236,7 +234,16 @@ class Frontend {
 	 * @return void
 	 */
 	public function enqueue_assets() {
-		if ( ! $this->should_enqueue_assets() ) {
+		$dynamic_css = $this->get_dynamic_css();
+		$has_assets  = $this->should_enqueue_assets();
+
+		if ( '' !== $dynamic_css && ! $has_assets ) {
+			wp_register_style( 'eamm-frontend-inline', false, array(), EAMM_VER );
+			wp_enqueue_style( 'eamm-frontend-inline' );
+			wp_add_inline_style( 'eamm-frontend-inline', $dynamic_css );
+		}
+
+		if ( ! $has_assets ) {
 			return;
 		}
 
@@ -266,17 +273,21 @@ class Frontend {
 			'eammSettings',
 			$this->get_frontend_settings()
 		);
+
+		if ( '' !== $dynamic_css ) {
+			wp_add_inline_style( 'eamm-frontend', $dynamic_css );
+		}
 	}
 
 	/**
-	 * Output custom CSS from active rules.
+	 * Build custom CSS from active rules for the current request.
 	 *
-	 * Collects `customCss` values from all rules and prints them inside a
-	 * `<style>` tag in the page `<head>`.
+	 * Collects applicable rule CSS and any checkout button visibility override so
+	 * the result can be added with the WordPress enqueue APIs.
 	 *
-	 * @return void
+	 * @return string
 	 */
-	public function custom_css() {
+	private function get_dynamic_css() {
 		$css_chunks = array();
 		$product    = $this->get_current_product();
 
@@ -288,9 +299,11 @@ class Frontend {
 			$css_chunks[] = wp_strip_all_tags( $rule['customCss'] );
 		}
 
-		if ( ! empty( $css_chunks ) ) {
-			echo '<style id="eamm-custom-css">' . esc_html( implode( "\n", $css_chunks ) ) . '</style>';
+		if ( $this->should_hide_checkout_button() ) {
+			$css_chunks[] = '.checkout-button, a.checkout-button{display:none !important;}';
 		}
+
+		return implode( "\n", $css_chunks );
 	}
 
 	/**
@@ -504,17 +517,18 @@ class Frontend {
 	}
 
 	/**
-	 * Action: Maybe hide the checkout button on the frontend if rule requires.
+	 * Determine whether the checkout button should be hidden on the frontend.
 	 *
-	 * @return void
+	 * @return bool
 	 */
-	public function maybe_hide_checkout_button() {
+	private function should_hide_checkout_button() {
 		foreach ( $this->get_applicable_rules() as $rule ) {
 			if ( ! empty( $rule['hideCheckoutButton'] ) ) {
-				echo '<style>.checkout-button, a.checkout-button{display:none !important;}</style>';
-				return;
+				return true;
 			}
 		}
+
+		return false;
 	}
 
 	/**

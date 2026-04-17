@@ -11,12 +11,12 @@ class Utils {
 
 
 	/**
-	 * Checks if user is admin or shop manager.
+	 * Checks if the current user is an administrator.
 	 *
 	 * @return boolean
 	 */
 	public static function is_user_admin() {
-		return current_user_can( 'manage_options' ) || current_user_can( 'manage_woocommerce' ); // phpcs:ignore
+		return current_user_can( 'manage_options' );
 	}
 
 	/**

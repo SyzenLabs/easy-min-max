@@ -82,14 +82,13 @@ class Options {
 	 * @return void
 	 */
 	public function register_wc_submenu() {
-		// Keep permission aligned with WooCommerce screens; ignore PHPCS for custom cap.
-		$capability = apply_filters( 'eamm_wc_submenu_capability', 'manage_woocommerce' ); // phpcs:ignore WordPress.WP.Capabilities.Unknown
+		$capability = apply_filters( 'eamm_wc_submenu_capability', 'manage_options' );
 
 		add_submenu_page(
 			'woocommerce',
 			__( 'Easy Min Max', 'easy-min-max' ),
 			__( 'Easy Min Max', 'easy-min-max' ),
-			$capability, // phpcs:ignore WordPress.WP.Capabilities.Unknown
+			$capability,
 			'eamm-dashboard',
 			array( __CLASS__, 'tab_page_content' )
 		);

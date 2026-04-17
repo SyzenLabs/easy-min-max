@@ -3,6 +3,7 @@
 namespace EAMM\Includes\Rest;
 
 use EAMM\Includes\DB;
+use EAMM\Includes\Utils;
 use WP_REST_Request;
 
 defined( 'ABSPATH' ) || exit;
@@ -46,7 +47,7 @@ class SettingsController {
 	}
 
 	public function can_manage() {
-		return current_user_can( 'manage_woocommerce' );
+		return Utils::is_user_admin();
 	}
 
 	public function get_settings() {

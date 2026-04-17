@@ -2,6 +2,7 @@
 
 namespace EAMM\Includes\Rest;
 
+use EAMM\Includes\Utils;
 use WC_Shipping_Zones;
 use WP_REST_Request;
 
@@ -27,7 +28,7 @@ class MetaController {
 	}
 
 	public function can_manage() {
-		return current_user_can( 'manage_woocommerce' );
+		return Utils::is_user_admin();
 	}
 
 	public function get_meta( WP_REST_Request $request ) {

@@ -1,5 +1,5 @@
 === Easy Min Max ===
-Contributors: f00d
+Contributors: f00d, syzenlabs
 Tags: minmax, quantity, price, product restrictions
 Requires at least: 6.4
 Tested up to: 6.9
