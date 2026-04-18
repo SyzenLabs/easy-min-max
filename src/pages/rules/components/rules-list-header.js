@@ -21,7 +21,7 @@ import { search } from '@wordpress/icons';
 async function getExportRulesData( data ) {
 	return apiFetch( {
 		path:
-			'/easy-min-max/v1/rules-export?' +
+			'/syzenlabs-quantity-limits/v1/rules-export?' +
 			new URLSearchParams( data ).toString(),
 	} );
 }
@@ -57,7 +57,7 @@ export function RulesListHeader( { state, setState, filteredRules } ) {
 
 	const exportData = async () => {
 		const removeFn = showToast(
-			__( 'Exporting rules…', 'easy-min-max' ),
+			__( 'Exporting rules…', 'syzenlabs-quantity-limits' ),
 			'info',
 			0
 		);
@@ -68,7 +68,7 @@ export function RulesListHeader( { state, setState, filteredRules } ) {
 			} );
 			if ( ! data.success ) {
 				throw new Error(
-					__( 'Error while exporting rules', 'easy-min-max' )
+					__( 'Error while exporting rules', 'syzenlabs-quantity-limits' )
 				);
 			}
 			const {
@@ -78,12 +78,12 @@ export function RulesListHeader( { state, setState, filteredRules } ) {
 			if ( csvData.length > 0 ) {
 				await downloadAsCSV( filename, csvData );
 				showToast(
-					__( 'Rules exported successfully', 'easy-min-max' ),
+					__( 'Rules exported successfully', 'syzenlabs-quantity-limits' ),
 					'success'
 				);
 			} else {
 				showToast(
-					__( 'No rules found to export', 'easy-min-max' ),
+					__( 'No rules found to export', 'syzenlabs-quantity-limits' ),
 					'warning'
 				);
 			}
@@ -91,7 +91,7 @@ export function RulesListHeader( { state, setState, filteredRules } ) {
 			// eslint-disable-next-line no-console
 			console.log( err );
 			showToast(
-				__( 'Error while exporting rules', 'easy-min-max' ),
+				__( 'Error while exporting rules', 'syzenlabs-quantity-limits' ),
 				'error'
 			);
 		} finally {
@@ -105,7 +105,7 @@ export function RulesListHeader( { state, setState, filteredRules } ) {
 				showToast(
 					__(
 						'Please select an action and at least one item.',
-						'easy-min-max'
+						'syzenlabs-quantity-limits'
 					),
 					'error'
 				);
@@ -137,7 +137,7 @@ export function RulesListHeader( { state, setState, filteredRules } ) {
 			};
 
 			const confirmed = await firePrompt( {
-				title: __( 'Bulk Apply', 'easy-min-max' ),
+				title: __( 'Bulk Apply', 'syzenlabs-quantity-limits' ),
 				message: alertMap[ action ].message,
 				confirmButtonDesign: alertMap[ action ].confirmButtonDesign,
 				type: alertMap[ action ].type,
@@ -150,7 +150,7 @@ export function RulesListHeader( { state, setState, filteredRules } ) {
 			setBulkLoading( true );
 			try {
 				const response = await apiFetch( {
-					path: '/easy-min-max/v1/rules/bulk',
+					path: '/syzenlabs-quantity-limits/v1/rules/bulk',
 					method: 'POST',
 					data: {
 						action: alertMap[ action ].action,
@@ -172,7 +172,7 @@ export function RulesListHeader( { state, setState, filteredRules } ) {
 				showToast(
 					__(
 						'Bulk operation completed successfully',
-						'easy-min-max'
+						'syzenlabs-quantity-limits'
 					),
 					'success'
 				);
@@ -180,7 +180,7 @@ export function RulesListHeader( { state, setState, filteredRules } ) {
 				return response.data;
 			} catch ( error ) {
 				showToast(
-					__( 'Error performing bulk operation', 'easy-min-max' ),
+					__( 'Error performing bulk operation', 'syzenlabs-quantity-limits' ),
 					'error'
 				);
 			} finally {
@@ -197,25 +197,25 @@ export function RulesListHeader( { state, setState, filteredRules } ) {
 					__next40pxDefaultSize
 					__nextHasNoMarginBottom
 					value={ state.bulkAction }
-					label={ __( 'Bulk Actions', 'easy-min-max' ) }
+					label={ __( 'Bulk Actions', 'syzenlabs-quantity-limits' ) }
 					hideLabelFromVision={ true }
 					options={ [
 						{
 							value: '',
-							label: __( 'Bulk Actions', 'easy-min-max' ),
+							label: __( 'Bulk Actions', 'syzenlabs-quantity-limits' ),
 							disabled: true,
 						},
 						{
 							value: 'publish',
-							label: __( 'Publish', 'easy-min-max' ),
+							label: __( 'Publish', 'syzenlabs-quantity-limits' ),
 						},
 						{
 							value: 'draft',
-							label: __( 'Draft', 'easy-min-max' ),
+							label: __( 'Draft', 'syzenlabs-quantity-limits' ),
 						},
 						{
 							value: 'delete',
-							label: __( 'Delete', 'easy-min-max' ),
+							label: __( 'Delete', 'syzenlabs-quantity-limits' ),
 						},
 					] }
 					onChange={ ( value ) =>
@@ -242,31 +242,31 @@ export function RulesListHeader( { state, setState, filteredRules } ) {
 					}
 					variant="primary"
 				>
-					{ __( 'Apply', 'easy-min-max' ) }
+					{ __( 'Apply', 'syzenlabs-quantity-limits' ) }
 				</Button>
 
 				<SelectControl
 					__next40pxDefaultSize
 					__nextHasNoMarginBottom
 					value={ state.filterStatus }
-					label={ __( 'All Status', 'easy-min-max' ) }
+					label={ __( 'All Status', 'syzenlabs-quantity-limits' ) }
 					hideLabelFromVision={ true }
 					options={ [
 						{
 							value: 'all',
-							label: `${ __( 'All Status', 'easy-min-max' ) } (${
+							label: `${ __( 'All Status', 'syzenlabs-quantity-limits' ) } (${
 								countByStatus.all
 							})`,
 						},
 						{
 							value: 'publish',
-							label: `${ __( 'Publish', 'easy-min-max' ) } (${
+							label: `${ __( 'Publish', 'syzenlabs-quantity-limits' ) } (${
 								countByStatus.publish
 							})`,
 						},
 						{
 							value: 'draft',
-							label: `${ __( 'Draft', 'easy-min-max' ) } (${
+							label: `${ __( 'Draft', 'syzenlabs-quantity-limits' ) } (${
 								countByStatus.draft
 							})`,
 						},
@@ -283,7 +283,7 @@ export function RulesListHeader( { state, setState, filteredRules } ) {
 			<HStack expanded={ false } wrap={ true } justify="start">
 				<InputControl
 					__next40pxDefaultSize
-					label={ __( 'Search', 'easy-min-max' ) }
+					label={ __( 'Search', 'syzenlabs-quantity-limits' ) }
 					hideLabelFromVision={ true }
 					value={ state.searchQuery }
 					onChange={ ( value ) =>
@@ -292,7 +292,7 @@ export function RulesListHeader( { state, setState, filteredRules } ) {
 							searchQuery: value,
 						} ) )
 					}
-					placeholder={ __( 'Search', 'easy-min-max' ) }
+					placeholder={ __( 'Search', 'syzenlabs-quantity-limits' ) }
 					prefix={
 						<InputControlPrefixWrapper>
 							<Icon icon={ search } />
@@ -307,7 +307,7 @@ export function RulesListHeader( { state, setState, filteredRules } ) {
 						icon={ <Icon icon={ download } /> }
 						iconPosition="left"
 					>
-						{ __( 'Import', 'easy-min-max' ) }
+						{ __( 'Import', 'syzenlabs-quantity-limits' ) }
 					</Button>
 				</ImportRules>
 
@@ -318,7 +318,7 @@ export function RulesListHeader( { state, setState, filteredRules } ) {
 					iconPosition="left"
 					onClick={ exportData }
 				>
-					{ __( 'Export', 'easy-min-max' ) }
+					{ __( 'Export', 'syzenlabs-quantity-limits' ) }
 				</Button> */ }
 			</HStack>
 		</HStack>

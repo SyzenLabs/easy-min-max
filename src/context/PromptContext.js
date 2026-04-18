@@ -15,7 +15,7 @@ export const usePrompt = () => {
 		throw new Error(
 			__(
 				'usePrompt must be used within a PromptProvider',
-				'easy-min-max'
+				'syzenlabs-quantity-limits'
 			)
 		);
 	}
@@ -37,15 +37,15 @@ export const PromptProvider = ( { children } ) => {
 
 	const firePrompt = useCallback(
 		( {
-			title = __( 'Confirm Action', 'easy-min-max' ),
+			title = __( 'Confirm Action', 'syzenlabs-quantity-limits' ),
 			message = __(
 				'This can’t be undone. Are you sure you want to continue?',
-				'easy-min-max'
+				'syzenlabs-quantity-limits'
 			),
 			type = 'danger', // success, warning, danger, info
-			confirmText = __( 'Confirm', 'easy-min-max' ),
+			confirmText = __( 'Confirm', 'syzenlabs-quantity-limits' ),
 			confirmButtonDesign = 'error',
-			cancelText = __( 'Cancel', 'easy-min-max' ),
+			cancelText = __( 'Cancel', 'syzenlabs-quantity-limits' ),
 		} ) => {
 			return new Promise( ( resolve, reject ) => {
 				setState( ( prev ) => ( {

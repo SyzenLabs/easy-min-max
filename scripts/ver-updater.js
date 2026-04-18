@@ -19,11 +19,11 @@ Starting build process...
 
 ` );
 
-const reg1 = /define\( 'EAMM_VER', '(\d+\.\d+\.\d+(?:-[a-zA-Z]+)?)' \);/;
+const reg1 = /define\( 'SZQL_VER', '(\d+\.\d+\.\d+(?:-[a-zA-Z]+)?)' \);/;
 const reg2 = /\*\sVersion:\s+(\d+\.\d+\.\d+(?:-[a-zA-Z]+)?)/;
 const reg3 = /Stable tag:\s+(\d+\.\d+\.\d+(?:-[a-zA-Z]+)?)/;
 
-let phpFile = fs.readFileSync( 'easy-min-max.php', 'utf8' );
+let phpFile = fs.readFileSync( 'syzenlabs-quantity-limits.php', 'utf8' );
 let readmeFile = fs.readFileSync( 'readme.txt', 'utf8' );
 const phpV1 = phpFile.match( reg1 )?.[ 1 ] ?? 'Constant version not found';
 const phpV2 = phpFile.match( reg2 )?.[ 1 ] ?? 'Metadata version not found';
@@ -79,7 +79,7 @@ if ( currVersion === 'error' ) {
 
 function updateVersion( version ) {
 	phpFile = phpFile.replace( reg1, () => {
-		return `define( 'EAMM_VER', '${ version }' );`;
+		return `define( 'SZQL_VER', '${ version }' );`;
 	} );
 
 	phpFile = phpFile.replace( reg2, () => {
@@ -91,7 +91,7 @@ function updateVersion( version ) {
 	} );
 
 	// Write the updated content back to the file
-	fs.writeFileSync( 'easy-min-max.php', phpFile, 'utf8' );
+	fs.writeFileSync( 'syzenlabs-quantity-limits.php', phpFile, 'utf8' );
 	fs.writeFileSync( 'readme.txt', readmeFile, 'utf8' );
 
 	execSync( `npm pkg set version=${ version }` );

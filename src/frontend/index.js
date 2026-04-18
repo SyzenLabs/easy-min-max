@@ -1,7 +1,7 @@
 import './style.scss';
 
-const settings = window.eammSettings || {};
-const quantitySelector = 'input.qty, select.qty, select.eamm-qty-select';
+const settings = window.szqlSettings || {};
+const quantitySelector = 'input.qty, select.qty, select.szql-qty-select';
 const contextState = new WeakMap();
 
 const parseNumber = ( value ) => {
@@ -37,7 +37,7 @@ const getContext = ( element ) => {
 };
 
 const getTotalElement = ( context ) =>
-	context?.querySelector( '.eamm-total-price' ) || null;
+	context?.querySelector( '.szql-total-price' ) || null;
 
 const captureSelectOptions = ( field ) => {
 	if ( ! field || field.tagName !== 'SELECT' ) {
@@ -301,13 +301,13 @@ const bindVariationEvents = () => {
 
 		getState( context );
 
-		variationForm.on( 'found_variation.eamm', ( event, variation ) => {
+		variationForm.on( 'found_variation.szql', ( event, variation ) => {
 			applyLimits( context, {
-				minQty: variation?.eamm_min_qty,
-				maxQty: variation?.eamm_max_qty,
-				stepQty: variation?.eamm_step_qty,
-				initialQty: variation?.eamm_initial_qty,
-				dropdownValues: variation?.eamm_dropdown_values,
+				minQty: variation?.szql_min_qty,
+				maxQty: variation?.szql_max_qty,
+				stepQty: variation?.szql_step_qty,
+				initialQty: variation?.szql_initial_qty,
+				dropdownValues: variation?.szql_dropdown_values,
 			} );
 
 			if (
@@ -321,7 +321,7 @@ const bindVariationEvents = () => {
 			}
 		} );
 
-		variationForm.on( 'reset_data.eamm hide_variation.eamm', () => {
+		variationForm.on( 'reset_data.szql hide_variation.szql', () => {
 			resetContext( context );
 		} );
 	} );
@@ -341,7 +341,7 @@ const init = () => {
 		initContext( getContext( field ) );
 	} );
 
-	document.querySelectorAll( '.eamm-total-price' ).forEach( ( element ) => {
+	document.querySelectorAll( '.szql-total-price' ).forEach( ( element ) => {
 		initContext( getContext( element ) );
 	} );
 

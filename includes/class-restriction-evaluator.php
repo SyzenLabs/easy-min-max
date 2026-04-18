@@ -1,6 +1,6 @@
 <?php
 
-namespace EAMM\Includes;
+namespace SZQL\Includes;
 
 defined( 'ABSPATH' ) || exit;
 

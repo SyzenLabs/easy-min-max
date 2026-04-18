@@ -1,11 +1,11 @@
 <?php // phpcs:ignore
 
-namespace EAMM\Traits;
+namespace SZQL\Traits;
 
 /**
  * Singleton trait to implement singleton pattern in classes.
  *
- * @package EAMM\Traits
+ * @package SZQL\Traits
  */
 trait Singleton {
 	/**

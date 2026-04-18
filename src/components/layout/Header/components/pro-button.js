@@ -15,13 +15,13 @@ const ProButton = ( { className = '' } ) => {
 				variant="secondary"
 				icon={ <Icon icon={ icons.pro } /> }
 				onClick={ () => setIsProModalOpen( true ) }
-				className={ `eamm-upgrade-pro-button ${ className }` }
+				className={ `szql-upgrade-pro-button ${ className }` }
 			>
-				{ __( 'Upgrade to Pro', 'easy-min-max' ) }
+				{ __( 'Upgrade to Pro', 'syzenlabs-quantity-limits' ) }
 			</Button>
 			{ isProModalOpen && (
 				<Modal
-					className="eamm-pro-modal-component"
+					className="szql-pro-modal-component"
 					size="large"
 					onRequestClose={ () => setIsProModalOpen( false ) }
 					shouldCloseOnEsc
@@ -34,3 +34,4 @@ const ProButton = ( { className = '' } ) => {
 };
 
 export { ProButton };
+

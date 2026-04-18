@@ -3,7 +3,7 @@
  * Class Hooks
  */
 
-namespace EAMM\Includes\Utils;
+namespace SZQL\Includes\Utils;
 
 if ( ! defined( 'ABSPATH' ) ) {
 	exit; // Exit if accessed directly.
@@ -19,7 +19,7 @@ class Hooks {
 	 */
 	public function __construct() {
 		// All Woo Hook Related Work goes here.
-		add_filter( 'eamm_get_allowed_html_tags', array( $this, 'allowed_html_tags' ), 10, 1 );
+		add_filter( 'szql_get_allowed_html_tags', array( $this, 'allowed_html_tags' ), 10, 1 );
 	}
 
 	/**

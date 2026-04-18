@@ -1,9 +1,9 @@
 <?php // phpcs:ignore
 
-namespace EAMM\Includes\Rest;
+namespace SZQL\Includes\Rest;
 
-use EAMM\Includes\Conditions;
-use EAMM\Includes\Utils;
+use SZQL\Includes\Conditions;
+use SZQL\Includes\Utils;
 
 defined( 'ABSPATH' ) || exit;
 
@@ -26,7 +26,7 @@ class BuilderRest {
 	 */
 	public function register_routes() {
 		register_rest_route(
-			'easy-min-max/v1',
+			'syzenlabs-quantity-limits/v1',
 			'/condition-data/(?P<type>[a-zA-Z_-]+)',
 			array(
 				'methods'             => 'GET',
@@ -82,7 +82,7 @@ class BuilderRest {
 		);
 
 		register_rest_route(
-			'easy-min-max/v1',
+			'syzenlabs-quantity-limits/v1',
 			'/shipping-classes',
 			array(
 				'methods'             => 'GET',
@@ -92,7 +92,7 @@ class BuilderRest {
 		);
 
 		register_rest_route(
-			'easy-min-max/v1',
+			'syzenlabs-quantity-limits/v1',
 			'/product-attributes',
 			array(
 				'methods'             => 'GET',

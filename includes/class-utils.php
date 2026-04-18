@@ -1,6 +1,6 @@
 <?php // phpcs:ignore
 
-namespace EAMM\Includes;
+namespace SZQL\Includes;
 
 defined( 'ABSPATH' ) || exit;
 
@@ -45,10 +45,10 @@ class Utils {
 		if ( is_object( $row ) ) {
 			$value = $row->option_value;
 		} else {
-			return apply_filters( "eamm_default_option_{$option}", $default_value, $option );
+			return apply_filters( "szql_default_option_{$option}", $default_value, $option );
 		}
 
-		return apply_filters( "eamm_option_{$option}", maybe_unserialize( $value ), $option );
+		return apply_filters( "szql_option_{$option}", maybe_unserialize( $value ), $option );
 	}
 
 	/**
@@ -83,7 +83,7 @@ class Utils {
 		* Make sure the option doesn't already exist.
 		*/
 
-		if ( apply_filters( "eamm_default_option_{$option}", false, $option, false ) !== self::get_option_without_cache( $option ) ) {
+		if ( apply_filters( "szql_default_option_{$option}", false, $option, false ) !== self::get_option_without_cache( $option ) ) {
 			return false;
 		}
 
@@ -120,7 +120,7 @@ class Utils {
 			$value = self::get_option_without_cache( $transient_option );
 		}
 
-		return apply_filters( "eamm_transient_{$transient}", $value, $transient );
+		return apply_filters( "szql_transient_{$transient}", $value, $transient );
 	}
 
 	/**

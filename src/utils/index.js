@@ -61,7 +61,7 @@ export function waitForAnimationEnd( element, once = false ) {
  * @return {Object} plugin settings object.
  */
 export function getSettings() {
-	return eammAdmin.settings;
+	return szqlAdmin.settings;
 }
 
 /**
@@ -70,7 +70,7 @@ export function getSettings() {
  * @return {boolean} true if the license is active, false otherwise.
  */
 export function showLicensePage() {
-	return eammAdmin.show_lic_page === 'true';
+	return szqlAdmin.show_lic_page === 'true';
 }
 
 /**
@@ -79,7 +79,7 @@ export function showLicensePage() {
  * @return {boolean} true if current user is pro, false otherwise.
  */
 export function isProUser() {
-	return !! eammAdmin.isActive;
+	return !! szqlAdmin.isActive;
 }
 
 /**
@@ -99,7 +99,7 @@ export function isFreeUser() {
  * @return {string} base URL
  */
 export function getBaseUrl( path = '' ) {
-	return eammAdmin.url + path;
+	return szqlAdmin.url + path;
 }
 
 /**
@@ -108,7 +108,7 @@ export function getBaseUrl( path = '' ) {
  * @return {string} ajax URL
  */
 export function getAjaxUrl() {
-	return eammAdmin.ajax;
+	return szqlAdmin.ajax;
 }
 
 /**
@@ -117,7 +117,7 @@ export function getAjaxUrl() {
  * @return {string} currency code - e.g. USD, EUR, GBP
  */
 export function getCurrencyCode() {
-	return eammAdmin.currencyCode;
+	return szqlAdmin.currencyCode;
 }
 
 /**
@@ -126,7 +126,7 @@ export function getCurrencyCode() {
  * @return {string} currency symbol - e.g. $, €, £
  */
 export function getCurrencySymbol() {
-	return String( eammAdmin.currencySymbol ).trim();
+	return String( szqlAdmin.currencySymbol ).trim();
 }
 
 /**
@@ -137,7 +137,7 @@ export function getCurrencySymbol() {
  * @return {string} dimension unit - e.g. cm, m, in, ft
  */
 export function getDimensionUnit( cubic = false ) {
-	return eammAdmin.dimensionUnit + ( cubic ? '³' : '' );
+	return szqlAdmin.dimensionUnit + ( cubic ? '³' : '' );
 }
 
 /**
@@ -146,7 +146,7 @@ export function getDimensionUnit( cubic = false ) {
  * @return {string} measurement unit - e.g. g, kg, lb, oz
  */
 export function getWeightUnit() {
-	return eammAdmin.weightUnit;
+	return szqlAdmin.weightUnit;
 }
 
 /**
@@ -155,7 +155,7 @@ export function getWeightUnit() {
  * @return {Object} installed plugins
  */
 export function getInstalledPlugins() {
-	return eammAdmin.products || {};
+	return szqlAdmin.products || {};
 }
 
 /**
@@ -164,7 +164,7 @@ export function getInstalledPlugins() {
  * @return {string} nonce
  */
 export function getNonce() {
-	return eammAdmin.nonce;
+	return szqlAdmin.nonce;
 }
 
 /**
@@ -173,11 +173,11 @@ export function getNonce() {
  * @return {Object} flags
  */
 export function getFlags() {
-	return eammAdmin.flags;
+	return szqlAdmin.flags;
 }
 
 export function getLicense() {
-	return eammAdmin.license;
+	return szqlAdmin.license;
 }
 
 /**
@@ -186,7 +186,7 @@ export function getLicense() {
  * @return {string} version
  */
 export function getVersion() {
-	return eammAdmin.version;
+	return szqlAdmin.version;
 }
 
 /**
@@ -195,7 +195,7 @@ export function getVersion() {
  * @return {Object} active plugins
  */
 export function getActivePlugins() {
-	return eammAdmin.products_active || {};
+	return szqlAdmin.products_active || {};
 }
 
 /**
@@ -204,11 +204,11 @@ export function getActivePlugins() {
  * @return {number | null} current zone id
  */
 export function getCurrentZoneId() {
-	if ( eammAdmin.currentZoneId === null ) {
+	if ( szqlAdmin.currentZoneId === null ) {
 		return null;
 	}
 
-	const zoneId = +eammAdmin.currentZoneId;
+	const zoneId = +szqlAdmin.currentZoneId;
 	return isNaN( zoneId ) ? null : zoneId;
 }
 
@@ -334,7 +334,7 @@ export function removeSearchParams( key ) {
  * @return {boolean} dark mode
  */
 export function isDarkMode() {
-	return localStorage.getItem( 'eamm-theme' ) === 'dark' ? true : false;
+	return localStorage.getItem( 'szql-theme' ) === 'dark' ? true : false;
 }
 
 function toVal( mix ) {

@@ -9,404 +9,404 @@
 
 :root {
 	/* === Neutral Colors === */
-	--eamm-neutral-0: #ffffff; /* neutral-0 */
-	--eamm-neutral-50: #f5f7fa; /* neutral-50 */
-	--eamm-neutral-100: #f2f5f8; /* neutral-100 */
-	--eamm-neutral-200: #e1e4ea; /* neutral-200 */
-	--eamm-neutral-300: #cacfd8; /* neutral-300 */
-	--eamm-neutral-400: #99a0ae; /* neutral-400 */
-	--eamm-neutral-500: #717784; /* neutral-500 */
-	--eamm-neutral-600: #525866; /* neutral-600 */
-	--eamm-neutral-700: #2b303b; /* neutral-700 */
-	--eamm-neutral-800: #222530; /* neutral-800 */
-	--eamm-neutral-900: #181b25; /* neutral-900 */
-	--eamm-neutral-950: #0e121b; /* neutral-950 */
+	--szql-neutral-0: #ffffff; /* neutral-0 */
+	--szql-neutral-50: #f5f7fa; /* neutral-50 */
+	--szql-neutral-100: #f2f5f8; /* neutral-100 */
+	--szql-neutral-200: #e1e4ea; /* neutral-200 */
+	--szql-neutral-300: #cacfd8; /* neutral-300 */
+	--szql-neutral-400: #99a0ae; /* neutral-400 */
+	--szql-neutral-500: #717784; /* neutral-500 */
+	--szql-neutral-600: #525866; /* neutral-600 */
+	--szql-neutral-700: #2b303b; /* neutral-700 */
+	--szql-neutral-800: #222530; /* neutral-800 */
+	--szql-neutral-900: #181b25; /* neutral-900 */
+	--szql-neutral-950: #0e121b; /* neutral-950 */
 
 	/* === Primary Colors (Sky Blue) === */
-	--eamm-sky-blue-50: #e9ebff; /* sky-blue-50 */
-	--eamm-sky-blue-100: #c7cdff; /* sky-blue-100 */
-	--eamm-sky-blue-200: #a0adff; /* sky-blue-200 */
-	--eamm-sky-blue-300: #738cff; /* sky-blue-300 */
-	--eamm-sky-blue-400: #4c70ff; /* sky-blue-400 */
-	--eamm-sky-blue-500: #0c54fc; /* sky-blue-500 */
-	--eamm-sky-blue-600: #014bf0; /* sky-blue-600 */
-	--eamm-sky-blue-700: #003fe3; /* sky-blue-700 */
-	--eamm-sky-blue-800: #0033d8; /* sky-blue-800 */
-	--eamm-sky-blue-900: #001cc0; /* sky-blue-900 */
-	--eamm-sky-blue-950: #01137c; /* sky-blue-950 */
+	--szql-sky-blue-50: #e9ebff; /* sky-blue-50 */
+	--szql-sky-blue-100: #c7cdff; /* sky-blue-100 */
+	--szql-sky-blue-200: #a0adff; /* sky-blue-200 */
+	--szql-sky-blue-300: #738cff; /* sky-blue-300 */
+	--szql-sky-blue-400: #4c70ff; /* sky-blue-400 */
+	--szql-sky-blue-500: #0c54fc; /* sky-blue-500 */
+	--szql-sky-blue-600: #014bf0; /* sky-blue-600 */
+	--szql-sky-blue-700: #003fe3; /* sky-blue-700 */
+	--szql-sky-blue-800: #0033d8; /* sky-blue-800 */
+	--szql-sky-blue-900: #001cc0; /* sky-blue-900 */
+	--szql-sky-blue-950: #01137c; /* sky-blue-950 */
 
 	/* === Blue Colors === */
-	--eamm-blue-50: #ebf1ff; /* blue-50 */
-	--eamm-blue-100: #d5e2ff; /* blue-100 */
-	--eamm-blue-200: #c0d5ff; /* blue-200 */
-	--eamm-blue-300: #97baff; /* blue-300 */
-	--eamm-blue-400: #6895ff; /* blue-400 */
-	--eamm-blue-500: #335cff; /* blue-500 */
-	--eamm-blue-600: #3559e9; /* blue-600 */
-	--eamm-blue-700: #2547d0; /* blue-700 */
-	--eamm-blue-800: #1f3bad; /* blue-800 */
-	--eamm-blue-900: #182f8b; /* blue-900 */
-	--eamm-blue-950: #122368; /* blue-950 */
+	--szql-blue-50: #ebf1ff; /* blue-50 */
+	--szql-blue-100: #d5e2ff; /* blue-100 */
+	--szql-blue-200: #c0d5ff; /* blue-200 */
+	--szql-blue-300: #97baff; /* blue-300 */
+	--szql-blue-400: #6895ff; /* blue-400 */
+	--szql-blue-500: #335cff; /* blue-500 */
+	--szql-blue-600: #3559e9; /* blue-600 */
+	--szql-blue-700: #2547d0; /* blue-700 */
+	--szql-blue-800: #1f3bad; /* blue-800 */
+	--szql-blue-900: #182f8b; /* blue-900 */
+	--szql-blue-950: #122368; /* blue-950 */
 
 	/* === Orange Colors === */
-	--eamm-orange-50: #fff1eb; /* orange-50 */
-	--eamm-orange-100: #ffe3d5; /* orange-100 */
-	--eamm-orange-200: #ffd5c0; /* orange-200 */
-	--eamm-orange-300: #ffba97; /* orange-300 */
-	--eamm-orange-400: #ff9a68; /* orange-400 */
-	--eamm-orange-500: #ff8447; /* orange-500 */
-	--eamm-orange-600: #e97135; /* orange-600 */
-	--eamm-orange-700: #d05e25; /* orange-700 */
-	--eamm-orange-800: #ad4e1f; /* orange-800 */
-	--eamm-orange-900: #8b3e18; /* orange-900 */
-	--eamm-orange-950: #682f12; /* orange-950 */
+	--szql-orange-50: #fff1eb; /* orange-50 */
+	--szql-orange-100: #ffe3d5; /* orange-100 */
+	--szql-orange-200: #ffd5c0; /* orange-200 */
+	--szql-orange-300: #ffba97; /* orange-300 */
+	--szql-orange-400: #ff9a68; /* orange-400 */
+	--szql-orange-500: #ff8447; /* orange-500 */
+	--szql-orange-600: #e97135; /* orange-600 */
+	--szql-orange-700: #d05e25; /* orange-700 */
+	--szql-orange-800: #ad4e1f; /* orange-800 */
+	--szql-orange-900: #8b3e18; /* orange-900 */
+	--szql-orange-950: #682f12; /* orange-950 */
 
 	/* === Red Colors === */
-	--eamm-red-50: #ffebec; /* red-50 */
-	--eamm-red-100: #ffd5d8; /* red-100 */
-	--eamm-red-200: #ffc0c5; /* red-200 */
-	--eamm-red-300: #ff97a0; /* red-300 */
-	--eamm-red-400: #ff6875; /* red-400 */
-	--eamm-red-500: #fb3748; /* red-500 */
-	--eamm-red-600: #e93544; /* red-600 */
-	--eamm-red-700: #d02533; /* red-700 */
-	--eamm-red-800: #ad1f2b; /* red-800 */
-	--eamm-red-900: #8b1822; /* red-900 */
-	--eamm-red-950: #681219; /* red-950 */
+	--szql-red-50: #ffebec; /* red-50 */
+	--szql-red-100: #ffd5d8; /* red-100 */
+	--szql-red-200: #ffc0c5; /* red-200 */
+	--szql-red-300: #ff97a0; /* red-300 */
+	--szql-red-400: #ff6875; /* red-400 */
+	--szql-red-500: #fb3748; /* red-500 */
+	--szql-red-600: #e93544; /* red-600 */
+	--szql-red-700: #d02533; /* red-700 */
+	--szql-red-800: #ad1f2b; /* red-800 */
+	--szql-red-900: #8b1822; /* red-900 */
+	--szql-red-950: #681219; /* red-950 */
 
 	/* === Green Colors === */
-	--eamm-green-50: #e0faec; /* green-50 */
-	--eamm-green-100: #d0fbe9; /* green-100 */
-	--eamm-green-200: #c2f5da; /* green-200 */
-	--eamm-green-300: #84ebb4; /* green-300 */
-	--eamm-green-400: #3ee089; /* green-400 */
-	--eamm-green-500: #1fc16b; /* green-500 */
-	--eamm-green-600: #1daf61; /* green-600 */
-	--eamm-green-700: #178c4e; /* green-700 */
-	--eamm-green-800: #1a7544; /* green-800 */
-	--eamm-green-900: #16643b; /* green-900 */
-	--eamm-green-950: #0b4627; /* green-950 */
+	--szql-green-50: #e0faec; /* green-50 */
+	--szql-green-100: #d0fbe9; /* green-100 */
+	--szql-green-200: #c2f5da; /* green-200 */
+	--szql-green-300: #84ebb4; /* green-300 */
+	--szql-green-400: #3ee089; /* green-400 */
+	--szql-green-500: #1fc16b; /* green-500 */
+	--szql-green-600: #1daf61; /* green-600 */
+	--szql-green-700: #178c4e; /* green-700 */
+	--szql-green-800: #1a7544; /* green-800 */
+	--szql-green-900: #16643b; /* green-900 */
+	--szql-green-950: #0b4627; /* green-950 */
 
 	/* === Yellow Colors === */
-	--eamm-yellow-50: #fffaeb; /* yellow-50 */
-	--eamm-yellow-100: #ffefcc; /* yellow-100 */
-	--eamm-yellow-200: #ffecc0; /* yellow-200 */
-	--eamm-yellow-300: #ffe097; /* yellow-300 */
-	--eamm-yellow-400: #ffd268; /* yellow-400 */
-	--eamm-yellow-500: #f6b51e; /* yellow-500 */
-	--eamm-yellow-600: #e6a819; /* yellow-600 */
-	--eamm-yellow-700: #c99a2c; /* yellow-700 */
-	--eamm-yellow-800: #a78025; /* yellow-800 */
-	--eamm-yellow-900: #86661d; /* yellow-900 */
-	--eamm-yellow-950: #624c18; /* yellow-950 */
+	--szql-yellow-50: #fffaeb; /* yellow-50 */
+	--szql-yellow-100: #ffefcc; /* yellow-100 */
+	--szql-yellow-200: #ffecc0; /* yellow-200 */
+	--szql-yellow-300: #ffe097; /* yellow-300 */
+	--szql-yellow-400: #ffd268; /* yellow-400 */
+	--szql-yellow-500: #f6b51e; /* yellow-500 */
+	--szql-yellow-600: #e6a819; /* yellow-600 */
+	--szql-yellow-700: #c99a2c; /* yellow-700 */
+	--szql-yellow-800: #a78025; /* yellow-800 */
+	--szql-yellow-900: #86661d; /* yellow-900 */
+	--szql-yellow-950: #624c18; /* yellow-950 */
 
 	/* === Purple Colors === */
-	--eamm-purple-50: #efebff; /* purple-50 */
-	--eamm-purple-100: #dcd5ff; /* purple-100 */
-	--eamm-purple-200: #cac0ff; /* purple-200 */
-	--eamm-purple-300: #a897ff; /* purple-300 */
-	--eamm-purple-400: #8c71f6; /* purple-400 */
-	--eamm-purple-500: #7d52f4; /* purple-500 */
-	--eamm-purple-600: #693ee0; /* purple-600 */
-	--eamm-purple-700: #5b2cc9; /* purple-700 */
-	--eamm-purple-800: #4c25a7; /* purple-800 */
-	--eamm-purple-900: #3d1d86; /* purple-900 */
-	--eamm-purple-950: #351a75; /* purple-950 */
+	--szql-purple-50: #efebff; /* purple-50 */
+	--szql-purple-100: #dcd5ff; /* purple-100 */
+	--szql-purple-200: #cac0ff; /* purple-200 */
+	--szql-purple-300: #a897ff; /* purple-300 */
+	--szql-purple-400: #8c71f6; /* purple-400 */
+	--szql-purple-500: #7d52f4; /* purple-500 */
+	--szql-purple-600: #693ee0; /* purple-600 */
+	--szql-purple-700: #5b2cc9; /* purple-700 */
+	--szql-purple-800: #4c25a7; /* purple-800 */
+	--szql-purple-900: #3d1d86; /* purple-900 */
+	--szql-purple-950: #351a75; /* purple-950 */
 
 	/* === Sky Colors === */
-	--eamm-sky-50: #ebf8ff; /* sky-50 */
-	--eamm-sky-100: #d5f1ff; /* sky-100 */
-	--eamm-sky-200: #c0eaff; /* sky-200 */
-	--eamm-sky-300: #97dcff; /* sky-300 */
-	--eamm-sky-400: #68cdff; /* sky-400 */
-	--eamm-sky-500: #47c2ff; /* sky-500 */
-	--eamm-sky-600: #35ade9; /* sky-600 */
-	--eamm-sky-700: #2597d0; /* sky-700 */
-	--eamm-sky-800: #1f7ead; /* sky-800 */
-	--eamm-sky-900: #18658b; /* sky-900 */
-	--eamm-sky-950: #124b68; /* sky-950 */
+	--szql-sky-50: #ebf8ff; /* sky-50 */
+	--szql-sky-100: #d5f1ff; /* sky-100 */
+	--szql-sky-200: #c0eaff; /* sky-200 */
+	--szql-sky-300: #97dcff; /* sky-300 */
+	--szql-sky-400: #68cdff; /* sky-400 */
+	--szql-sky-500: #47c2ff; /* sky-500 */
+	--szql-sky-600: #35ade9; /* sky-600 */
+	--szql-sky-700: #2597d0; /* sky-700 */
+	--szql-sky-800: #1f7ead; /* sky-800 */
+	--szql-sky-900: #18658b; /* sky-900 */
+	--szql-sky-950: #124b68; /* sky-950 */
 
 	/* === Pink Colors === */
-	--eamm-pink-50: #ffebf4; /* pink-50 */
-	--eamm-pink-100: #ffd5ea; /* pink-100 */
-	--eamm-pink-200: #ffc0df; /* pink-200 */
-	--eamm-pink-300: #ff97cb; /* pink-300 */
-	--eamm-pink-400: #ff68b3; /* pink-400 */
-	--eamm-pink-500: #fb4ba3; /* pink-500 */
-	--eamm-pink-600: #e9358f; /* pink-600 */
-	--eamm-pink-700: #d0257a; /* pink-700 */
-	--eamm-pink-800: #ad1f66; /* pink-800 */
-	--eamm-pink-900: #8b1852; /* pink-900 */
-	--eamm-pink-950: #68123d; /* pink-950 */
+	--szql-pink-50: #ffebf4; /* pink-50 */
+	--szql-pink-100: #ffd5ea; /* pink-100 */
+	--szql-pink-200: #ffc0df; /* pink-200 */
+	--szql-pink-300: #ff97cb; /* pink-300 */
+	--szql-pink-400: #ff68b3; /* pink-400 */
+	--szql-pink-500: #fb4ba3; /* pink-500 */
+	--szql-pink-600: #e9358f; /* pink-600 */
+	--szql-pink-700: #d0257a; /* pink-700 */
+	--szql-pink-800: #ad1f66; /* pink-800 */
+	--szql-pink-900: #8b1852; /* pink-900 */
+	--szql-pink-950: #68123d; /* pink-950 */
 
 	/* === Teal Colors === */
-	--eamm-teal-50: #e4fbf8; /* teal-50 */
-	--eamm-teal-100: #d0fbf5; /* teal-100 */
-	--eamm-teal-200: #c2f5ee; /* teal-200 */
-	--eamm-teal-300: #84ebdd; /* teal-300 */
-	--eamm-teal-400: #3fdec9; /* teal-400 */
-	--eamm-teal-500: #22d3bb; /* teal-500 */
-	--eamm-teal-600: #1daf9c; /* teal-600 */
-	--eamm-teal-700: #178c7d; /* teal-700 */
-	--eamm-teal-800: #1a7569; /* teal-800 */
-	--eamm-teal-900: #16645a; /* teal-900 */
-	--eamm-teal-950: #0b463e; /* teal-950 */
+	--szql-teal-50: #e4fbf8; /* teal-50 */
+	--szql-teal-100: #d0fbf5; /* teal-100 */
+	--szql-teal-200: #c2f5ee; /* teal-200 */
+	--szql-teal-300: #84ebdd; /* teal-300 */
+	--szql-teal-400: #3fdec9; /* teal-400 */
+	--szql-teal-500: #22d3bb; /* teal-500 */
+	--szql-teal-600: #1daf9c; /* teal-600 */
+	--szql-teal-700: #178c7d; /* teal-700 */
+	--szql-teal-800: #1a7569; /* teal-800 */
+	--szql-teal-900: #16645a; /* teal-900 */
+	--szql-teal-950: #0b463e; /* teal-950 */
 
 	/* === Alpha Colors === */
-	--eamm-neutral-alpha-24: #d9dce2; /* neutral-alpha-24 (neutral-400 @ 24% on white) */
-	--eamm-neutral-alpha-16: #e1e4e8; /* neutral-alpha-16 (neutral-400 @ 16% on white) */
-	--eamm-neutral-alpha-10: #e8eaed; /* neutral-alpha-10 (neutral-400 @ 10% on white) */
+	--szql-neutral-alpha-24: #d9dce2; /* neutral-alpha-24 (neutral-400 @ 24% on white) */
+	--szql-neutral-alpha-16: #e1e4e8; /* neutral-alpha-16 (neutral-400 @ 16% on white) */
+	--szql-neutral-alpha-10: #e8eaed; /* neutral-alpha-10 (neutral-400 @ 10% on white) */
 
-	--eamm-sky-blue-alpha-24: #c5d6fe; /* sky-blue-alpha-24 (sky-blue-500 @ 24% on white) */
-	--eamm-sky-blue-alpha-16: #d2daff; /* sky-blue-alpha-16 (sky-blue-500 @ 16% on white) */
-	--eamm-sky-blue-alpha-10: #e5efff; /* sky-blue-alpha-10 (sky-blue-500 @ 10% on white) */
+	--szql-sky-blue-alpha-24: #c5d6fe; /* sky-blue-alpha-24 (sky-blue-500 @ 24% on white) */
+	--szql-sky-blue-alpha-16: #d2daff; /* sky-blue-alpha-16 (sky-blue-500 @ 16% on white) */
+	--szql-sky-blue-alpha-10: #e5efff; /* sky-blue-alpha-10 (sky-blue-500 @ 10% on white) */
 
-	--eamm-blue-alpha-24: #cfd8ff; /* blue-alpha-24 (blue-500 @ 24% on white) */
-	--eamm-blue-alpha-16: #dde4ff; /* blue-alpha-16 (blue-500 @ 16% on white) */
-	--eamm-blue-alpha-10: #e6ebff; /* blue-alpha-10 (blue-500 @ 10% on white) */
+	--szql-blue-alpha-24: #cfd8ff; /* blue-alpha-24 (blue-500 @ 24% on white) */
+	--szql-blue-alpha-16: #dde4ff; /* blue-alpha-16 (blue-500 @ 16% on white) */
+	--szql-blue-alpha-10: #e6ebff; /* blue-alpha-10 (blue-500 @ 10% on white) */
 
-	--eamm-orange-alpha-24: #ffc9ad; /* orange-alpha-24 (orange-500 @ 24% on white) */
-	--eamm-orange-alpha-16: #ffd6c1; /* orange-alpha-16 (orange-500 @ 16% on white) */
-	--eamm-orange-alpha-10: #ffe0d0; /* orange-alpha-10 (orange-500 @ 10% on white) */
+	--szql-orange-alpha-24: #ffc9ad; /* orange-alpha-24 (orange-500 @ 24% on white) */
+	--szql-orange-alpha-16: #ffd6c1; /* orange-alpha-16 (orange-500 @ 16% on white) */
+	--szql-orange-alpha-10: #ffe0d0; /* orange-alpha-10 (orange-500 @ 10% on white) */
 
-	--eamm-red-alpha-24: #fdc1c6; /* red-alpha-24 (red-500 @ 24% on white) */
-	--eamm-red-alpha-16: #fed0d4; /* red-alpha-16 (red-500 @ 16% on white) */
-	--eamm-red-alpha-10: #fed8db; /* red-alpha-10 (red-500 @ 10% on white) */
+	--szql-red-alpha-24: #fdc1c6; /* red-alpha-24 (red-500 @ 24% on white) */
+	--szql-red-alpha-16: #fed0d4; /* red-alpha-16 (red-500 @ 16% on white) */
+	--szql-red-alpha-10: #fed8db; /* red-alpha-10 (red-500 @ 10% on white) */
 
-	--eamm-green-alpha-24: #bfebcf; /* green-alpha-24 (green-500 @ 24% on white) */
-	--eamm-green-alpha-16: #d3f0dd; /* green-alpha-16 (green-500 @ 16% on white) */
-	--eamm-green-alpha-10: #dff3e6; /* green-alpha-10 (green-500 @ 10% on white) */
+	--szql-green-alpha-24: #bfebcf; /* green-alpha-24 (green-500 @ 24% on white) */
+	--szql-green-alpha-16: #d3f0dd; /* green-alpha-16 (green-500 @ 16% on white) */
+	--szql-green-alpha-10: #dff3e6; /* green-alpha-10 (green-500 @ 10% on white) */
 
-	--eamm-yellow-alpha-24: #fde3b8; /* yellow-alpha-24 (yellow-500 @ 24% on white) */
-	--eamm-yellow-alpha-16: #fee9ca; /* yellow-alpha-16 (yellow-500 @ 16% on white) */
-	--eamm-yellow-alpha-10: #fef1dd; /* yellow-alpha-10 (yellow-500 @ 10% on white) */
+	--szql-yellow-alpha-24: #fde3b8; /* yellow-alpha-24 (yellow-500 @ 24% on white) */
+	--szql-yellow-alpha-16: #fee9ca; /* yellow-alpha-16 (yellow-500 @ 16% on white) */
+	--szql-yellow-alpha-10: #fef1dd; /* yellow-alpha-10 (yellow-500 @ 10% on white) */
 
-	--eamm-purple-alpha-24: #d0c5f8; /* purple-alpha-24 (purple-500 @ 24% on white) */
-	--eamm-purple-alpha-16: #ddd4fa; /* purple-alpha-16 (purple-500 @ 16% on white) */
-	--eamm-purple-alpha-10: #e6e1fb; /* purple-alpha-10 (purple-500 @ 10% on white) */
+	--szql-purple-alpha-24: #d0c5f8; /* purple-alpha-24 (purple-500 @ 24% on white) */
+	--szql-purple-alpha-16: #ddd4fa; /* purple-alpha-16 (purple-500 @ 16% on white) */
+	--szql-purple-alpha-10: #e6e1fb; /* purple-alpha-10 (purple-500 @ 10% on white) */
 
-	--eamm-sky-alpha-24: #c9e8ff; /* sky-alpha-24 (sky-500 @ 24% on white) */
-	--eamm-sky-alpha-16: #d9efff; /* sky-alpha-16 (sky-500 @ 16% on white) */
-	--eamm-sky-alpha-10: #e4f4ff; /* sky-alpha-10 (sky-500 @ 10% on white) */
+	--szql-sky-alpha-24: #c9e8ff; /* sky-alpha-24 (sky-500 @ 24% on white) */
+	--szql-sky-alpha-16: #d9efff; /* sky-alpha-16 (sky-500 @ 16% on white) */
+	--szql-sky-alpha-10: #e4f4ff; /* sky-alpha-10 (sky-500 @ 10% on white) */
 
-	--eamm-pink-alpha-24: #fdc8e4; /* pink-alpha-24 (pink-500 @ 24% on white) */
-	--eamm-pink-alpha-16: #fed8eb; /* pink-alpha-16 (pink-500 @ 16% on white) */
-	--eamm-pink-alpha-10: #fee4f1; /* pink-alpha-10 (pink-500 @ 10% on white) */
+	--szql-pink-alpha-24: #fdc8e4; /* pink-alpha-24 (pink-500 @ 24% on white) */
+	--szql-pink-alpha-16: #fed8eb; /* pink-alpha-16 (pink-500 @ 16% on white) */
+	--szql-pink-alpha-10: #fee4f1; /* pink-alpha-10 (pink-500 @ 10% on white) */
 
-	--eamm-teal-alpha-24: #baeae2; /* teal-alpha-24 (teal-500 @ 24% on white) */
-	--eamm-teal-alpha-16: #d0f0ec; /* teal-alpha-16 (teal-500 @ 16% on white) */
-	--eamm-teal-alpha-10: #ddf4f1; /* teal-alpha-10 (teal-500 @ 10% on white) */
+	--szql-teal-alpha-24: #baeae2; /* teal-alpha-24 (teal-500 @ 24% on white) */
+	--szql-teal-alpha-16: #d0f0ec; /* teal-alpha-16 (teal-500 @ 16% on white) */
+	--szql-teal-alpha-10: #ddf4f1; /* teal-alpha-10 (teal-500 @ 10% on white) */
 
 	/* === Shadow Colors === */
-	--eamm-shadow-bg-xsm: #cacfd83d;
-	--eamm-shadow-bg-sm: #0e121b0a;
-	--eamm-shadow-bg-md: #0e121b0f;
-	--eamm-shadow-bg-lg: #0e121b1f;
-	--eamm-shadow-bg-xl: #0e121b1a;
-	--eamm-shadow-bg-2xl: #0e121b24;
-	--eamm-shadow-bg-right: #0e121b14;
-	--eamm-shadow-bg-left: #0e121b14;
-	--eamm-shadow-bg-btn-sm: #1b1c1d1f;
+	--szql-shadow-bg-xsm: #cacfd83d;
+	--szql-shadow-bg-sm: #0e121b0a;
+	--szql-shadow-bg-md: #0e121b0f;
+	--szql-shadow-bg-lg: #0e121b1f;
+	--szql-shadow-bg-xl: #0e121b1a;
+	--szql-shadow-bg-2xl: #0e121b24;
+	--szql-shadow-bg-right: #0e121b14;
+	--szql-shadow-bg-left: #0e121b14;
+	--szql-shadow-bg-btn-sm: #1b1c1d1f;
 }
 
 :root[data-theme="dark"] {
 	/* === Neutral Colors === */
-	--eamm-neutral-0: #181b25;
-	--eamm-neutral-50: #222530;
-	--eamm-neutral-100: #333945;
-	--eamm-neutral-200: #525866;
-	--eamm-neutral-300: #717784;
-	--eamm-neutral-400: #99a0ae;
-	--eamm-neutral-500: #cacfd8;
-	--eamm-neutral-600: #e1e4ea;
-	--eamm-neutral-700: #eef1f4;
-	--eamm-neutral-800: #f5f7fa;
-	--eamm-neutral-900: #ffffff;
-	--eamm-neutral-950: #ffffff;
+	--szql-neutral-0: #181b25;
+	--szql-neutral-50: #222530;
+	--szql-neutral-100: #333945;
+	--szql-neutral-200: #525866;
+	--szql-neutral-300: #717784;
+	--szql-neutral-400: #99a0ae;
+	--szql-neutral-500: #cacfd8;
+	--szql-neutral-600: #e1e4ea;
+	--szql-neutral-700: #eef1f4;
+	--szql-neutral-800: #f5f7fa;
+	--szql-neutral-900: #ffffff;
+	--szql-neutral-950: #ffffff;
 
 	/* === Primary Colors (Sky Blue) === */
-	--eamm-sky-blue-50: #001d60;
-	--eamm-sky-blue-100: #001d60;
-	--eamm-sky-blue-200: #a0adff;
-	--eamm-sky-blue-300: #738cff;
-	--eamm-sky-blue-400: #4c70ff;
-	--eamm-sky-blue-500: #3385ff;
-	--eamm-sky-blue-600: #669eff;
-	--eamm-sky-blue-700: #8ab7ff;
-	--eamm-sky-blue-800: #adc8ff;
-	--eamm-sky-blue-900: #001cc0;
-	--eamm-sky-blue-950: #01137c;
+	--szql-sky-blue-50: #001d60;
+	--szql-sky-blue-100: #001d60;
+	--szql-sky-blue-200: #a0adff;
+	--szql-sky-blue-300: #738cff;
+	--szql-sky-blue-400: #4c70ff;
+	--szql-sky-blue-500: #3385ff;
+	--szql-sky-blue-600: #669eff;
+	--szql-sky-blue-700: #8ab7ff;
+	--szql-sky-blue-800: #adc8ff;
+	--szql-sky-blue-900: #001cc0;
+	--szql-sky-blue-950: #01137c;
 
 	/* === Blue Colors === */
-	--eamm-blue-50: #1a2a55;
-	--eamm-blue-100: #d5e2ff;
-	--eamm-blue-200: #335cff;
-	--eamm-blue-300: #97baff;
-	--eamm-blue-400: #6895ff;
-	--eamm-blue-500: #99baff;
-	--eamm-blue-600: #3559e9;
-	--eamm-blue-700: #2547d0;
-	--eamm-blue-800: #1f3bad;
-	--eamm-blue-900: #182f8b;
-	--eamm-blue-950: #122368;
+	--szql-blue-50: #1a2a55;
+	--szql-blue-100: #d5e2ff;
+	--szql-blue-200: #335cff;
+	--szql-blue-300: #97baff;
+	--szql-blue-400: #6895ff;
+	--szql-blue-500: #99baff;
+	--szql-blue-600: #3559e9;
+	--szql-blue-700: #2547d0;
+	--szql-blue-800: #1f3bad;
+	--szql-blue-900: #182f8b;
+	--szql-blue-950: #122368;
 
 	/* === Orange Colors === */
-	--eamm-orange-50: #331a0b;
-	--eamm-orange-100: #ffe3d5;
-	--eamm-orange-200: #66331b;
-	--eamm-orange-300: #ffba97;
-	--eamm-orange-400: #ff9a68;
-	--eamm-orange-500: #ffb47d;
-	--eamm-orange-600: #ff8447;
-	--eamm-orange-700: #d05e25;
-	--eamm-orange-800: #ad4e1f;
-	--eamm-orange-900: #8b3e18;
-	--eamm-orange-950: #682f12;
+	--szql-orange-50: #331a0b;
+	--szql-orange-100: #ffe3d5;
+	--szql-orange-200: #66331b;
+	--szql-orange-300: #ffba97;
+	--szql-orange-400: #ff9a68;
+	--szql-orange-500: #ffb47d;
+	--szql-orange-600: #ff8447;
+	--szql-orange-700: #d05e25;
+	--szql-orange-800: #ad4e1f;
+	--szql-orange-900: #8b3e18;
+	--szql-orange-950: #682f12;
 
 	/* === Red Colors === */
-	--eamm-red-50: #3d0d10;
-	--eamm-red-100: #ffd5d8;
-	--eamm-red-200: #7a1a25;
-	--eamm-red-300: #ff97a0;
-	--eamm-red-400: #ff6875;
-	--eamm-red-500: #fb3748;
-	--eamm-red-600: #e93544;
-	--eamm-red-700: #d02533;
-	--eamm-red-800: #ad1f2b;
-	--eamm-red-900: #8b1822;
-	--eamm-red-950: #681219;
+	--szql-red-50: #3d0d10;
+	--szql-red-100: #ffd5d8;
+	--szql-red-200: #7a1a25;
+	--szql-red-300: #ff97a0;
+	--szql-red-400: #ff6875;
+	--szql-red-500: #fb3748;
+	--szql-red-600: #e93544;
+	--szql-red-700: #d02533;
+	--szql-red-800: #ad1f2b;
+	--szql-red-900: #8b1822;
+	--szql-red-950: #681219;
 
 	/* === Green Colors === */
-	--eamm-green-50: #0d2417;
-	--eamm-green-100: #d0fbe9;
-	--eamm-green-200: #125a3f;
-	--eamm-green-300: #84ebb4;
-	--eamm-green-400: #3ee089;
-	--eamm-green-500: #1fc16b;
-	--eamm-green-600: #1daf61;
-	--eamm-green-700: #178c4e;
-	--eamm-green-800: #1a7544;
-	--eamm-green-900: #16643b;
-	--eamm-green-950: #0b4627;
+	--szql-green-50: #0d2417;
+	--szql-green-100: #d0fbe9;
+	--szql-green-200: #125a3f;
+	--szql-green-300: #84ebb4;
+	--szql-green-400: #3ee089;
+	--szql-green-500: #1fc16b;
+	--szql-green-600: #1daf61;
+	--szql-green-700: #178c4e;
+	--szql-green-800: #1a7544;
+	--szql-green-900: #16643b;
+	--szql-green-950: #0b4627;
 
 	/* === Yellow Colors === */
-	--eamm-yellow-50: #33260b;
-	--eamm-yellow-100: #ffefcc;
-	--eamm-yellow-200: #66520f;
-	--eamm-yellow-300: #ffe097;
-	--eamm-yellow-400: #ffd268;
-	--eamm-yellow-500: #ffcc80;
-	--eamm-yellow-600: #e6a819;
-	--eamm-yellow-700: #c99a2c;
-	--eamm-yellow-800: #a78025;
-	--eamm-yellow-900: #86661d;
-	--eamm-yellow-950: #624c18;
+	--szql-yellow-50: #33260b;
+	--szql-yellow-100: #ffefcc;
+	--szql-yellow-200: #66520f;
+	--szql-yellow-300: #ffe097;
+	--szql-yellow-400: #ffd268;
+	--szql-yellow-500: #ffcc80;
+	--szql-yellow-600: #e6a819;
+	--szql-yellow-700: #c99a2c;
+	--szql-yellow-800: #a78025;
+	--szql-yellow-900: #86661d;
+	--szql-yellow-950: #624c18;
 
 	/* === Purple Colors === */
-	--eamm-purple-50: #1f1a2d;
-	--eamm-purple-100: #dcd5ff;
-	--eamm-purple-200: #3f3366;
-	--eamm-purple-300: #a897ff;
-	--eamm-purple-400: #8c71f6;
-	--eamm-purple-500: #9b7fff;
-	--eamm-purple-600: #693ee0;
-	--eamm-purple-700: #5b2cc9;
-	--eamm-purple-800: #4c25a7;
-	--eamm-purple-900: #3d1d86;
-	--eamm-purple-950: #351a75;
+	--szql-purple-50: #1f1a2d;
+	--szql-purple-100: #dcd5ff;
+	--szql-purple-200: #3f3366;
+	--szql-purple-300: #a897ff;
+	--szql-purple-400: #8c71f6;
+	--szql-purple-500: #9b7fff;
+	--szql-purple-600: #693ee0;
+	--szql-purple-700: #5b2cc9;
+	--szql-purple-800: #4c25a7;
+	--szql-purple-900: #3d1d86;
+	--szql-purple-950: #351a75;
 
 	/* === Sky Colors === */
-	--eamm-sky-50: #ebf8ff;
-	--eamm-sky-100: #d5f1ff;
-	--eamm-sky-200: #004766;
-	--eamm-sky-300: #97dcff;
-	--eamm-sky-400: #68cdff;
-	--eamm-sky-500: #47c2ff;
-	--eamm-sky-600: #35ade9;
-	--eamm-sky-700: #2597d0;
-	--eamm-sky-800: #1f7ead;
-	--eamm-sky-900: #18658b;
-	--eamm-sky-950: #124b68;
+	--szql-sky-50: #ebf8ff;
+	--szql-sky-100: #d5f1ff;
+	--szql-sky-200: #004766;
+	--szql-sky-300: #97dcff;
+	--szql-sky-400: #68cdff;
+	--szql-sky-500: #47c2ff;
+	--szql-sky-600: #35ade9;
+	--szql-sky-700: #2597d0;
+	--szql-sky-800: #1f7ead;
+	--szql-sky-900: #18658b;
+	--szql-sky-950: #124b68;
 
 	/* === Pink Colors === */
-	--eamm-pink-50: #ffebf4;
-	--eamm-pink-100: #ffd5ea;
-	--eamm-pink-200: #ff99c2;
-	--eamm-pink-300: #ff97cb;
-	--eamm-pink-400: #ff68b3;
-	--eamm-pink-500: #fb4ba3;
-	--eamm-pink-600: #e9358f;
-	--eamm-pink-700: #d0257a;
-	--eamm-pink-800: #ad1f66;
-	--eamm-pink-900: #8b1852;
-	--eamm-pink-950: #68123d;
+	--szql-pink-50: #ffebf4;
+	--szql-pink-100: #ffd5ea;
+	--szql-pink-200: #ff99c2;
+	--szql-pink-300: #ff97cb;
+	--szql-pink-400: #ff68b3;
+	--szql-pink-500: #fb4ba3;
+	--szql-pink-600: #e9358f;
+	--szql-pink-700: #d0257a;
+	--szql-pink-800: #ad1f66;
+	--szql-pink-900: #8b1852;
+	--szql-pink-950: #68123d;
 
 	/* === Teal Colors === */
-	--eamm-teal-50: #e4fbf8;
-	--eamm-teal-100: #d0fbf5;
-	--eamm-teal-200: #2aa69b;
-	--eamm-teal-300: #84ebdd;
-	--eamm-teal-400: #3fdec9;
-	--eamm-teal-500: #22d3bb;
-	--eamm-teal-600: #1daf9c;
-	--eamm-teal-700: #178c7d;
-	--eamm-teal-800: #1a7569;
-	--eamm-teal-900: #16645a;
-	--eamm-teal-950: #0b463e;
+	--szql-teal-50: #e4fbf8;
+	--szql-teal-100: #d0fbf5;
+	--szql-teal-200: #2aa69b;
+	--szql-teal-300: #84ebdd;
+	--szql-teal-400: #3fdec9;
+	--szql-teal-500: #22d3bb;
+	--szql-teal-600: #1daf9c;
+	--szql-teal-700: #178c7d;
+	--szql-teal-800: #1a7569;
+	--szql-teal-900: #16645a;
+	--szql-teal-950: #0b463e;
 
 	/* === Alpha Colors === */
-	--eamm-neutral-alpha-24: rgba(153, 160, 174, 0.24);
-	--eamm-neutral-alpha-16: #e1e4e8;
-	--eamm-neutral-alpha-10: #e8eaed;
+	--szql-neutral-alpha-24: rgba(153, 160, 174, 0.24);
+	--szql-neutral-alpha-16: #e1e4e8;
+	--szql-neutral-alpha-10: #e8eaed;
 
-	--eamm-sky-blue-alpha-24: rgba(51, 133, 255, 0.24);
-	--eamm-sky-blue-alpha-16: rgba(51, 133, 255, 0.16);
-	--eamm-sky-blue-alpha-10: rgba(51, 133, 255, 0.1);
+	--szql-sky-blue-alpha-24: rgba(51, 133, 255, 0.24);
+	--szql-sky-blue-alpha-16: rgba(51, 133, 255, 0.16);
+	--szql-sky-blue-alpha-10: rgba(51, 133, 255, 0.1);
 
-	--eamm-blue-alpha-24: #cfd8ff;
-	--eamm-blue-alpha-16: #dde4ff;
-	--eamm-blue-alpha-10: #e6ebff;
+	--szql-blue-alpha-24: #cfd8ff;
+	--szql-blue-alpha-16: #dde4ff;
+	--szql-blue-alpha-10: #e6ebff;
 
-	--eamm-orange-alpha-24: #ffc9ad;
-	--eamm-orange-alpha-16: #ffd6c1;
-	--eamm-orange-alpha-10: #ffe0d0;
+	--szql-orange-alpha-24: #ffc9ad;
+	--szql-orange-alpha-16: #ffd6c1;
+	--szql-orange-alpha-10: #ffe0d0;
 
-	--eamm-red-alpha-24: #fdc1c6;
-	--eamm-red-alpha-16: #fed0d4;
-	--eamm-red-alpha-10: #fed8db;
+	--szql-red-alpha-24: #fdc1c6;
+	--szql-red-alpha-16: #fed0d4;
+	--szql-red-alpha-10: #fed8db;
 
-	--eamm-green-alpha-24: #bfebcf;
-	--eamm-green-alpha-16: #d3f0dd;
-	--eamm-green-alpha-10: #dff3e6;
+	--szql-green-alpha-24: #bfebcf;
+	--szql-green-alpha-16: #d3f0dd;
+	--szql-green-alpha-10: #dff3e6;
 
-	--eamm-yellow-alpha-24: #fde3b8;
-	--eamm-yellow-alpha-16: #fee9ca;
-	--eamm-yellow-alpha-10: #fef1dd;
+	--szql-yellow-alpha-24: #fde3b8;
+	--szql-yellow-alpha-16: #fee9ca;
+	--szql-yellow-alpha-10: #fef1dd;
 
-	--eamm-purple-alpha-24: #d0c5f8;
-	--eamm-purple-alpha-16: #ddd4fa;
-	--eamm-purple-alpha-10: #e6e1fb;
+	--szql-purple-alpha-24: #d0c5f8;
+	--szql-purple-alpha-16: #ddd4fa;
+	--szql-purple-alpha-10: #e6e1fb;
 
-	--eamm-sky-alpha-24: #c9e8ff;
-	--eamm-sky-alpha-16: #d9efff;
-	--eamm-sky-alpha-10: #e4f4ff;
+	--szql-sky-alpha-24: #c9e8ff;
+	--szql-sky-alpha-16: #d9efff;
+	--szql-sky-alpha-10: #e4f4ff;
 
-	--eamm-pink-alpha-24: #fdc8e4;
-	--eamm-pink-alpha-16: #fed8eb;
-	--eamm-pink-alpha-10: #fee4f1;
+	--szql-pink-alpha-24: #fdc8e4;
+	--szql-pink-alpha-16: #fed8eb;
+	--szql-pink-alpha-10: #fee4f1;
 
-	--eamm-teal-alpha-24: #baeae2;
-	--eamm-teal-alpha-16: #d0f0ec;
-	--eamm-teal-alpha-10: #ddf4f1;
+	--szql-teal-alpha-24: #baeae2;
+	--szql-teal-alpha-16: #d0f0ec;
+	--szql-teal-alpha-10: #ddf4f1;
 
 	/* === Shadow Colors === */
-	--eamm-shadow-bg-xsm: #00000033;
-	--eamm-shadow-bg-sm: #0000000a;
-	--eamm-shadow-bg-md: #0000000f;
-	--eamm-shadow-bg-lg: #0000001f;
-	--eamm-shadow-bg-xl: #0000001a;
-	--eamm-shadow-bg-2xl: #00000024;
-	--eamm-shadow-bg-right: #00000014;
-	--eamm-shadow-bg-left: #00000014;
-	--eamm-shadow-bg-btn-sm: #0000001f;
+	--szql-shadow-bg-xsm: #00000033;
+	--szql-shadow-bg-sm: #0000000a;
+	--szql-shadow-bg-md: #0000000f;
+	--szql-shadow-bg-lg: #0000001f;
+	--szql-shadow-bg-xl: #0000001a;
+	--szql-shadow-bg-2xl: #00000024;
+	--szql-shadow-bg-right: #00000014;
+	--szql-shadow-bg-left: #00000014;
+	--szql-shadow-bg-btn-sm: #0000001f;
 }

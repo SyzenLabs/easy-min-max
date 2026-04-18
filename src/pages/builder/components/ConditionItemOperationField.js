@@ -53,7 +53,7 @@ const ConditionItemOperationField = ( {
 						max_range: '',
 					} );
 				} }
-				placeholder={ __( 'Select Operator', 'easy-min-max' ) }
+				placeholder={ __( 'Select Operator', 'syzenlabs-quantity-limits' ) }
 			></SelectCompact>
 		</>
 	);

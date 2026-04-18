@@ -51,7 +51,7 @@ function Sidebar( { children, onClose, className = '', ...props } ) {
 	return (
 		<SidebarProvider onClose={ onClose }>
 			<div
-				className={ cn( 'eamm-sidebar-component', className ) }
+				className={ cn( 'szql-sidebar-component', className ) }
 				{ ...props }
 			>
 				{ children }
@@ -73,7 +73,7 @@ const SidebarTrigger = forwardRef(
 			<div
 				role="button"
 				tabIndex={ -1 }
-				className={ cn( 'eamm-sidebar-trigger-component', className ) }
+				className={ cn( 'szql-sidebar-trigger-component', className ) }
 				{ ...props }
 				onClick={ openModal }
 				onKeyDown={ ( e ) => {
@@ -91,12 +91,12 @@ const SidebarTrigger = forwardRef(
 function SidebarContent( { children, className = '', ...props } ) {
 	const { open, closeModal } = useSidebar();
 
-	// click outside eamm-sidebar-content-inner will close
+	// click outside szql-sidebar-content-inner will close
 	useEffect( () => {
 		const handleClickOutside = ( event ) => {
 			if (
 				event.target.classList.contains(
-					'eamm-sidebar-content-component'
+					'szql-sidebar-content-component'
 				)
 			) {
 				closeModal();
@@ -111,14 +111,14 @@ function SidebarContent( { children, className = '', ...props } ) {
 	return (
 		<div
 			className={ cn(
-				'eamm-sidebar-content-component',
+				'szql-sidebar-content-component',
 				className,
-				open && 'eamm-sidebar-content-open'
+				open && 'szql-sidebar-content-open'
 			) }
 			{ ...props }
 		>
 			<div
-				className="eamm-sidebar-content-inner"
+				className="szql-sidebar-content-inner"
 				style={ {
 					position: 'relative',
 				} }
@@ -140,16 +140,16 @@ function SidebarHeader( {
 	return (
 		<div
 			className={ cn(
-				'eamm-sidebar-header-component',
+				'szql-sidebar-header-component',
 				className,
-				divider && 'eamm-sidebar-header-divider'
+				divider && 'szql-sidebar-header-divider'
 			) }
 			{ ...props }
 		>
 			{ children }
 			<Button
 				__next40pxDefaultSize
-				// className="eamm-sidebar-header-close"
+				// className="szql-sidebar-header-close"
 				onClick={ closeModal }
 				icon={ close }
 				variant="tertiary"
@@ -169,7 +169,7 @@ function SidebarFooter( {
 	const { closeModal } = useSidebar();
 	return (
 		<div
-			className={ cn( 'eamm-sidebar-footer-component', className ) }
+			className={ cn( 'szql-sidebar-footer-component', className ) }
 			{ ...props }
 		>
 			{ showCancel && (
@@ -185,7 +185,7 @@ function SidebarFooter( {
 function SidebarBody( { children, className = '', ...props } ) {
 	return (
 		<div
-			className={ cn( 'eamm-sidebar-body-component', className ) }
+			className={ cn( 'szql-sidebar-body-component', className ) }
 			{ ...props }
 		>
 			{ children }

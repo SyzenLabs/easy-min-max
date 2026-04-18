@@ -1,21 +1,21 @@
 import {
-	PopupLayout,
-	PopupLayoutBody,
-	PopupLayoutHeader,
+    PopupLayout,
+    PopupLayoutBody,
+    PopupLayoutHeader,
 } from '@/components/layout';
 import { Skeleton, SkeletonGroup, SkeletonItems } from '@/components/ui';
 import { useShippingOptions } from '@/context/OptionsContext';
 import { usePrompt } from '@/context/PromptContext';
 import { useRuleStore } from '@/store/useRuleStore';
 import {
-	Button,
-	__experimentalHStack as HStack,
-	Icon,
-	__experimentalInputControl as InputControl,
-	__experimentalToggleGroupControl as ToggleGroupControl,
-	__experimentalToggleGroupControlOption as ToggleGroupControlOption,
-	Tooltip,
-	__experimentalVStack as VStack,
+    Button,
+    __experimentalHStack as HStack,
+    Icon,
+    __experimentalInputControl as InputControl,
+    __experimentalToggleGroupControl as ToggleGroupControl,
+    __experimentalToggleGroupControlOption as ToggleGroupControlOption,
+    Tooltip,
+    __experimentalVStack as VStack,
 } from '@wordpress/components';
 import { Fragment, useCallback, useEffect, useState } from '@wordpress/element';
 import { __ } from '@wordpress/i18n';
@@ -40,15 +40,15 @@ function RulesAddEditHeader( { editId } ) {
 		}
 
 		const result = await firePrompt( {
-			title: __( 'Unsaved Changes', 'easy-min-max' ),
+			title: __( 'Unsaved Changes', 'syzenlabs-quantity-limits' ),
 			message: __(
 				'You have unsaved changes. Are you sure you want to leave this page?',
-				'easy-min-max'
+				'syzenlabs-quantity-limits'
 			),
 			type: 'warning',
-			confirmText: __( 'Leave', 'easy-min-max' ),
+			confirmText: __( 'Leave', 'syzenlabs-quantity-limits' ),
 			confirmButtonDesign: 'error',
-			cancelText: __( 'Stay', 'easy-min-max' ),
+			cancelText: __( 'Stay', 'syzenlabs-quantity-limits' ),
 		} );
 
 		return !! result?.ok;
@@ -91,20 +91,20 @@ function RulesAddEditHeader( { editId } ) {
 					variant="secondary"
 					onClick={ handleExit }
 				>
-					{ __( 'Exit', 'easy-min-max' ) }
+					{ __( 'Exit', 'syzenlabs-quantity-limits' ) }
 				</Button>
 			</HStack>
 			<HStack expanded={ false } alignment="center">
 				<Tooltip
 					text={ __(
 						'Specify a name for this rule',
-						'easy-min-max'
+						'syzenlabs-quantity-limits'
 					) }
 				>
 					<InputControl
 						__next40pxDefaultSize
 						className="w-full!"
-						placeholder={ __( 'Enter rule name…', 'easy-min-max' ) }
+						placeholder={ __( 'Enter rule name…', 'syzenlabs-quantity-limits' ) }
 						value={ rule.title || '' }
 						onChange={ ( _v ) => {
 							updateBuilder( 'title', _v );
@@ -118,22 +118,22 @@ function RulesAddEditHeader( { editId } ) {
 				{ /* <AiButton /> */ }
 
 				<ToggleGroupControl
-					label={ __( 'Status', 'easy-min-max' ) }
+					label={ __( 'Status', 'syzenlabs-quantity-limits' ) }
 					isBlock
 					__next40pxDefaultSize
 					__nextHasNoMarginBottom
-					id="eamm-publish-section"
+					id="szql-publish-section"
 					value={ rule.publishMode }
 					onChange={ ( _v ) => updateBuilder( 'publishMode', _v ) }
 					hideLabelFromVision
 				>
 					<ToggleGroupControlOption
 						value="draft"
-						label={ __( 'Draft', 'easy-min-max' ) }
+						label={ __( 'Draft', 'syzenlabs-quantity-limits' ) }
 					/>
 					<ToggleGroupControlOption
 						value="publish"
-						label={ __( 'Publish', 'easy-min-max' ) }
+						label={ __( 'Publish', 'syzenlabs-quantity-limits' ) }
 					/>
 				</ToggleGroupControl>
 
@@ -149,11 +149,11 @@ function RulesAddEditHeader( { editId } ) {
 					{ /* eslint-disable-next-line no-nested-ternary */ }
 					{ editId
 						? showSaveMessage
-							? __( 'Updated', 'easy-min-max' )
-							: __( 'Update', 'easy-min-max' )
+							? __( 'Updated', 'syzenlabs-quantity-limits' )
+							: __( 'Update', 'syzenlabs-quantity-limits' )
 						: showSaveMessage
-						? __( 'Saved', 'easy-min-max' )
-						: __( 'Save', 'easy-min-max' ) }
+						? __( 'Saved', 'syzenlabs-quantity-limits' )
+						: __( 'Save', 'syzenlabs-quantity-limits' ) }
 				</Button>
 			</HStack>
 		</div>

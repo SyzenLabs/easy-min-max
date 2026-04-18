@@ -1,8 +1,8 @@
 <?php
 
-namespace EAMM\Includes\Rest;
+namespace SZQL\Includes\Rest;
 
-use EAMM\Includes\Utils;
+use SZQL\Includes\Utils;
 use WC_Shipping_Zones;
 use WP_REST_Request;
 
@@ -15,7 +15,7 @@ class MetaController {
 
 	public function register_routes() {
 		register_rest_route(
-			'eamm/v1',
+			'szql/v1',
 			'/meta',
 			array(
 				array(

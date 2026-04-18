@@ -1,4 +1,4 @@
-// .eamm-toast-container {
+// .szql-toast-container {
 // 	position: fixed;
 // 	bottom: 40px;
 // 	right: 20px;
@@ -10,42 +10,42 @@
 // 	max-height: 100vh;
 // }
 
-// .eamm-toast {
+// .szql-toast {
 // 	display: flex;
 // 	align-items: center;
 // 	gap: 8px;
 // 	padding: 12px 16px;
-// 	border-radius: var(--eamm-border-radius-md);
-// 	box-shadow: var(--eamm-shadow-md);
-// 	border-left: 4px solid var(--eamm-stroke-transparent);
+// 	border-radius: var(--szql-border-radius-md);
+// 	box-shadow: var(--szql-shadow-md);
+// 	border-left: 4px solid var(--szql-stroke-transparent);
 // 	position: relative;
 // 	right: 0;
 
 // 	/* Initial state */
 // 	transform: translateX(100%);
-// 	transition: all var(--eamm-transition-sm) ease-out;
+// 	transition: all var(--szql-transition-sm) ease-out;
 // 	margin-top: 4px;
 
 // 	/* Enter animation */
-// 	&.eamm-toast-enter {
+// 	&.szql-toast-enter {
 // 		transform: translateX(100%);
 // 		top: 0;
 // 	}
 
-// 	&.eamm-toast-enter-active {
+// 	&.szql-toast-enter-active {
 // 		transform: translateX(0);
-// 		transition: all var(--eamm-transition-sm) ease-out;
+// 		transition: all var(--szql-transition-sm) ease-out;
 // 	}
 
 // 	/* Exit animation */
-// 	&.eamm-toast-exit {
+// 	&.szql-toast-exit {
 // 		transform: translateX(0);
 // 		top: 0;
 // 	}
 
-// 	&.eamm-toast-exit-active {
+// 	&.szql-toast-exit-active {
 // 		transform: translateX(100%);
-// 		transition: all var(--eamm-transition-sm) ease-in;
+// 		transition: all var(--szql-transition-sm) ease-in;
 // 		margin-top: 0;
 // 		margin-bottom: 0;
 // 		height: 0;
@@ -56,45 +56,45 @@
 // 	}
 
 // 	/* Hover state */
-// 	&:not(.eamm-toast-exit-active):hover {
+// 	&:not(.szql-toast-exit-active):hover {
 // 		transform: translateX(-5px);
-// 		box-shadow: var(--eamm-shadow-lg);
+// 		box-shadow: var(--szql-shadow-lg);
 // 	}
 // }
 
-// .eamm-toast-icon {
-// 	font-size: var(--eamm-font-size-md);
-// 	font-weight: var(--eamm-font-weight-semibold);
+// .szql-toast-icon {
+// 	font-size: var(--szql-font-size-md);
+// 	font-weight: var(--szql-font-weight-semibold);
 // 	text-align: center;
 // }
 
-// .eamm-toast-message {
-// 	font-size: var(--eamm-font-size-sm);
-// 	line-height: var(--eamm-line-height-sm);
-// 	font-weight: var(--eamm-font-weight-medium);
+// .szql-toast-message {
+// 	font-size: var(--szql-font-size-sm);
+// 	line-height: var(--szql-line-height-sm);
+// 	font-weight: var(--szql-font-weight-medium);
 // }
 
-// .eamm-toast-close {
+// .szql-toast-close {
 // 	margin-left: auto;
 // }
 
 // /* Animation */
-// .eamm-toast-enter {
+// .szql-toast-enter {
 // 	transform: translateX(100%);
 // }
 
-// .eamm-toast-enter-active {
+// .szql-toast-enter-active {
 // 	transform: translateX(0);
-// 	transition: transform var(--eamm-transition-sm) ease-out;
+// 	transition: transform var(--szql-transition-sm) ease-out;
 // }
 
-// .eamm-toast-exit {
+// .szql-toast-exit {
 // 	transform: translateX(0);
 // }
 
-// .eamm-toast-exit-active {
+// .szql-toast-exit-active {
 // 	transform: translateX(100%);
 // 	transition:
-// 		transform var(--eamm-transition) ease-in,
-// 		opacity var(--eamm-transition-sm) ease-in;
+// 		transform var(--szql-transition) ease-in,
+// 		opacity var(--szql-transition-sm) ease-in;
 // }

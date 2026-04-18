@@ -2,14 +2,14 @@
 /**
  * Frontend storefront rules handler.
  *
- * @package EAMM\Includes\Frontend
+ * @package SZQL\Includes\Frontend
  */
 
-namespace EAMM\Includes\Frontend;
+namespace SZQL\Includes\Frontend;
 
-use EAMM\Includes\ConditionEvaluator;
-use EAMM\Includes\DB;
-use EAMM\Includes\RestrictionEvaluator;
+use SZQL\Includes\ConditionEvaluator;
+use SZQL\Includes\DB;
+use SZQL\Includes\RestrictionEvaluator;
 use WC_Product;
 
 defined( 'ABSPATH' ) || exit;
@@ -22,7 +22,7 @@ class Frontend {
 	/**
 	 * Database instance.
 	 *
-	 * @var \EAMM\Includes\DB
+	 * @var \SZQL\Includes\DB
 	 */
 	private $db;
 
@@ -184,14 +184,14 @@ class Frontend {
 			$options .= '<option value="' . esc_attr( $value ) . '"' . $selected . '>' . esc_html( $value ) . '</option>';
 		}
 
-		return '<select name="quantity" class="qty eamm-qty-select">' . $options . '</select>';
+		return '<select name="quantity" class="qty szql-qty-select">' . $options . '</select>';
 	}
 
 	/**
-	 * Append EAMM quantity limits to variation data.
+	 * Append SZQL quantity limits to variation data.
 	 *
-	 * Adds `eamm_min_qty`, `eamm_max_qty`, `eamm_step_qty`,
-	 * `eamm_initial_qty`, and `eamm_dropdown_values` keys to the variation data array so the frontend
+	 * Adds `szql_min_qty`, `szql_max_qty`, `szql_step_qty`,
+	 * `szql_initial_qty`, and `szql_dropdown_values` keys to the variation data array so the frontend
 	 * script can update the quantity field when a variation is selected.
 	 *
 	 * @param array                 $data      Variation data array.
@@ -201,11 +201,11 @@ class Frontend {
 	 */
 	public function variation_data( $data, $_product, $variation ) {
 		$limits                       = $this->get_combined_limits( $variation );
-		$data['eamm_min_qty']         = $limits['min_qty'];
-		$data['eamm_max_qty']         = $limits['max_qty'];
-		$data['eamm_step_qty']        = $limits['step_qty'];
-		$data['eamm_initial_qty']     = $limits['initial_qty'];
-		$data['eamm_dropdown_values'] = $this->get_dropdown_values( $variation );
+		$data['szql_min_qty']         = $limits['min_qty'];
+		$data['szql_max_qty']         = $limits['max_qty'];
+		$data['szql_step_qty']        = $limits['step_qty'];
+		$data['szql_initial_qty']     = $limits['initial_qty'];
+		$data['szql_dropdown_values'] = $this->get_dropdown_values( $variation );
 		return $data;
 	}
 
@@ -238,16 +238,16 @@ class Frontend {
 		$has_assets  = $this->should_enqueue_assets();
 
 		if ( '' !== $dynamic_css && ! $has_assets ) {
-			wp_register_style( 'eamm-frontend-inline', false, array(), EAMM_VER );
-			wp_enqueue_style( 'eamm-frontend-inline' );
-			wp_add_inline_style( 'eamm-frontend-inline', $dynamic_css );
+			wp_register_style( 'szql-frontend-inline', false, array(), SZQL_VER );
+			wp_enqueue_style( 'szql-frontend-inline' );
+			wp_add_inline_style( 'szql-frontend-inline', $dynamic_css );
 		}
 
 		if ( ! $has_assets ) {
 			return;
 		}
 
-		$asset = require EAMM_PATH . 'assets/js/eamm-frontend.asset.php';
+		$asset = require SZQL_PATH . 'assets/js/szql-frontend.asset.php';
 
 		$dependencies = ! empty( $asset['dependencies'] ) && is_array( $asset['dependencies'] )
 			? $asset['dependencies']
@@ -257,25 +257,25 @@ class Frontend {
 			$dependencies[] = 'jquery';
 		}
 
-		$css_file = is_rtl() ? 'style-eamm-frontend-rtl.css' : 'style-eamm-frontend.css';
-		$css_path = EAMM_PATH . 'assets/js/' . $css_file;
-		$js_path  = EAMM_PATH . 'assets/js/eamm-frontend.js';
+		$css_file = is_rtl() ? 'style-szql-frontend-rtl.css' : 'style-szql-frontend.css';
+		$css_path = SZQL_PATH . 'assets/js/' . $css_file;
+		$js_path  = SZQL_PATH . 'assets/js/szql-frontend.js';
 
-		$script_version = file_exists( $js_path ) ? (string) filemtime( $js_path ) : ( $asset['version'] ?? EAMM_VER );
+		$script_version = file_exists( $js_path ) ? (string) filemtime( $js_path ) : ( $asset['version'] ?? SZQL_VER );
 		$style_version  = file_exists( $css_path ) ? (string) filemtime( $css_path ) : $script_version;
 
-		wp_enqueue_style( 'eamm-frontend', EAMM_URL . 'assets/js/' . $css_file, array(), $style_version );
+		wp_enqueue_style( 'szql-frontend', SZQL_URL . 'assets/js/' . $css_file, array(), $style_version );
 
-		wp_enqueue_script( 'eamm-frontend', EAMM_URL . 'assets/js/eamm-frontend.js', $dependencies, $script_version, true );
+		wp_enqueue_script( 'szql-frontend', SZQL_URL . 'assets/js/szql-frontend.js', $dependencies, $script_version, true );
 
 		wp_localize_script(
-			'eamm-frontend',
-			'eammSettings',
+			'szql-frontend',
+			'szqlSettings',
 			$this->get_frontend_settings()
 		);
 
 		if ( '' !== $dynamic_css ) {
-			wp_add_inline_style( 'eamm-frontend', $dynamic_css );
+			wp_add_inline_style( 'szql-frontend', $dynamic_css );
 		}
 	}
 
@@ -324,7 +324,7 @@ class Frontend {
 			return;
 		}
 		$price = (float) $product->get_price();
-		echo '<div class="eamm-total-price" data-price="' . esc_attr( $price ) . '"></div>';
+		echo '<div class="szql-total-price" data-price="' . esc_attr( $price ) . '"></div>';
 	}
 
 	/**
@@ -593,7 +593,7 @@ class Frontend {
 				'trimZeros'         => (bool) apply_filters( 'woocommerce_price_trim_zeros', false ),
 			),
 			'i18n'                    => array(
-				'totalLabel' => __( 'Total:', 'easy-min-max' ),
+				'totalLabel' => __( 'Total:', 'syzenlabs-quantity-limits' ),
 			),
 		);
 	}

@@ -11,13 +11,13 @@ vendor
 vendor_prefixed
 
 # ignore compile files
-assets/css/eamm-backend.css
-assets/css/eamm-backend-rtl.css
-assets/css/eamm-backend.css.map
-assets/css/eamm-backend-temp.css
-assets/css/eamm-backend-datatable.css
-assets/css/eamm-backend-datatable-rtl.css
-assets/css/eamm-frontend.css
+assets/css/szql-backend.css
+assets/css/szql-backend-rtl.css
+assets/css/szql-backend.css.map
+assets/css/szql-backend-temp.css
+assets/css/szql-backend-datatable.css
+assets/css/szql-backend-datatable-rtl.css
+assets/css/szql-frontend.css
 assets/js/*
 src/style-generated.css
 

@@ -14,7 +14,7 @@ export function TinyEditor( {
 	const textareaRef = useRef( null );
 
 	const idRef = useRef(
-		id ? id : `eamm-${ Math.random().toString( 36 ).slice( 2 ) }`
+		id ? id : `szql-${ Math.random().toString( 36 ).slice( 2 ) }`
 	);
 
 	const isInitializedRef = useRef( false );

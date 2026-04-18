@@ -1,10 +1,10 @@
-=== Easy Min Max ===
+=== SyzenLabs Quantity Limits ===
 Contributors: syzenlabs
 Tags: minmax, quantity, price, product restrictions
 Requires at least: 6.4
 Tested up to: 6.9
 Requires PHP: 7.4
-Stable tag: 1.0.0
+Stable tag: 1.0.1
 License: GPLv3
 License URI: http://www.gnu.org/licenses/gpl-3.0.html
 
@@ -12,7 +12,7 @@ Set minimum and maximum quantity and price rules for WooCommerce products with f
 
 == Description ==
 
-Easy Min Max helps you control how customers buy products in WooCommerce.
+SyzenLabs Quantity Limits helps you control how customers buy products in WooCommerce.
 
 Create publishable rules that enforce minimum quantity, maximum quantity, step quantity, initial quantity, fixed quantity, minimum price, and maximum price. Each rule can be targeted with flexible condition groups, so you can apply restrictions only when they are relevant.
 
@@ -33,7 +33,7 @@ The plugin validates rules on product pages, in the cart, during checkout, and t
 
 == Flexible Rule Conditions ==
 
-Easy Min Max supports a broad set of targeting conditions so you can apply rules only when they should run.
+SyzenLabs Quantity Limits supports a broad set of targeting conditions so you can apply rules only when they should run.
 
 You can build rules based on:
 
@@ -46,7 +46,7 @@ You can build rules based on:
 
 == Storefront Behavior ==
 
-When a published rule matches, Easy Min Max adjusts WooCommerce quantity handling and validation for the relevant products.
+When a published rule matches, SyzenLabs Quantity Limits adjusts WooCommerce quantity handling and validation for the relevant products.
 
 Typical use cases include:
 
@@ -60,7 +60,7 @@ Typical use cases include:
 
 Source code is available at:
 
-https://github.com/SyzenLabs/easy-min-max/tree/org
+https://github.com/SyzenLabs/syzenlabs-quantity-limits/tree/org
 
 == Installation ==
 
@@ -74,19 +74,19 @@ https://github.com/SyzenLabs/easy-min-max/tree/org
 = Automatic installation =
 
 1. Go to Plugins > Add New in your WordPress admin.
-2. Search for "Easy Min Max".
+2. Search for "SyzenLabs Quantity Limits".
 3. Install and activate the plugin.
 4. Make sure WooCommerce is active.
 
 = Manual installation =
 
 1. Upload the plugin folder to `/wp-content/plugins/`.
-2. Activate Easy Min Max from the Plugins screen.
+2. Activate SyzenLabs Quantity Limits from the Plugins screen.
 3. Ensure WooCommerce is active before configuring rules.
 
 == Frequently Asked Questions ==
 
-= Does Easy Min Max work only for quantity rules? =
+= Does SyzenLabs Quantity Limits work only for quantity rules? =
 
 No. You can create both quantity-based and price-based restrictions for matching products.
 
@@ -107,6 +107,10 @@ Yes. Validation is applied on add to cart, cart updates, checkout, and WooCommer
 The plugin does not load its main functionality until WooCommerce is available.
 
 == Changelog ==
+
+= 1.0.1 - 18 Apr 2026 =
+* Fix: Corrected plugin name in header for consistency.
+* Fix: REST API permissions check for better security.
 
 = 1.0.0 - 03 Apr 2026 =
 * Initial release.

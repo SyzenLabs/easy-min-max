@@ -50,11 +50,11 @@ html,
 }
 
 body {
-	// font-family: var(--eamm-font-family);
-	// font-size: var(--eamm-default-font-size);
-	// line-height: var(--eamm-default-line-height);
-	// color: var(--eamm-text-strong);
-	background-color: var(--eamm-bg-weak);
+	// font-family: var(--szql-font-family);
+	// font-size: var(--szql-default-font-size);
+	// line-height: var(--szql-default-line-height);
+	// color: var(--szql-text-strong);
+	background-color: var(--szql-bg-weak);
 
 	// @include scrollbar-dark;
 }
@@ -81,7 +81,7 @@ a {
 
 hr {
 	border: none;
-	border-bottom: 1px solid var(--eamm-stroke-sub);
+	border-bottom: 1px solid var(--szql-stroke-sub);
 	margin: 0;
 }
 
@@ -99,19 +99,19 @@ hr {
 	}
 }
 
-.eamm-container {
-	max-width: var(--eamm-container-max-width);
+.szql-container {
+	max-width: var(--szql-container-max-width);
 	margin: 0 auto;
 	padding-left: 16px;
 	padding-right: 16px;
 }
 
-.eamm-is-disabled {
+.szql-is-disabled {
 	opacity: 0.6;
 	cursor: not-allowed !important;
 }
 
-.eamm-link {
+.szql-link {
 	text-decoration: underline;
 }
 

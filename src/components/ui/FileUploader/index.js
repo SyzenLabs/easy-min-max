@@ -38,9 +38,9 @@ function FileUploader( {
 	return (
 		<div
 			className={ cn(
-				'eamm-file-uploader-component',
+				'szql-file-uploader-component',
 				className,
-				disabled && 'eamm-is-disabled'
+				disabled && 'szql-is-disabled'
 			) }
 		>
 			<FileUploaderContext.Provider
@@ -131,8 +131,8 @@ const validateFile = ( file, accept, sizeLimit ) => {
 };
 
 function FileUploaderContent( {
-	label = __( 'Drag and Drop File Here', 'easy-min-max' ),
-	subtitle = __( `You can upload files`, 'easy-min-max' ),
+	label = __( 'Drag and Drop File Here', 'syzenlabs-quantity-limits' ),
+	subtitle = __( `You can upload files`, 'syzenlabs-quantity-limits' ),
 	accept,
 	sizeLimit, // in MB
 	dragOverLabel,
@@ -322,8 +322,8 @@ function FileUploaderContent( {
 		<div
 			ref={ dropZoneRef }
 			className={ cn(
-				'eamm-file-uploader-dropzone',
-				isDragging && 'eamm-is-dragover'
+				'szql-file-uploader-dropzone',
+				isDragging && 'szql-is-dragover'
 			) }
 			onDragEnter={ handleDragEnter }
 			onDragOver={ handleDragOver }
@@ -337,32 +337,32 @@ function FileUploaderContent( {
 			}
 			aria-disabled={ disabled }
 		>
-			<div className="eamm-file-uploader-content">
+			<div className="szql-file-uploader-content">
 				<Icon
-					className="eamm-file-uploader-icon"
+					className="szql-file-uploader-icon"
 					name="download"
 					width="48px"
 					height="48px"
 				/>
 				<div>
-					<div className="eamm-file-uploader-label">
+					<div className="szql-file-uploader-label">
 						{ isDragging ? dragOverLabel : label }
 					</div>
-					<div className="eamm-file-uploader-subtitle">
+					<div className="szql-file-uploader-subtitle">
 						{ subtitle }
 					</div>
 				</div>
-				<div className="eamm-file-uploader-or">
-					{ __( 'OR', 'easy-min-max' ) }
+				<div className="szql-file-uploader-or">
+					{ __( 'OR', 'syzenlabs-quantity-limits' ) }
 				</div>
 				<Button __next40pxDefaultSize variant="primary">
-					{ __( 'Browse Files', 'easy-min-max' ) }
+					{ __( 'Browse Files', 'syzenlabs-quantity-limits' ) }
 				</Button>
 			</div>
 			<input
 				ref={ inputRef }
 				type="file"
-				className="eamm-file-uploader-input"
+				className="szql-file-uploader-input"
 				multiple={ multiple }
 				accept={ accept }
 				onChange={ handleInputChange }
@@ -375,32 +375,32 @@ function FileUploaderContent( {
 }
 
 function FileUploaderPreview( {
-	uploadText = __( 'Continue to upload', 'easy-min-max' ),
+	uploadText = __( 'Continue to upload', 'syzenlabs-quantity-limits' ),
 	onUpload,
 } ) {
 	const { files, multiple } = useFileUploaderContext();
 	const modifiedFormat = multiple ? files : [ files ];
 	return (
-		<div className="eamm-file-uploader-preview-component">
-			<div className="eamm-file-uploader-preview-items">
+		<div className="szql-file-uploader-preview-component">
+			<div className="szql-file-uploader-preview-items">
 				{ modifiedFormat.map( ( file ) => (
 					<div
 						key={ file.name }
-						className="eamm-file-uploader-preview-item"
+						className="szql-file-uploader-preview-item"
 					>
 						<Icon
 							name="paper"
 							width="20px"
 							height="20px"
-							className="eamm-file-uploader-preview-item-icon"
+							className="szql-file-uploader-preview-item-icon"
 						/>
-						<div className="eamm-file-uploader-filename">
+						<div className="szql-file-uploader-filename">
 							File name { file.name }
 						</div>
 					</div>
 				) ) }
 			</div>
-			<div className="eamm-file-uploader-preview-item-actions">
+			<div className="szql-file-uploader-preview-item-actions">
 				<Button
 					__next40pxDefaultSize
 					variant="primary"
@@ -414,26 +414,26 @@ function FileUploaderPreview( {
 }
 
 function FileUploaderLoader( {
-	progressText = __( 'Uploading Files…', 'easy-min-max' ),
+	progressText = __( 'Uploading Files…', 'syzenlabs-quantity-limits' ),
 } ) {
 	const { files, multiple } = useFileUploaderContext();
 	const modifiedFormat = multiple ? files : [ files ];
 
 	return (
-		<div className="eamm-file-uploader-loader-component">
-			<div className="eamm-file-uploader-loader-items">
+		<div className="szql-file-uploader-loader-component">
+			<div className="szql-file-uploader-loader-items">
 				{ modifiedFormat.map( ( file ) => (
 					<div
 						key={ file.name }
-						className="eamm-file-uploader-loader-item"
+						className="szql-file-uploader-loader-item"
 					>
 						<Icon
 							name="paper"
 							width="20px"
 							height="20px"
-							className="eamm-file-uploader-loader-item-icon"
+							className="szql-file-uploader-loader-item-icon"
 						/>
-						<div className="eamm-file-uploader-loader-filename">
+						<div className="szql-file-uploader-loader-filename">
 							File name { file?.name }
 						</div>
 					</div>
@@ -443,7 +443,7 @@ function FileUploaderLoader( {
 			{ /* <div className="loader"></div> */ }
 			<ProgressBar />
 
-			<div className="eamm-file-uploader-loader-text">
+			<div className="szql-file-uploader-loader-text">
 				{ progressText }
 			</div>
 		</div>
@@ -451,3 +451,4 @@ function FileUploaderLoader( {
 }
 
 export { FileUploader };
+

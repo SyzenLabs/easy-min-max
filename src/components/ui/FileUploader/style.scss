@@ -1,60 +1,60 @@
 $file-uploader-min-height: 284px;
 
-.eamm-file-uploader-preview-component,
-.eamm-file-uploader-dropzone,
-.eamm-file-uploader-loader-component {
+.szql-file-uploader-preview-component,
+.szql-file-uploader-dropzone,
+.szql-file-uploader-loader-component {
 	@apply flex flex-col items-center justify-center gap-5 p-10 min-h-71 border border-dashed rounded-md cursor-pointer transition-all duration-200 ease-out;
-	background-color: var(--eamm-color-primary-alpha-16);
-	border-color: var(--eamm-stroke-special);
+	background-color: var(--szql-color-primary-alpha-16);
+	border-color: var(--szql-stroke-special);
 }
 
-.eamm-file-uploader-component {
+.szql-file-uploader-component {
 	@apply w-full;
 
-	.eamm-file-uploader-dropzone {
+	.szql-file-uploader-dropzone {
 		&:hover,
-		&.eamm-is-dragover {
-			// background-color: var(--eamm-sky-blue-alpha-16);
-			box-shadow: var(--eamm-shadow-md);
+		&.szql-is-dragover {
+			// background-color: var(--szql-sky-blue-alpha-16);
+			box-shadow: var(--szql-shadow-md);
 		}
 
-		&:active:not(.eamm-is-dragover) {
+		&:active:not(.szql-is-dragover) {
 			@apply translate-y-px;
 		}
 	}
 
-	.eamm-file-uploader-content {
+	.szql-file-uploader-content {
 		@apply flex flex-col items-center justify-center gap-5 text-center max-w-xs mx-auto;
-		color: var(--eamm-text-white);
+		color: var(--szql-text-white);
 	}
 
-	.eamm-file-uploader-icon {
-		color: var(--eamm-text-special);
+	.szql-file-uploader-icon {
+		color: var(--szql-text-special);
 	}
 
-	.eamm-file-uploader-label {
-		font-size: var(--eamm-font-size-lg);
-		line-height: var(--eamm-font-line-height-lg);
-		font-weight: var(--eamm-font-weight-medium);
-		color: var(--eamm-text-strong);
+	.szql-file-uploader-label {
+		font-size: var(--szql-font-size-lg);
+		line-height: var(--szql-font-line-height-lg);
+		font-weight: var(--szql-font-weight-medium);
+		color: var(--szql-text-strong);
 	}
 
-	.eamm-file-uploader-subtitle {
-		font-size: var(--eamm-font-size-xs);
-		line-height: var(--eamm-font-line-height-xs);
-		color: var(--eamm-text-sub);
+	.szql-file-uploader-subtitle {
+		font-size: var(--szql-font-size-xs);
+		line-height: var(--szql-font-line-height-xs);
+		color: var(--szql-text-sub);
 	}
-	.eamm-file-uploader-or {
-		font-size: var(--eamm-font-size-xs);
-		line-height: var(--eamm-font-line-height-xs);
-		color: var(--eamm-text-sub);
+	.szql-file-uploader-or {
+		font-size: var(--szql-font-size-xs);
+		line-height: var(--szql-font-line-height-xs);
+		color: var(--szql-text-sub);
 		@apply relative;
 
 		&::before,
 		&::after {
 			@apply absolute top-1/2 -translate-y-px w-23.75 h-px;
 			content: "";
-			background-color: var(--eamm-text-disabled);
+			background-color: var(--szql-text-disabled);
 		}
 
 		&::before {
@@ -65,70 +65,70 @@ $file-uploader-min-height: 284px;
 		}
 	}
 
-	.eamm-file-uploader-input {
+	.szql-file-uploader-input {
 		@apply hidden;
 	}
-	.eamm-file-uploader-dropzone:hover:not(.eamm-is-disabled) {
+	.szql-file-uploader-dropzone:hover:not(.szql-is-disabled) {
 		.dashicons {
 			@apply -translate-y-px;
 		}
 	}
 
-	.eamm-file-uploader-dropzone.eamm-is-disabled {
+	.szql-file-uploader-dropzone.szql-is-disabled {
 		@apply opacity-60 cursor-not-allowed pointer-events-none;
 	}
 
 	// Responsive adjustments
 	@media (max-width: 480px) {
-		.eamm-file-uploader-dropzone {
+		.szql-file-uploader-dropzone {
 			@apply p-6 py-4 min-h-35;
 		}
 
-		.eamm-file-uploader-content {
+		.szql-file-uploader-content {
 			@apply gap-2;
 		}
 	}
 }
 
-.eamm-file-uploader-preview-component {
-	.eamm-file-uploader-preview-items {
+.szql-file-uploader-preview-component {
+	.szql-file-uploader-preview-items {
 		@apply flex flex-col gap-2.5;
 
-		.eamm-file-uploader-preview-item {
+		.szql-file-uploader-preview-item {
 			@apply flex items-center gap-2.5;
-			.eamm-file-uploader-preview-item-icon {
-				color: var(--eamm-text-special);
+			.szql-file-uploader-preview-item-icon {
+				color: var(--szql-text-special);
 			}
-			.eamm-file-uploader-filename {
-				font-size: var(--eamm-font-size-lg);
-				line-height: var(--eamm-font-line-height-lg);
-				color: var(--eamm-text-strong);
+			.szql-file-uploader-filename {
+				font-size: var(--szql-font-size-lg);
+				line-height: var(--szql-font-line-height-lg);
+				color: var(--szql-text-strong);
 			}
 		}
 	}
 }
 
-.eamm-file-uploader-loader-component {
-	.eamm-file-uploader-loader-items {
+.szql-file-uploader-loader-component {
+	.szql-file-uploader-loader-items {
 		@apply flex flex-col gap-2.5;
 
-		.eamm-file-uploader-loader-item {
+		.szql-file-uploader-loader-item {
 			@apply flex items-center gap-2.5;
-			.eamm-file-uploader-loader-item-icon {
-				color: var(--eamm-text-special);
+			.szql-file-uploader-loader-item-icon {
+				color: var(--szql-text-special);
 			}
-			.eamm-file-uploader-loader-filename {
-				font-size: var(--eamm-font-size-lg);
-				line-height: var(--eamm-font-line-height-lg);
-				color: var(--eamm-text-strong);
+			.szql-file-uploader-loader-filename {
+				font-size: var(--szql-font-size-lg);
+				line-height: var(--szql-font-line-height-lg);
+				color: var(--szql-text-strong);
 			}
 		}
 	}
-	.eamm-file-uploader-loader-text {
-		font-size: var(--eamm-font-size-lg);
-		line-height: var(--eamm-font-line-height-lg);
-		font-weight: var(--eamm-font-weight-medium);
-		color: var(--eamm-text-special);
+	.szql-file-uploader-loader-text {
+		font-size: var(--szql-font-size-lg);
+		line-height: var(--szql-font-line-height-lg);
+		font-weight: var(--szql-font-weight-medium);
+		color: var(--szql-text-special);
 		@apply text-center;
 	}
 }
@@ -137,10 +137,10 @@ $file-uploader-min-height: 284px;
 	height: 12px;
 	width: 100%;
 	--c: no-repeat linear-gradient(var(--wp-admin-theme-color) 0 0);
-	background: var(--c), var(--c), var(--eamm-sky-blue-200);
+	background: var(--c), var(--c), var(--szql-sky-blue-200);
 	background-size: 60% 100%;
 	animation: l16 2s infinite;
-	border-radius: var(--eamm-border-radius-md);
+	border-radius: var(--szql-border-radius-md);
 }
 
 @keyframes l16 {

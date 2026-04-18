@@ -1,6 +1,6 @@
 <?php // phpcs:ignore
 
-namespace EAMM\Includes\Utils;
+namespace SZQL\Includes\Utils;
 
 defined( 'ABSPATH' ) || exit;
 

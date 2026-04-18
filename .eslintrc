@@ -12,7 +12,7 @@
 			],
 			"globals": {
 				"wp": "readonly",
-				"eammAdmin": "readonly"
+				"szqlAdmin": "readonly"
 			},
 			"parserOptions": {
 				"requireConfigFile": false,

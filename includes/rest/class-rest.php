@@ -2,10 +2,10 @@
 /**
  * Options Action.
  *
- * @package EAMM\Options
+ * @package SZQL\Options
  */
 
-namespace EAMM\Includes\Rest;
+namespace SZQL\Includes\Rest;
 
 defined( 'ABSPATH' ) || exit;
 

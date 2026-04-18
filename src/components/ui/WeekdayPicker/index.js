@@ -17,8 +17,8 @@ export function WeekdayPicker( {
 	defaultValue,
 	onChange,
 	disabled = false,
-	weekdayPlaceholder = __( 'Select Weekdays', 'easy-min-max' ),
-	timezonePlaceholder = __( 'Select Timezone', 'easy-min-max' ),
+	weekdayPlaceholder = __( 'Select Weekdays', 'syzenlabs-quantity-limits' ),
+	timezonePlaceholder = __( 'Select Timezone', 'syzenlabs-quantity-limits' ),
 } ) {
 	const isControlled = value !== undefined;
 	const [ internal, setInternal ] = useState( () => ( {
@@ -156,7 +156,7 @@ export function WeekdayPicker( {
 								onClose();
 							} }
 						>
-							{ __( 'Save', 'easy-min-max' ) }
+							{ __( 'Save', 'syzenlabs-quantity-limits' ) }
 						</Button>
 					</HStack>
 				</VStack>

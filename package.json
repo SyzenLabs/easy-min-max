@@ -1,11 +1,11 @@
 {
-	"name": "easy-min-max",
+	"name": "syzenlabs-quantity-limits",
 	"author": {
 		"name": "Samin Yaser",
 		"email": "saminyaserwork@gmail.com",
 		"url": "https://yaser.com.bd"
 	},
-	"version": "1.0.0",
+	"version": "1.0.1",
 	"license": "GPL-3.0-only",
 	"main": "src/index.js",
 	"prettier": "@wordpress/prettier-config",
@@ -23,7 +23,7 @@
 		"build:webpack": "wp-scripts build",
 		"translate": "npm run build:gulp && npm run build:webpack && npm run i18n",
 		"i18n": "npm run i18n:make-pot && npm run i18n:ai && npm run i18n:make-mo && npm run i18n:make-json",
-		"i18n:make-pot": "php -d memory_limit=2G wp-cli.phar i18n make-pot . languages/easy-min-max.pot --allow-root --slug=easy-min-max --exclude=src,build,node_modules,vendor,vendor_prefixed --debug=\"make-pot\" --color",
+		"i18n:make-pot": "php -d memory_limit=2G wp-cli.phar i18n make-pot . languages/syzenlabs-quantity-limits.pot --allow-root --slug=syzenlabs-quantity-limits --exclude=src,build,node_modules,vendor,vendor_prefixed --debug=\"make-pot\" --color",
 		"i18n:ai": "node --env-file=.env ./scripts/ai-translate-i18n.mjs",
 		"i18n:make-mo": "php wp-cli.phar i18n make-mo languages --allow-root",
 		"i18n:make-json": "php wp-cli.phar i18n make-json languages --allow-root",

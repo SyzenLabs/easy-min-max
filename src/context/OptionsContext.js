@@ -6,10 +6,10 @@ import { useToast } from '@/context/ToastContext';
 import { getCurrencyCode, getDimensionUnit, getWeightUnit } from '@/utils';
 import apiFetch from '@wordpress/api-fetch';
 import {
-	createContext,
-	useCallback,
-	useContext,
-	useState,
+    createContext,
+    useCallback,
+    useContext,
+    useState,
 } from '@wordpress/element';
 import { __ } from '@wordpress/i18n';
 
@@ -17,73 +17,73 @@ const ShippingOptionsContext = createContext();
 
 // Operator options for different condition types
 const operatorType1Options = [
-	{ value: 'equal', label: __( 'Equals', 'easy-min-max' ) },
+	{ value: 'equal', label: __( 'Equals', 'syzenlabs-quantity-limits' ) },
 	{
 		value: 'doesntEqual',
-		label: __( 'Does not equal', 'easy-min-max' ),
+		label: __( 'Does not equal', 'syzenlabs-quantity-limits' ),
 	},
 	{
 		value: 'greaterThan',
-		label: __( 'Greater than', 'easy-min-max' ),
+		label: __( 'Greater than', 'syzenlabs-quantity-limits' ),
 	},
 	{
 		value: 'lesserThan',
-		label: __( 'Less than', 'easy-min-max' ),
+		label: __( 'Less than', 'syzenlabs-quantity-limits' ),
 	},
 	{
 		value: 'greaterThanOrEquals',
-		label: __( 'Greater than or equal to', 'easy-min-max' ),
+		label: __( 'Greater than or equal to', 'syzenlabs-quantity-limits' ),
 	},
 	{
 		value: 'lesserThanOrEquals',
-		label: __( 'Less than or equal to', 'easy-min-max' ),
+		label: __( 'Less than or equal to', 'syzenlabs-quantity-limits' ),
 	},
-	{ value: 'between', label: __( 'Between', 'easy-min-max' ) },
+	{ value: 'between', label: __( 'Between', 'syzenlabs-quantity-limits' ) },
 ];
 
 const operatorType2Options = [
-	{ value: 'equal', label: __( 'Equals', 'easy-min-max' ) },
+	{ value: 'equal', label: __( 'Equals', 'syzenlabs-quantity-limits' ) },
 	{
 		value: 'doesntEqual',
-		label: __( 'Does not equal', 'easy-min-max' ),
+		label: __( 'Does not equal', 'syzenlabs-quantity-limits' ),
 	},
-	{ value: 'contains', label: __( 'Contains', 'easy-min-max' ) },
+	{ value: 'contains', label: __( 'Contains', 'syzenlabs-quantity-limits' ) },
 	{
 		value: 'doesntContains',
-		label: __( 'Does not Contain', 'easy-min-max' ),
+		label: __( 'Does not Contain', 'syzenlabs-quantity-limits' ),
 	},
 ];
 
 const operatorType3Options = [
-	{ value: 'contains', label: __( 'Contains', 'easy-min-max' ) },
+	{ value: 'contains', label: __( 'Contains', 'syzenlabs-quantity-limits' ) },
 	{
 		value: 'doesntContains',
-		label: __( 'Does not Contain', 'easy-min-max' ),
+		label: __( 'Does not Contain', 'syzenlabs-quantity-limits' ),
 	},
 ];
 
 const operatorType4Options = [
-	{ value: 'equal', label: __( 'Equals', 'easy-min-max' ) },
+	{ value: 'equal', label: __( 'Equals', 'syzenlabs-quantity-limits' ) },
 	{
 		value: 'doesntEqual',
-		label: __( 'Does not equal', 'easy-min-max' ),
+		label: __( 'Does not equal', 'syzenlabs-quantity-limits' ),
 	},
 ];
 
 const operatorType5Options = [
-	{ value: 'equal', label: __( 'Equals', 'easy-min-max' ) },
+	{ value: 'equal', label: __( 'Equals', 'syzenlabs-quantity-limits' ) },
 	{
 		value: 'doesntEqual',
-		label: __( 'Does not Equal', 'easy-min-max' ),
+		label: __( 'Does not Equal', 'syzenlabs-quantity-limits' ),
 	},
-	{ value: 'contains', label: __( 'Contains', 'easy-min-max' ) },
+	{ value: 'contains', label: __( 'Contains', 'syzenlabs-quantity-limits' ) },
 	{
 		value: 'doesntContains',
-		label: __( 'Does not Contain', 'easy-min-max' ),
+		label: __( 'Does not Contain', 'syzenlabs-quantity-limits' ),
 	},
 	{
 		value: 'none',
-		label: __( 'None Applied', 'easy-min-max' ),
+		label: __( 'None Applied', 'syzenlabs-quantity-limits' ),
 	},
 ];
 
@@ -144,14 +144,14 @@ export const ShippingOptionsProvider = ( { children } ) => {
 				shippingClass: 'shipping-class',
 			};
 			const response = await apiFetch( {
-				path: `/easy-min-max/v1/condition-data/${
+				path: `/syzenlabs-quantity-limits/v1/condition-data/${
 					fieldMap[ field ] ?? field
 				}?per_page=9999999&search=${ searchTerm }`,
 			} );
 
 			if ( ! response.success ) {
 				showToast(
-					__( `Failed to fetch data`, 'easy-min-max' ),
+					__( `Failed to fetch data`, 'syzenlabs-quantity-limits' ),
 					'error'
 				);
 				return [];
@@ -176,7 +176,7 @@ export const ShippingOptionsProvider = ( { children } ) => {
 	const getAttributeData = useCallback( async () => {
 		try {
 			const response = await apiFetch( {
-				path: `/easy-min-max/v1/condition-data/attribute`,
+				path: `/syzenlabs-quantity-limits/v1/condition-data/attribute`,
 			} );
 
 			if ( ! response.success ) {
@@ -186,7 +186,7 @@ export const ShippingOptionsProvider = ( { children } ) => {
 			setAttributeData( response.data );
 		} catch ( error ) {
 			showToast(
-				__( 'Failed to fetch attributes!', 'easy-min-max' ),
+				__( 'Failed to fetch attributes!', 'syzenlabs-quantity-limits' ),
 				'warning',
 				3000
 			);
@@ -197,11 +197,11 @@ export const ShippingOptionsProvider = ( { children } ) => {
 	const getDefaultOptions = useCallback( () => {
 		const _def = [
 			{
-				label: __( 'General', 'easy-min-max' ),
+				label: __( 'General', 'syzenlabs-quantity-limits' ),
 				value: 'General',
 				children: [
 					{
-						label: __( 'Always', 'easy-min-max' ),
+						label: __( 'Always', 'syzenlabs-quantity-limits' ),
 						value: 'always',
 						operatorType: null,
 						component: null,
@@ -209,21 +209,21 @@ export const ShippingOptionsProvider = ( { children } ) => {
 				],
 			},
 			{
-				label: __( 'Cart Specific', 'easy-min-max' ),
+				label: __( 'Cart Specific', 'syzenlabs-quantity-limits' ),
 				value: 'Cart',
 				children: [
 					{
-						label: __( 'Cart Quantity', 'easy-min-max' ),
+						label: __( 'Cart Quantity', 'syzenlabs-quantity-limits' ),
 						value: 'cart_quantity',
 						operatorType: 'Type1',
 						component: 'Input',
 						inputProps: {
 							type: 'number',
-							unit: __( 'Item(s)', 'easy-min-max' ),
+							unit: __( 'Item(s)', 'syzenlabs-quantity-limits' ),
 						},
 					},
 					{
-						label: __( 'Cart Total', 'easy-min-max' ),
+						label: __( 'Cart Total', 'syzenlabs-quantity-limits' ),
 						value: 'cart_total',
 						operatorType: 'Type1',
 						component: 'Input',
@@ -233,7 +233,7 @@ export const ShippingOptionsProvider = ( { children } ) => {
 						},
 					},
 					{
-						label: __( 'Cart Subtotal', 'easy-min-max' ),
+						label: __( 'Cart Subtotal', 'syzenlabs-quantity-limits' ),
 						value: 'cart_subtotal',
 						operatorType: 'Type1',
 						component: 'Input',
@@ -243,7 +243,7 @@ export const ShippingOptionsProvider = ( { children } ) => {
 						},
 					},
 					{
-						label: __( 'Cart Weight', 'easy-min-max' ),
+						label: __( 'Cart Weight', 'syzenlabs-quantity-limits' ),
 						value: 'cart_weight',
 						operatorType: 'Type1',
 						component: 'Input',
@@ -253,7 +253,7 @@ export const ShippingOptionsProvider = ( { children } ) => {
 						},
 					},
 					{
-						label: __( 'Cart Coupons', 'easy-min-max' ),
+						label: __( 'Cart Coupons', 'syzenlabs-quantity-limits' ),
 						value: 'cart_coupons',
 						operatorType: 'Type2',
 						component: 'MultiSelect',
@@ -261,7 +261,7 @@ export const ShippingOptionsProvider = ( { children } ) => {
 						data: optionsData?.coupons || [],
 					},
 					{
-						label: __( 'Cart Length', 'easy-min-max' ),
+						label: __( 'Cart Length', 'syzenlabs-quantity-limits' ),
 						value: 'cart_length',
 						operatorType: 'Type1',
 						component: 'Input',
@@ -271,7 +271,7 @@ export const ShippingOptionsProvider = ( { children } ) => {
 						},
 					},
 					{
-						label: __( 'Cart Width', 'easy-min-max' ),
+						label: __( 'Cart Width', 'syzenlabs-quantity-limits' ),
 						value: 'cart_width',
 						operatorType: 'Type1',
 						component: 'Input',
@@ -281,7 +281,7 @@ export const ShippingOptionsProvider = ( { children } ) => {
 						},
 					},
 					{
-						label: __( 'Cart Height', 'easy-min-max' ),
+						label: __( 'Cart Height', 'syzenlabs-quantity-limits' ),
 						value: 'cart_height',
 						operatorType: 'Type1',
 						component: 'Input',
@@ -291,7 +291,7 @@ export const ShippingOptionsProvider = ( { children } ) => {
 						},
 					},
 					{
-						label: __( 'Cart Volume', 'easy-min-max' ),
+						label: __( 'Cart Volume', 'syzenlabs-quantity-limits' ),
 						value: 'cart_volume',
 						operatorType: 'Type1',
 						component: 'Input',
@@ -303,11 +303,11 @@ export const ShippingOptionsProvider = ( { children } ) => {
 				],
 			},
 			{
-				label: __( 'Product Specific', 'easy-min-max' ),
+				label: __( 'Product Specific', 'syzenlabs-quantity-limits' ),
 				value: 'Product',
 				children: [
 					{
-						label: __( 'Product', 'easy-min-max' ),
+						label: __( 'Product', 'syzenlabs-quantity-limits' ),
 						value: 'current_product',
 						operatorType: 'Type2',
 						component: 'MultiSelect',
@@ -315,7 +315,7 @@ export const ShippingOptionsProvider = ( { children } ) => {
 						data: optionsData?.current_product || [],
 					},
 					{
-						label: __( 'Product Categories', 'easy-min-max' ),
+						label: __( 'Product Categories', 'syzenlabs-quantity-limits' ),
 						value: 'category_products',
 						operatorType: 'Type2',
 						component: 'MultiSelect',
@@ -323,7 +323,7 @@ export const ShippingOptionsProvider = ( { children } ) => {
 						data: optionsData?.category_products || [],
 					},
 					{
-						label: __( 'Product Tags', 'easy-min-max' ),
+						label: __( 'Product Tags', 'syzenlabs-quantity-limits' ),
 						value: 'tag_products',
 						operatorType: 'Type2',
 						component: 'MultiSelect',
@@ -331,7 +331,7 @@ export const ShippingOptionsProvider = ( { children } ) => {
 						data: optionsData?.tag_products || [],
 					},
 					// {
-					// 	label: __( 'Product SKU', 'easy-min-max' ),
+					// 	label: __( 'Product SKU', 'syzenlabs-quantity-limits' ),
 					// 	value: 'product_sku',
 					// 	operatorType: 'Type5',
 					// 	component: 'MultiSelect',
@@ -339,7 +339,7 @@ export const ShippingOptionsProvider = ( { children } ) => {
 					// 	data: optionsData?.attribute || [],
 					// },
 					{
-						label: __( 'Product Shipping Class', 'easy-min-max' ),
+						label: __( 'Product Shipping Class', 'syzenlabs-quantity-limits' ),
 						value: 'shipping_class',
 						operatorType: 'Type2',
 						component: 'MultiSelect',
@@ -347,17 +347,17 @@ export const ShippingOptionsProvider = ( { children } ) => {
 						data: optionsData?.shippingClass || [],
 					},
 					{
-						label: __( 'Product Quantity', 'easy-min-max' ),
+						label: __( 'Product Quantity', 'syzenlabs-quantity-limits' ),
 						value: 'product_quantity',
 						operatorType: 'Type1',
 						component: 'Input',
 						inputProps: {
 							type: 'number',
-							unit: __( 'Item(s)', 'easy-min-max' ),
+							unit: __( 'Item(s)', 'syzenlabs-quantity-limits' ),
 						},
 					},
 					{
-						label: __( 'Product Price', 'easy-min-max' ),
+						label: __( 'Product Price', 'syzenlabs-quantity-limits' ),
 						value: 'product_price',
 						operatorType: 'Type1',
 						component: 'Input',
@@ -367,7 +367,7 @@ export const ShippingOptionsProvider = ( { children } ) => {
 						},
 					},
 					{
-						label: __( 'Product Total', 'easy-min-max' ),
+						label: __( 'Product Total', 'syzenlabs-quantity-limits' ),
 						value: 'product_total',
 						operatorType: 'Type1',
 						component: 'Input',
@@ -377,7 +377,7 @@ export const ShippingOptionsProvider = ( { children } ) => {
 						},
 					},
 					{
-						label: __( 'Product Weight', 'easy-min-max' ),
+						label: __( 'Product Weight', 'syzenlabs-quantity-limits' ),
 						value: 'product_weight',
 						operatorType: 'Type1',
 						component: 'Input',
@@ -387,7 +387,7 @@ export const ShippingOptionsProvider = ( { children } ) => {
 						},
 					},
 					{
-						label: __( 'Product Height', 'easy-min-max' ),
+						label: __( 'Product Height', 'syzenlabs-quantity-limits' ),
 						value: 'product_height',
 						operatorType: 'Type1',
 						component: 'Input',
@@ -397,7 +397,7 @@ export const ShippingOptionsProvider = ( { children } ) => {
 						},
 					},
 					{
-						label: __( 'Product Width', 'easy-min-max' ),
+						label: __( 'Product Width', 'syzenlabs-quantity-limits' ),
 						value: 'product_width',
 						operatorType: 'Type1',
 						component: 'Input',
@@ -407,7 +407,7 @@ export const ShippingOptionsProvider = ( { children } ) => {
 						},
 					},
 					{
-						label: __( 'Product Length', 'easy-min-max' ),
+						label: __( 'Product Length', 'syzenlabs-quantity-limits' ),
 						value: 'product_length',
 						operatorType: 'Type1',
 						component: 'Input',
@@ -417,7 +417,7 @@ export const ShippingOptionsProvider = ( { children } ) => {
 						},
 					},
 					{
-						label: __( 'Product Volume', 'easy-min-max' ),
+						label: __( 'Product Volume', 'syzenlabs-quantity-limits' ),
 						value: 'product_volume',
 						operatorType: 'Type1',
 						component: 'Input',
@@ -429,11 +429,11 @@ export const ShippingOptionsProvider = ( { children } ) => {
 				],
 			},
 			{
-				label: __( 'Customer', 'easy-min-max' ),
+				label: __( 'Customer', 'syzenlabs-quantity-limits' ),
 				value: 'Customer',
 				children: [
 					{
-						label: __( 'User', 'easy-min-max' ),
+						label: __( 'User', 'syzenlabs-quantity-limits' ),
 						value: 'user',
 						operatorType: 'Type2',
 						component: 'MultiSelect',
@@ -441,7 +441,7 @@ export const ShippingOptionsProvider = ( { children } ) => {
 						data: optionsData?.user || [],
 					},
 					{
-						label: __( 'User Role', 'easy-min-max' ),
+						label: __( 'User Role', 'syzenlabs-quantity-limits' ),
 						value: 'user_role',
 						operatorType: 'Type2',
 						component: 'MultiSelect',
@@ -449,7 +449,7 @@ export const ShippingOptionsProvider = ( { children } ) => {
 						data: optionsData?.user_role || [],
 					},
 					{
-						label: __( 'Email', 'easy-min-max' ),
+						label: __( 'Email', 'syzenlabs-quantity-limits' ),
 						value: 'email',
 						operatorType: 'Type2',
 						component: 'Input',
@@ -458,7 +458,7 @@ export const ShippingOptionsProvider = ( { children } ) => {
 						},
 					},
 					{
-						label: __( 'Phone', 'easy-min-max' ),
+						label: __( 'Phone', 'syzenlabs-quantity-limits' ),
 						value: 'phone',
 						operatorType: 'Type2',
 						component: 'Input',
@@ -467,7 +467,7 @@ export const ShippingOptionsProvider = ( { children } ) => {
 						},
 					},
 					{
-						label: __( 'First Order Spent', 'easy-min-max' ),
+						label: __( 'First Order Spent', 'syzenlabs-quantity-limits' ),
 						value: 'first_order_spent_amount',
 						operatorType: 'Type1',
 						component: 'Input',
@@ -477,7 +477,7 @@ export const ShippingOptionsProvider = ( { children } ) => {
 						},
 					},
 					{
-						label: __( 'Last Order Spent', 'easy-min-max' ),
+						label: __( 'Last Order Spent', 'syzenlabs-quantity-limits' ),
 						value: 'last_order_spent_amount',
 						operatorType: 'Type1',
 						component: 'Input',
@@ -487,23 +487,23 @@ export const ShippingOptionsProvider = ( { children } ) => {
 						},
 					},
 					{
-						label: __( 'Total Number of Orders', 'easy-min-max' ),
+						label: __( 'Total Number of Orders', 'syzenlabs-quantity-limits' ),
 						value: 'last_orders_count',
 						operatorType: 'Type1',
 						component: 'Input',
 						inputProps: {
 							type: 'number',
-							unit: __( 'Order(s)', 'easy-min-max' ),
+							unit: __( 'Order(s)', 'syzenlabs-quantity-limits' ),
 						},
 					},
 				],
 			},
 			{
-				label: __( 'Location', 'easy-min-max' ),
+				label: __( 'Location', 'syzenlabs-quantity-limits' ),
 				value: 'Location',
 				children: [
 					{
-						label: __( 'Country', 'easy-min-max' ),
+						label: __( 'Country', 'syzenlabs-quantity-limits' ),
 						value: 'country',
 						operatorType: 'Type2',
 						component: 'MultiSelect',
@@ -511,7 +511,7 @@ export const ShippingOptionsProvider = ( { children } ) => {
 						data: optionsData?.country || [],
 					},
 					{
-						label: __( 'State', 'easy-min-max' ),
+						label: __( 'State', 'syzenlabs-quantity-limits' ),
 						value: 'state',
 						operatorType: 'Type2',
 						component: 'MultiSelect',
@@ -519,7 +519,7 @@ export const ShippingOptionsProvider = ( { children } ) => {
 						data: optionsData?.state || [],
 					},
 					{
-						label: __( 'City/Town', 'easy-min-max' ),
+						label: __( 'City/Town', 'syzenlabs-quantity-limits' ),
 						value: 'city_town',
 						operatorType: 'Type2',
 						component: 'Input',
@@ -528,7 +528,7 @@ export const ShippingOptionsProvider = ( { children } ) => {
 						},
 					},
 					{
-						label: __( 'Zip/Postcode', 'easy-min-max' ),
+						label: __( 'Zip/Postcode', 'syzenlabs-quantity-limits' ),
 						value: 'zip_code',
 						operatorType: 'Type2',
 						component: 'Input',
@@ -539,17 +539,17 @@ export const ShippingOptionsProvider = ( { children } ) => {
 				],
 			},
 			{
-				label: __( 'Others', 'easy-min-max' ),
+				label: __( 'Others', 'syzenlabs-quantity-limits' ),
 				value: 'Others',
 				children: [
 					{
-						label: __( 'Weekday', 'easy-min-max' ),
+						label: __( 'Weekday', 'syzenlabs-quantity-limits' ),
 						value: 'weekdays',
 						operatorType: 'Type3',
 						component: 'WeekdayFields',
 					},
 					{
-						label: __( 'Time', 'easy-min-max' ),
+						label: __( 'Time', 'syzenlabs-quantity-limits' ),
 						value: 'time',
 						operatorType: 'Type4',
 						component: 'TimeFields',

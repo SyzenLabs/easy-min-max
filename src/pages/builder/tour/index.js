@@ -2,7 +2,7 @@ import { __, sprintf } from '@wordpress/i18n';
 // import './style.scss';
 
 export function newUserTour() {
-	const STORAGE_KEY = 'eamm_shipping_rules_nux_tour';
+	const STORAGE_KEY = 'szql_shipping_rules_nux_tour';
 	const JS_SRC =
 		'https://cdn.jsdelivr.net/npm/driver.js@latest/dist/driver.js.iife.js';
 	const CSS_HREF =
@@ -32,7 +32,7 @@ export function newUserTour() {
 				const link = document.createElement( 'link' );
 				link.rel = 'stylesheet';
 				link.href = CSS_HREF;
-				link.id = 'eamm-driver-css';
+				link.id = 'szql-driver-css';
 				document.head.appendChild( link );
 			}
 
@@ -49,7 +49,7 @@ export function newUserTour() {
 				script.src = JS_SRC;
 				script.async = true;
 				script.defer = true;
-				script.id = 'eamm-driver-js';
+				script.id = 'szql-driver-js';
 				document.head.appendChild( script );
 			}
 
@@ -83,16 +83,16 @@ export function newUserTour() {
 				popover: {
 					title: __(
 						'Create your first Shipping Rule with WowShipping',
-						'easy-min-max'
+						'syzenlabs-quantity-limits'
 					),
 					description: __(
 						'Take a quick guided tour to learn how to configure a shipping rule. Click Start to continue or Close to skip.',
-						'easy-min-max'
+						'syzenlabs-quantity-limits'
 					),
 					showButtons: [ 'next', 'close' ],
-					nextBtnText: __( 'Start', 'easy-min-max' ),
+					nextBtnText: __( 'Start', 'syzenlabs-quantity-limits' ),
 					popoverClass:
-						'eamm-driver-popover eamm-driver-popover-intro',
+						'szql-driver-popover szql-driver-popover-intro',
 					onCloseClick: ( el, step, opts ) => {
 						markTourComplete();
 						opts.driver.destroy();
@@ -103,69 +103,69 @@ export function newUserTour() {
 				},
 			},
 			{
-				element: '#eamm-shipping-zone-section',
+				element: '#szql-shipping-zone-section',
 				popover: {
-					title: __( 'Add Shipping Zone', 'easy-min-max' ),
+					title: __( 'Add Shipping Zone', 'syzenlabs-quantity-limits' ),
 					description: __(
 						'Set your targeted zone for this shipping rule. You can either select an existing shipping zone or create a new one.',
-						'easy-min-max'
+						'syzenlabs-quantity-limits'
 					),
 					side: 'bottom',
 					align: 'start',
 				},
 			},
 			{
-				element: '#eamm-shipping-method-section',
+				element: '#szql-shipping-method-section',
 				popover: {
 					title: __(
 						'Customized Shipping Method',
-						'easy-min-max'
+						'syzenlabs-quantity-limits'
 					),
 					description: __(
 						'Create shipping methods using manual calculations or integrations with shipping carriers to streamline your shipping process. The manual calculation option allows you to select from flexible shipping, flat rate shipping, and free shipping.',
-						'easy-min-max'
+						'syzenlabs-quantity-limits'
 					),
 					side: 'bottom',
 					align: 'start',
 				},
 			},
 			{
-				element: '#eamm-shipping-method-rates-section-flexible',
+				element: '#szql-shipping-method-rates-section-flexible',
 				popover: {
 					title: __(
 						'Define Shipping Cost',
-						'easy-min-max'
+						'syzenlabs-quantity-limits'
 					),
 					description: __(
 						'Based on your shipping type selection, you can set conditions and adjust shipping rates accordingly. For example, if you select flexible, you can set shipping rates based on specific or multiple conditions in table formats.',
-						'easy-min-max'
+						'syzenlabs-quantity-limits'
 					),
 					side: 'top',
 					align: 'start',
 				},
 			},
 			{
-				element: '#eamm-additional-settings-section',
+				element: '#szql-additional-settings-section',
 				popover: {
 					title: __(
 						'Additional Setting',
-						'easy-min-max'
+						'syzenlabs-quantity-limits'
 					),
 					description: __(
 						'Make additional configurations, including shipping tax and determining to whom this rule should be visible, between logged-in and logged-out users.',
-						'easy-min-max'
+						'syzenlabs-quantity-limits'
 					),
 					side: 'top',
 					align: 'start',
 				},
 			},
 			{
-				element: '#eamm-publish-section',
+				element: '#szql-publish-section',
 				popover: {
-					title: __( 'Publish or Draft', 'easy-min-max' ),
+					title: __( 'Publish or Draft', 'syzenlabs-quantity-limits' ),
 					description: __(
 						"Once you're done with the configuration, you can publish the shipping rule to make it available for the shoppers. Alternatively, you can save it as a draft to continue the configuration at a later time.",
-						'easy-min-max'
+						'syzenlabs-quantity-limits'
 					),
 					side: 'bottom',
 					align: 'end',
@@ -179,16 +179,16 @@ export function newUserTour() {
 			allowClose: true,
 			smoothScroll: true,
 			animate: true,
-			popoverClass: 'eamm-driver-popover',
+			popoverClass: 'szql-driver-popover',
 			progressText: sprintf(
 				/* translators: 1: current step number placeholder, 2: total steps placeholder */
-				__( 'Step %1$s of %2$s', 'easy-min-max' ),
+				__( 'Step %1$s of %2$s', 'syzenlabs-quantity-limits' ),
 				'{{current}}',
 				'{{total}}'
 			),
-			nextBtnText: __( 'Next', 'easy-min-max' ),
-			prevBtnText: __( 'Back', 'easy-min-max' ),
-			doneBtnText: __( 'Done', 'easy-min-max' ),
+			nextBtnText: __( 'Next', 'syzenlabs-quantity-limits' ),
+			prevBtnText: __( 'Back', 'syzenlabs-quantity-limits' ),
+			doneBtnText: __( 'Done', 'syzenlabs-quantity-limits' ),
 			onDestroyed: markTourComplete,
 			onCloseClick: markTourComplete,
 		} );

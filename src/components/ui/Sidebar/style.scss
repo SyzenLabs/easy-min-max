@@ -1,54 +1,54 @@
-.eamm-sidebar-component {
+.szql-sidebar-component {
 	// @include media(sm) {
 	// 	width: 100%;
 	// }
 }
-.eamm-sidebar-content-component {
-	@apply flex flex-col gap-5 fixed inset-y-0 right-0 w-full bg-(--eamm-neutral-alpha-20) h-full transition-all duration-200 ease-out opacity-0 invisible z-99999;
+.szql-sidebar-content-component {
+	@apply flex flex-col gap-5 fixed inset-y-0 right-0 w-full bg-(--szql-neutral-alpha-20) h-full transition-all duration-200 ease-out opacity-0 invisible z-99999;
 
-	&.eamm-sidebar-content-open {
+	&.szql-sidebar-content-open {
 		@apply backdrop-blur-sm opacity-100 visible;
 
-		.eamm-sidebar-content-inner {
+		.szql-sidebar-content-inner {
 			@apply translate-x-0;
 		}
 	}
 
-	.eamm-sidebar-content-inner {
+	.szql-sidebar-content-inner {
 		@apply p-8 pt-0 translate-x-full h-full transition-all duration-200 ease-out w-full md:w-165.25 ml-auto bg-white shadow-[rgba(149,157,165,0.2)_0px_8px_24px];
 	}
 }
-.eamm-sidebar-header-component {
-	@apply flex justify-between items-center gap-1.5 font-medium text-(--eamm-text-strong) border-b border-solid py-5;
-	font-size: var(--eamm-font-size-2xl);
-	line-height: var(--eamm-font-line-height-2xl);
-	font-weight: var(--eamm-font-weight-medium);
-	color: var(--eamm-text-strong);
-	border-color: var(--eamm-stroke-sub);
+.szql-sidebar-header-component {
+	@apply flex justify-between items-center gap-1.5 font-medium text-(--szql-text-strong) border-b border-solid py-5;
+	font-size: var(--szql-font-size-2xl);
+	line-height: var(--szql-font-line-height-2xl);
+	font-weight: var(--szql-font-weight-medium);
+	color: var(--szql-text-strong);
+	border-color: var(--szql-stroke-sub);
 
-	&.eamm-sidebar-header-divider {
+	&.szql-sidebar-header-divider {
 		@apply border-b py-5;
-		border-color: var(--eamm-stroke-sub);
+		border-color: var(--szql-stroke-sub);
 	}
 
-	.eamm-sidebar-header-close {
-		@apply p-2 rounded-md bg-(--eamm-bg-soft) text-(--eamm-text-strong) transition-all duration-200 ease-out;
+	.szql-sidebar-header-close {
+		@apply p-2 rounded-md bg-(--szql-bg-soft) text-(--szql-text-strong) transition-all duration-200 ease-out;
 
 		&:hover {
-			@apply bg-(--eamm-bg-soft);
+			@apply bg-(--szql-bg-soft);
 		}
 	}
 }
 
-.eamm-sidebar-body-component {
+.szql-sidebar-body-component {
 	@apply my-5 h-full pb-50 overflow-y-auto px-0.5;
 }
 
-.eamm-sidebar-component:has(.eamm-sidebar-footer-component)
-	.eamm-sidebar-body-component {
+.szql-sidebar-component:has(.szql-sidebar-footer-component)
+	.szql-sidebar-body-component {
 	@apply h-[calc(100vh-210px)] pb-0;
 }
 
-.eamm-sidebar-footer-component {
+.szql-sidebar-footer-component {
 	@apply flex justify-between items-center gap-1.5;
 }

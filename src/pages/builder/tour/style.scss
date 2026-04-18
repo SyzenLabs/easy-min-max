@@ -2,7 +2,7 @@
 	z-index: 9999999 !important;
 }
 
-.eamm-driver-popover {
+.szql-driver-popover {
 	& {
 		padding: 16px 20px !important;
 	}
@@ -11,7 +11,7 @@
 		font: unset;
 		width: 80px;
 		height: 36px;
-		border-radius: var(--eamm-border-radius-md);
+		border-radius: var(--szql-border-radius-md);
 		padding-top: 8px;
 		padding-right: 10px;
 		padding-bottom: 8px;
@@ -30,17 +30,17 @@
 		font-size: 16px !important;
 		line-height: 24px;
 		letter-spacing: -0.18px;
-		color: var(--eamm-text-strong);
+		color: var(--szql-text-strong);
 	}
 
 	.driver-popover-next-btn {
-		background: var(--eamm-blue-500);
-		color: var(--eamm-text-white);
+		background: var(--szql-blue-500);
+		color: var(--szql-text-white);
 	}
 
 	.driver-popover-next-btn:hover {
-		background: var(--eamm-blue-600);
-		color: var(--eamm-text-white);
+		background: var(--szql-blue-600);
+		color: var(--szql-text-white);
 	}
 
 	.driver-popover-description {
@@ -49,7 +49,7 @@
 		font-size: 14px !important;
 		line-height: 20px;
 		letter-spacing: -0.08px;
-		color: var(--eamm-text-sub);
+		color: var(--szql-text-sub);
 		margin-top: 8px !important;
 	}
 }

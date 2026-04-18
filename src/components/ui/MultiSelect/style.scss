@@ -1,143 +1,143 @@
 $multi-select-min-width: 160px;
 
 // Important: hide overflow scroll when multiselect is open
-// #eamm-dashboard-wrap:has(.eamm-multiselect-open) .eamm-popup-layout {
+// #szql-dashboard-wrap:has(.szql-multiselect-open) .szql-popup-layout {
 // 	@apply overflow-hidden;
 // 	scrollbar-gutter: stable;
 // }
 
 // // Important: hide overflow scroll when multiselect is open
 // body {
-// 	&:has(.eamm-multiselect-open) {
+// 	&:has(.szql-multiselect-open) {
 // 		@apply overflow-hidden;
 // 		scrollbar-gutter: stable;
 // 	}
 // }
 
-.eamm-multiselect-component {
+.szql-multiselect-component {
 	@apply relative w-fit;
 	min-width: $multi-select-min-width;
 }
 
-.eamm-multiselect-trigger-component {
+.szql-multiselect-trigger-component {
 	@apply border border-solid bg-white p-1.75 flex justify-between items-center cursor-pointer min-h-10 focus:ring-2 focus:ring-(--wp-admin-theme-color) focus:outline-none;
-	border-color: var(--eamm-stroke-sub);
-	&.eamm-multiselect-has-placeholder {
+	border-color: var(--szql-stroke-sub);
+	&.szql-multiselect-has-placeholder {
 		@apply px-2.5 py-1.5;
 	}
 
-	.eamm-multiselect-trigger-icon {
+	.szql-multiselect-trigger-icon {
 		@apply transition-all duration-300 ease-in-out;
 	}
 
-	.eamm-multiselect-trigger-placeholder {
-		color: var(--eamm-text-placeholder);
+	.szql-multiselect-trigger-placeholder {
+		color: var(--szql-text-placeholder);
 	}
 }
 
-.eamm-multiselect-search-component {
+.szql-multiselect-search-component {
 	z-index: inherit;
 }
 
-.eamm-multiselect-content-component {
+.szql-multiselect-content-component {
 	@apply cursor-pointer fixed overflow-y-auto p-2 outline outline-solid bg-white rounded-md;
-	outline-color: var(--eamm-stroke-sub);
-	background: var(--eamm-bg-white);
-	border-radius: var(--eamm-border-radius-md);
+	outline-color: var(--szql-stroke-sub);
+	background: var(--szql-bg-white);
+	border-radius: var(--szql-border-radius-md);
 	z-index: 99999;
 	transform: translateY(-10px);
-	transition: all var(--eamm-transition-md) ease-in-out;
+	transition: all var(--szql-transition-md) ease-in-out;
 	max-height: 24rem;
 	overflow-x: auto;
 
-	.eamm-checkbox-component {
+	.szql-checkbox-component {
 		@apply w-full;
 	}
 }
 
-.eamm-multiselect-content-header {
+.szql-multiselect-content-header {
 	@apply p-2 pt-0 sticky top-0;
 	z-index: 999;
 }
 
-// .eamm-multiselect-content-body {
+// .szql-multiselect-content-body {
 // 	@apply p-2;
 // }
 
-.eamm-multiselect-open {
+.szql-multiselect-open {
 	// opacity: 1;
 	// transform: translateY(0);
 	// z-index: 5;
 
-	&.eamm-multiselect-trigger-icon {
+	&.szql-multiselect-trigger-icon {
 		@apply rotate-180;
 	}
 }
 
-.eamm-multiselect-item-component {
+.szql-multiselect-item-component {
 	@apply py-2.5 px-5 cursor-pointer;
 	&:hover {
-		background: var(--eamm-bg-soft);
+		background: var(--szql-bg-soft);
 	}
 
-	.eamm-checkbox-label {
+	.szql-checkbox-label {
 		@apply flex items-center gap-1.5;
 		width: calc(100% - 25px);
 	}
 }
 
-.eamm-multiselect-item-image {
-	@apply w-5 h-5 object-cover rounded-[100%] border border-solid bg-(--eamm-bg-weak);
-	border-color: var(--eamm-stroke-sub);
-	background-color: var(--eamm-bg-weak);
+.szql-multiselect-item-image {
+	@apply w-5 h-5 object-cover rounded-[100%] border border-solid bg-(--szql-bg-weak);
+	border-color: var(--szql-stroke-sub);
+	background-color: var(--szql-bg-weak);
 }
 
-.eamm-multiselect-no-options {
+.szql-multiselect-no-options {
 	@apply cursor-default my-2.5 text-center;
-	color: var(--eamm-text-sub);
+	color: var(--szql-text-sub);
 }
 
-.eamm-multiselect-checked-items-component {
+.szql-multiselect-checked-items-component {
 	@apply sticky top-10.5 cursor-default flex flex-wrap gap-1.5 p-3;
 	// z-index: inherit;
-	// background: var(--eamm-bg-white);
-	.eamm-multiselect-checked-item {
-		font-size: var(--eamm-font-size-xs);
-		line-height: var(--eamm-font-line-height-xs);
-		@apply w-fit flex items-center gap-1.5 rounded-[100%] bg-(--eamm-bg-soft) p-0.5 text-(--eamm-text-sub);
+	// background: var(--szql-bg-white);
+	.szql-multiselect-checked-item {
+		font-size: var(--szql-font-size-xs);
+		line-height: var(--szql-font-line-height-xs);
+		@apply w-fit flex items-center gap-1.5 rounded-[100%] bg-(--szql-bg-soft) p-0.5 text-(--szql-text-sub);
 
-		&:not(.eamm-multiselect-checked-item-image) {
+		&:not(.szql-multiselect-checked-item-image) {
 			@apply pl-2;
 		}
 
-		.eamm-multiselect-checked-item-image {
-			@apply w-5 h-5 object-cover rounded-[100%] border border-solid bg-(--eamm-bg-weak);
-			border-color: var(--eamm-stroke-sub);
-			background-color: var(--eamm-bg-weak);
+		.szql-multiselect-checked-item-image {
+			@apply w-5 h-5 object-cover rounded-[100%] border border-solid bg-(--szql-bg-weak);
+			border-color: var(--szql-stroke-sub);
+			background-color: var(--szql-bg-weak);
 		}
 
-		.eamm-multiselect-checked-items-icon {
-			@apply rounded-[100%] bg-(--eamm-bg-soft) p-0.5;
+		.szql-multiselect-checked-items-icon {
+			@apply rounded-[100%] bg-(--szql-bg-soft) p-0.5;
 		}
 	}
 }
-.eamm-multiselect-trigger-value {
+.szql-multiselect-trigger-value {
 	@apply flex items-center gap-1;
-	.eamm-multiselect-trigger-value-item {
+	.szql-multiselect-trigger-value-item {
 		@apply flex items-center h-6 gap-1 px-1 rounded-sm bg-[#ddd] text-[#1e1e1e] border-2;
-		border-color: var(--eamm-stroke-white);
+		border-color: var(--szql-stroke-white);
 		font-size: 13px;
 	}
-	.eamm-multiselect-trigger-value-item-image {
-		@apply w-4.5 h-4.5 object-cover rounded-[100%] border border-solid bg-(--eamm-bg-weak);
-		border-color: var(--eamm-stroke-white);
-		background-color: var(--eamm-bg-weak);
+	.szql-multiselect-trigger-value-item-image {
+		@apply w-4.5 h-4.5 object-cover rounded-[100%] border border-solid bg-(--szql-bg-weak);
+		border-color: var(--szql-stroke-white);
+		background-color: var(--szql-bg-weak);
 	}
-	.eamm-multiselect-trigger-value-more {
-		font-size: var(--eamm-font-size-2xs);
+	.szql-multiselect-trigger-value-more {
+		font-size: var(--szql-font-size-2xs);
 	}
 }
 
-.eamm-multiselect-dropdown-content > .components-popover__content {
+.szql-multiselect-dropdown-content > .components-popover__content {
 	min-width: 300px;
 }

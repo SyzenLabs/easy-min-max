@@ -1,9 +1,9 @@
 <?php
 
-namespace EAMM\Includes\Rest;
+namespace SZQL\Includes\Rest;
 
-use EAMM\Includes\DB;
-use EAMM\Includes\Utils;
+use SZQL\Includes\DB;
+use SZQL\Includes\Utils;
 use WP_REST_Request;
 
 defined( 'ABSPATH' ) || exit;
@@ -13,7 +13,7 @@ class RulesController {
 	/**
 	 * DB Instance
 	 *
-	 * @var \EAMM\Includes\DB
+	 * @var \SZQL\Includes\DB
 	 */
 	private $db;
 
@@ -24,7 +24,7 @@ class RulesController {
 
 	public function register_routes() {
 		register_rest_route(
-			'eamm/v1',
+			'szql/v1',
 			'/rules',
 			array(
 				array(
@@ -36,7 +36,7 @@ class RulesController {
 		);
 
 		register_rest_route(
-			'eamm/v1',
+			'szql/v1',
 			'/rules/(?P<id>[a-zA-Z0-9_-]+)',
 			array(
 				array(
@@ -48,7 +48,7 @@ class RulesController {
 		);
 
 		register_rest_route(
-			'eamm/v1',
+			'szql/v1',
 			'/rules',
 			array(
 				'methods'             => 'POST',
@@ -58,7 +58,7 @@ class RulesController {
 		);
 
 		register_rest_route(
-			'eamm/v1',
+			'szql/v1',
 			'/rules/(?P<id>[a-zA-Z0-9_-]+)',
 			array(
 				'methods'             => 'DELETE',

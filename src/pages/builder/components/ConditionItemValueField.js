@@ -2,9 +2,9 @@
 import { MultiSelect, SelectCompact } from '@/components/ui';
 import { useShippingOptions } from '@/context/OptionsContext';
 import {
-	__experimentalHStack as HStack,
-	__experimentalInputControl as InputControl,
-	__experimentalInputControlSuffixWrapper as InputControlSuffixWrapper,
+    __experimentalHStack as HStack,
+    __experimentalInputControl as InputControl,
+    __experimentalInputControlSuffixWrapper as InputControlSuffixWrapper,
 } from '@wordpress/components';
 import { useEffect, useState } from '@wordpress/element';
 import { __ } from '@wordpress/i18n';
@@ -58,7 +58,7 @@ const ConditionItemValueField = ( { selected, selectedOptions, onChange } ) => {
 						min={ 0 }
 						type={ selectedOptions?.inputProps?.type || 'text' }
 						className="w-full!"
-						placeholder={ __( 'Min', 'easy-min-max' ) }
+						placeholder={ __( 'Min', 'syzenlabs-quantity-limits' ) }
 						value={ selected.min_range || '' }
 						suffix={
 							<InputControlSuffixWrapper>
@@ -75,7 +75,7 @@ const ConditionItemValueField = ( { selected, selectedOptions, onChange } ) => {
 						__next40pxDefaultSize
 						type={ selectedOptions?.inputProps?.type || 'text' }
 						className="w-full!"
-						placeholder={ __( 'Max', 'easy-min-max' ) }
+						placeholder={ __( 'Max', 'syzenlabs-quantity-limits' ) }
 						value={ selected.max_range || '' }
 						suffix={
 							<InputControlSuffixWrapper>
@@ -101,7 +101,7 @@ const ConditionItemValueField = ( { selected, selectedOptions, onChange } ) => {
 					min={ 0 }
 					type={ selectedOptions?.inputProps?.type || 'text' }
 					className="w-full!"
-					placeholder={ __( 'Value', 'easy-min-max' ) }
+					placeholder={ __( 'Value', 'syzenlabs-quantity-limits' ) }
 					value={ selected.value || '' }
 					suffix={
 						<InputControlSuffixWrapper>
@@ -124,7 +124,7 @@ const ConditionItemValueField = ( { selected, selectedOptions, onChange } ) => {
 					fullWidth
 					selectAll={ true }
 					options={ optionsData?.[ selectedOptions?.value ] }
-					placeholder={ __( 'Select', 'easy-min-max' ) }
+					placeholder={ __( 'Select', 'syzenlabs-quantity-limits' ) }
 					value={ selected.value || [] }
 					onChange={ ( value ) => onChange( { value } ) }
 				/>
@@ -139,7 +139,7 @@ const ConditionItemValueField = ( { selected, selectedOptions, onChange } ) => {
 					selected={ selected.value || '' }
 					onChange={ ( value ) => onChange( { value } ) }
 					options={ optionsData?.[ selectedOptions?.value ] }
-					placeholder={ __( 'Select', 'easy-min-max' ) }
+					placeholder={ __( 'Select', 'syzenlabs-quantity-limits' ) }
 				/>
 			);
 

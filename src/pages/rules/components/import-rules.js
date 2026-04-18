@@ -38,12 +38,12 @@ function ImportRules( { children } ) {
 		setState( ( prev ) => ( {
 			...prev,
 			importLoading: true,
-			progressText: __( 'Processing…', 'easy-min-max' ),
+			progressText: __( 'Processing…', 'syzenlabs-quantity-limits' ),
 		} ) );
 
 		try {
 			const response = await apiFetch( {
-				path: '/easy-min-max/v1/shipping-rules/import/rules/status',
+				path: '/syzenlabs-quantity-limits/v1/shipping-rules/import/rules/status',
 				method: 'GET',
 			} );
 
@@ -57,20 +57,20 @@ function ImportRules( { children } ) {
 			}
 
 			showToast(
-				__( 'Shipping rules imported successfully', 'easy-min-max' ),
+				__( 'Shipping rules imported successfully', 'syzenlabs-quantity-limits' ),
 				'success',
 				3000
 			);
 			setState( ( prev ) => ( {
 				...prev,
 				importLoading: false,
-				progressText: __( 'Completed', 'easy-min-max' ),
+				progressText: __( 'Completed', 'syzenlabs-quantity-limits' ),
 			} ) );
 			setImportResult( response.data );
 			return response.data;
 		} catch ( error ) {
 			showToast(
-				__( 'Error importing shipping rules', 'easy-min-max' ),
+				__( 'Error importing shipping rules', 'syzenlabs-quantity-limits' ),
 				'warning',
 				3000
 			);
@@ -84,12 +84,12 @@ function ImportRules( { children } ) {
 			setState( ( prev ) => ( {
 				...prev,
 				importLoading: true,
-				progressText: __( 'Uploading File…', 'easy-min-max' ),
+				progressText: __( 'Uploading File…', 'syzenlabs-quantity-limits' ),
 			} ) );
 
 			try {
 				const response = await apiFetch( {
-					path: '/easy-min-max/v1/shipping-rules/import/rules',
+					path: '/syzenlabs-quantity-limits/v1/shipping-rules/import/rules',
 					method: 'POST',
 					data: { data: [ ...data ] },
 				} );
@@ -114,7 +114,7 @@ function ImportRules( { children } ) {
 				return response.data;
 			} catch ( error ) {
 				showToast(
-					__( 'Error importing shipping rules', 'easy-min-max' ),
+					__( 'Error importing shipping rules', 'syzenlabs-quantity-limits' ),
 					'error'
 				);
 			} finally {
@@ -153,7 +153,7 @@ function ImportRules( { children } ) {
 			</SidebarTrigger>
 			<SidebarContent>
 				<SidebarHeader>
-					{ __( 'Import Shipping Method', 'easy-min-max' ) }
+					{ __( 'Import Shipping Method', 'syzenlabs-quantity-limits' ) }
 				</SidebarHeader>
 				<SidebarBody>
 					<VStack spacing={ 4 }>
@@ -162,22 +162,22 @@ function ImportRules( { children } ) {
 						) : (
 							<>
 								<Text>
-									{ __( 'Upload CSV', 'easy-min-max' ) }
+									{ __( 'Upload CSV', 'syzenlabs-quantity-limits' ) }
 								</Text>
 								<FileUploader
 									accept=".csv"
 									onUpload={ handleFileUpload }
 									uploadText={ __(
 										'Start Importing',
-										'easy-min-max'
+										'syzenlabs-quantity-limits'
 									) }
 									uploadCompleteTitle={ __(
 										'Import Completed!',
-										'easy-min-max'
+										'syzenlabs-quantity-limits'
 									) }
 									uploadCompleteDescription={ __(
 										'Your CSV file has been imported successfully!',
-										'easy-min-max'
+										'syzenlabs-quantity-limits'
 									) }
 									progressText={ state.progressText }
 								/>
@@ -192,7 +192,7 @@ function ImportRules( { children } ) {
 							variant="primary"
 							onClick={ handleImportAnotherFile }
 						>
-							{ __( 'Import Another File', 'easy-min-max' ) }
+							{ __( 'Import Another File', 'syzenlabs-quantity-limits' ) }
 						</Button>
 					</SidebarFooter>
 				) }
@@ -206,17 +206,17 @@ function ImportCompleted( { importResult } ) {
 		return {
 			total: {
 				type: 'info',
-				label: __( 'Total Rows', 'easy-min-max' ),
+				label: __( 'Total Rows', 'syzenlabs-quantity-limits' ),
 				value: importResult?.total_rows || 0,
 			},
 			imported: {
 				type: 'success',
-				label: __( 'Successful', 'easy-min-max' ),
+				label: __( 'Successful', 'syzenlabs-quantity-limits' ),
 				value: importResult?.imported_rows || 0,
 			},
 			failed: {
 				type: 'error',
-				label: __( 'Error', 'easy-min-max' ),
+				label: __( 'Error', 'syzenlabs-quantity-limits' ),
 				value: importResult?.failed_rows || 0,
 			},
 		};
@@ -233,12 +233,12 @@ function ImportCompleted( { importResult } ) {
 			<VStack spacing={ 3 } alignment="center">
 				<Icon icon="check" size={ 44 } />
 				<Heading level={ 2 }>
-					{ __( 'Import Completed!', 'easy-min-max' ) }
+					{ __( 'Import Completed!', 'syzenlabs-quantity-limits' ) }
 				</Heading>
 				<Text>
 					{ __(
 						'Your CSV file has been imported successfully',
-						'easy-min-max'
+						'syzenlabs-quantity-limits'
 					) }
 				</Text>
 			</VStack>
@@ -298,14 +298,14 @@ function ImportCompleted( { importResult } ) {
 				<Text>
 					{ sprintf(
 						// translators: %s: Success Percentage.
-						__( '%s%% Success Rate', 'easy-min-max' ),
+						__( '%s%% Success Rate', 'syzenlabs-quantity-limits' ),
 						successPercent.toFixed( 2 )
 					) }
 				</Text>
 			</VStack>
 			{ errors.length > 0 && (
 				<VStack spacing={ 2 }>
-					<Text>{ __( 'Error List', 'easy-min-max' ) }</Text>
+					<Text>{ __( 'Error List', 'syzenlabs-quantity-limits' ) }</Text>
 					<VStack
 						spacing={ 1 }
 						style={ {
@@ -323,7 +323,7 @@ function ImportCompleted( { importResult } ) {
 										fontWeight: '600',
 									} }
 								>
-									{ __( 'Row', 'easy-min-max' ) }{ ' ' }
+									{ __( 'Row', 'syzenlabs-quantity-limits' ) }{ ' ' }
 									{ error?.row }:
 								</Text>
 								<Text>{ error?.message }</Text>
@@ -337,3 +337,4 @@ function ImportCompleted( { importResult } ) {
 }
 
 export { ImportRules };
+

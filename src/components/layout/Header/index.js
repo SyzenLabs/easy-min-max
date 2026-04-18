@@ -1,7 +1,7 @@
 import {
-	Card,
-	CardBody,
-	__experimentalHStack as HStack,
+    Card,
+    CardBody,
+    __experimentalHStack as HStack,
 } from '@wordpress/components';
 
 import { WtrsBadge } from '@/components/ui';
@@ -23,7 +23,7 @@ export default function Header() {
 						inlineEnd: 'xSmall',
 					} }
 				>
-					<HStack className="py-3 eamm-container">
+					<HStack className="py-3 szql-container">
 						<HStack spacing={ 3 } expanded={ false }>
 							<HamburgerMenu />
 
@@ -35,7 +35,7 @@ export default function Header() {
 								onClick={ () => setCurrentNav( 'overview' ) }
 							/>
 							<span className="text-2xl font-semibold">
-								Easy Min Max
+								SyzenLabs Quantity Limits
 							</span>
 							<WtrsBadge>{ getVersion() }</WtrsBadge>
 						</HStack>

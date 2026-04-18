@@ -1,41 +1,41 @@
 <?php
 /**
- * Plugin Name: Easy Min Max
+ * Plugin Name: SyzenLabs Quantity Limits
  * Description: Set minimum and maximum quantity and price rules for WooCommerce products with flexible conditions and storefront validation.
- * Version:     1.0.0
+ * Version:     1.0.1
  * Author:      SyzenLabs
  * Author URI:  https://profiles.wordpress.org/syzenlabs
  * Requires Plugins: woocommerce
- * Text Domain: easy-min-max
+ * Text Domain: syzenlabs-quantity-limits
  * Domain Path: /languages
  * License:     GPLv3
  * License URI: http://www.gnu.org/licenses/gpl-3.0.html
  *
- * @package easy-min-max
+ * @package syzenlabs-quantity-limits
  */
 
-use EAMM\Includes\Init;
+use SZQL\Includes\Init;
 
 defined( 'ABSPATH' ) || exit;
 
 // Define Vars.
-define( 'EAMM_VER', '1.0.0' );
-define( 'EAMM_URL', plugin_dir_url( __FILE__ ) );
-define( 'EAMM_BASE', plugin_basename( __FILE__ ) );
-define( 'EAMM_PATH', plugin_dir_path( __FILE__ ) );
-define( 'EAMM_RULE_VER', '1' );
-define( 'EAMM_WOO_MARKETPLACE', false );
+define( 'SZQL_VER', '1.0.1' );
+define( 'SZQL_URL', plugin_dir_url( __FILE__ ) );
+define( 'SZQL_BASE', plugin_basename( __FILE__ ) );
+define( 'SZQL_PATH', plugin_dir_path( __FILE__ ) );
+define( 'SZQL_RULE_VER', '1' );
+define( 'SZQL_WOO_MARKETPLACE', false );
 
-if ( ! function_exists( 'eamm_autoloader' ) ) {
+if ( ! function_exists( 'szql_autoloader' ) ) {
 	/**
 	 * Autoloader function
 	 *
 	 * @param string $class_name class name.
 	 * @return void
 	 */
-	function eamm_autoloader( $class_name ) {
-		$namespace = 'EAMM\\';
-		$base_dir  = EAMM_PATH;
+	function szql_autoloader( $class_name ) {
+		$namespace = 'SZQL\\';
+		$base_dir  = SZQL_PATH;
 
 		$len = strlen( $namespace );
 		if ( strncmp( $namespace, $class_name, $len ) !== 0 ) {
@@ -64,17 +64,17 @@ if ( ! function_exists( 'eamm_autoloader' ) ) {
 
 }
 
-spl_autoload_register( 'eamm_autoloader' );
+spl_autoload_register( 'szql_autoloader' );
 
-if ( ! function_exists( 'eamm_init' ) ) {
+if ( ! function_exists( 'szql_init' ) ) {
 	/**
 	 * Init plugin
 	 *
 	 * @return void
 	 */
-	function eamm_init() {
+	function szql_init() {
 		new Init();
 	}
 }
 
-eamm_init();
+szql_init();

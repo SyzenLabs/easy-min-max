@@ -1,9 +1,9 @@
 <?php // phpcs:ignore
 
-namespace EAMM\Includes;
+namespace SZQL\Includes;
 
 use DateTime;
-use EAMM\Traits\Singleton;
+use SZQL\Traits\Singleton;
 use WP_Error;
 
 defined( 'ABSPATH' ) || exit;
@@ -18,12 +18,12 @@ class DB {
 	/**
 	 * WordPress option key for storing shipping rules.
 	 */
-	private const OPTION_KEY = 'eamm-rules';
+	private const OPTION_KEY = 'szql-rules';
 
 	/**
 	 * WordPress option key for storing plugin settings.
 	 */
-	private const SETTINGS_KEY = 'eamm-settings';
+	private const SETTINGS_KEY = 'szql-settings';
 
 	/**
 	 * Get plugin settings
