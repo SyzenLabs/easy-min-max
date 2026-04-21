@@ -60,7 +60,7 @@ Typical use cases include:
 
 Source code is available at:
 
-https://github.com/SyzenLabs/syzenlabs-quantity-limits/tree/org
+https://github.com/SyzenLabs/easy-min-max/tree/org
 
 == Installation ==
 
@@ -107,6 +107,9 @@ Yes. Validation is applied on add to cart, cart updates, checkout, and WooCommer
 The plugin does not load its main functionality until WooCommerce is available.
 
 == Changelog ==
+
+= 1.0.2 - 21 Apr 2026 =
+* Fix: Updated source code URL
 
 = 1.0.1 - 18 Apr 2026 =
 * Fix: Corrected plugin name in header for consistency.
