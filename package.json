@@ -5,7 +5,7 @@
 		"email": "saminyaserwork@gmail.com",
 		"url": "https://yaser.com.bd"
 	},
-	"version": "1.0.1",
+	"version": "1.0.2",
 	"license": "GPL-3.0-only",
 	"main": "src/index.js",
 	"prettier": "@wordpress/prettier-config",

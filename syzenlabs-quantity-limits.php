@@ -2,7 +2,7 @@
 /**
  * Plugin Name: SyzenLabs Quantity Limits
  * Description: Set minimum and maximum quantity and price rules for WooCommerce products with flexible conditions and storefront validation.
- * Version:     1.0.1
+ * Version:     1.0.2
  * Author:      SyzenLabs
  * Author URI:  https://profiles.wordpress.org/syzenlabs
  * Requires Plugins: woocommerce
@@ -19,7 +19,7 @@ use SZQL\Includes\Init;
 defined( 'ABSPATH' ) || exit;
 
 // Define Vars.
-define( 'SZQL_VER', '1.0.1' );
+define( 'SZQL_VER', '1.0.2' );
 define( 'SZQL_URL', plugin_dir_url( __FILE__ ) );
 define( 'SZQL_BASE', plugin_basename( __FILE__ ) );
 define( 'SZQL_PATH', plugin_dir_path( __FILE__ ) );
