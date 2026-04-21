@@ -234,14 +234,7 @@ class Frontend {
 	 * @return void
 	 */
 	public function enqueue_assets() {
-		$dynamic_css = $this->get_dynamic_css();
-		$has_assets  = $this->should_enqueue_assets();
-
-		if ( '' !== $dynamic_css && ! $has_assets ) {
-			wp_register_style( 'szql-frontend-inline', false, array(), SZQL_VER );
-			wp_enqueue_style( 'szql-frontend-inline' );
-			wp_add_inline_style( 'szql-frontend-inline', $dynamic_css );
-		}
+		$has_assets = $this->should_enqueue_assets();
 
 		if ( ! $has_assets ) {
 			return;
@@ -273,37 +266,6 @@ class Frontend {
 			'szqlSettings',
 			$this->get_frontend_settings()
 		);
-
-		if ( '' !== $dynamic_css ) {
-			wp_add_inline_style( 'szql-frontend', $dynamic_css );
-		}
-	}
-
-	/**
-	 * Build custom CSS from active rules for the current request.
-	 *
-	 * Collects applicable rule CSS and any checkout button visibility override so
-	 * the result can be added with the WordPress enqueue APIs.
-	 *
-	 * @return string
-	 */
-	private function get_dynamic_css() {
-		$css_chunks = array();
-		$product    = $this->get_current_product();
-
-		foreach ( $this->get_applicable_rules( $product ) as $rule ) {
-			if ( empty( $rule['customCss'] ) ) {
-				continue;
-			}
-
-			$css_chunks[] = wp_strip_all_tags( $rule['customCss'] );
-		}
-
-		if ( $this->should_hide_checkout_button() ) {
-			$css_chunks[] = '.checkout-button, a.checkout-button{display:none !important;}';
-		}
-
-		return implode( "\n", $css_chunks );
 	}
 
 	/**
@@ -395,22 +357,22 @@ class Frontend {
 			$price     = ( ( (float) wc_get_price_excluding_tax( $product ) ) * ( (float) $quantity ) );
 
 			if ( null !== $min_price && $price < $min_price ) {
-				wc_add_notice( $this->format_message( $rule['minPriceMessage'] ?? '', $product, $quantity, $limits ), 'error' );
+				wc_add_notice( wp_kses_post( $this->format_message( $rule['minPriceMessage'] ?? '', $product, $quantity, $limits ) ), 'error' );
 				return false;
 			}
 
 			if ( null !== $max_price && $price > $max_price ) {
-				wc_add_notice( $this->format_message( $rule['maxPriceMessage'] ?? '', $product, $quantity, $limits ), 'error' );
+				wc_add_notice( wp_kses_post( $this->format_message( $rule['maxPriceMessage'] ?? '', $product, $quantity, $limits ) ), 'error' );
 				return false;
 			}
 
 			if ( null !== $min && $quantity < $min ) {
-				wc_add_notice( $this->format_message( $rule['minQuantityMessage'] ?? '', $product, $quantity, $limits ), 'error' );
+				wc_add_notice( wp_kses_post( $this->format_message( $rule['minQuantityMessage'] ?? '', $product, $quantity, $limits ) ), 'error' );
 				return false;
 			}
 
 			if ( null !== $max && $quantity > $max ) {
-				wc_add_notice( $this->format_message( $rule['maxQuantityMessage'] ?? '', $product, $quantity, $limits ), 'error' );
+				wc_add_notice( wp_kses_post( $this->format_message( $rule['maxQuantityMessage'] ?? '', $product, $quantity, $limits ) ), 'error' );
 				return false;
 			}
 		}
@@ -517,21 +479,6 @@ class Frontend {
 	}
 
 	/**
-	 * Determine whether the checkout button should be hidden on the frontend.
-	 *
-	 * @return bool
-	 */
-	private function should_hide_checkout_button() {
-		foreach ( $this->get_applicable_rules() as $rule ) {
-			if ( ! empty( $rule['hideCheckoutButton'] ) ) {
-				return true;
-			}
-		}
-
-		return false;
-	}
-
-	/**
 	 * Determine whether any applicable rule enables a boolean storefront flag.
 	 *
 	 * @param string           $flag    Flag key.
@@ -585,15 +532,15 @@ class Frontend {
 			'totalPriceEnabled'       => $this->has_enabled_rule_flag( 'showPriceByQuantity', $product ),
 			'quantityDropdownEnabled' => $this->has_enabled_rule_flag( 'showQuantityDropdown', $product ),
 			'currency'                => array(
-				'symbol'            => html_entity_decode( get_woocommerce_currency_symbol(), ENT_QUOTES, 'UTF-8' ),
-				'format'            => html_entity_decode( get_woocommerce_price_format(), ENT_QUOTES, 'UTF-8' ),
-				'decimalSeparator'  => wc_get_price_decimal_separator(),
-				'thousandSeparator' => wc_get_price_thousand_separator(),
-				'decimals'          => wc_get_price_decimals(),
+				'symbol'            => sanitize_text_field( wp_strip_all_tags( html_entity_decode( get_woocommerce_currency_symbol(), ENT_QUOTES, 'UTF-8' ) ) ),
+				'format'            => sanitize_text_field( html_entity_decode( get_woocommerce_price_format(), ENT_QUOTES, 'UTF-8' ) ),
+				'decimalSeparator'  => sanitize_text_field( wc_get_price_decimal_separator() ),
+				'thousandSeparator' => sanitize_text_field( wc_get_price_thousand_separator() ),
+				'decimals'          => absint( wc_get_price_decimals() ),
 				'trimZeros'         => (bool) apply_filters( 'woocommerce_price_trim_zeros', false ),
 			),
 			'i18n'                    => array(
-				'totalLabel' => __( 'Total:', 'syzenlabs-quantity-limits' ),
+				'totalLabel' => sanitize_text_field( __( 'Total:', 'syzenlabs-quantity-limits' ) ),
 			),
 		);
 	}

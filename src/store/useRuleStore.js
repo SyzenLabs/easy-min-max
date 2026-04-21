@@ -52,7 +52,6 @@ const getDefaultRulesForm = () => ( {
 	maxQuantityMessage: 'You cannot order more than [max_quantity] items.',
 	minPriceMessage: 'Your order must be at least [min_price].',
 	maxPriceMessage: 'Your order cannot exceed [max_price].',
-	customCss: '',
 	conditionGroups: [ [ createEmptyCondition() ] ],
 } );
 

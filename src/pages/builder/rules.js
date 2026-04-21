@@ -9,9 +9,8 @@ import {
     Icon,
     __experimentalInputControl as InputControl,
     __experimentalInputControlSuffixWrapper as InputControlSuffixWrapper,
-    TextareaControl,
     ToggleControl,
-    Tooltip,
+    Tooltip
 } from '@wordpress/components';
 import { useEffect, useState } from '@wordpress/element';
 import { __ } from '@wordpress/i18n';
@@ -386,32 +385,6 @@ export function Rules() {
 						) } */ }
 					</div>
 
-					<div className="rounded-(--szql-border-radius-md) border border-[#DCDCDE] bg-white p-4">
-						<div className="mb-4">
-							<p className="m-0 font-medium text-(--szql-text-main)">
-								{ __( 'Custom CSS', 'syzenlabs-quantity-limits' ) }
-							</p>
-							<p className="mt-1 mb-0 text-sm text-(--szql-text-sub)">
-								{ __(
-									'Add rule-specific CSS that will be printed on the frontend when this rule applies.',
-									'syzenlabs-quantity-limits'
-								) }
-							</p>
-						</div>
-
-						<TextareaControl
-							label={ __( 'CSS Rules', 'syzenlabs-quantity-limits' ) }
-							value={ rulesForm.customCss }
-							help={ __(
-								'Write plain CSS without wrapping <style> tags.',
-								'syzenlabs-quantity-limits'
-							) }
-							rows={ 8 }
-							onChange={ handleFieldChange( 'customCss' ) }
-							spellCheck={ false }
-							className="font-mono"
-						/>
-					</div>
 				</div>
 			</CardBody>
 		</Card>

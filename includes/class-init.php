@@ -137,6 +137,11 @@ class Init {
 		}
 
 		$user_info = get_userdata( get_current_user_id() );
+		$user_name = '';
+
+		if ( $user_info instanceof \WP_User ) {
+			$user_name = $user_info->first_name ? $user_info->first_name . ( $user_info->last_name ? ' ' . $user_info->last_name : '' ) : $user_info->user_login;
+		}
 
 		wp_enqueue_editor();
 
@@ -148,29 +153,29 @@ class Init {
 			'szql-editor-script',
 			'szqlAdmin',
 			array(
-				'ajax'             => admin_url( 'admin-ajax.php' ),
-				'url'              => SZQL_URL,
-				'db_url'           => admin_url( 'admin.php?page=szql-dashboard#' ),
-				'version'          => SZQL_VER,
+				'ajax'             => esc_url_raw( admin_url( 'admin-ajax.php' ) ),
+				'url'              => esc_url_raw( SZQL_URL ),
+				'db_url'           => esc_url_raw( admin_url( 'admin.php?page=szql-dashboard#' ) ),
+				'version'          => sanitize_text_field( SZQL_VER ),
 				'isActive'         => 1,
-				'license'          => get_option( 'edd_szql_license_key' ),
+				'license'          => sanitize_text_field( (string) get_option( 'edd_szql_license_key' ) ),
 				'nonce'            => wp_create_nonce( 'szql-nonce' ),
-				'decimal_sep'      => get_option( 'woocommerce_price_decimal_sep', '.' ),
-				'num_decimals'     => get_option( 'woocommerce_price_num_decimals', '2' ),
-				'currency_pos'     => get_option( 'woocommerce_currency_pos', 'left' ),
-				'currencySymbol'   => function_exists( 'get_woocommerce_currency_symbol' ) ? trim( get_woocommerce_currency_symbol() ) : '$',
-				'currencyCode'     => function_exists( 'get_woocommerce_currency' ) ? get_woocommerce_currency() : 'USD',
-				'weightUnit'       => get_option( 'woocommerce_weight_unit' ),
-				'dimensionUnit'    => get_option( 'woocommerce_dimension_unit' ),
+				'decimal_sep'      => sanitize_text_field( (string) get_option( 'woocommerce_price_decimal_sep', '.' ) ),
+				'num_decimals'     => absint( get_option( 'woocommerce_price_num_decimals', '2' ) ),
+				'currency_pos'     => sanitize_key( (string) get_option( 'woocommerce_currency_pos', 'left' ) ),
+				'currencySymbol'   => function_exists( 'get_woocommerce_currency_symbol' ) ? sanitize_text_field( trim( wp_strip_all_tags( get_woocommerce_currency_symbol() ) ) ) : '$',
+				'currencyCode'     => function_exists( 'get_woocommerce_currency' ) ? sanitize_text_field( get_woocommerce_currency() ) : 'USD',
+				'weightUnit'       => sanitize_text_field( (string) get_option( 'woocommerce_weight_unit' ) ),
+				'dimensionUnit'    => sanitize_text_field( (string) get_option( 'woocommerce_dimension_unit' ) ),
 				'userInfo'         => array(
-					'name'  => $user_info->first_name ? $user_info->first_name . ( $user_info->last_name ? ' ' . $user_info->last_name : '' ) : $user_info->user_login,
-					'email' => $user_info->user_email,
+					'name'  => sanitize_text_field( $user_name ),
+					'email' => $user_info instanceof \WP_User ? sanitize_email( $user_info->user_email ) : '',
 				),
 				'show_lic_page'    => defined( 'SZQL_PRO_VER' ) ? 'true' : 'false',
 				'settings'         => DB::get_instance()->get_settings(),
 				'flags'            => array(),
 				'currentZoneId'    => $current_zone_id,
-				'helloBar'         => Utils::get_transient_without_cache( 'szql_helloBar_ysl_2026_1' ),
+				'helloBar'         => wp_kses_post( (string) Utils::get_transient_without_cache( 'szql_helloBar_ysl_2026_1' ) ),
 				'isWooMarketplace' => defined( 'SZQL_WOO_MARKETPLACE' ) && SZQL_WOO_MARKETPLACE === true ? 'true' : 'false',
 			)
 		);

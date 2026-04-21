@@ -97,14 +97,20 @@ class RulesController {
 	}
 
 	public function update_rule( WP_REST_Request $request ) {
-		$rule = $request->get_json_params();
-		$res  = $this->db->update_rule( $rule );
+		$rule           = $request->get_json_params();
+		$res            = $this->db->update_rule( $rule );
+		$sanitized_rule = null;
+
+		if ( ! is_wp_error( $res ) && ! empty( $rule['id'] ) ) {
+			$sanitized_rule = $this->db->get_rule_by_id( $rule['id'] );
+		}
+
 		return rest_ensure_response(
 			array(
 				'success' => ! is_wp_error( $res ),
 				'data'    => array(
 					'is_new' => is_wp_error( $res ) ? null : $res,
-					'rule'   => $rule,
+					'rule'   => $sanitized_rule,
 					'error'  => is_wp_error( $res ) ? $res->get_error_message() : null,
 				),
 			)

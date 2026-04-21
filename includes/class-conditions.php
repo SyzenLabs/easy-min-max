@@ -2,7 +2,7 @@
 
 namespace SZQL\Includes;
 
-use SZQL\Includes\Utils\Flags;
+use WP_Error;
 
 defined( 'ABSPATH' ) || exit;
 
@@ -147,8 +147,8 @@ class Conditions {
 		foreach ( $products as $product ) {
 			$data[] = array(
 				'value' => $product->ID,
-				'label' => $product->post_title,
-				'image' => wp_get_attachment_image_url( get_post_thumbnail_id( $product->ID ), 'thumbnail' ),
+				'label' => sanitize_text_field( $product->post_title ),
+				'image' => esc_url_raw( (string) wp_get_attachment_image_url( get_post_thumbnail_id( $product->ID ), 'thumbnail' ) ),
 			);
 		}
 
@@ -184,8 +184,8 @@ class Conditions {
 				$thumbnail_id = get_term_meta( $category->term_id, 'thumbnail_id', true );
 				$data[]       = array(
 					'value' => $category->term_id,
-					'label' => $category->name,
-					'image' => $thumbnail_id ? wp_get_attachment_image_url( $thumbnail_id, 'thumbnail' ) : '',
+					'label' => sanitize_text_field( $category->name ),
+					'image' => $thumbnail_id ? esc_url_raw( (string) wp_get_attachment_image_url( $thumbnail_id, 'thumbnail' ) ) : '',
 				);
 			}
 		}
@@ -222,7 +222,7 @@ class Conditions {
 			foreach ( $tags as $tag ) {
 				$data[] = array(
 					'value' => $tag->term_id,
-					'label' => $tag->name,
+					'label' => sanitize_text_field( $tag->name ),
 				);
 			}
 		}
@@ -264,7 +264,7 @@ class Conditions {
 		);
 
 		foreach ( $coupons as $coupon_post ) {
-			$code   = $coupon_post->post_title;
+			$code   = sanitize_text_field( $coupon_post->post_title );
 			$data[] = array(
 				'value' => $code,
 				'label' => $code,
@@ -297,9 +297,9 @@ class Conditions {
 		foreach ( $users as $user ) {
 			$data[] = array(
 				'value'    => $user->ID,
-				'label'    => $user->display_name,
-				'username' => $user->user_login,
-				'avatar'   => get_avatar_url( $user->ID, array( 'size' => 32 ) ),
+				'label'    => sanitize_text_field( $user->display_name ),
+				'username' => sanitize_text_field( $user->user_login ),
+				'avatar'   => esc_url_raw( (string) get_avatar_url( $user->ID, array( 'size' => 32 ) ) ),
 			);
 		}
 
@@ -322,7 +322,7 @@ class Conditions {
 			if ( empty( $search ) || stripos( $role_name, $search ) !== false ) {
 				$data[] = array(
 					'value' => $role_key,
-					'label' => $role_name,
+					'label' => sanitize_text_field( $role_name ),
 				);
 			}
 		}
@@ -356,7 +356,7 @@ class Conditions {
 			foreach ( $terms as $term ) {
 				$data[] = array(
 					'value' => $term->term_id,
-					'label' => $term->name,
+					'label' => sanitize_text_field( $term->name ),
 				);
 			}
 		}

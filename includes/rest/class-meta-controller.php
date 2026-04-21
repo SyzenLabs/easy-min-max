@@ -66,7 +66,7 @@ class MetaController {
 		foreach ( $product_ids as $product_id ) {
 			$results[] = array(
 				'id'   => $product_id,
-				'name' => get_the_title( $product_id ),
+				'name' => sanitize_text_field( get_the_title( $product_id ) ),
 			);
 		}
 		return $results;
@@ -85,7 +85,7 @@ class MetaController {
 		foreach ( $variation_ids as $variation_id ) {
 			$results[] = array(
 				'id'        => $variation_id,
-				'name'      => get_the_title( $variation_id ),
+				'name'      => sanitize_text_field( get_the_title( $variation_id ) ),
 				'parent_id' => (int) wp_get_post_parent_id( $variation_id ),
 			);
 		}
@@ -109,7 +109,7 @@ class MetaController {
 			function ( $term ) {
 				return array(
 					'id'   => $term->term_id,
-					'name' => $term->name,
+					'name' => sanitize_text_field( $term->name ),
 				);
 			},
 			$terms
@@ -125,8 +125,8 @@ class MetaController {
 		foreach ( $taxonomies as $tax ) {
 			$results[] = array(
 				'id'   => $tax->attribute_id,
-				'name' => $tax->attribute_label,
-				'slug' => 'pa_' . $tax->attribute_name,
+				'name' => sanitize_text_field( $tax->attribute_label ),
+				'slug' => sanitize_key( 'pa_' . $tax->attribute_name ),
 			);
 		}
 		return $results;
@@ -141,7 +141,7 @@ class MetaController {
 		foreach ( $entries as $entry ) {
 			$zones[] = array(
 				'id'   => $entry['id'],
-				'name' => $entry['zone_name'],
+				'name' => sanitize_text_field( $entry['zone_name'] ),
 			);
 		}
 		$zones[] = array(
@@ -159,8 +159,8 @@ class MetaController {
 		$results = array();
 		foreach ( $methods as $method ) {
 			$results[] = array(
-				'id'   => $method->id,
-				'name' => $method->method_title,
+				'id'   => sanitize_key( (string) $method->id ),
+				'name' => sanitize_text_field( $method->method_title ),
 			);
 		}
 		return $results;
@@ -174,8 +174,8 @@ class MetaController {
 		$results  = array();
 		foreach ( $gateways as $gateway ) {
 			$results[] = array(
-				'id'   => $gateway->id,
-				'name' => $gateway->get_title(),
+				'id'   => sanitize_key( (string) $gateway->id ),
+				'name' => sanitize_text_field( $gateway->get_title() ),
 			);
 		}
 		return $results;
@@ -194,7 +194,7 @@ class MetaController {
 		foreach ( $coupons as $coupon_id ) {
 			$results[] = array(
 				'id'   => $coupon_id,
-				'name' => get_the_title( $coupon_id ),
+				'name' => sanitize_text_field( get_the_title( $coupon_id ) ),
 			);
 		}
 		return $results;
