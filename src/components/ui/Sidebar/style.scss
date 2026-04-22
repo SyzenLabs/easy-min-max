@@ -1,54 +1,54 @@
-.szql-sidebar-component {
+.syzeql-sidebar-component {
 	// @include media(sm) {
 	// 	width: 100%;
 	// }
 }
-.szql-sidebar-content-component {
-	@apply flex flex-col gap-5 fixed inset-y-0 right-0 w-full bg-(--szql-neutral-alpha-20) h-full transition-all duration-200 ease-out opacity-0 invisible z-99999;
+.syzeql-sidebar-content-component {
+	@apply flex flex-col gap-5 fixed inset-y-0 right-0 w-full bg-(--syzeql-neutral-alpha-20) h-full transition-all duration-200 ease-out opacity-0 invisible z-99999;
 
-	&.szql-sidebar-content-open {
+	&.syzeql-sidebar-content-open {
 		@apply backdrop-blur-sm opacity-100 visible;
 
-		.szql-sidebar-content-inner {
+		.syzeql-sidebar-content-inner {
 			@apply translate-x-0;
 		}
 	}
 
-	.szql-sidebar-content-inner {
+	.syzeql-sidebar-content-inner {
 		@apply p-8 pt-0 translate-x-full h-full transition-all duration-200 ease-out w-full md:w-165.25 ml-auto bg-white shadow-[rgba(149,157,165,0.2)_0px_8px_24px];
 	}
 }
-.szql-sidebar-header-component {
-	@apply flex justify-between items-center gap-1.5 font-medium text-(--szql-text-strong) border-b border-solid py-5;
-	font-size: var(--szql-font-size-2xl);
-	line-height: var(--szql-font-line-height-2xl);
-	font-weight: var(--szql-font-weight-medium);
-	color: var(--szql-text-strong);
-	border-color: var(--szql-stroke-sub);
+.syzeql-sidebar-header-component {
+	@apply flex justify-between items-center gap-1.5 font-medium text-(--syzeql-text-strong) border-b border-solid py-5;
+	font-size: var(--syzeql-font-size-2xl);
+	line-height: var(--syzeql-font-line-height-2xl);
+	font-weight: var(--syzeql-font-weight-medium);
+	color: var(--syzeql-text-strong);
+	border-color: var(--syzeql-stroke-sub);
 
-	&.szql-sidebar-header-divider {
+	&.syzeql-sidebar-header-divider {
 		@apply border-b py-5;
-		border-color: var(--szql-stroke-sub);
+		border-color: var(--syzeql-stroke-sub);
 	}
 
-	.szql-sidebar-header-close {
-		@apply p-2 rounded-md bg-(--szql-bg-soft) text-(--szql-text-strong) transition-all duration-200 ease-out;
+	.syzeql-sidebar-header-close {
+		@apply p-2 rounded-md bg-(--syzeql-bg-soft) text-(--syzeql-text-strong) transition-all duration-200 ease-out;
 
 		&:hover {
-			@apply bg-(--szql-bg-soft);
+			@apply bg-(--syzeql-bg-soft);
 		}
 	}
 }
 
-.szql-sidebar-body-component {
+.syzeql-sidebar-body-component {
 	@apply my-5 h-full pb-50 overflow-y-auto px-0.5;
 }
 
-.szql-sidebar-component:has(.szql-sidebar-footer-component)
-	.szql-sidebar-body-component {
+.syzeql-sidebar-component:has(.syzeql-sidebar-footer-component)
+	.syzeql-sidebar-body-component {
 	@apply h-[calc(100vh-210px)] pb-0;
 }
 
-.szql-sidebar-footer-component {
+.syzeql-sidebar-footer-component {
 	@apply flex justify-between items-center gap-1.5;
 }

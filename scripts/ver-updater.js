@@ -19,7 +19,7 @@ Starting build process...
 
 ` );
 
-const reg1 = /define\( 'SZQL_VER', '(\d+\.\d+\.\d+(?:-[a-zA-Z]+)?)' \);/;
+const reg1 = /define\( 'SYZEQL_VER', '(\d+\.\d+\.\d+(?:-[a-zA-Z]+)?)' \);/;
 const reg2 = /\*\sVersion:\s+(\d+\.\d+\.\d+(?:-[a-zA-Z]+)?)/;
 const reg3 = /Stable tag:\s+(\d+\.\d+\.\d+(?:-[a-zA-Z]+)?)/;
 
@@ -79,7 +79,7 @@ if ( currVersion === 'error' ) {
 
 function updateVersion( version ) {
 	phpFile = phpFile.replace( reg1, () => {
-		return `define( 'SZQL_VER', '${ version }' );`;
+		return `define( 'SYZEQL_VER', '${ version }' );`;
 	} );
 
 	phpFile = phpFile.replace( reg2, () => {

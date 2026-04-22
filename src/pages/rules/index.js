@@ -100,7 +100,7 @@ export default function ShippingRules() {
 	}, [ state.searchQuery, state.filterStatus, ruleState.rules ] );
 
 	return (
-		<div className="mt-5! szql-container">
+		<div className="mt-5! syzeql-container">
 			<HStack wrap={ true }>
 				<Text
 					weight={ wpConfig.weight.medium }

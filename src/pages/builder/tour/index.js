@@ -2,7 +2,7 @@ import { __, sprintf } from '@wordpress/i18n';
 // import './style.scss';
 
 export function newUserTour() {
-	const STORAGE_KEY = 'szql_shipping_rules_nux_tour';
+	const STORAGE_KEY = 'syzeql_shipping_rules_nux_tour';
 	const JS_SRC =
 		'https://cdn.jsdelivr.net/npm/driver.js@latest/dist/driver.js.iife.js';
 	const CSS_HREF =
@@ -32,7 +32,7 @@ export function newUserTour() {
 				const link = document.createElement( 'link' );
 				link.rel = 'stylesheet';
 				link.href = CSS_HREF;
-				link.id = 'szql-driver-css';
+				link.id = 'syzeql-driver-css';
 				document.head.appendChild( link );
 			}
 
@@ -49,7 +49,7 @@ export function newUserTour() {
 				script.src = JS_SRC;
 				script.async = true;
 				script.defer = true;
-				script.id = 'szql-driver-js';
+				script.id = 'syzeql-driver-js';
 				document.head.appendChild( script );
 			}
 
@@ -92,7 +92,7 @@ export function newUserTour() {
 					showButtons: [ 'next', 'close' ],
 					nextBtnText: __( 'Start', 'syzenlabs-quantity-limits' ),
 					popoverClass:
-						'szql-driver-popover szql-driver-popover-intro',
+						'syzeql-driver-popover syzeql-driver-popover-intro',
 					onCloseClick: ( el, step, opts ) => {
 						markTourComplete();
 						opts.driver.destroy();
@@ -103,7 +103,7 @@ export function newUserTour() {
 				},
 			},
 			{
-				element: '#szql-shipping-zone-section',
+				element: '#syzeql-shipping-zone-section',
 				popover: {
 					title: __( 'Add Shipping Zone', 'syzenlabs-quantity-limits' ),
 					description: __(
@@ -115,7 +115,7 @@ export function newUserTour() {
 				},
 			},
 			{
-				element: '#szql-shipping-method-section',
+				element: '#syzeql-shipping-method-section',
 				popover: {
 					title: __(
 						'Customized Shipping Method',
@@ -130,7 +130,7 @@ export function newUserTour() {
 				},
 			},
 			{
-				element: '#szql-shipping-method-rates-section-flexible',
+				element: '#syzeql-shipping-method-rates-section-flexible',
 				popover: {
 					title: __(
 						'Define Shipping Cost',
@@ -145,7 +145,7 @@ export function newUserTour() {
 				},
 			},
 			{
-				element: '#szql-additional-settings-section',
+				element: '#syzeql-additional-settings-section',
 				popover: {
 					title: __(
 						'Additional Setting',
@@ -160,7 +160,7 @@ export function newUserTour() {
 				},
 			},
 			{
-				element: '#szql-publish-section',
+				element: '#syzeql-publish-section',
 				popover: {
 					title: __( 'Publish or Draft', 'syzenlabs-quantity-limits' ),
 					description: __(
@@ -179,7 +179,7 @@ export function newUserTour() {
 			allowClose: true,
 			smoothScroll: true,
 			animate: true,
-			popoverClass: 'szql-driver-popover',
+			popoverClass: 'syzeql-driver-popover',
 			progressText: sprintf(
 				/* translators: 1: current step number placeholder, 2: total steps placeholder */
 				__( 'Step %1$s of %2$s', 'syzenlabs-quantity-limits' ),

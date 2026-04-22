@@ -195,7 +195,7 @@ function MultiSelect( {
 	...props
 } ) {
 	// same id format as select compoment for auto closing dropdown when clicking outside
-	const selectIdRef = useRef( `szql-select-${ getUuid() }` );
+	const selectIdRef = useRef( `syzeql-select-${ getUuid() }` );
 	const selectId = selectIdRef.current;
 
 	if ( ! Array.isArray( selected ) ) {
@@ -224,7 +224,7 @@ function MultiSelect( {
 				<BaseControl label={ label }>
 					<Dropdown
 						className="w-full!"
-						contentClassName="szql-multiselect-dropdown-content"
+						contentClassName="syzeql-multiselect-dropdown-content"
 						popoverProps={ {
 							placement: 'bottom-start',
 						} }
@@ -240,7 +240,7 @@ function MultiSelect( {
 			) : (
 				<Dropdown
 					className="w-full!"
-					contentClassName="szql-multiselect-dropdown-content"
+					contentClassName="syzeql-multiselect-dropdown-content"
 					popoverProps={ {
 						placement: 'bottom-start',
 					} }
@@ -279,11 +279,11 @@ function _MultiSelectTrigger2( { isOpen, onToggle } ) {
 	return (
 		<div
 			className={ cn(
-				'szql-multiselect-trigger-component',
-				state.open && 'szql-multiselect-open',
+				'syzeql-multiselect-trigger-component',
+				state.open && 'syzeql-multiselect-open',
 				selectedOptions.length === 0 &&
-					'szql-multiselect-has-placeholder',
-				disabled && 'szql-is-disabled'
+					'syzeql-multiselect-has-placeholder',
+				disabled && 'syzeql-is-disabled'
 			) }
 			onClick={ toggleOpen }
 			onKeyDown={ ( e ) => {
@@ -297,18 +297,18 @@ function _MultiSelectTrigger2( { isOpen, onToggle } ) {
 			aria-expanded={ state.open }
 		>
 			{ selectedOptions.length > 0 ? (
-				<div className="flex-wrap szql-multiselect-trigger-value w-[calc(100%-25px)]">
+				<div className="flex-wrap syzeql-multiselect-trigger-value w-[calc(100%-25px)]">
 					{ selectedOptions.map( ( item ) => {
 						return (
 							<div
-								className="w-full szql-multiselect-trigger-value-item max-w-fit"
+								className="w-full syzeql-multiselect-trigger-value-item max-w-fit"
 								key={ item.value }
 								title={ item.label }
 							>
 								{ item.image && (
 									<img
 										loading="lazy"
-										className="szql-multiselect-trigger-value-item-image"
+										className="syzeql-multiselect-trigger-value-item-image"
 										src={ item.image }
 										alt={ item.label }
 									/>
@@ -334,12 +334,12 @@ function _MultiSelectTrigger2( { isOpen, onToggle } ) {
 					} ) }
 				</div>
 			) : (
-				<div className="szql-multiselect-trigger-placeholder">
+				<div className="syzeql-multiselect-trigger-placeholder">
 					{ placeholder || 'Select Options' }
 				</div>
 			) }
 
-			<div className="szql-multiselect-trigger-icons">
+			<div className="syzeql-multiselect-trigger-icons">
 				{ loading ? (
 					<Spinner />
 				) : (
@@ -383,7 +383,7 @@ function _MultiSelectSearch() {
 					/>
 				</InputControlSuffixWrapper>
 			}
-			className="szql-multiselect-search-component"
+			className="syzeql-multiselect-search-component"
 			value={ state.searchQuery }
 			onChange={ ( value ) => handleSearch( value ) }
 		/>
@@ -410,7 +410,7 @@ function _MultiSelectItem( { item } ) {
 
 	return (
 		<label
-			className="flex items-start justify-start gap-3 szql-multiselect-item-component"
+			className="flex items-start justify-start gap-3 syzeql-multiselect-item-component"
 			htmlFor={ id }
 			key={ item.value }
 		>
@@ -424,7 +424,7 @@ function _MultiSelectItem( { item } ) {
 				{ item.image && (
 					<img
 						loading="lazy"
-						className="szql-multiselect-item-image"
+						className="syzeql-multiselect-item-image"
 						src={ item.image }
 						alt={ item.label }
 					/>
@@ -454,7 +454,7 @@ function _MultiSelectItemAllOption() {
 	return (
 		<label
 			htmlFor={ id }
-			className="flex items-start justify-start gap-3 szql-multiselect-item-component szql-multiselect-all-options-checkbox"
+			className="flex items-start justify-start gap-3 syzeql-multiselect-item-component syzeql-multiselect-all-options-checkbox"
 		>
 			<CheckboxControl
 				id={ id }
@@ -472,12 +472,12 @@ function _MultiSelectItems() {
 	const { filteredOptions } = useContext( MultiSelectContext );
 
 	return (
-		<div className="szql-multiselect-items-component">
+		<div className="syzeql-multiselect-items-component">
 			{ filteredOptions.map( ( option ) => (
 				<_MultiSelectItem key={ option.value } item={ option } />
 			) ) }
 			{ filteredOptions.length === 0 && (
-				<div className="szql-multiselect-no-options">
+				<div className="syzeql-multiselect-no-options">
 					No options found
 				</div>
 			) }
@@ -491,11 +491,11 @@ function _MultiSelectContent2() {
 	return (
 		<>
 			{ search && (
-				<div className="szql-multiselect-content-header">
+				<div className="syzeql-multiselect-content-header">
 					<_MultiSelectSearch />
 				</div>
 			) }
-			<div className="szql-multiselect-content-body">
+			<div className="syzeql-multiselect-content-body">
 				{ selectAll && state.searchQuery.length === 0 && (
 					<_MultiSelectItemAllOption />
 				) }

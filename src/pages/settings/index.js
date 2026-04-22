@@ -54,7 +54,7 @@ export default function Settings() {
 	);
 
 	return (
-		<div className="mt-5! szql-container">
+		<div className="mt-5! syzeql-container">
 			<Card>
 				<CardBody>
 					<VStack spacing={ 6 }>

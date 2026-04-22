@@ -2,10 +2,10 @@
 /**
  * Options Action.
  *
- * @package SZQL\Options
+ * @package SYZEQL\Options
  */
 
-namespace SZQL\Includes\Rest;
+namespace SYZEQL\Includes\Rest;
 
 defined( 'ABSPATH' ) || exit;
 

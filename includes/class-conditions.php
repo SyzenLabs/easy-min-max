@@ -1,6 +1,6 @@
 <?php // phpcs:ignore
 
-namespace SZQL\Includes;
+namespace SYZEQL\Includes;
 
 use WP_Error;
 
@@ -259,7 +259,7 @@ class Conditions {
 
 		// Virtual option that represents all free-shipping coupons.
 		$data[] = array(
-			'value' => 'szql:coupon:free_shipping',
+			'value' => 'syzeql:coupon:free_shipping',
 			'label' => __( 'Any Free Shipping Coupons', 'syzenlabs-quantity-limits' ),
 		);
 

@@ -1,9 +1,9 @@
 <?php // phpcs:ignore
 
-namespace SZQL\Includes;
+namespace SYZEQL\Includes;
 
 use DateTime;
-use SZQL\Traits\Singleton;
+use SYZEQL\Traits\Singleton;
 use WP_Error;
 
 defined( 'ABSPATH' ) || exit;
@@ -18,12 +18,12 @@ class DB {
 	/**
 	 * WordPress option key for storing shipping rules.
 	 */
-	private const OPTION_KEY = 'szql-rules';
+	private const OPTION_KEY = 'syzeql-rules';
 
 	/**
 	 * WordPress option key for storing plugin settings.
 	 */
-	private const SETTINGS_KEY = 'szql-settings';
+	private const SETTINGS_KEY = 'syzeql-settings';
 
 	/**
 	 * Get plugin settings

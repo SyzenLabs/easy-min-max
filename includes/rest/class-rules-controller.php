@@ -1,9 +1,9 @@
 <?php
 
-namespace SZQL\Includes\Rest;
+namespace SYZEQL\Includes\Rest;
 
-use SZQL\Includes\DB;
-use SZQL\Includes\Utils;
+use SYZEQL\Includes\DB;
+use SYZEQL\Includes\Utils;
 use WP_REST_Request;
 
 defined( 'ABSPATH' ) || exit;
@@ -13,7 +13,7 @@ class RulesController {
 	/**
 	 * DB Instance
 	 *
-	 * @var \SZQL\Includes\DB
+	 * @var \SYZEQL\Includes\DB
 	 */
 	private $db;
 
@@ -24,7 +24,7 @@ class RulesController {
 
 	public function register_routes() {
 		register_rest_route(
-			'szql/v1',
+			'syzeql/v1',
 			'/rules',
 			array(
 				array(
@@ -36,7 +36,7 @@ class RulesController {
 		);
 
 		register_rest_route(
-			'szql/v1',
+			'syzeql/v1',
 			'/rules/(?P<id>[a-zA-Z0-9_-]+)',
 			array(
 				array(
@@ -48,7 +48,7 @@ class RulesController {
 		);
 
 		register_rest_route(
-			'szql/v1',
+			'syzeql/v1',
 			'/rules',
 			array(
 				'methods'             => 'POST',
@@ -58,7 +58,7 @@ class RulesController {
 		);
 
 		register_rest_route(
-			'szql/v1',
+			'syzeql/v1',
 			'/rules/(?P<id>[a-zA-Z0-9_-]+)',
 			array(
 				'methods'             => 'DELETE',

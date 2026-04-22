@@ -2,12 +2,12 @@
 /**
  * Condition Evaluator.
  *
- * @package SZQL\Evaluator
+ * @package SYZEQL\Evaluator
  */
 
-namespace SZQL\Includes;
+namespace SYZEQL\Includes;
 
-use SZQL\Includes\Utils\Flags;
+use SYZEQL\Includes\Utils\Flags;
 
 defined( 'ABSPATH' ) || exit;
 
@@ -715,7 +715,7 @@ class ConditionEvaluator {
 		}
 
 		// Special token: any free shipping coupon applied.
-		if ( is_array( $condition_value ) && in_array( 'szql:coupon:free_shipping', $condition_value, true ) ) {
+		if ( is_array( $condition_value ) && in_array( 'syzeql:coupon:free_shipping', $condition_value, true ) ) {
 			return $has_free_shipping;
 		}
 

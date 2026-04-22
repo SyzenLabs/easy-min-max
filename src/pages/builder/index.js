@@ -122,7 +122,7 @@ function RulesAddEditHeader( { editId } ) {
 					isBlock
 					__next40pxDefaultSize
 					__nextHasNoMarginBottom
-					id="szql-publish-section"
+					id="syzeql-publish-section"
 					value={ rule.publishMode }
 					onChange={ ( _v ) => updateBuilder( 'publishMode', _v ) }
 					hideLabelFromVision

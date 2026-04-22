@@ -2,12 +2,12 @@
 /**
  * Options Action.
  *
- * @package SZQL\Options
+ * @package SYZEQL\Options
  */
 
-namespace SZQL\Includes\Utils;
+namespace SYZEQL\Includes\Utils;
 
-use SZQL\Includes\Xpo;
+use SYZEQL\Includes\Xpo;
 
 defined( 'ABSPATH' ) || exit;
 
@@ -37,12 +37,12 @@ class Options {
 	 * @return string
 	 */
 	public function admin_footer_left_callback( $text ) {
-		if ( 'szql-dashboard' !== sanitize_text_field( wp_unslash( $_GET['page'] ?? '' ) ) ) { // phpcs:ignore
+		if ( 'syzeql-dashboard' !== sanitize_text_field( wp_unslash( $_GET['page'] ?? '' ) ) ) { // phpcs:ignore
 			return $text;
 		}
 
 		$html  = '<span>';
-		$html .= '<span>If you like <span style="color:#0062ff;font-weight:bold;">SyzenLabs Quantity Limits</span>, please leave us a <a class="szql-link" href="https://wordpress.org/support/plugin/syzenlabs-quantity-limits/reviews?rate=5#new-post" target="_blank">★★★★★</a> rating!</span>';
+		$html .= '<span>If you like <span style="color:#0062ff;font-weight:bold;">SyzenLabs Quantity Limits</span>, please leave us a <a class="syzeql-link" href="https://wordpress.org/support/plugin/syzenlabs-quantity-limits/reviews?rate=5#new-post" target="_blank">★★★★★</a> rating!</span>';
 		$html .= '</span>';
 
 		return $html;
@@ -55,15 +55,15 @@ class Options {
 	 * @return string
 	 */
 	public function admin_footer_right_callback( $text ) {
-		if ( 'szql-dashboard' !== sanitize_text_field( wp_unslash( $_GET['page'] ?? '' ) ) ) { // phpcs:ignore
+		if ( 'syzeql-dashboard' !== sanitize_text_field( wp_unslash( $_GET['page'] ?? '' ) ) ) { // phpcs:ignore
 			return $text;
 		}
 
 		ob_start();
 		?>
-		<div class="alignright szql-admin-footer-right" style="margin-right:50px;display:flex;gap:16px;align-items:center;font-size:13px;">
+		<div class="alignright syzeql-admin-footer-right" style="margin-right:50px;display:flex;gap:16px;align-items:center;font-size:13px;">
 			<span><?php esc_html_e( 'Follow Us', 'syzenlabs-quantity-limits' ); ?></span>
-			<div class="szql-admin-footer-right-socials" style="display:flex;gap:5px;align-items:center;">
+			<div class="syzeql-admin-footer-right-socials" style="display:flex;gap:5px;align-items:center;">
 				<a href="https://www.facebook.com/wpxpo" target="_blank" style="color:#1877F2;font-weight:bold;">Facebook</a>
 				<span>|</span>
 				<a href="https://x.com/wpxpoofficial" target="_blank" style="color:#1DA1F2;font-weight:bold;">X (Twitter)</a>
@@ -82,14 +82,14 @@ class Options {
 	 * @return void
 	 */
 	public function register_wc_submenu() {
-		$capability = apply_filters( 'szql_wc_submenu_capability', 'manage_options' );
+		$capability = apply_filters( 'syzeql_wc_submenu_capability', 'manage_options' );
 
 		add_submenu_page(
 			'woocommerce',
 			__( 'SyzenLabs Quantity Limits', 'syzenlabs-quantity-limits' ),
 			__( 'SyzenLabs Quantity Limits', 'syzenlabs-quantity-limits' ),
 			$capability,
-			'szql-dashboard',
+			'syzeql-dashboard',
 			array( __CLASS__, 'tab_page_content' )
 		);
 	}
@@ -114,7 +114,7 @@ class Options {
 			if ( 'wc-settings' === $slug || 'woocommerce_settings' === $slug ) {
 				$settings_index = $index;
 			}
-			if ( 'szql-dashboard' === $slug ) {
+			if ( 'syzeql-dashboard' === $slug ) {
 				$our_index = $index;
 			}
 		}
@@ -130,7 +130,7 @@ class Options {
 			$before = array_slice( $wc_menu, 0, $settings_index + 1, true );
 			$after  = array_slice( $wc_menu, $settings_index + 1, null, true );
 
-			$wc_menu                = $before + array( 'szql-temp-key' => $our_item ) + $after;
+			$wc_menu                = $before + array( 'syzeql-temp-key' => $our_item ) + $after;
 			$submenu['woocommerce'] = array_values( $wc_menu ); // phpcs:ignore WordPress.WP.GlobalVariablesOverride.Prohibited
 		}
 	}
@@ -141,7 +141,7 @@ class Options {
 	 * @return void
 	 */
 	public static function tab_page_content() {
-		echo wp_kses( '<div id="szql-dashboard-wrap"></div>', apply_filters( 'szql_get_allowed_html_tags', array() ) );
+		echo wp_kses( '<div id="syzeql-dashboard-wrap"></div>', apply_filters( 'syzeql_get_allowed_html_tags', array() ) );
 	}
 
 	/**
@@ -151,7 +151,7 @@ class Options {
 	 */
 	public static function remove_all_notices() {
 		$page = isset( $_GET['page'] ) ? sanitize_text_field( wp_unslash($_GET['page']) ) : ''; // phpcs:ignore
-		if ( 'szql-dashboard' === $page ) {
+		if ( 'syzeql-dashboard' === $page ) {
 			remove_all_actions( 'admin_notices' );
 			remove_all_actions( 'all_admin_notices' );
 			remove_all_actions( 'in_admin_header' );

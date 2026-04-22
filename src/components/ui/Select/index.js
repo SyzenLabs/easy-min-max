@@ -116,7 +116,7 @@ function Select( {
 	const selectRef = useRef( null );
 
 	const [ selectId, setSelectId ] = useState(
-		() => `szql-select-${ getUuid() }`
+		() => `syzeql-select-${ getUuid() }`
 	);
 
 	return (
@@ -132,10 +132,10 @@ function Select( {
 			<div
 				ref={ selectRef }
 				className={ cn(
-					'szql-select-component',
+					'syzeql-select-component',
 					className,
 					fullWidth && 'w-full',
-					disabled && 'szql-is-disabled'
+					disabled && 'syzeql-is-disabled'
 				) }
 				data-select-id={ selectId }
 				{ ...props }
@@ -160,10 +160,10 @@ function SelectTrigger( { children, className = '', ...props } ) {
 	return (
 		<div
 			className={ cn(
-				'szql-select-trigger-component',
+				'syzeql-select-trigger-component',
 				className,
-				state.open && 'szql-select-open',
-				disabled && 'szql-is-disabled'
+				state.open && 'syzeql-select-open',
+				disabled && 'syzeql-is-disabled'
 			) }
 			onClick={ toggleOpen }
 			onKeyDown={ ( e ) =>
@@ -175,7 +175,7 @@ function SelectTrigger( { children, className = '', ...props } ) {
 			{ ...props }
 		>
 			{ children }
-			<div className="szql-select-trigger-icons">
+			<div className="syzeql-select-trigger-icons">
 				{ loading && <Spinner /> }
 				<Icon
 					icon={ state.open ? chevronUp : chevronDown }
@@ -197,10 +197,10 @@ function SelectValue( {
 	return (
 		<div
 			className={ cn(
-				'szql-select-value-component',
+				'syzeql-select-value-component',
 				'truncate',
 				state.internalSelected === '' &&
-					'szql-select-value-placeholder',
+					'syzeql-select-value-placeholder',
 				className
 			) }
 			style={ maxWidth ? { maxWidth } : {} }
@@ -247,7 +247,7 @@ export function SelectSearch( { ...props } ) {
 					) : null }
 				</InputControlSuffixWrapper>
 			}
-			className="szql-select-search-component"
+			className="syzeql-select-search-component"
 			ref={ inputRef }
 			value={ state.searchQuery }
 			onChange={ ( value ) =>
@@ -348,7 +348,7 @@ function SelectContent( { children, className = '', search, ...props } ) {
 
 		const scrollToSelected = () => {
 			const selectedItem = contentRef.current.querySelector(
-				'.szql-select-item-selected'
+				'.syzeql-select-item-selected'
 			);
 			if ( selectedItem ) {
 				// first scroll without animation to ensure immediate positioning
@@ -380,8 +380,8 @@ function SelectContent( { children, className = '', search, ...props } ) {
 		<div
 			ref={ contentRef }
 			className={ cn(
-				'szql-select-content-component',
-				state.open ? 'szql-select-open' : 'szql-select-close',
+				'syzeql-select-content-component',
+				state.open ? 'syzeql-select-open' : 'syzeql-select-close',
 				props.fullWidth && 'w-full',
 				className
 			) }
@@ -396,7 +396,7 @@ function SelectContent( { children, className = '', search, ...props } ) {
 			} }
 		>
 			{ search && <SelectSearch /> }
-			<div className="szql-select-content-body">
+			<div className="syzeql-select-content-body">
 				{ children }
 				{ ( () => {
 					const hasVisibleOptions = () => {
@@ -426,7 +426,7 @@ function SelectContent( { children, className = '', search, ...props } ) {
 					};
 					return (
 						! hasVisibleOptions() && (
-							<div className="szql-select-no-data">
+							<div className="syzeql-select-no-data">
 								{ __( 'No options found', 'syzenlabs-quantity-limits' ) }
 							</div>
 						)
@@ -444,7 +444,7 @@ function SelectContent( { children, className = '', search, ...props } ) {
 			{ state.open &&
 				createPortal(
 					content,
-					document.getElementById( 'szql-dashboard-wrap' )
+					document.getElementById( 'syzeql-dashboard-wrap' )
 				) }
 		</>
 	);
@@ -494,7 +494,7 @@ function SelectGroupItem( {
 	return (
 		<MenuGroup
 			label={ label }
-			// className={ `szql-select-group-item-component ${ className }` }
+			// className={ `syzeql-select-group-item-component ${ className }` }
 			{ ...props }
 		>
 			{ children }
@@ -505,7 +505,7 @@ function SelectGroupItem( {
 function SelectLabel( { children, className = '', ...props } ) {
 	return (
 		<div
-			className={ cn( 'szql-select-label-component', className ) }
+			className={ cn( 'syzeql-select-label-component', className ) }
 			{ ...props }
 		>
 			{ children }
@@ -552,9 +552,9 @@ function SelectItem( {
 			// role="button"
 			// tabIndex={ 0 }
 			className={ cn(
-				// 'szql-select-item-component',
+				// 'syzeql-select-item-component',
 				{
-					'szql-select-item-selected':
+					'syzeql-select-item-selected':
 						state.internalSelected === itemValue,
 				},
 				className

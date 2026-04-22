@@ -11,7 +11,7 @@ function SkeletonGroup( {
 } ) {
 	return (
 		<div
-			className={ cn( 'szql-skeleton-group-container', className ) }
+			className={ cn( 'syzeql-skeleton-group-container', className ) }
 			style={ { width, height } }
 			{ ...props }
 		>
@@ -32,7 +32,7 @@ function SkeletonItems( {
 } ) {
 	return (
 		<div
-			className={ cn( 'szql-skeleton-items-container', className ) }
+			className={ cn( 'syzeql-skeleton-items-container', className ) }
 			style={ { width, justifyContent, alignItems, flexDirection, gap } }
 			{ ...props }
 		>
@@ -50,7 +50,7 @@ function Skeleton( {
 } ) {
 	return (
 		<div
-			className={ cn( 'szql-skeleton-container', className ) }
+			className={ cn( 'syzeql-skeleton-container', className ) }
 			style={ { width, height } }
 			{ ...props }
 		>

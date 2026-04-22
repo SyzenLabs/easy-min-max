@@ -153,12 +153,12 @@ export function Rules() {
 			</CardHeader>
 			<CardBody>
 				<div className="grid gap-6">
-					<div className="rounded-(--szql-border-radius-md) border border-[#DCDCDE] bg-white p-4">
+					<div className="rounded-(--syzeql-border-radius-md) border border-[#DCDCDE] bg-white p-4">
 						<div className="mb-4">
-							<p className="m-0 font-medium text-(--szql-text-main)">
+							<p className="m-0 font-medium text-(--syzeql-text-main)">
 								{ __( 'Quantity Limits', 'syzenlabs-quantity-limits' ) }
 							</p>
-							<p className="mt-1 mb-0 text-sm text-(--szql-text-sub)">
+							<p className="mt-1 mb-0 text-sm text-(--syzeql-text-sub)">
 								{ __(
 									'Define the allowed quantity thresholds for matching products.',
 									'syzenlabs-quantity-limits'
@@ -266,12 +266,12 @@ export function Rules() {
 						</div>
 					</div>
 
-					<div className="rounded-(--szql-border-radius-md) border border-[#DCDCDE] bg-white p-4">
+					<div className="rounded-(--syzeql-border-radius-md) border border-[#DCDCDE] bg-white p-4">
 						<div className="mb-4">
-							<p className="m-0 font-medium text-(--szql-text-main)">
+							<p className="m-0 font-medium text-(--syzeql-text-main)">
 								{ __( 'Price Limits', 'syzenlabs-quantity-limits' ) }
 							</p>
-							<p className="mt-1 mb-0 text-sm text-(--szql-text-sub)">
+							<p className="mt-1 mb-0 text-sm text-(--syzeql-text-sub)">
 								{ __(
 									'Define the allowed price thresholds for matching products.',
 									'syzenlabs-quantity-limits'

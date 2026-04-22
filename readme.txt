@@ -4,7 +4,7 @@ Tags: minmax, quantity, price, product restrictions
 Requires at least: 6.4
 Tested up to: 6.9
 Requires PHP: 7.4
-Stable tag: 1.0.2
+Stable tag: 1.0.3
 License: GPLv3
 License URI: http://www.gnu.org/licenses/gpl-3.0.html
 
@@ -107,6 +107,9 @@ Yes. Validation is applied on add to cart, cart updates, checkout, and WooCommer
 The plugin does not load its main functionality until WooCommerce is available.
 
 == Changelog ==
+
+= 1.0.3 - 22 Apr 2026 =
+* Fix: Changed plugin prefix.
 
 = 1.0.2 - 21 Apr 2026 =
 * Fix: Updated source code URL

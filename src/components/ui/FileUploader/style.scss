@@ -1,60 +1,60 @@
 $file-uploader-min-height: 284px;
 
-.szql-file-uploader-preview-component,
-.szql-file-uploader-dropzone,
-.szql-file-uploader-loader-component {
+.syzeql-file-uploader-preview-component,
+.syzeql-file-uploader-dropzone,
+.syzeql-file-uploader-loader-component {
 	@apply flex flex-col items-center justify-center gap-5 p-10 min-h-71 border border-dashed rounded-md cursor-pointer transition-all duration-200 ease-out;
-	background-color: var(--szql-color-primary-alpha-16);
-	border-color: var(--szql-stroke-special);
+	background-color: var(--syzeql-color-primary-alpha-16);
+	border-color: var(--syzeql-stroke-special);
 }
 
-.szql-file-uploader-component {
+.syzeql-file-uploader-component {
 	@apply w-full;
 
-	.szql-file-uploader-dropzone {
+	.syzeql-file-uploader-dropzone {
 		&:hover,
-		&.szql-is-dragover {
-			// background-color: var(--szql-sky-blue-alpha-16);
-			box-shadow: var(--szql-shadow-md);
+		&.syzeql-is-dragover {
+			// background-color: var(--syzeql-sky-blue-alpha-16);
+			box-shadow: var(--syzeql-shadow-md);
 		}
 
-		&:active:not(.szql-is-dragover) {
+		&:active:not(.syzeql-is-dragover) {
 			@apply translate-y-px;
 		}
 	}
 
-	.szql-file-uploader-content {
+	.syzeql-file-uploader-content {
 		@apply flex flex-col items-center justify-center gap-5 text-center max-w-xs mx-auto;
-		color: var(--szql-text-white);
+		color: var(--syzeql-text-white);
 	}
 
-	.szql-file-uploader-icon {
-		color: var(--szql-text-special);
+	.syzeql-file-uploader-icon {
+		color: var(--syzeql-text-special);
 	}
 
-	.szql-file-uploader-label {
-		font-size: var(--szql-font-size-lg);
-		line-height: var(--szql-font-line-height-lg);
-		font-weight: var(--szql-font-weight-medium);
-		color: var(--szql-text-strong);
+	.syzeql-file-uploader-label {
+		font-size: var(--syzeql-font-size-lg);
+		line-height: var(--syzeql-font-line-height-lg);
+		font-weight: var(--syzeql-font-weight-medium);
+		color: var(--syzeql-text-strong);
 	}
 
-	.szql-file-uploader-subtitle {
-		font-size: var(--szql-font-size-xs);
-		line-height: var(--szql-font-line-height-xs);
-		color: var(--szql-text-sub);
+	.syzeql-file-uploader-subtitle {
+		font-size: var(--syzeql-font-size-xs);
+		line-height: var(--syzeql-font-line-height-xs);
+		color: var(--syzeql-text-sub);
 	}
-	.szql-file-uploader-or {
-		font-size: var(--szql-font-size-xs);
-		line-height: var(--szql-font-line-height-xs);
-		color: var(--szql-text-sub);
+	.syzeql-file-uploader-or {
+		font-size: var(--syzeql-font-size-xs);
+		line-height: var(--syzeql-font-line-height-xs);
+		color: var(--syzeql-text-sub);
 		@apply relative;
 
 		&::before,
 		&::after {
 			@apply absolute top-1/2 -translate-y-px w-23.75 h-px;
 			content: "";
-			background-color: var(--szql-text-disabled);
+			background-color: var(--syzeql-text-disabled);
 		}
 
 		&::before {
@@ -65,70 +65,70 @@ $file-uploader-min-height: 284px;
 		}
 	}
 
-	.szql-file-uploader-input {
+	.syzeql-file-uploader-input {
 		@apply hidden;
 	}
-	.szql-file-uploader-dropzone:hover:not(.szql-is-disabled) {
+	.syzeql-file-uploader-dropzone:hover:not(.syzeql-is-disabled) {
 		.dashicons {
 			@apply -translate-y-px;
 		}
 	}
 
-	.szql-file-uploader-dropzone.szql-is-disabled {
+	.syzeql-file-uploader-dropzone.syzeql-is-disabled {
 		@apply opacity-60 cursor-not-allowed pointer-events-none;
 	}
 
 	// Responsive adjustments
 	@media (max-width: 480px) {
-		.szql-file-uploader-dropzone {
+		.syzeql-file-uploader-dropzone {
 			@apply p-6 py-4 min-h-35;
 		}
 
-		.szql-file-uploader-content {
+		.syzeql-file-uploader-content {
 			@apply gap-2;
 		}
 	}
 }
 
-.szql-file-uploader-preview-component {
-	.szql-file-uploader-preview-items {
+.syzeql-file-uploader-preview-component {
+	.syzeql-file-uploader-preview-items {
 		@apply flex flex-col gap-2.5;
 
-		.szql-file-uploader-preview-item {
+		.syzeql-file-uploader-preview-item {
 			@apply flex items-center gap-2.5;
-			.szql-file-uploader-preview-item-icon {
-				color: var(--szql-text-special);
+			.syzeql-file-uploader-preview-item-icon {
+				color: var(--syzeql-text-special);
 			}
-			.szql-file-uploader-filename {
-				font-size: var(--szql-font-size-lg);
-				line-height: var(--szql-font-line-height-lg);
-				color: var(--szql-text-strong);
+			.syzeql-file-uploader-filename {
+				font-size: var(--syzeql-font-size-lg);
+				line-height: var(--syzeql-font-line-height-lg);
+				color: var(--syzeql-text-strong);
 			}
 		}
 	}
 }
 
-.szql-file-uploader-loader-component {
-	.szql-file-uploader-loader-items {
+.syzeql-file-uploader-loader-component {
+	.syzeql-file-uploader-loader-items {
 		@apply flex flex-col gap-2.5;
 
-		.szql-file-uploader-loader-item {
+		.syzeql-file-uploader-loader-item {
 			@apply flex items-center gap-2.5;
-			.szql-file-uploader-loader-item-icon {
-				color: var(--szql-text-special);
+			.syzeql-file-uploader-loader-item-icon {
+				color: var(--syzeql-text-special);
 			}
-			.szql-file-uploader-loader-filename {
-				font-size: var(--szql-font-size-lg);
-				line-height: var(--szql-font-line-height-lg);
-				color: var(--szql-text-strong);
+			.syzeql-file-uploader-loader-filename {
+				font-size: var(--syzeql-font-size-lg);
+				line-height: var(--syzeql-font-line-height-lg);
+				color: var(--syzeql-text-strong);
 			}
 		}
 	}
-	.szql-file-uploader-loader-text {
-		font-size: var(--szql-font-size-lg);
-		line-height: var(--szql-font-line-height-lg);
-		font-weight: var(--szql-font-weight-medium);
-		color: var(--szql-text-special);
+	.syzeql-file-uploader-loader-text {
+		font-size: var(--syzeql-font-size-lg);
+		line-height: var(--syzeql-font-line-height-lg);
+		font-weight: var(--syzeql-font-weight-medium);
+		color: var(--syzeql-text-special);
 		@apply text-center;
 	}
 }
@@ -137,10 +137,10 @@ $file-uploader-min-height: 284px;
 	height: 12px;
 	width: 100%;
 	--c: no-repeat linear-gradient(var(--wp-admin-theme-color) 0 0);
-	background: var(--c), var(--c), var(--szql-sky-blue-200);
+	background: var(--c), var(--c), var(--syzeql-sky-blue-200);
 	background-size: 60% 100%;
 	animation: l16 2s infinite;
-	border-radius: var(--szql-border-radius-md);
+	border-radius: var(--syzeql-border-radius-md);
 }
 
 @keyframes l16 {

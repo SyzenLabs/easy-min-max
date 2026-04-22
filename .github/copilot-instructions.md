@@ -18,7 +18,7 @@
 
 ## Conventions
 
--   PHP classes use the `SZQL\` namespace and are autoloaded from kebab-case files such as `includes/class-init.php` and `includes/frontend/class-quantity-ui.php`.
+-   PHP classes use the `SYZEQL\` namespace and are autoloaded from kebab-case files such as `includes/class-init.php` and `includes/frontend/class-quantity-ui.php`.
 -   Reuse `traits/trait-singleton.php` for long-lived service classes instead of inventing new lifecycle patterns.
 -   Rule and settings data live in WordPress options as JSON through `includes/class-db.php`; do not introduce new storage patterns unless the task requires it.
 -   React source can import from `@/` because the alias maps to `src/`.
@@ -27,8 +27,8 @@
 ## Pitfalls
 
 -   Versioning is strict: keep `package.json`, the plugin header/version constant in `syzenlabs-quantity-limits.php`, and `readme.txt` in sync. Use `scripts/ver-updater.js` and add the changelog entry before running `npm run release`.
--   The admin UI depends on generated asset metadata such as `assets/js/szql-backend.asset.php`; if webpack output is missing, the admin app will not enqueue correctly.
--   REST endpoints use both `szql/v1` and `syzenlabs-quantity-limits/v1`. Check the existing namespace before adding or consuming endpoints.
+-   The admin UI depends on generated asset metadata such as `assets/js/syzeql-backend.asset.php`; if webpack output is missing, the admin app will not enqueue correctly.
+-   REST endpoints use both `syzeql/v1` and `syzenlabs-quantity-limits/v1`. Check the existing namespace before adding or consuming endpoints.
 
 ## Key References
 

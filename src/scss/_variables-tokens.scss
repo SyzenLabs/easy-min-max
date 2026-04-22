@@ -11,158 +11,158 @@
 
 :root {
 	/* === Font === */
-	--szql-font-family: "Inter", sans-serif;
-	--szql-default-font-size: 14px;
-	--szql-default-line-height: 20px;
+	--syzeql-font-family: "Inter", sans-serif;
+	--syzeql-default-font-size: 14px;
+	--syzeql-default-line-height: 20px;
 
 	/* === Font Sizes === */
-	--szql-font-size-2xs: 11px;
-	--szql-font-size-xs: 12px;
-	--szql-font-size-sm: 14px;
-	--szql-font-size-md: 16px;
-	--szql-font-size-lg: 18px;
-	--szql-font-size-xl: 20px;
-	--szql-font-size-2xl: 24px;
-	--szql-font-size-3xl: 28px;
-	--szql-font-size-4xl: 32px;
-	--szql-font-size-5xl: 36px;
-	--szql-font-size-6xl: 40px;
+	--syzeql-font-size-2xs: 11px;
+	--syzeql-font-size-xs: 12px;
+	--syzeql-font-size-sm: 14px;
+	--syzeql-font-size-md: 16px;
+	--syzeql-font-size-lg: 18px;
+	--syzeql-font-size-xl: 20px;
+	--syzeql-font-size-2xl: 24px;
+	--syzeql-font-size-3xl: 28px;
+	--syzeql-font-size-4xl: 32px;
+	--syzeql-font-size-5xl: 36px;
+	--syzeql-font-size-6xl: 40px;
 
 	/* === Font Line Heights === */
-	--szql-font-line-height-2xs: 12px; // 11 / 12
-	--szql-font-line-height-xs: 16px; // 12 / 16
-	--szql-font-line-height-sm: 20px; // 14 / 20
-	--szql-font-line-height-md: 24px; // 16 / 24
-	--szql-font-line-height-lg: 28px; // 18 / 28
-	--szql-font-line-height-xl: 28px; // 20 / 28
-	--szql-font-line-height-2xl: 32px; // 24 / 32
-	--szql-font-line-height-3xl: 36px; // 28 / 36
-	--szql-font-line-height-4xl: 40px; // 32 / 40
-	--szql-font-line-height-5xl: 44px; // 36 / 44
-	--szql-font-line-height-6xl: 48px; // 40 / 48
+	--syzeql-font-line-height-2xs: 12px; // 11 / 12
+	--syzeql-font-line-height-xs: 16px; // 12 / 16
+	--syzeql-font-line-height-sm: 20px; // 14 / 20
+	--syzeql-font-line-height-md: 24px; // 16 / 24
+	--syzeql-font-line-height-lg: 28px; // 18 / 28
+	--syzeql-font-line-height-xl: 28px; // 20 / 28
+	--syzeql-font-line-height-2xl: 32px; // 24 / 32
+	--syzeql-font-line-height-3xl: 36px; // 28 / 36
+	--syzeql-font-line-height-4xl: 40px; // 32 / 40
+	--syzeql-font-line-height-5xl: 44px; // 36 / 44
+	--syzeql-font-line-height-6xl: 48px; // 40 / 48
 
 	/* === Font Weights === */
-	--szql-font-weight-bold: 700;
-	--szql-font-weight-semibold: 600;
-	--szql-font-weight-medium: 500;
-	--szql-font-weight-regular: 400;
+	--syzeql-font-weight-bold: 700;
+	--syzeql-font-weight-semibold: 600;
+	--syzeql-font-weight-medium: 500;
+	--syzeql-font-weight-regular: 400;
 
 	/* === Transitions === */
-	--szql-transition-lg: 0.5s;
-	--szql-transition-md: 0.3s;
-	--szql-transition-sm: 0.2s;
+	--syzeql-transition-lg: 0.5s;
+	--syzeql-transition-md: 0.3s;
+	--syzeql-transition-sm: 0.2s;
 
 	/* === Container === */
-	--szql-container-max-width: 1352px;
+	--syzeql-container-max-width: 1352px;
 
 	/* === Border Radius === */
-	--szql-border-radius-xs: 2px;
-	--szql-border-radius-sm: 4px;
-	// --szql-border-radius-sm: 0px;
-	--szql-border-radius-md: 8px;
-	// --szql-border-radius-md: 0px;
-	--szql-border-radius-lg: 12px;
-	// --szql-border-radius-lg: 0px;
-	--szql-border-radius-full: 9999px;
+	--syzeql-border-radius-xs: 2px;
+	--syzeql-border-radius-sm: 4px;
+	// --syzeql-border-radius-sm: 0px;
+	--syzeql-border-radius-md: 8px;
+	// --syzeql-border-radius-md: 0px;
+	--syzeql-border-radius-lg: 12px;
+	// --syzeql-border-radius-lg: 0px;
+	--syzeql-border-radius-full: 9999px;
 
 	/* === State Tokens === */
-	--szql-state-faded-dark: var(--szql-neutral-800);
-	--szql-state-faded-base: var(--szql-neutral-500);
-	--szql-state-faded-light: var(--szql-neutral-200);
-	--szql-state-faded-lighter: var(--szql-neutral-100);
+	--syzeql-state-faded-dark: var(--syzeql-neutral-800);
+	--syzeql-state-faded-base: var(--syzeql-neutral-500);
+	--syzeql-state-faded-light: var(--syzeql-neutral-200);
+	--syzeql-state-faded-lighter: var(--syzeql-neutral-100);
 
-	--szql-state-information-dark: var(--szql-blue-950);
-	--szql-state-information-base: var(--szql-blue-500);
-	--szql-state-information-light: var(--szql-blue-200);
-	--szql-state-information-lighter: var(--szql-blue-50);
+	--syzeql-state-information-dark: var(--syzeql-blue-950);
+	--syzeql-state-information-base: var(--syzeql-blue-500);
+	--syzeql-state-information-light: var(--syzeql-blue-200);
+	--syzeql-state-information-lighter: var(--syzeql-blue-50);
 
-	--szql-state-warning-dark: var(--szql-orange-950);
-	--szql-state-warning-base: var(--szql-orange-500);
-	--szql-state-warning-light: var(--szql-orange-200);
-	--szql-state-warning-lighter: var(--szql-orange-50);
+	--syzeql-state-warning-dark: var(--syzeql-orange-950);
+	--syzeql-state-warning-base: var(--syzeql-orange-500);
+	--syzeql-state-warning-light: var(--syzeql-orange-200);
+	--syzeql-state-warning-lighter: var(--syzeql-orange-50);
 
-	--szql-state-error-dark: var(--szql-red-950);
-	--szql-state-error-base: var(--szql-red-500);
-	--szql-state-error-light: var(--szql-red-200);
-	--szql-state-error-lighter: var(--szql-red-50);
+	--syzeql-state-error-dark: var(--syzeql-red-950);
+	--syzeql-state-error-base: var(--syzeql-red-500);
+	--syzeql-state-error-light: var(--syzeql-red-200);
+	--syzeql-state-error-lighter: var(--syzeql-red-50);
 
-	--szql-state-success-dark: var(--szql-green-950);
-	--szql-state-success-base: var(--szql-green-500);
-	--szql-state-success-light: var(--szql-green-200);
-	--szql-state-success-lighter: var(--szql-green-50);
+	--syzeql-state-success-dark: var(--syzeql-green-950);
+	--syzeql-state-success-base: var(--syzeql-green-500);
+	--syzeql-state-success-light: var(--syzeql-green-200);
+	--syzeql-state-success-lighter: var(--syzeql-green-50);
 
-	--szql-state-away-dark: var(--szql-yellow-950);
-	--szql-state-away-base: var(--szql-yellow-500);
-	--szql-state-away-light: var(--szql-yellow-200);
-	--szql-state-away-lighter: var(--szql-yellow-50);
+	--syzeql-state-away-dark: var(--syzeql-yellow-950);
+	--syzeql-state-away-base: var(--syzeql-yellow-500);
+	--syzeql-state-away-light: var(--syzeql-yellow-200);
+	--syzeql-state-away-lighter: var(--syzeql-yellow-50);
 
-	--szql-state-feature-dark: var(--szql-purple-950);
-	--szql-state-feature-base: var(--szql-purple-500);
-	--szql-state-feature-light: var(--szql-purple-200);
-	--szql-state-feature-lighter: var(--szql-purple-50);
+	--syzeql-state-feature-dark: var(--syzeql-purple-950);
+	--syzeql-state-feature-base: var(--syzeql-purple-500);
+	--syzeql-state-feature-light: var(--syzeql-purple-200);
+	--syzeql-state-feature-lighter: var(--syzeql-purple-50);
 
-	--szql-state-verified-dark: var(--szql-sky-950);
-	--szql-state-verified-base: var(--szql-sky-500);
-	--szql-state-verified-light: var(--szql-sky-200);
-	--szql-state-verified-lighter: var(--szmm-sky-50);
+	--syzeql-state-verified-dark: var(--syzeql-sky-950);
+	--syzeql-state-verified-base: var(--syzeql-sky-500);
+	--syzeql-state-verified-light: var(--syzeql-sky-200);
+	--syzeql-state-verified-lighter: var(--szmm-sky-50);
 
 	--szmm-state-highlighted-dark: var(--szmm-pink-950);
 	--szmm-state-highlighted-base: var(--szmm-pink-500);
-	--szmm-state-highlighted-light: var(--szql-pink-200);
-	--szql-state-highlighted-lighter: var(--szql-pink-50);
+	--szmm-state-highlighted-light: var(--syzeql-pink-200);
+	--syzeql-state-highlighted-lighter: var(--syzeql-pink-50);
 
-	--szql-state-stable-dark: var(--szql-teal-950);
-	--szql-state-stable-base: var(--szql-teal-500);
-	--szql-state-stable-light: var(--szql-teal-200);
-	--szql-state-stable-lighter: var(--szql-teal-50);
+	--syzeql-state-stable-dark: var(--syzeql-teal-950);
+	--syzeql-state-stable-base: var(--syzeql-teal-500);
+	--syzeql-state-stable-light: var(--syzeql-teal-200);
+	--syzeql-state-stable-lighter: var(--syzeql-teal-50);
 
 	/* === Primary Color ===*/
-	--szql-color-primary-dark: var(--szql-sky-blue-800);
-	--szql-color-primary-darker: var(--szql-sky-blue-700);
-	--szql-color-primary-base: var(--szql-sky-blue-500);
-	--szql-color-primary-alpha-16: var(--szql-sky-blue-alpha-16);
-	--szql-color-primary-alpha-10: var(--szql-sky-blue-alpha-10);
+	--syzeql-color-primary-dark: var(--syzeql-sky-blue-800);
+	--syzeql-color-primary-darker: var(--syzeql-sky-blue-700);
+	--syzeql-color-primary-base: var(--syzeql-sky-blue-500);
+	--syzeql-color-primary-alpha-16: var(--syzeql-sky-blue-alpha-16);
+	--syzeql-color-primary-alpha-10: var(--syzeql-sky-blue-alpha-10);
 
 	/* === Static Tokens === */
-	--szql-static-black: var(--szql-neutral-950);
-	--szql-static-white: var(--szql-neutral-0);
+	--syzeql-static-black: var(--syzeql-neutral-950);
+	--syzeql-static-white: var(--syzeql-neutral-0);
 
 	/* === Background Tokens === */
-	--szql-bg-strong: var(--szql-neutral-950);
-	--szql-bg-surface: var(--szql-neutral-800);
-	--szql-bg-sub: var(--szql-neutral-300);
-	--szql-bg-soft: var(--szql-neutral-200);
-	--szql-bg-weak: var(--szql-neutral-50);
-	--szql-bg-white: var(--szql-neutral-0);
-	--szql-bg-special: var(--szql-sky-blue-500);
+	--syzeql-bg-strong: var(--syzeql-neutral-950);
+	--syzeql-bg-surface: var(--syzeql-neutral-800);
+	--syzeql-bg-sub: var(--syzeql-neutral-300);
+	--syzeql-bg-soft: var(--syzeql-neutral-200);
+	--syzeql-bg-weak: var(--syzeql-neutral-50);
+	--syzeql-bg-white: var(--syzeql-neutral-0);
+	--syzeql-bg-special: var(--syzeql-sky-blue-500);
 
 	/* === Text Tokens === */
-	--szql-text-strong: var(--szql-neutral-950);
-	--szql-text-sub: var(--szql-neutral-600);
-	--szql-text-soft: var(--szql-neutral-400);
-	--szql-text-disabled: var(--szql-neutral-400);
-	--szql-text-white: var(--szql-neutral-0);
-	--szql-text-special: var(--szql-sky-blue-500);
-	--szql-text-placeholder: var(--szql-neutral-600);
+	--syzeql-text-strong: var(--syzeql-neutral-950);
+	--syzeql-text-sub: var(--syzeql-neutral-600);
+	--syzeql-text-soft: var(--syzeql-neutral-400);
+	--syzeql-text-disabled: var(--syzeql-neutral-400);
+	--syzeql-text-white: var(--syzeql-neutral-0);
+	--syzeql-text-special: var(--syzeql-sky-blue-500);
+	--syzeql-text-placeholder: var(--syzeql-neutral-600);
 
 	/* === Stroke/Border Tokens === */
-	--szql-stroke-strong: var(--szql-neutral-950);
-	--szql-stroke-sub: var(--szql-neutral-400);
-	--szql-stroke-soft: var(--szql-neutral-200);
-	--szql-stroke-white: var(--szql-neutral-0);
-	--szql-stroke-transparent: transparent;
-	--szql-stroke-special: var(--szql-sky-blue-500);
+	--syzeql-stroke-strong: var(--syzeql-neutral-950);
+	--syzeql-stroke-sub: var(--syzeql-neutral-400);
+	--syzeql-stroke-soft: var(--syzeql-neutral-200);
+	--syzeql-stroke-white: var(--syzeql-neutral-0);
+	--syzeql-stroke-transparent: transparent;
+	--syzeql-stroke-special: var(--syzeql-sky-blue-500);
 
 	/* === Shadow Tokens === */
-	--szql-shadow-xsm: 0px 1px 2px 0px var(--szql-shadow-bg-xsm);
-	--szql-shadow-sm: 0px 2px 6px 0px var(--szql-shadow-bg-sm);
-	--szql-shadow-md: 0px 16px 32px -12px var(--szql-shadow-bg-md);
-	--szql-shadow-lg: 0px 16px 40px -8px var(--szql-shadow-bg-lg);
-	--szql-shadow-xl: 0px 24px 56px -4px var(--szql-shadow-bg-xl);
-	--szql-shadow-2xl: 0px 40px 96px -8px var(--szql-shadow-bg-2xl);
-	--szql-shadow-right: 16px 0px 32px 0px var(--szql-shadow-bg-right);
-	--szql-shadow-left: -16px 0px 32px 0px var(--szql-shadow-bg-left);
-	--szql-shadow-btn-sm: 0px 2px 2px 0px var(--szql-shadow-bg-btn-sm);
-	--szql-shadow-btn-lg: 0px 6px 10px 0px var(--szql-shadow-bg-btn-lg),
-		0px 2px 4px 0px var(--szql-shadow-bg-btn-lg);
+	--syzeql-shadow-xsm: 0px 1px 2px 0px var(--syzeql-shadow-bg-xsm);
+	--syzeql-shadow-sm: 0px 2px 6px 0px var(--syzeql-shadow-bg-sm);
+	--syzeql-shadow-md: 0px 16px 32px -12px var(--syzeql-shadow-bg-md);
+	--syzeql-shadow-lg: 0px 16px 40px -8px var(--syzeql-shadow-bg-lg);
+	--syzeql-shadow-xl: 0px 24px 56px -4px var(--syzeql-shadow-bg-xl);
+	--syzeql-shadow-2xl: 0px 40px 96px -8px var(--syzeql-shadow-bg-2xl);
+	--syzeql-shadow-right: 16px 0px 32px 0px var(--syzeql-shadow-bg-right);
+	--syzeql-shadow-left: -16px 0px 32px 0px var(--syzeql-shadow-bg-left);
+	--syzeql-shadow-btn-sm: 0px 2px 2px 0px var(--syzeql-shadow-bg-btn-sm);
+	--syzeql-shadow-btn-lg: 0px 6px 10px 0px var(--syzeql-shadow-bg-btn-lg),
+		0px 2px 4px 0px var(--syzeql-shadow-bg-btn-lg);
 }

@@ -38,9 +38,9 @@ function FileUploader( {
 	return (
 		<div
 			className={ cn(
-				'szql-file-uploader-component',
+				'syzeql-file-uploader-component',
 				className,
-				disabled && 'szql-is-disabled'
+				disabled && 'syzeql-is-disabled'
 			) }
 		>
 			<FileUploaderContext.Provider
@@ -322,8 +322,8 @@ function FileUploaderContent( {
 		<div
 			ref={ dropZoneRef }
 			className={ cn(
-				'szql-file-uploader-dropzone',
-				isDragging && 'szql-is-dragover'
+				'syzeql-file-uploader-dropzone',
+				isDragging && 'syzeql-is-dragover'
 			) }
 			onDragEnter={ handleDragEnter }
 			onDragOver={ handleDragOver }
@@ -337,22 +337,22 @@ function FileUploaderContent( {
 			}
 			aria-disabled={ disabled }
 		>
-			<div className="szql-file-uploader-content">
+			<div className="syzeql-file-uploader-content">
 				<Icon
-					className="szql-file-uploader-icon"
+					className="syzeql-file-uploader-icon"
 					name="download"
 					width="48px"
 					height="48px"
 				/>
 				<div>
-					<div className="szql-file-uploader-label">
+					<div className="syzeql-file-uploader-label">
 						{ isDragging ? dragOverLabel : label }
 					</div>
-					<div className="szql-file-uploader-subtitle">
+					<div className="syzeql-file-uploader-subtitle">
 						{ subtitle }
 					</div>
 				</div>
-				<div className="szql-file-uploader-or">
+				<div className="syzeql-file-uploader-or">
 					{ __( 'OR', 'syzenlabs-quantity-limits' ) }
 				</div>
 				<Button __next40pxDefaultSize variant="primary">
@@ -362,7 +362,7 @@ function FileUploaderContent( {
 			<input
 				ref={ inputRef }
 				type="file"
-				className="szql-file-uploader-input"
+				className="syzeql-file-uploader-input"
 				multiple={ multiple }
 				accept={ accept }
 				onChange={ handleInputChange }
@@ -381,26 +381,26 @@ function FileUploaderPreview( {
 	const { files, multiple } = useFileUploaderContext();
 	const modifiedFormat = multiple ? files : [ files ];
 	return (
-		<div className="szql-file-uploader-preview-component">
-			<div className="szql-file-uploader-preview-items">
+		<div className="syzeql-file-uploader-preview-component">
+			<div className="syzeql-file-uploader-preview-items">
 				{ modifiedFormat.map( ( file ) => (
 					<div
 						key={ file.name }
-						className="szql-file-uploader-preview-item"
+						className="syzeql-file-uploader-preview-item"
 					>
 						<Icon
 							name="paper"
 							width="20px"
 							height="20px"
-							className="szql-file-uploader-preview-item-icon"
+							className="syzeql-file-uploader-preview-item-icon"
 						/>
-						<div className="szql-file-uploader-filename">
+						<div className="syzeql-file-uploader-filename">
 							File name { file.name }
 						</div>
 					</div>
 				) ) }
 			</div>
-			<div className="szql-file-uploader-preview-item-actions">
+			<div className="syzeql-file-uploader-preview-item-actions">
 				<Button
 					__next40pxDefaultSize
 					variant="primary"
@@ -420,20 +420,20 @@ function FileUploaderLoader( {
 	const modifiedFormat = multiple ? files : [ files ];
 
 	return (
-		<div className="szql-file-uploader-loader-component">
-			<div className="szql-file-uploader-loader-items">
+		<div className="syzeql-file-uploader-loader-component">
+			<div className="syzeql-file-uploader-loader-items">
 				{ modifiedFormat.map( ( file ) => (
 					<div
 						key={ file.name }
-						className="szql-file-uploader-loader-item"
+						className="syzeql-file-uploader-loader-item"
 					>
 						<Icon
 							name="paper"
 							width="20px"
 							height="20px"
-							className="szql-file-uploader-loader-item-icon"
+							className="syzeql-file-uploader-loader-item-icon"
 						/>
-						<div className="szql-file-uploader-loader-filename">
+						<div className="syzeql-file-uploader-loader-filename">
 							File name { file?.name }
 						</div>
 					</div>
@@ -443,7 +443,7 @@ function FileUploaderLoader( {
 			{ /* <div className="loader"></div> */ }
 			<ProgressBar />
 
-			<div className="szql-file-uploader-loader-text">
+			<div className="syzeql-file-uploader-loader-text">
 				{ progressText }
 			</div>
 		</div>

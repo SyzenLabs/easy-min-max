@@ -2,7 +2,7 @@
 /**
  * Plugin Name: SyzenLabs Quantity Limits
  * Description: Set minimum and maximum quantity and price rules for WooCommerce products with flexible conditions and storefront validation.
- * Version:     1.0.2
+ * Version:     1.0.3
  * Author:      SyzenLabs
  * Author URI:  https://profiles.wordpress.org/syzenlabs
  * Requires Plugins: woocommerce
@@ -14,28 +14,28 @@
  * @package syzenlabs-quantity-limits
  */
 
-use SZQL\Includes\Init;
+use SYZEQL\Includes\Init;
 
 defined( 'ABSPATH' ) || exit;
 
 // Define Vars.
-define( 'SZQL_VER', '1.0.2' );
-define( 'SZQL_URL', plugin_dir_url( __FILE__ ) );
-define( 'SZQL_BASE', plugin_basename( __FILE__ ) );
-define( 'SZQL_PATH', plugin_dir_path( __FILE__ ) );
-define( 'SZQL_RULE_VER', '1' );
-define( 'SZQL_WOO_MARKETPLACE', false );
+define( 'SYZEQL_VER', '1.0.3' );
+define( 'SYZEQL_URL', plugin_dir_url( __FILE__ ) );
+define( 'SYZEQL_BASE', plugin_basename( __FILE__ ) );
+define( 'SYZEQL_PATH', plugin_dir_path( __FILE__ ) );
+define( 'SYZEQL_RULE_VER', '1' );
+define( 'SYZEQL_WOO_MARKETPLACE', false );
 
-if ( ! function_exists( 'szql_autoloader' ) ) {
+if ( ! function_exists( 'syzeql_autoloader' ) ) {
 	/**
 	 * Autoloader function
 	 *
 	 * @param string $class_name class name.
 	 * @return void
 	 */
-	function szql_autoloader( $class_name ) {
-		$namespace = 'SZQL\\';
-		$base_dir  = SZQL_PATH;
+	function syzeql_autoloader( $class_name ) {
+		$namespace = 'SYZEQL\\';
+		$base_dir  = SYZEQL_PATH;
 
 		$len = strlen( $namespace );
 		if ( strncmp( $namespace, $class_name, $len ) !== 0 ) {
@@ -64,17 +64,17 @@ if ( ! function_exists( 'szql_autoloader' ) ) {
 
 }
 
-spl_autoload_register( 'szql_autoloader' );
+spl_autoload_register( 'syzeql_autoloader' );
 
-if ( ! function_exists( 'szql_init' ) ) {
+if ( ! function_exists( 'syzeql_init' ) ) {
 	/**
 	 * Init plugin
 	 *
 	 * @return void
 	 */
-	function szql_init() {
+	function syzeql_init() {
 		new Init();
 	}
 }
 
-szql_init();
+syzeql_init();

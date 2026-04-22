@@ -1,143 +1,143 @@
 $multi-select-min-width: 160px;
 
 // Important: hide overflow scroll when multiselect is open
-// #szql-dashboard-wrap:has(.szql-multiselect-open) .szql-popup-layout {
+// #syzeql-dashboard-wrap:has(.syzeql-multiselect-open) .syzeql-popup-layout {
 // 	@apply overflow-hidden;
 // 	scrollbar-gutter: stable;
 // }
 
 // // Important: hide overflow scroll when multiselect is open
 // body {
-// 	&:has(.szql-multiselect-open) {
+// 	&:has(.syzeql-multiselect-open) {
 // 		@apply overflow-hidden;
 // 		scrollbar-gutter: stable;
 // 	}
 // }
 
-.szql-multiselect-component {
+.syzeql-multiselect-component {
 	@apply relative w-fit;
 	min-width: $multi-select-min-width;
 }
 
-.szql-multiselect-trigger-component {
+.syzeql-multiselect-trigger-component {
 	@apply border border-solid bg-white p-1.75 flex justify-between items-center cursor-pointer min-h-10 focus:ring-2 focus:ring-(--wp-admin-theme-color) focus:outline-none;
-	border-color: var(--szql-stroke-sub);
-	&.szql-multiselect-has-placeholder {
+	border-color: var(--syzeql-stroke-sub);
+	&.syzeql-multiselect-has-placeholder {
 		@apply px-2.5 py-1.5;
 	}
 
-	.szql-multiselect-trigger-icon {
+	.syzeql-multiselect-trigger-icon {
 		@apply transition-all duration-300 ease-in-out;
 	}
 
-	.szql-multiselect-trigger-placeholder {
-		color: var(--szql-text-placeholder);
+	.syzeql-multiselect-trigger-placeholder {
+		color: var(--syzeql-text-placeholder);
 	}
 }
 
-.szql-multiselect-search-component {
+.syzeql-multiselect-search-component {
 	z-index: inherit;
 }
 
-.szql-multiselect-content-component {
+.syzeql-multiselect-content-component {
 	@apply cursor-pointer fixed overflow-y-auto p-2 outline outline-solid bg-white rounded-md;
-	outline-color: var(--szql-stroke-sub);
-	background: var(--szql-bg-white);
-	border-radius: var(--szql-border-radius-md);
+	outline-color: var(--syzeql-stroke-sub);
+	background: var(--syzeql-bg-white);
+	border-radius: var(--syzeql-border-radius-md);
 	z-index: 99999;
 	transform: translateY(-10px);
-	transition: all var(--szql-transition-md) ease-in-out;
+	transition: all var(--syzeql-transition-md) ease-in-out;
 	max-height: 24rem;
 	overflow-x: auto;
 
-	.szql-checkbox-component {
+	.syzeql-checkbox-component {
 		@apply w-full;
 	}
 }
 
-.szql-multiselect-content-header {
+.syzeql-multiselect-content-header {
 	@apply p-2 pt-0 sticky top-0;
 	z-index: 999;
 }
 
-// .szql-multiselect-content-body {
+// .syzeql-multiselect-content-body {
 // 	@apply p-2;
 // }
 
-.szql-multiselect-open {
+.syzeql-multiselect-open {
 	// opacity: 1;
 	// transform: translateY(0);
 	// z-index: 5;
 
-	&.szql-multiselect-trigger-icon {
+	&.syzeql-multiselect-trigger-icon {
 		@apply rotate-180;
 	}
 }
 
-.szql-multiselect-item-component {
+.syzeql-multiselect-item-component {
 	@apply py-2.5 px-5 cursor-pointer;
 	&:hover {
-		background: var(--szql-bg-soft);
+		background: var(--syzeql-bg-soft);
 	}
 
-	.szql-checkbox-label {
+	.syzeql-checkbox-label {
 		@apply flex items-center gap-1.5;
 		width: calc(100% - 25px);
 	}
 }
 
-.szql-multiselect-item-image {
-	@apply w-5 h-5 object-cover rounded-[100%] border border-solid bg-(--szql-bg-weak);
-	border-color: var(--szql-stroke-sub);
-	background-color: var(--szql-bg-weak);
+.syzeql-multiselect-item-image {
+	@apply w-5 h-5 object-cover rounded-[100%] border border-solid bg-(--syzeql-bg-weak);
+	border-color: var(--syzeql-stroke-sub);
+	background-color: var(--syzeql-bg-weak);
 }
 
-.szql-multiselect-no-options {
+.syzeql-multiselect-no-options {
 	@apply cursor-default my-2.5 text-center;
-	color: var(--szql-text-sub);
+	color: var(--syzeql-text-sub);
 }
 
-.szql-multiselect-checked-items-component {
+.syzeql-multiselect-checked-items-component {
 	@apply sticky top-10.5 cursor-default flex flex-wrap gap-1.5 p-3;
 	// z-index: inherit;
-	// background: var(--szql-bg-white);
-	.szql-multiselect-checked-item {
-		font-size: var(--szql-font-size-xs);
-		line-height: var(--szql-font-line-height-xs);
-		@apply w-fit flex items-center gap-1.5 rounded-[100%] bg-(--szql-bg-soft) p-0.5 text-(--szql-text-sub);
+	// background: var(--syzeql-bg-white);
+	.syzeql-multiselect-checked-item {
+		font-size: var(--syzeql-font-size-xs);
+		line-height: var(--syzeql-font-line-height-xs);
+		@apply w-fit flex items-center gap-1.5 rounded-[100%] bg-(--syzeql-bg-soft) p-0.5 text-(--syzeql-text-sub);
 
-		&:not(.szql-multiselect-checked-item-image) {
+		&:not(.syzeql-multiselect-checked-item-image) {
 			@apply pl-2;
 		}
 
-		.szql-multiselect-checked-item-image {
-			@apply w-5 h-5 object-cover rounded-[100%] border border-solid bg-(--szql-bg-weak);
-			border-color: var(--szql-stroke-sub);
-			background-color: var(--szql-bg-weak);
+		.syzeql-multiselect-checked-item-image {
+			@apply w-5 h-5 object-cover rounded-[100%] border border-solid bg-(--syzeql-bg-weak);
+			border-color: var(--syzeql-stroke-sub);
+			background-color: var(--syzeql-bg-weak);
 		}
 
-		.szql-multiselect-checked-items-icon {
-			@apply rounded-[100%] bg-(--szql-bg-soft) p-0.5;
+		.syzeql-multiselect-checked-items-icon {
+			@apply rounded-[100%] bg-(--syzeql-bg-soft) p-0.5;
 		}
 	}
 }
-.szql-multiselect-trigger-value {
+.syzeql-multiselect-trigger-value {
 	@apply flex items-center gap-1;
-	.szql-multiselect-trigger-value-item {
+	.syzeql-multiselect-trigger-value-item {
 		@apply flex items-center h-6 gap-1 px-1 rounded-sm bg-[#ddd] text-[#1e1e1e] border-2;
-		border-color: var(--szql-stroke-white);
+		border-color: var(--syzeql-stroke-white);
 		font-size: 13px;
 	}
-	.szql-multiselect-trigger-value-item-image {
-		@apply w-4.5 h-4.5 object-cover rounded-[100%] border border-solid bg-(--szql-bg-weak);
-		border-color: var(--szql-stroke-white);
-		background-color: var(--szql-bg-weak);
+	.syzeql-multiselect-trigger-value-item-image {
+		@apply w-4.5 h-4.5 object-cover rounded-[100%] border border-solid bg-(--syzeql-bg-weak);
+		border-color: var(--syzeql-stroke-white);
+		background-color: var(--syzeql-bg-weak);
 	}
-	.szql-multiselect-trigger-value-more {
-		font-size: var(--szql-font-size-2xs);
+	.syzeql-multiselect-trigger-value-more {
+		font-size: var(--syzeql-font-size-2xs);
 	}
 }
 
-.szql-multiselect-dropdown-content > .components-popover__content {
+.syzeql-multiselect-dropdown-content > .components-popover__content {
 	min-width: 300px;
 }

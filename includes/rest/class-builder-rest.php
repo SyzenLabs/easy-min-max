@@ -1,9 +1,9 @@
 <?php // phpcs:ignore
 
-namespace SZQL\Includes\Rest;
+namespace SYZEQL\Includes\Rest;
 
-use SZQL\Includes\Conditions;
-use SZQL\Includes\Utils;
+use SYZEQL\Includes\Conditions;
+use SYZEQL\Includes\Utils;
 
 defined( 'ABSPATH' ) || exit;
 

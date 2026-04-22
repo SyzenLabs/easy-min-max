@@ -1,6 +1,6 @@
 <?php
 
-namespace SZQL\Includes;
+namespace SYZEQL\Includes;
 
 defined( 'ABSPATH' ) || exit;
 

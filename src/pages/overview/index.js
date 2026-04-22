@@ -97,7 +97,7 @@ const Overview = () => {
 	}, [ state.rules ] );
 
 	return (
-		<div className="mt-5! szql-container">
+		<div className="mt-5! syzeql-container">
 			<VStack spacing={ 6 }>
 				<Card>
 					<CardBody>

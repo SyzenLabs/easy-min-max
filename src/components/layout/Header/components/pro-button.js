@@ -15,13 +15,13 @@ const ProButton = ( { className = '' } ) => {
 				variant="secondary"
 				icon={ <Icon icon={ icons.pro } /> }
 				onClick={ () => setIsProModalOpen( true ) }
-				className={ `szql-upgrade-pro-button ${ className }` }
+				className={ `syzeql-upgrade-pro-button ${ className }` }
 			>
 				{ __( 'Upgrade to Pro', 'syzenlabs-quantity-limits' ) }
 			</Button>
 			{ isProModalOpen && (
 				<Modal
-					className="szql-pro-modal-component"
+					className="syzeql-pro-modal-component"
 					size="large"
 					onRequestClose={ () => setIsProModalOpen( false ) }
 					shouldCloseOnEsc

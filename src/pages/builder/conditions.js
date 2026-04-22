@@ -129,21 +129,21 @@ export function Conditions() {
 				<div>
 					{ conditionGroups.map( ( group, groupIndex ) => (
 						<div key={ `condition-group-${ groupIndex }` }>
-							<div className="rounded-(--szql-border-radius-md) border border-[#DCDCDE] bg-white p-4">
+							<div className="rounded-(--syzeql-border-radius-md) border border-[#DCDCDE] bg-white p-4">
 								<Flex
 									justify="space-between"
 									align="start"
 									gap={ 4 }
 								>
 									<div>
-										<p className="m-0 font-medium text-(--szql-text-main)">
+										<p className="m-0 font-medium text-(--syzeql-text-main)">
 											{ __(
 												'Condition Group',
 												'syzenlabs-quantity-limits'
 											) }{ ' ' }
 											{ groupIndex + 1 }
 										</p>
-										<p className="mt-1 mb-0 text-sm text-(--szql-text-sub)">
+										<p className="mt-1 mb-0 text-sm text-(--syzeql-text-sub)">
 											{ __(
 												'All conditions in this group must be true.',
 												'syzenlabs-quantity-limits'
@@ -267,7 +267,7 @@ export function Conditions() {
 							</div>
 
 							{ groupIndex < conditionGroups.length - 1 && (
-								<div className="my-3 text-center text-xl font-bold tracking-wide text-(--szql-text-sub) uppercase">
+								<div className="my-3 text-center text-xl font-bold tracking-wide text-(--syzeql-text-sub) uppercase">
 									{ __( 'Or', 'syzenlabs-quantity-limits' ) }
 								</div>
 							) }

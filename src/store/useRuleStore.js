@@ -122,7 +122,7 @@ export const RuleStoreProvider = ( { children } ) => {
 		try {
 			const response = await apiFetch( {
 				method: 'GET',
-				path: '/szql/v1/rules',
+				path: '/syzeql/v1/rules',
 			} );
 
 			if ( ! response.success ) {
@@ -147,7 +147,7 @@ export const RuleStoreProvider = ( { children } ) => {
 		async ( ruleId ) => {
 			try {
 				const response = await apiFetch( {
-					path: `/szql/v1/rules/${ ruleId }`,
+					path: `/syzeql/v1/rules/${ ruleId }`,
 					method: 'GET',
 				} );
 
@@ -189,7 +189,7 @@ export const RuleStoreProvider = ( { children } ) => {
 
 			try {
 				const response = await apiFetch( {
-					path: '/szql/v1/rules',
+					path: '/syzeql/v1/rules',
 					method: 'POST',
 					data,
 				} );
@@ -278,7 +278,7 @@ export const RuleStoreProvider = ( { children } ) => {
 
 			try {
 				const response = await apiFetch( {
-					path: `/szql/v1/rules/${ id }`,
+					path: `/syzeql/v1/rules/${ id }`,
 					method: 'DELETE',
 				} );
 
@@ -320,7 +320,7 @@ export const RuleStoreProvider = ( { children } ) => {
 
 			try {
 				const response = await apiFetch( {
-					path: `/szql/v1/rules/${ id }/duplicate`,
+					path: `/syzeql/v1/rules/${ id }/duplicate`,
 					method: 'POST',
 				} );
 

@@ -1,8 +1,8 @@
 <?php
 
-namespace SZQL\Includes\Rest;
+namespace SYZEQL\Includes\Rest;
 
-use SZQL\Includes\Utils;
+use SYZEQL\Includes\Utils;
 use WC_Shipping_Zones;
 use WP_REST_Request;
 
@@ -15,7 +15,7 @@ class MetaController {
 
 	public function register_routes() {
 		register_rest_route(
-			'szql/v1',
+			'syzeql/v1',
 			'/meta',
 			array(
 				array(

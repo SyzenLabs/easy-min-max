@@ -25,7 +25,7 @@ const MenuItems = () => {
 			spacing={ 2 }
 			expanded={ false }
 			alignment="stretch"
-			className="szql-header-menu-items hidden! lg:flex!"
+			className="syzeql-header-menu-items hidden! lg:flex!"
 		>
 			{ menuItems.map( ( item, index ) => {
 				if ( item.divider ) {

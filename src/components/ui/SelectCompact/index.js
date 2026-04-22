@@ -144,7 +144,7 @@ function SelectCompactContent( { options = [], search = false, onClose } ) {
 			{ search && <SelectSearch /> }
 			{ renderOptions() }
 			{ totalVisibleItems === 0 && (
-				<div className="szql-select-no-data">
+				<div className="syzeql-select-no-data">
 					{ __( 'No options found', 'syzenlabs-quantity-limits' ) }
 				</div>
 			) }

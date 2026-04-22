@@ -1,18 +1,18 @@
-.szql-skeleton-group-container {
+.syzeql-skeleton-group-container {
 	@apply flex flex-col gap-4 border border-solid rounded-md p-4;
-	border-color: var(--szql-stroke-sub);
+	border-color: var(--syzeql-stroke-sub);
 }
 
-.szql-skeleton-items-container {
+.syzeql-skeleton-items-container {
 	@apply flex gap-4;
 }
 
-.szql-skeleton-container {
+.syzeql-skeleton-container {
 	background: linear-gradient(
 		90deg,
-		var(--szql-bg-soft) 0%,
-		var(--szql-bg-sub) 50%,
-		var(--szql-bg-soft) 100%
+		var(--syzeql-bg-soft) 0%,
+		var(--syzeql-bg-sub) 50%,
+		var(--syzeql-bg-soft) 100%
 	);
 	@apply relative rounded-md overflow-hidden isolate;
 

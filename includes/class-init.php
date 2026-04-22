@@ -2,14 +2,14 @@
 /**
  * Initialization Action.
  *
- * @package SZQL
+ * @package SYZEQL
  */
-namespace SZQL\Includes;
+namespace SYZEQL\Includes;
 
-use SZQL\Includes\Frontend\Frontend;
-use SZQL\Includes\Utils\Options;
-use SZQL\Includes\Rest\Rest;
-use SZQL\Includes\Utils\Hooks;
+use SYZEQL\Includes\Frontend\Frontend;
+use SYZEQL\Includes\Utils\Options;
+use SYZEQL\Includes\Rest\Rest;
+use SYZEQL\Includes\Utils\Hooks;
 
 defined( 'ABSPATH' ) || exit;
 
@@ -60,7 +60,7 @@ class Init {
 		$has_instance_id = (bool) sanitize_text_field( wp_unslash( $_GET['instance_id'] ?? '' ) ); // phpcs:ignore WordPress.Security.NonceVerification.Recommended
 		$instance_id     = absint( sanitize_text_field( wp_unslash( $_GET['instance_id'] ?? 0 ) ) ); // phpcs:ignore WordPress.Security.NonceVerification.Recommended
 
-		$in_wc_submenu_page = ( 'admin.php' === $pagenow && 'szql-dashboard' === $page );
+		$in_wc_submenu_page = ( 'admin.php' === $pagenow && 'syzeql-dashboard' === $page );
 
 		$in_wc_instance_page = ( 'admin.php' === $pagenow
 			&& 'wc-settings' === $page
@@ -68,7 +68,7 @@ class Init {
 			&& $has_instance_id
 			&& ! $has_zone_id );
 
-		$asset_file = SZQL_PATH . 'assets/js/szql-backend.asset.php';
+		$asset_file = SYZEQL_PATH . 'assets/js/syzeql-backend.asset.php';
 
 		if ( ! file_exists( $asset_file ) ) {
 			return;
@@ -99,7 +99,7 @@ class Init {
 	}
 
 	/**
-	 * Load szql styles
+	 * Load syzeql styles
 	 *
 	 * @param array $args Arguments.
 	 * @return void
@@ -109,16 +109,16 @@ class Init {
 		$asset = $args['asset'];
 
 		// WP DataTables CSS.
-		$datatable_css_file = is_rtl() ? 'szql-backend-datatable-rtl.css' : 'szql-backend-datatable.css';
-		wp_enqueue_style( 'szql-datatable-css', SZQL_URL . "assets/css/{$datatable_css_file}", array(), $asset['version'] );
+		$datatable_css_file = is_rtl() ? 'syzeql-backend-datatable-rtl.css' : 'syzeql-backend-datatable.css';
+		wp_enqueue_style( 'syzeql-datatable-css', SYZEQL_URL . "assets/css/{$datatable_css_file}", array(), $asset['version'] );
 
 		// Main CSS.
-		$main_css_file = is_rtl() ? 'szql-backend-rtl.css' : 'szql-backend.css';
-		wp_enqueue_style( 'szql-editor-css', SZQL_URL . "assets/js/{$main_css_file}", array(), $asset['version'] );
+		$main_css_file = is_rtl() ? 'syzeql-backend-rtl.css' : 'syzeql-backend.css';
+		wp_enqueue_style( 'syzeql-editor-css', SYZEQL_URL . "assets/js/{$main_css_file}", array(), $asset['version'] );
 	}
 
 	/**
-	 * Load szql scripts
+	 * Load syzeql scripts
 	 *
 	 * @param array $args Arguments.
 	 * @return void
@@ -145,21 +145,20 @@ class Init {
 
 		wp_enqueue_editor();
 
-		wp_enqueue_script( 'szql-editor-script', SZQL_URL . 'assets/js/szql-backend.js', $asset['dependencies'], $asset['version'], true );
+		wp_enqueue_script( 'syzeql-editor-script', SYZEQL_URL . 'assets/js/syzeql-backend.js', $asset['dependencies'], $asset['version'], true );
 
-		wp_set_script_translations( 'szql-editor-script', 'syzenlabs-quantity-limits', SZQL_PATH . 'languages/' );
+		wp_set_script_translations( 'syzeql-editor-script', 'syzenlabs-quantity-limits', SYZEQL_PATH . 'languages/' );
 
 		wp_localize_script(
-			'szql-editor-script',
-			'szqlAdmin',
+			'syzeql-editor-script',
+			'syzeqlAdmin',
 			array(
 				'ajax'             => esc_url_raw( admin_url( 'admin-ajax.php' ) ),
-				'url'              => esc_url_raw( SZQL_URL ),
-				'db_url'           => esc_url_raw( admin_url( 'admin.php?page=szql-dashboard#' ) ),
-				'version'          => sanitize_text_field( SZQL_VER ),
+				'url'              => esc_url_raw( SYZEQL_URL ),
+				'db_url'           => esc_url_raw( admin_url( 'admin.php?page=syzeql-dashboard#' ) ),
+				'version'          => sanitize_text_field( SYZEQL_VER ),
 				'isActive'         => 1,
-				'license'          => sanitize_text_field( (string) get_option( 'edd_szql_license_key' ) ),
-				'nonce'            => wp_create_nonce( 'szql-nonce' ),
+				'nonce'            => wp_create_nonce( 'syzeql-nonce' ),
 				'decimal_sep'      => sanitize_text_field( (string) get_option( 'woocommerce_price_decimal_sep', '.' ) ),
 				'num_decimals'     => absint( get_option( 'woocommerce_price_num_decimals', '2' ) ),
 				'currency_pos'     => sanitize_key( (string) get_option( 'woocommerce_currency_pos', 'left' ) ),
@@ -171,12 +170,9 @@ class Init {
 					'name'  => sanitize_text_field( $user_name ),
 					'email' => $user_info instanceof \WP_User ? sanitize_email( $user_info->user_email ) : '',
 				),
-				'show_lic_page'    => defined( 'SZQL_PRO_VER' ) ? 'true' : 'false',
 				'settings'         => DB::get_instance()->get_settings(),
 				'flags'            => array(),
-				'currentZoneId'    => $current_zone_id,
-				'helloBar'         => wp_kses_post( (string) Utils::get_transient_without_cache( 'szql_helloBar_ysl_2026_1' ) ),
-				'isWooMarketplace' => defined( 'SZQL_WOO_MARKETPLACE' ) && SZQL_WOO_MARKETPLACE === true ? 'true' : 'false',
+				'isWooMarketplace' => defined( 'SYZEQL_WOO_MARKETPLACE' ) && SYZEQL_WOO_MARKETPLACE === true ? 'true' : 'false',
 			)
 		);
 	}
@@ -195,7 +191,7 @@ class Init {
 			if ( wp_doing_ajax() || is_network_admin() || isset( $_GET['activate-multi'] ) || 'activate-selected' === $action ) { // phpcs:ignore WordPress.Security.NonceVerification.Recommended
 				return;
 			}
-			exit( wp_safe_redirect( admin_url( 'admin.php?page=szql-dashboard#overview' ) ) ); // phpcs:ignore
+			exit( wp_safe_redirect( admin_url( 'admin.php?page=syzeql-dashboard#overview' ) ) ); // phpcs:ignore
 		}
 	}
 }

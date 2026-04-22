@@ -9,8 +9,8 @@ defaultConfig = {
 	...defaultConfig,
 	context: __dirname,
 	entry: {
-		'szql-backend': './src/index.js',
-		'szql-frontend': './src/frontend/index.js',
+		'syzeql-backend': './src/index.js',
+		'syzeql-frontend': './src/frontend/index.js',
 	},
 	output: {
 		...( defaultConfig.output || {} ),

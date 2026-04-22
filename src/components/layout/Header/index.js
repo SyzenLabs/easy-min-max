@@ -23,7 +23,7 @@ export default function Header() {
 						inlineEnd: 'xSmall',
 					} }
 				>
-					<HStack className="py-3 szql-container">
+					<HStack className="py-3 syzeql-container">
 						<HStack spacing={ 3 } expanded={ false }>
 							<HamburgerMenu />
 

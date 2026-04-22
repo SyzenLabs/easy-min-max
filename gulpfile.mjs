@@ -69,8 +69,8 @@ const excludedFiles = [
 	'!scoper.inc.php',
 	'!*.md',
 	'!*.jsonc',
-	'!./assets/js/szql-wc-shipping-settings.js',
-	'!./assets/css/szql-backend-temp.css',
+	'!./assets/js/syzeql-wc-shipping-settings.js',
+	'!./assets/css/syzeql-backend-temp.css',
 	'!./scripts/**',
 	'!./vendor/**',
 ];
@@ -103,19 +103,19 @@ gulp.task( 'sass_compile', function () {
 				'@import "tailwindcss";\n @custom-variant dark (&:where([data-theme=dark], [data-theme=dark] *));\n'
 			)
 		)
-		.pipe( rename( 'szql-backend-temp.css' ) )
+		.pipe( rename( 'syzeql-backend-temp.css' ) )
 		.pipe( gulp.dest( './assets/css' ) );
 } );
 
 gulp.task( 'tailwind_compile', function () {
 	return gulp
-		.src( './assets/css/szql-backend-temp.css', {
+		.src( './assets/css/syzeql-backend-temp.css', {
 			allowEmpty: true,
 		} )
 		.pipe( cached( 'tailwind' ) )
 		.pipe(
 			shell(
-				'npx @tailwindcss/cli -i ./assets/css/szql-backend-temp.css -o ./src/style-generated.css --config ./tailwind.config.js'
+				'npx @tailwindcss/cli -i ./assets/css/syzeql-backend-temp.css -o ./src/style-generated.css --config ./tailwind.config.js'
 			)
 		)
 		.pipe( remember( 'tailwind' ) );
@@ -124,7 +124,7 @@ gulp.task( 'tailwind_compile', function () {
 gulp.task( 'autoprefix_compile', function () {
 	return (
 		gulp
-			.src( './assets/css/szql-backend.css', { allowEmpty: true } )
+			.src( './assets/css/syzeql-backend.css', { allowEmpty: true } )
 			.pipe( cached( 'autoprefix' ) )
 			.pipe(
 				autoprefixer( {
@@ -147,7 +147,7 @@ gulp.task( 'datatable_css', function () {
 	return gulp
 		.src( 'node_modules/@wordpress/dataviews/build-style/style.css' )
 		.pipe( cached( 'datatable' ) )
-		.pipe( rename( 'szql-backend-datatable.css' ) )
+		.pipe( rename( 'syzeql-backend-datatable.css' ) )
 		.pipe( remember( 'datatable' ) )
 		.pipe( gulp.dest( './assets/css' ) );
 } );
@@ -156,7 +156,7 @@ gulp.task( 'datatable_css_rtl', function () {
 	return gulp
 		.src( 'node_modules/@wordpress/dataviews/build-style/style-rtl.css' )
 		.pipe( cached( 'datatable_rtl' ) )
-		.pipe( rename( 'szql-backend-datatable-rtl.css' ) )
+		.pipe( rename( 'syzeql-backend-datatable-rtl.css' ) )
 		.pipe( remember( 'datatable_rtl' ) )
 		.pipe( gulp.dest( './assets/css' ) );
 } );
@@ -186,7 +186,7 @@ gulp.task( 'watch', function () {
 		[
 			'@tailwindcss/cli',
 			'-i',
-			'./assets/css/szql-backend-temp.css',
+			'./assets/css/syzeql-backend-temp.css',
 			'-o',
 			'./src/style-generated.css',
 			'--config',

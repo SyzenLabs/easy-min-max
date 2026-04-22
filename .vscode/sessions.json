@@ -8,7 +8,7 @@
         "default": [
 			[
 				{
-					"name": "SZQL:DEV",
+					"name": "SYZEQL:DEV",
 					"autoExecuteCommands": true,
 					"icon": "debug-alt",
 					"color": "terminal.ansiBrightYellow",
@@ -17,7 +17,7 @@
 					"commands": [ "npm run dev" ]
 				},
 				{
-					"name": "SZQL:GIT",
+					"name": "SYZEQL:GIT",
 					"icon": "github",
 					"autoExecuteCommands": true,
 					"color": "terminal.ansiBrightWhite",
@@ -26,7 +26,7 @@
 				}
 			],
 			{
-				"name": "SZQL-PRO",
+				"name": "SYZEQL-PRO",
 				"autoExecuteCommands": true,
 				"icon": "debug-alt",
 				"color": "terminal.ansiBrightBlue",
