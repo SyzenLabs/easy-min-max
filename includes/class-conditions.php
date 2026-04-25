@@ -1,8 +1,8 @@
 <?php // phpcs:ignore
 
-namespace EAMM\Includes;
+namespace SYZEQL\Includes;
 
-use EAMM\Includes\Utils\Flags;
+use SYZEQL\Includes\Utils\Flags;
 
 defined( 'ABSPATH' ) || exit;
 
@@ -56,31 +56,31 @@ class Conditions {
 				return array(
 					array(
 						'value' => '0',
-						'label' => __( 'Sunday', 'easy-min-max' ),
+						'label' => __( 'Sunday', 'syzenlabs-quantity-limits' ),
 					),
 					array(
 						'value' => '1',
-						'label' => __( 'Monday', 'easy-min-max' ),
+						'label' => __( 'Monday', 'syzenlabs-quantity-limits' ),
 					),
 					array(
 						'value' => '2',
-						'label' => __( 'Tuesday', 'easy-min-max' ),
+						'label' => __( 'Tuesday', 'syzenlabs-quantity-limits' ),
 					),
 					array(
 						'value' => '3',
-						'label' => __( 'Wednesday', 'easy-min-max' ),
+						'label' => __( 'Wednesday', 'syzenlabs-quantity-limits' ),
 					),
 					array(
 						'value' => '4',
-						'label' => __( 'Thursday', 'easy-min-max' ),
+						'label' => __( 'Thursday', 'syzenlabs-quantity-limits' ),
 					),
 					array(
 						'value' => '5',
-						'label' => __( 'Friday', 'easy-min-max' ),
+						'label' => __( 'Friday', 'syzenlabs-quantity-limits' ),
 					),
 					array(
 						'value' => '6',
-						'label' => __( 'Saturday', 'easy-min-max' ),
+						'label' => __( 'Saturday', 'syzenlabs-quantity-limits' ),
 					),
 				);
 
@@ -259,8 +259,8 @@ class Conditions {
 
 		// Virtual option that represents all free-shipping coupons.
 		$data[] = array(
-			'value' => 'eamm:coupon:free_shipping',
-			'label' => __( 'Any Free Shipping Coupons', 'easy-min-max' ),
+			'value' => 'syzeql:coupon:free_shipping',
+			'label' => __( 'Any Free Shipping Coupons', 'syzenlabs-quantity-limits' ),
 		);
 
 		foreach ( $coupons as $coupon_post ) {

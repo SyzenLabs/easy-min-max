@@ -2,14 +2,14 @@
 /**
  * Initialization Action.
  *
- * @package EAMM
+ * @package SYZEQL
  */
-namespace EAMM\Includes;
+namespace SYZEQL\Includes;
 
-use EAMM\Includes\Frontend\Frontend;
-use EAMM\Includes\Utils\Options;
-use EAMM\Includes\Rest\Rest;
-use EAMM\Includes\Utils\Hooks;
+use SYZEQL\Includes\Frontend\Frontend;
+use SYZEQL\Includes\Utils\Options;
+use SYZEQL\Includes\Rest\Rest;
+use SYZEQL\Includes\Utils\Hooks;
 
 defined( 'ABSPATH' ) || exit;
 
@@ -60,7 +60,7 @@ class Init {
 		$has_instance_id = (bool) sanitize_text_field( wp_unslash( $_GET['instance_id'] ?? '' ) ); // phpcs:ignore WordPress.Security.NonceVerification.Recommended
 		$instance_id     = absint( sanitize_text_field( wp_unslash( $_GET['instance_id'] ?? 0 ) ) ); // phpcs:ignore WordPress.Security.NonceVerification.Recommended
 
-		$in_wc_submenu_page = ( 'admin.php' === $pagenow && 'eamm-dashboard' === $page );
+		$in_wc_submenu_page = ( 'admin.php' === $pagenow && 'syzeql-dashboard' === $page );
 
 		$in_wc_instance_page = ( 'admin.php' === $pagenow
 			&& 'wc-settings' === $page
@@ -68,7 +68,7 @@ class Init {
 			&& $has_instance_id
 			&& ! $has_zone_id );
 
-		$asset_file = EAMM_PATH . 'assets/js/eamm-backend.asset.php';
+		$asset_file = SYZEQL_PATH . 'assets/js/syzeql-backend.asset.php';
 
 		if ( ! file_exists( $asset_file ) ) {
 			return;
@@ -99,7 +99,7 @@ class Init {
 	}
 
 	/**
-	 * Load eamm styles
+	 * Load syzeql styles
 	 *
 	 * @param array $args Arguments.
 	 * @return void
@@ -109,16 +109,16 @@ class Init {
 		$asset = $args['asset'];
 
 		// WP DataTables CSS.
-		$datatable_css_file = is_rtl() ? 'eamm-backend-datatable-rtl.css' : 'eamm-backend-datatable.css';
-		wp_enqueue_style( 'eamm-datatable-css', EAMM_URL . "assets/css/{$datatable_css_file}", array(), $asset['version'] );
+		$datatable_css_file = is_rtl() ? 'syzeql-backend-datatable-rtl.css' : 'syzeql-backend-datatable.css';
+		wp_enqueue_style( 'syzeql-datatable-css', SYZEQL_URL . "assets/css/{$datatable_css_file}", array(), $asset['version'] );
 
 		// Main CSS.
-		$main_css_file = is_rtl() ? 'eamm-backend-rtl.css' : 'eamm-backend.css';
-		wp_enqueue_style( 'eamm-editor-css', EAMM_URL . "assets/js/{$main_css_file}", array(), $asset['version'] );
+		$main_css_file = is_rtl() ? 'syzeql-backend-rtl.css' : 'syzeql-backend.css';
+		wp_enqueue_style( 'syzeql-editor-css', SYZEQL_URL . "assets/js/{$main_css_file}", array(), $asset['version'] );
 	}
 
 	/**
-	 * Load eamm scripts
+	 * Load syzeql scripts
 	 *
 	 * @param array $args Arguments.
 	 * @return void
@@ -140,21 +140,21 @@ class Init {
 
 		wp_enqueue_editor();
 
-		wp_enqueue_script( 'eamm-editor-script', EAMM_URL . 'assets/js/eamm-backend.js', $asset['dependencies'], $asset['version'], true );
+		wp_enqueue_script( 'syzeql-editor-script', SYZEQL_URL . 'assets/js/syzeql-backend.js', $asset['dependencies'], $asset['version'], true );
 
-		wp_set_script_translations( 'eamm-editor-script', 'easy-min-max', EAMM_PATH . 'languages/' );
+		wp_set_script_translations( 'syzeql-editor-script', 'syzenlabs-quantity-limits', SYZEQL_PATH . 'languages/' );
 
 		wp_localize_script(
-			'eamm-editor-script',
-			'eammAdmin',
+			'syzeql-editor-script',
+			'syzeqlAdmin',
 			array(
 				'ajax'             => admin_url( 'admin-ajax.php' ),
-				'url'              => EAMM_URL,
-				'db_url'           => admin_url( 'admin.php?page=eamm-dashboard#' ),
-				'version'          => EAMM_VER,
+				'url'              => SYZEQL_URL,
+				'db_url'           => admin_url( 'admin.php?page=syzeql-dashboard#' ),
+				'version'          => SYZEQL_VER,
 				'isActive'         => 1,
-				'license'          => get_option( 'edd_eamm_license_key' ),
-				'nonce'            => wp_create_nonce( 'eamm-nonce' ),
+				'license'          => get_option( 'edd_syzeql_license_key' ),
+				'nonce'            => wp_create_nonce( 'syzeql-nonce' ),
 				'decimal_sep'      => get_option( 'woocommerce_price_decimal_sep', '.' ),
 				'num_decimals'     => get_option( 'woocommerce_price_num_decimals', '2' ),
 				'currency_pos'     => get_option( 'woocommerce_currency_pos', 'left' ),
@@ -166,12 +166,12 @@ class Init {
 					'name'  => $user_info->first_name ? $user_info->first_name . ( $user_info->last_name ? ' ' . $user_info->last_name : '' ) : $user_info->user_login,
 					'email' => $user_info->user_email,
 				),
-				'show_lic_page'    => defined( 'EAMM_PRO_VER' ) ? 'true' : 'false',
+				'show_lic_page'    => defined( 'SYZEQL_PRO_VER' ) ? 'true' : 'false',
 				'settings'         => DB::get_instance()->get_settings(),
 				'flags'            => array(),
 				'currentZoneId'    => $current_zone_id,
-				'helloBar'         => Utils::get_transient_without_cache( 'eamm_helloBar_ysl_2026_1' ),
-				'isWooMarketplace' => defined( 'EAMM_WOO_MARKETPLACE' ) && EAMM_WOO_MARKETPLACE === true ? 'true' : 'false',
+				'helloBar'         => Utils::get_transient_without_cache( 'syzeql_helloBar_ysl_2026_1' ),
+				'isWooMarketplace' => defined( 'SYZEQL_WOO_MARKETPLACE' ) && SYZEQL_WOO_MARKETPLACE === true ? 'true' : 'false',
 			)
 		);
 	}
@@ -185,12 +185,12 @@ class Init {
 	 * @return void
 	 */
 	public function activation_redirect( $plugin ) {
-		if ( 'easy-min-max/easy-min-max.php' === $plugin ) {
+		if ( 'syzenlabs-quantity-limits/syzenlabs-quantity-limits.php' === $plugin ) {
 			$action = sanitize_text_field( wp_unslash( $_POST['action'] ?? '' ) ); // phpcs:ignore
 			if ( wp_doing_ajax() || is_network_admin() || isset( $_GET['activate-multi'] ) || 'activate-selected' === $action ) { // phpcs:ignore WordPress.Security.NonceVerification.Recommended
 				return;
 			}
-			exit( wp_safe_redirect( admin_url( 'admin.php?page=eamm-dashboard#overview' ) ) ); // phpcs:ignore
+			exit( wp_safe_redirect( admin_url( 'admin.php?page=syzeql-dashboard#overview' ) ) ); // phpcs:ignore
 		}
 	}
 }

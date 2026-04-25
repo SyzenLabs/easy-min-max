@@ -1,6 +1,6 @@
 <?php // phpcs:ignore
 
-namespace EAMM\Includes;
+namespace SYZEQL\Includes;
 
 defined( 'ABSPATH' ) || exit;
 

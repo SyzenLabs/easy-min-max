@@ -1,33 +1,33 @@
 import { cn, getUuid, isFreeUser } from '@/utils';
 import {
-	Children,
-	createContext,
-	createPortal,
-	useContext,
-	useEffect,
-	useLayoutEffect,
-	useRef,
-	useState,
+    Children,
+    createContext,
+    createPortal,
+    useContext,
+    useEffect,
+    useLayoutEffect,
+    useRef,
+    useState,
 } from '@wordpress/element';
 import { __ } from '@wordpress/i18n';
 import {
-	chevronDown,
-	chevronUp,
-	closeSmall,
-	search as wpSearchIcon,
+    chevronDown,
+    chevronUp,
+    closeSmall,
+    search as wpSearchIcon,
 } from '@wordpress/icons';
 
 // import './style.scss';
 
 import {
-	Button,
-	Icon,
-	__experimentalInputControl as InputControl,
-	__experimentalInputControlPrefixWrapper as InputControlPrefixWrapper,
-	__experimentalInputControlSuffixWrapper as InputControlSuffixWrapper,
-	MenuGroup,
-	MenuItem,
-	Spinner,
+    Button,
+    Icon,
+    __experimentalInputControl as InputControl,
+    __experimentalInputControlPrefixWrapper as InputControlPrefixWrapper,
+    __experimentalInputControlSuffixWrapper as InputControlSuffixWrapper,
+    MenuGroup,
+    MenuItem,
+    Spinner,
 } from '@wordpress/components';
 
 // import {chevronDown, chevronUp} from '@wordpress/icons';
@@ -116,7 +116,7 @@ function Select( {
 	const selectRef = useRef( null );
 
 	const [ selectId, setSelectId ] = useState(
-		() => `eamm-select-${ getUuid() }`
+		() => `syzeql-select-${ getUuid() }`
 	);
 
 	return (
@@ -132,10 +132,10 @@ function Select( {
 			<div
 				ref={ selectRef }
 				className={ cn(
-					'eamm-select-component',
+					'syzeql-select-component',
 					className,
 					fullWidth && 'w-full',
-					disabled && 'eamm-is-disabled'
+					disabled && 'syzeql-is-disabled'
 				) }
 				data-select-id={ selectId }
 				{ ...props }
@@ -160,10 +160,10 @@ function SelectTrigger( { children, className = '', ...props } ) {
 	return (
 		<div
 			className={ cn(
-				'eamm-select-trigger-component',
+				'syzeql-select-trigger-component',
 				className,
-				state.open && 'eamm-select-open',
-				disabled && 'eamm-is-disabled'
+				state.open && 'syzeql-select-open',
+				disabled && 'syzeql-is-disabled'
 			) }
 			onClick={ toggleOpen }
 			onKeyDown={ ( e ) =>
@@ -175,7 +175,7 @@ function SelectTrigger( { children, className = '', ...props } ) {
 			{ ...props }
 		>
 			{ children }
-			<div className="eamm-select-trigger-icons">
+			<div className="syzeql-select-trigger-icons">
 				{ loading && <Spinner /> }
 				<Icon
 					icon={ state.open ? chevronUp : chevronDown }
@@ -188,7 +188,7 @@ function SelectTrigger( { children, className = '', ...props } ) {
 }
 
 function SelectValue( {
-	placeholder = __( 'Select…', 'easy-min-max' ),
+	placeholder = __( 'Select…', 'syzenlabs-quantity-limits' ),
 	className = '',
 	...props
 } ) {
@@ -197,10 +197,10 @@ function SelectValue( {
 	return (
 		<div
 			className={ cn(
-				'eamm-select-value-component',
+				'syzeql-select-value-component',
 				'truncate',
 				state.internalSelected === '' &&
-					'eamm-select-value-placeholder',
+					'syzeql-select-value-placeholder',
 				className
 			) }
 			style={ maxWidth ? { maxWidth } : {} }
@@ -224,7 +224,7 @@ export function SelectSearch( { ...props } ) {
 	return (
 		<InputControl
 			__next40pxDefaultSize
-			placeholder={ __( 'Search…', 'easy-min-max' ) }
+			placeholder={ __( 'Search…', 'syzenlabs-quantity-limits' ) }
 			prefix={
 				<InputControlPrefixWrapper>
 					<Icon icon={ wpSearchIcon } />
@@ -235,7 +235,7 @@ export function SelectSearch( { ...props } ) {
 					{ state.searchQuery ? (
 						<Button
 							__next40pxDefaultSize
-							label={ __( 'Clear search', 'easy-min-max' ) }
+							label={ __( 'Clear search', 'syzenlabs-quantity-limits' ) }
 							icon={ <Icon icon={ closeSmall } /> }
 							onClick={ () =>
 								setState( ( prev ) => ( {
@@ -247,7 +247,7 @@ export function SelectSearch( { ...props } ) {
 					) : null }
 				</InputControlSuffixWrapper>
 			}
-			className="eamm-select-search-component"
+			className="syzeql-select-search-component"
 			ref={ inputRef }
 			value={ state.searchQuery }
 			onChange={ ( value ) =>
@@ -348,7 +348,7 @@ function SelectContent( { children, className = '', search, ...props } ) {
 
 		const scrollToSelected = () => {
 			const selectedItem = contentRef.current.querySelector(
-				'.eamm-select-item-selected'
+				'.syzeql-select-item-selected'
 			);
 			if ( selectedItem ) {
 				// first scroll without animation to ensure immediate positioning
@@ -380,8 +380,8 @@ function SelectContent( { children, className = '', search, ...props } ) {
 		<div
 			ref={ contentRef }
 			className={ cn(
-				'eamm-select-content-component',
-				state.open ? 'eamm-select-open' : 'eamm-select-close',
+				'syzeql-select-content-component',
+				state.open ? 'syzeql-select-open' : 'syzeql-select-close',
 				props.fullWidth && 'w-full',
 				className
 			) }
@@ -396,7 +396,7 @@ function SelectContent( { children, className = '', search, ...props } ) {
 			} }
 		>
 			{ search && <SelectSearch /> }
-			<div className="eamm-select-content-body">
+			<div className="syzeql-select-content-body">
 				{ children }
 				{ ( () => {
 					const hasVisibleOptions = () => {
@@ -426,8 +426,8 @@ function SelectContent( { children, className = '', search, ...props } ) {
 					};
 					return (
 						! hasVisibleOptions() && (
-							<div className="eamm-select-no-data">
-								{ __( 'No options found', 'easy-min-max' ) }
+							<div className="syzeql-select-no-data">
+								{ __( 'No options found', 'syzenlabs-quantity-limits' ) }
 							</div>
 						)
 					);
@@ -444,7 +444,7 @@ function SelectContent( { children, className = '', search, ...props } ) {
 			{ state.open &&
 				createPortal(
 					content,
-					document.getElementById( 'eamm-dashboard-wrap' )
+					document.getElementById( 'syzeql-dashboard-wrap' )
 				) }
 		</>
 	);
@@ -494,7 +494,7 @@ function SelectGroupItem( {
 	return (
 		<MenuGroup
 			label={ label }
-			// className={ `eamm-select-group-item-component ${ className }` }
+			// className={ `syzeql-select-group-item-component ${ className }` }
 			{ ...props }
 		>
 			{ children }
@@ -505,7 +505,7 @@ function SelectGroupItem( {
 function SelectLabel( { children, className = '', ...props } ) {
 	return (
 		<div
-			className={ cn( 'eamm-select-label-component', className ) }
+			className={ cn( 'syzeql-select-label-component', className ) }
 			{ ...props }
 		>
 			{ children }
@@ -552,9 +552,9 @@ function SelectItem( {
 			// role="button"
 			// tabIndex={ 0 }
 			className={ cn(
-				// 'eamm-select-item-component',
+				// 'syzeql-select-item-component',
 				{
-					'eamm-select-item-selected':
+					'syzeql-select-item-selected':
 						state.internalSelected === itemValue,
 				},
 				className
@@ -572,13 +572,13 @@ function SelectItem( {
 }
 
 export {
-	Select,
-	SelectContent,
-	SelectContext,
-	SelectGroupItem,
-	SelectItem,
-	SelectLabel,
-	SelectTrigger,
-	SelectValue
+    Select,
+    SelectContent,
+    SelectContext,
+    SelectGroupItem,
+    SelectItem,
+    SelectLabel,
+    SelectTrigger,
+    SelectValue
 };
 

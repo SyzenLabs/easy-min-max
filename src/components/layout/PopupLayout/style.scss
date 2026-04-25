@@ -1,20 +1,20 @@
 // Important: hide html overflow scroll when popup layout is open
-html.eamm-popup-layout-open {
+html.syzeql-popup-layout-open {
 	@apply overflow-hidden;
 }
 
-.eamm-popup-layout {
-	@apply bg-(--eamm-bg-weak) w-full h-full fixed top-0 left-0 z-99999 overflow-y-auto;
+.syzeql-popup-layout {
+	@apply bg-(--syzeql-bg-weak) w-full h-full fixed top-0 left-0 z-99999 overflow-y-auto;
 }
 
-.eamm-popup-layout-header {
-	@apply sticky top-0 z-9999 bg-(--eamm-bg-white) shadow-md;
+.syzeql-popup-layout-header {
+	@apply sticky top-0 z-9999 bg-(--syzeql-bg-white) shadow-md;
 
-	.eamm-popup-layout-header-inner {
+	.syzeql-popup-layout-header-inner {
 		@apply max-w-328 mx-auto p-4;
 	}
 }
 
-.eamm-popup-layout-body {
+.syzeql-popup-layout-body {
 	@apply max-w-328 mx-auto p-4;
 }

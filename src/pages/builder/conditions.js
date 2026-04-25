@@ -2,15 +2,15 @@
 import { useShippingOptions } from '@/context/OptionsContext';
 import { createEmptyCondition, useRuleStore } from '@/store/useRuleStore';
 import {
-	Button,
-	Card,
-	CardBody,
-	CardHeader,
-	Flex,
-	__experimentalHeading as Heading,
-	__experimentalHStack as HStack,
-	Icon,
-	Tooltip,
+    Button,
+    Card,
+    CardBody,
+    CardHeader,
+    Flex,
+    __experimentalHeading as Heading,
+    __experimentalHStack as HStack,
+    Icon,
+    Tooltip,
 } from '@wordpress/components';
 import { __ } from '@wordpress/i18n';
 import ConditionItemOperationField from './components/ConditionItemOperationField';
@@ -111,12 +111,12 @@ export function Conditions() {
 			<CardHeader>
 				<HStack spacing={ 2 } expanded={ false }>
 					<Heading level={ 3 }>
-						{ __( 'Conditions', 'easy-min-max' ) }
+						{ __( 'Conditions', 'syzenlabs-quantity-limits' ) }
 					</Heading>
 					<Tooltip
 						text={ __(
 							"Set conditions for when the rule should be applied. You can create multiple condition groups, and if any group's conditions are met, the rule will be applied.",
-							'easy-min-max'
+							'syzenlabs-quantity-limits'
 						) }
 					>
 						<span>
@@ -129,24 +129,24 @@ export function Conditions() {
 				<div>
 					{ conditionGroups.map( ( group, groupIndex ) => (
 						<div key={ `condition-group-${ groupIndex }` }>
-							<div className="rounded-(--eamm-border-radius-md) border border-[#DCDCDE] bg-white p-4">
+							<div className="rounded-(--syzeql-border-radius-md) border border-[#DCDCDE] bg-white p-4">
 								<Flex
 									justify="space-between"
 									align="start"
 									gap={ 4 }
 								>
 									<div>
-										<p className="m-0 font-medium text-(--eamm-text-main)">
+										<p className="m-0 font-medium text-(--syzeql-text-main)">
 											{ __(
 												'Condition Group',
-												'easy-min-max'
+												'syzenlabs-quantity-limits'
 											) }{ ' ' }
 											{ groupIndex + 1 }
 										</p>
-										<p className="mt-1 mb-0 text-sm text-(--eamm-text-sub)">
+										<p className="mt-1 mb-0 text-sm text-(--syzeql-text-sub)">
 											{ __(
 												'All conditions in this group must be true.',
-												'easy-min-max'
+												'syzenlabs-quantity-limits'
 											) }
 										</p>
 									</div>
@@ -163,7 +163,7 @@ export function Conditions() {
 											handleRemoveGroup( groupIndex )
 										}
 									>
-										{ __( 'Remove Group', 'easy-min-max' ) }
+										{ __( 'Remove Group', 'syzenlabs-quantity-limits' ) }
 									</Button>
 								</Flex>
 
@@ -262,13 +262,13 @@ export function Conditions() {
 										handleAddCondition( groupIndex )
 									}
 								>
-									{ __( 'Add Condition', 'easy-min-max' ) }
+									{ __( 'Add Condition', 'syzenlabs-quantity-limits' ) }
 								</Button>
 							</div>
 
 							{ groupIndex < conditionGroups.length - 1 && (
-								<div className="my-3 text-center text-xl font-bold tracking-wide text-(--eamm-text-sub) uppercase">
-									{ __( 'Or', 'easy-min-max' ) }
+								<div className="my-3 text-center text-xl font-bold tracking-wide text-(--syzeql-text-sub) uppercase">
+									{ __( 'Or', 'syzenlabs-quantity-limits' ) }
 								</div>
 							) }
 						</div>
@@ -281,7 +281,7 @@ export function Conditions() {
 						className="mt-4!"
 						onClick={ handleAddGroup }
 					>
-						{ __( 'Add Condition Group', 'easy-min-max' ) }
+						{ __( 'Add Condition Group', 'syzenlabs-quantity-limits' ) }
 					</Button>
 				</div>
 			</CardBody>

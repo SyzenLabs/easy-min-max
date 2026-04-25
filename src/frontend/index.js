@@ -1,7 +1,7 @@
 import './style.scss';
 
-const settings = window.eammSettings || {};
-const quantitySelector = 'input.qty, select.qty, select.eamm-qty-select';
+const settings = window.syzeqlSettings || {};
+const quantitySelector = 'input.qty, select.qty, select.syzeql-qty-select';
 const contextState = new WeakMap();
 
 const parseNumber = ( value ) => {
@@ -37,7 +37,7 @@ const getContext = ( element ) => {
 };
 
 const getTotalElement = ( context ) =>
-	context?.querySelector( '.eamm-total-price' ) || null;
+	context?.querySelector( '.syzeql-total-price' ) || null;
 
 const captureSelectOptions = ( field ) => {
 	if ( ! field || field.tagName !== 'SELECT' ) {
@@ -301,13 +301,13 @@ const bindVariationEvents = () => {
 
 		getState( context );
 
-		variationForm.on( 'found_variation.eamm', ( event, variation ) => {
+		variationForm.on( 'found_variation.syzeql', ( event, variation ) => {
 			applyLimits( context, {
-				minQty: variation?.eamm_min_qty,
-				maxQty: variation?.eamm_max_qty,
-				stepQty: variation?.eamm_step_qty,
-				initialQty: variation?.eamm_initial_qty,
-				dropdownValues: variation?.eamm_dropdown_values,
+				minQty: variation?.syzeql_min_qty,
+				maxQty: variation?.syzeql_max_qty,
+				stepQty: variation?.syzeql_step_qty,
+				initialQty: variation?.syzeql_initial_qty,
+				dropdownValues: variation?.syzeql_dropdown_values,
 			} );
 
 			if (
@@ -321,7 +321,7 @@ const bindVariationEvents = () => {
 			}
 		} );
 
-		variationForm.on( 'reset_data.eamm hide_variation.eamm', () => {
+		variationForm.on( 'reset_data.syzeql hide_variation.syzeql', () => {
 			resetContext( context );
 		} );
 	} );
@@ -341,7 +341,7 @@ const init = () => {
 		initContext( getContext( field ) );
 	} );
 
-	document.querySelectorAll( '.eamm-total-price' ).forEach( ( element ) => {
+	document.querySelectorAll( '.syzeql-total-price' ).forEach( ( element ) => {
 		initContext( getContext( element ) );
 	} );
 

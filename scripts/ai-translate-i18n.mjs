@@ -17,10 +17,10 @@ const defaultLocales = [ 'de_DE', 'fr_FR', 'it_IT', 'pl_PL', 'es_ES' ].join(
 	','
 );
 const potPath =
-	args.pot || path.join( 'languages', 'easy-min-max.pot' );
+	args.pot || path.join( 'languages', 'syzenlabs-quantity-limits.pot' );
 const outDir = args.outDir || path.dirname( potPath );
 const locales = String(
-	args.locales || process.env.EAMM_I18N_LOCALES || defaultLocales
+	args.locales || process.env.SYZEQL_I18N_LOCALES || defaultLocales
 )
 	.split( ',' )
 	.map( ( locale ) => locale.trim() )
@@ -224,7 +224,7 @@ const translateLocale = async ( targetLocale ) => {
 		'PO-Revision-Date': formatHeaderDate(),
 		'Last-Translator': 'AI Translation <noreply@example.com>',
 		'Language-Team': `${ targetLocale } <noreply@example.com>`,
-		'X-Generator': 'eamm-ai-i18n',
+		'X-Generator': 'syzeql-ai-i18n',
 		...( pluralForms ? { 'Plural-Forms': pluralForms } : {} ),
 	};
 

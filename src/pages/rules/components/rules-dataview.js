@@ -8,14 +8,14 @@ import { DataViews } from '@wordpress/dataviews/wp';
 import { __, _n } from '@wordpress/i18n';
 
 import {
-	Button,
-	__experimentalDivider as Divider,
-	FormToggle,
-	__experimentalHStack as HStack,
-	Icon,
-	Spinner,
-	__experimentalText as Text,
-	__experimentalVStack as VStack,
+    Button,
+    __experimentalDivider as Divider,
+    FormToggle,
+    __experimentalHStack as HStack,
+    Icon,
+    Spinner,
+    __experimentalText as Text,
+    __experimentalVStack as VStack,
 } from '@wordpress/components';
 
 import { copy, pencil, trash } from '@wordpress/icons';
@@ -106,7 +106,7 @@ export default function RulesDataView( { state, setState, filteredRules } ) {
 			{
 				id: 'name',
 				type: 'text',
-				label: __( 'Rule Name', 'easy-min-max' ),
+				label: __( 'Rule Name', 'syzenlabs-quantity-limits' ),
 				enableSorting: false,
 				enableHiding: false,
 				filterBy: false,
@@ -114,7 +114,7 @@ export default function RulesDataView( { state, setState, filteredRules } ) {
 				render: ( { item } ) => {
 					const title = item?.generalSettings?.scenarioName
 						? item.generalSettings.scenarioName
-						: __( 'No Title', 'easy-min-max' );
+						: __( 'No Title', 'syzenlabs-quantity-limits' );
 
 					return (
 						<>
@@ -132,7 +132,7 @@ export default function RulesDataView( { state, setState, filteredRules } ) {
 			{
 				id: 'status',
 				type: 'text',
-				label: __( 'Status', 'easy-min-max' ),
+				label: __( 'Status', 'syzenlabs-quantity-limits' ),
 				enableSorting: false,
 				enableHiding: false,
 				filterBy: false,
@@ -144,7 +144,7 @@ export default function RulesDataView( { state, setState, filteredRules } ) {
 							onChange={ () => handleStatusToggle( item ) }
 							aria-label={ __(
 								'Toggle shipping method status',
-								'easy-min-max'
+								'syzenlabs-quantity-limits'
 							) }
 						/>
 					);
@@ -184,7 +184,7 @@ export default function RulesDataView( { state, setState, filteredRules } ) {
 		return [
 			{
 				id: 'edit',
-				label: __( 'Edit Method', 'easy-min-max' ),
+				label: __( 'Edit Method', 'syzenlabs-quantity-limits' ),
 				icon: <Icon icon={ pencil } />,
 				callback: ( items ) => {
 					redirectToEdit( items?.[ 0 ]?.id );
@@ -192,10 +192,10 @@ export default function RulesDataView( { state, setState, filteredRules } ) {
 			},
 			{
 				id: 'duplicate',
-				label: __( 'Duplicate Method', 'easy-min-max' ),
+				label: __( 'Duplicate Method', 'syzenlabs-quantity-limits' ),
 				icon: <Icon icon={ copy } />,
 
-				modalHeader: __( 'Duplicate Shipping Method', 'easy-min-max' ),
+				modalHeader: __( 'Duplicate Shipping Method', 'syzenlabs-quantity-limits' ),
 
 				RenderModal: ( { items, closeModal } ) => {
 					const [ isDuplicating, setIsDuplicating ] =
@@ -218,7 +218,7 @@ export default function RulesDataView( { state, setState, filteredRules } ) {
 								<Text>
 									{ __(
 										'Are you sure you want to duplicate this shipping method?',
-										'easy-min-max'
+										'syzenlabs-quantity-limits'
 									) }
 								</Text>
 								<HStack
@@ -231,7 +231,7 @@ export default function RulesDataView( { state, setState, filteredRules } ) {
 										onClick={ closeModal }
 										disabled={ isDuplicating }
 									>
-										{ __( 'Cancel', 'easy-min-max' ) }
+										{ __( 'Cancel', 'syzenlabs-quantity-limits' ) }
 									</Button>
 									<Button
 										variant="primary"
@@ -241,11 +241,11 @@ export default function RulesDataView( { state, setState, filteredRules } ) {
 										{ isDuplicating
 											? __(
 													'Duplicating…',
-													'easy-min-max'
+													'syzenlabs-quantity-limits'
 											  )
 											: __(
 													'Duplicate',
-													'easy-min-max'
+													'syzenlabs-quantity-limits'
 											  ) }
 									</Button>
 								</HStack>
@@ -258,8 +258,8 @@ export default function RulesDataView( { state, setState, filteredRules } ) {
 				id: 'delete',
 				label: ( items ) =>
 					items?.length > 1
-						? __( 'Delete Methods', 'easy-min-max' )
-						: __( 'Delete Method', 'easy-min-max' ),
+						? __( 'Delete Methods', 'syzenlabs-quantity-limits' )
+						: __( 'Delete Method', 'syzenlabs-quantity-limits' ),
 				icon: <Icon icon={ trash } />,
 				supportsBulk: true,
 				modalHeader: ( items ) =>
@@ -267,7 +267,7 @@ export default function RulesDataView( { state, setState, filteredRules } ) {
 						'Delete Shipping Method',
 						'Delete Shipping Methods',
 						items.length,
-						'easy-min-max'
+						'syzenlabs-quantity-limits'
 					),
 
 				RenderModal: ( { items, closeModal } ) => {
@@ -290,7 +290,7 @@ export default function RulesDataView( { state, setState, filteredRules } ) {
 										'Are you sure you want to delete this shipping method? This action cannot be undone.',
 										'Are you sure you want to delete selected shipping methods? This action cannot be undone.',
 										items.length,
-										'easy-min-max'
+										'syzenlabs-quantity-limits'
 									) }
 								</Text>
 								<HStack
@@ -303,7 +303,7 @@ export default function RulesDataView( { state, setState, filteredRules } ) {
 										onClick={ closeModal }
 										disabled={ isDeleting }
 									>
-										{ __( 'Cancel', 'easy-min-max' ) }
+										{ __( 'Cancel', 'syzenlabs-quantity-limits' ) }
 									</Button>
 									<Button
 										variant="primary"
@@ -312,8 +312,8 @@ export default function RulesDataView( { state, setState, filteredRules } ) {
 										isBusy={ isDeleting }
 									>
 										{ isDeleting
-											? __( 'Deleting…', 'easy-min-max' )
-											: __( 'Delete', 'easy-min-max' ) }
+											? __( 'Deleting…', 'syzenlabs-quantity-limits' )
+											: __( 'Delete', 'syzenlabs-quantity-limits' ) }
 									</Button>
 								</HStack>
 							</VStack>

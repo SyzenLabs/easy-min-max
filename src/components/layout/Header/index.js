@@ -1,7 +1,7 @@
 import {
-	Card,
-	CardBody,
-	__experimentalHStack as HStack,
+    Card,
+    CardBody,
+    __experimentalHStack as HStack,
 } from '@wordpress/components';
 
 import { WtrsBadge } from '@/components/ui';
@@ -23,7 +23,7 @@ export default function Header() {
 						inlineEnd: 'xSmall',
 					} }
 				>
-					<HStack className="py-3 eamm-container">
+					<HStack className="py-3 syzeql-container">
 						<HStack spacing={ 3 } expanded={ false }>
 							<HamburgerMenu />
 

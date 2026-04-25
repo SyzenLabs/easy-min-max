@@ -6,50 +6,42 @@
     "keepExistingTerminals": false,
     "sessions": {
         "default": [
-            [
-                {
-                    "name": "EAMM:DEV",
-                    "autoExecuteCommands": true,
-                    "icon": "debug-alt",
-                    "color": "terminal.ansiBrightYellow",
-                    "cwd": ".",
-                    "focus": true,
-                    "commands": [
-                        "npm run dev"
-                    ]
-                },
-                {
-                    "name": "EAMM:GIT",
-                    "icon": "github",
-                    "autoExecuteCommands": true,
-                    "color": "terminal.ansiBrightWhite",
-                    "cwd": ".",
-                    "commands": [
-                        "git fetch"
-                    ]
-                }
-            ],
-            {
-                "name": "EAMM-PRO",
-                "autoExecuteCommands": true,
-                "icon": "debug-alt",
-                "color": "terminal.ansiBrightBlue",
-                "cwd": "../table-rate-shipping-pro",
-                "focus": false,
-                "commands": [
-                    "git fetch"
-                ]
-            },
-            {
-                "name": "WP_DEBUG_LOG",
-                "cwd": "../../",
-                "color": "terminal.ansiBrightGreen",
-                "autoExecuteCommands": true,
-                "icon": "debug",
-                "commands": [
-                    "Get-Content .\\debug.log -Tail 200 -Wait"
-                ]
-            }
-        ]
+			[
+				{
+					"name": "SYZEQL:DEV",
+					"autoExecuteCommands": true,
+					"icon": "debug-alt",
+					"color": "terminal.ansiBrightYellow",
+					"cwd": ".",
+					"focus": true,
+					"commands": [ "npm run dev" ]
+				},
+				{
+					"name": "SYZEQL:GIT",
+					"icon": "github",
+					"autoExecuteCommands": true,
+					"color": "terminal.ansiBrightWhite",
+					"cwd": ".",
+					"commands": [ "git fetch" ]
+				}
+			],
+			{
+				"name": "SYZEQL-PRO",
+				"autoExecuteCommands": true,
+				"icon": "debug-alt",
+				"color": "terminal.ansiBrightBlue",
+				"cwd": "../table-rate-shipping-pro",
+				"focus": false,
+				"commands": [ "git fetch" ]
+			},
+			{
+				"name": "WP_DEBUG_LOG",
+				"cwd": "../../",
+				"color": "terminal.ansiBrightGreen",
+				"autoExecuteCommands": true,
+				"icon": "debug",
+				"commands": [ "Get-Content .\\debug.log -Tail 200 -Wait" ]
+			}
+		]
     }
 }

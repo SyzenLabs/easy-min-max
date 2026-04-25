@@ -11,13 +11,13 @@ vendor
 vendor_prefixed
 
 # ignore compile files
-assets/css/eamm-backend.css
-assets/css/eamm-backend-rtl.css
-assets/css/eamm-backend.css.map
-assets/css/eamm-backend-temp.css
-assets/css/eamm-backend-datatable.css
-assets/css/eamm-backend-datatable-rtl.css
-assets/css/eamm-frontend.css
+assets/css/syzeql-backend.css
+assets/css/syzeql-backend-rtl.css
+assets/css/syzeql-backend.css.map
+assets/css/syzeql-backend-temp.css
+assets/css/syzeql-backend-datatable.css
+assets/css/syzeql-backend-datatable-rtl.css
+assets/css/syzeql-frontend.css
 assets/js/*
 src/style-generated.css
 

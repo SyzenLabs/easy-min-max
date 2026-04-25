@@ -1,9 +1,9 @@
 <?php // phpcs:ignore
 
-namespace EAMM\Includes;
+namespace SYZEQL\Includes;
 
 use DateTime;
-use EAMM\Traits\Singleton;
+use SYZEQL\Traits\Singleton;
 use WP_Error;
 
 defined( 'ABSPATH' ) || exit;
@@ -18,12 +18,12 @@ class DB {
 	/**
 	 * WordPress option key for storing shipping rules.
 	 */
-	private const OPTION_KEY = 'eamm-rules';
+	private const OPTION_KEY = 'syzeql-rules';
 
 	/**
 	 * WordPress option key for storing plugin settings.
 	 */
-	private const SETTINGS_KEY = 'eamm-settings';
+	private const SETTINGS_KEY = 'syzeql-settings';
 
 	/**
 	 * Get plugin settings

@@ -1,41 +1,41 @@
 <?php
 /**
- * Plugin Name: Easy Min Max
+ * Plugin Name: Easy Min Max - Min Max Order Limits & Step Control for WooCommerce
  * Description: Epic Plugin
  * Version:     1.0.0
  * Author:      WPXPO
  * Author URI:  https://www.wpxpo.com/about
  * Requires Plugins: woocommerce
- * Text Domain: easy-min-max
+ * Text Domain: syzenlabs-quantity-limits
  * Domain Path: /languages
  * License:     GPLv3
  * License URI: http://www.gnu.org/licenses/gpl-3.0.html
  *
- * @package easy-min-max
+ * @package Set minimum and maximum quantity and price rules for WooCommerce products with flexible conditions and storefront validation.
  */
 
-use EAMM\Includes\Init;
+use SYZEQL\Includes\Init;
 
 defined( 'ABSPATH' ) || exit;
 
 // Define Vars.
-define( 'EAMM_VER', '1.0.0' );
-define( 'EAMM_URL', plugin_dir_url( __FILE__ ) );
-define( 'EAMM_BASE', plugin_basename( __FILE__ ) );
-define( 'EAMM_PATH', plugin_dir_path( __FILE__ ) );
-define( 'EAMM_RULE_VER', '1' );
-define( 'EAMM_WOO_MARKETPLACE', false );
+define( 'SYZEQL_VER', '1.0.0' );
+define( 'SYZEQL_URL', plugin_dir_url( __FILE__ ) );
+define( 'SYZEQL_BASE', plugin_basename( __FILE__ ) );
+define( 'SYZEQL_PATH', plugin_dir_path( __FILE__ ) );
+define( 'SYZEQL_RULE_VER', '1' );
+define( 'SYZEQL_WOO_MARKETPLACE', false );
 
-if ( ! function_exists( 'eamm_autoloader' ) ) {
+if ( ! function_exists( 'syzeql_autoloader' ) ) {
 	/**
 	 * Autoloader function
 	 *
 	 * @param string $class_name class name.
 	 * @return void
 	 */
-	function eamm_autoloader( $class_name ) {
-		$namespace = 'EAMM\\';
-		$base_dir  = EAMM_PATH;
+	function syzeql_autoloader( $class_name ) {
+		$namespace = 'SYZEQL\\';
+		$base_dir  = SYZEQL_PATH;
 
 		$len = strlen( $namespace );
 		if ( strncmp( $namespace, $class_name, $len ) !== 0 ) {
@@ -64,17 +64,17 @@ if ( ! function_exists( 'eamm_autoloader' ) ) {
 
 }
 
-spl_autoload_register( 'eamm_autoloader' );
+spl_autoload_register( 'syzeql_autoloader' );
 
-if ( ! function_exists( 'eamm_init' ) ) {
+if ( ! function_exists( 'syzeql_init' ) ) {
 	/**
 	 * Init plugin
 	 *
 	 * @return void
 	 */
-	function eamm_init() {
+	function syzeql_init() {
 		new Init();
 	}
 }
 
-eamm_init();
+syzeql_init();

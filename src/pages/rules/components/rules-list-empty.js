@@ -1,10 +1,10 @@
 import { getBaseUrl } from '@/utils';
 import { wpConfig } from '@/utils/wpc-config';
 import {
-	Button,
-	Icon,
-	__experimentalText as Text,
-	__experimentalVStack as VStack,
+    Button,
+    Icon,
+    __experimentalText as Text,
+    __experimentalVStack as VStack,
 } from '@wordpress/components';
 import { __ } from '@wordpress/i18n';
 
@@ -17,7 +17,7 @@ export function RulesListEmpty() {
 				src={ getBaseUrl( 'assets/img/shipping-rules-empty-list.png' ) }
 				width="200"
 				height="167"
-				alt={ __( 'Wow Shipping Methods Empty List', 'easy-min-max' ) }
+				alt={ __( 'Wow Shipping Methods Empty List', 'syzenlabs-quantity-limits' ) }
 			/>
 			<VStack spacing={ 2 } alignment="center">
 				<Text
@@ -27,7 +27,7 @@ export function RulesListEmpty() {
 				>
 					{ __(
 						"You Haven't Created Any Shipping Methods",
-						'easy-min-max'
+						'syzenlabs-quantity-limits'
 					) }
 				</Text>
 
@@ -39,7 +39,7 @@ export function RulesListEmpty() {
 				>
 					{ __(
 						'Shipping rules let you control costs and logic based on cart value, weight, quantity, and more.',
-						'easy-min-max'
+						'syzenlabs-quantity-limits'
 					) }
 				</Text>
 			</VStack>
@@ -50,7 +50,7 @@ export function RulesListEmpty() {
 				icon={ <Icon icon={ plus } /> }
 				iconPosition="left"
 			>
-				{ __( 'Add Shipping Method', 'easy-min-max' ) }
+				{ __( 'Add Shipping Method', 'syzenlabs-quantity-limits' ) }
 			</Button>
 		</VStack>
 	);

@@ -1,9 +1,9 @@
 import {
-	createRoot,
-	Fragment,
-	useCallback,
-	useEffect,
-	useMemo,
+    createRoot,
+    Fragment,
+    useCallback,
+    useEffect,
+    useMemo,
 } from '@wordpress/element';
 
 import { Header } from '@/components/layout';
@@ -29,7 +29,7 @@ const App = () => {
 
 	const _fetchQuery = useCallback( () => {
 		const url = new URL( window.location.href );
-		if ( url.searchParams.get( 'page' ) === 'eamm-dashboard' ) {
+		if ( url.searchParams.get( 'page' ) === 'syzeql-dashboard' ) {
 			setCurrentNav( handlePageHash( window.location.href ) );
 		}
 	}, [ setCurrentNav, handlePageHash ] );
@@ -41,7 +41,7 @@ const App = () => {
 				! e.target.classList?.contains( 'ultp-reserve-button' )
 			) {
 				if ( e.target.href ) {
-					if ( e.target.href.indexOf( 'page=eamm-dashboard#' ) > 0 ) {
+					if ( e.target.href.indexOf( 'page=syzeql-dashboard#' ) > 0 ) {
 						const slug = e.target.href.split( '#' );
 						if ( slug[ 1 ] ) {
 							setCurrentNav( slug[ 1 ] );
@@ -141,7 +141,7 @@ const App = () => {
 };
 
 const init = () => {
-	const container = document.getElementById( 'eamm-dashboard-wrap' );
+	const container = document.getElementById( 'syzeql-dashboard-wrap' );
 	if ( ! container ) {
 		return;
 	}

@@ -1,8 +1,8 @@
 <?php
 
-namespace EAMM\Includes\Rest;
+namespace SYZEQL\Includes\Rest;
 
-use EAMM\Includes\DB;
+use SYZEQL\Includes\DB;
 use WP_REST_Request;
 
 defined( 'ABSPATH' ) || exit;
@@ -12,7 +12,7 @@ class SettingsController {
 	/**
 	 * DB Instance
 	 *
-	 * @var \EAMM\Includes\DB
+	 * @var \SYZEQL\Includes\DB
 	 */
 	private $db;
 
@@ -23,7 +23,7 @@ class SettingsController {
 
 	public function register_routes() {
 		register_rest_route(
-			'eamm/v1',
+			'syzeql/v1',
 			'/settings',
 			array(
 				array(

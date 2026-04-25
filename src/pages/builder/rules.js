@@ -1,17 +1,17 @@
 import { useRuleStore } from '@/store/useRuleStore';
 import { getCurrencyCode } from '@/utils';
 import {
-	Card,
-	CardBody,
-	CardHeader,
-	__experimentalHeading as Heading,
-	__experimentalHStack as HStack,
-	Icon,
-	__experimentalInputControl as InputControl,
-	__experimentalInputControlSuffixWrapper as InputControlSuffixWrapper,
-	TextareaControl,
-	ToggleControl,
-	Tooltip,
+    Card,
+    CardBody,
+    CardHeader,
+    __experimentalHeading as Heading,
+    __experimentalHStack as HStack,
+    Icon,
+    __experimentalInputControl as InputControl,
+    __experimentalInputControlSuffixWrapper as InputControlSuffixWrapper,
+    TextareaControl,
+    ToggleControl,
+    Tooltip,
 } from '@wordpress/components';
 import { useEffect, useState } from '@wordpress/element';
 import { __ } from '@wordpress/i18n';
@@ -138,12 +138,12 @@ export function Rules() {
 			<CardHeader>
 				<HStack spacing={ 2 } expanded={ false }>
 					<Heading level={ 3 }>
-						{ __( 'MinMax Settings', 'easy-min-max' ) }
+						{ __( 'MinMax Settings', 'syzenlabs-quantity-limits' ) }
 					</Heading>
 					<Tooltip
 						text={ __(
 							'Configure quantity limits, pricing thresholds, quantity UI behaviour, and validation messages for this rule.',
-							'easy-min-max'
+							'syzenlabs-quantity-limits'
 						) }
 					>
 						<span>
@@ -154,15 +154,15 @@ export function Rules() {
 			</CardHeader>
 			<CardBody>
 				<div className="grid gap-6">
-					<div className="rounded-(--eamm-border-radius-md) border border-[#DCDCDE] bg-white p-4">
+					<div className="rounded-(--syzeql-border-radius-md) border border-[#DCDCDE] bg-white p-4">
 						<div className="mb-4">
-							<p className="m-0 font-medium text-(--eamm-text-main)">
-								{ __( 'Quantity Limits', 'easy-min-max' ) }
+							<p className="m-0 font-medium text-(--syzeql-text-main)">
+								{ __( 'Quantity Limits', 'syzenlabs-quantity-limits' ) }
 							</p>
-							<p className="mt-1 mb-0 text-sm text-(--eamm-text-sub)">
+							<p className="mt-1 mb-0 text-sm text-(--syzeql-text-sub)">
 								{ __(
 									'Define the allowed quantity thresholds for matching products.',
-									'easy-min-max'
+									'syzenlabs-quantity-limits'
 								) }
 							</p>
 						</div>
@@ -172,7 +172,7 @@ export function Rules() {
 								<NumberField
 									label={ __(
 										'Minimum Quantity',
-										'easy-min-max'
+										'syzenlabs-quantity-limits'
 									) }
 									value={ rulesForm.minQuantity }
 									disabled={ quantityRulesDisabled }
@@ -183,7 +183,7 @@ export function Rules() {
 								<NumberField
 									label={ __(
 										'Maximum Quantity',
-										'easy-min-max'
+										'syzenlabs-quantity-limits'
 									) }
 									value={ rulesForm.maxQuantity }
 									disabled={ quantityRulesDisabled }
@@ -193,25 +193,25 @@ export function Rules() {
 								/>
 							</div>
 							<NumberField
-								label={ __( 'Step Quantity', 'easy-min-max' ) }
+								label={ __( 'Step Quantity', 'syzenlabs-quantity-limits' ) }
 								value={ rulesForm.step }
 								disabled={ quantityRulesDisabled }
 								help={ __(
 									'Customers can increase quantity in this increment.',
-									'easy-min-max'
+									'syzenlabs-quantity-limits'
 								) }
 								onChange={ handleFieldChange( 'step' ) }
 							/>
 							<NumberField
 								label={ __(
 									'Initial Quantity',
-									'easy-min-max'
+									'syzenlabs-quantity-limits'
 								) }
 								value={ rulesForm.initialQuantity }
 								disabled={ quantityRulesDisabled }
 								help={ __(
 									'Default quantity prefilled on the product page.',
-									'easy-min-max'
+									'syzenlabs-quantity-limits'
 								) }
 								onChange={ handleFieldChange(
 									'initialQuantity'
@@ -223,11 +223,11 @@ export function Rules() {
 								checked={ !! rulesForm.enableFixedQuantity }
 								help={ __(
 									'When enabled, the fixed quantity value overrides min, max, step, and initial quantity on the storefront.',
-									'easy-min-max'
+									'syzenlabs-quantity-limits'
 								) }
 								label={ __(
 									'Enable Fixed Quantity',
-									'easy-min-max'
+									'syzenlabs-quantity-limits'
 								) }
 								onChange={ handleFixedQuantityToggle }
 							/>
@@ -235,7 +235,7 @@ export function Rules() {
 								<NumberField
 									label={ __(
 										'Fixed Quantity',
-										'easy-min-max'
+										'syzenlabs-quantity-limits'
 									) }
 									value={ rulesForm.fixedQuantity }
 									disabled={ ! rulesForm.enableFixedQuantity }
@@ -254,11 +254,11 @@ export function Rules() {
 								}
 								help={ __(
 									'Disable the minimum quantity requirement when stock drops below the configured minimum.',
-									'easy-min-max'
+									'syzenlabs-quantity-limits'
 								) }
 								label={ __(
 									'Disable Minimum On Low Stock',
-									'easy-min-max'
+									'syzenlabs-quantity-limits'
 								) }
 								onChange={ handleFieldChange(
 									'disableMinQuantityOnLowStock'
@@ -267,15 +267,15 @@ export function Rules() {
 						</div>
 					</div>
 
-					<div className="rounded-(--eamm-border-radius-md) border border-[#DCDCDE] bg-white p-4">
+					<div className="rounded-(--syzeql-border-radius-md) border border-[#DCDCDE] bg-white p-4">
 						<div className="mb-4">
-							<p className="m-0 font-medium text-(--eamm-text-main)">
-								{ __( 'Price Limits', 'easy-min-max' ) }
+							<p className="m-0 font-medium text-(--syzeql-text-main)">
+								{ __( 'Price Limits', 'syzenlabs-quantity-limits' ) }
 							</p>
-							<p className="mt-1 mb-0 text-sm text-(--eamm-text-sub)">
+							<p className="mt-1 mb-0 text-sm text-(--syzeql-text-sub)">
 								{ __(
 									'Define the allowed price thresholds for matching products.',
-									'easy-min-max'
+									'syzenlabs-quantity-limits'
 								) }
 							</p>
 						</div>
@@ -285,7 +285,7 @@ export function Rules() {
 								<NumberField
 									label={ __(
 										'Minimum Price',
-										'easy-min-max'
+										'syzenlabs-quantity-limits'
 									) }
 									value={ rulesForm.minPrice }
 									suffix={ getCurrencyCode() }
@@ -294,7 +294,7 @@ export function Rules() {
 								<NumberField
 									label={ __(
 										'Maximum Price',
-										'easy-min-max'
+										'syzenlabs-quantity-limits'
 									) }
 									value={ rulesForm.maxPrice }
 									suffix={ getCurrencyCode() }
@@ -307,11 +307,11 @@ export function Rules() {
 								checked={ !! rulesForm.hideCheckoutButton }
 								help={ __(
 									'Hide the checkout button until the customer meets this rule.',
-									'easy-min-max'
+									'syzenlabs-quantity-limits'
 								) }
 								label={ __(
 									'Hide Checkout Button',
-									'easy-min-max'
+									'syzenlabs-quantity-limits'
 								) }
 								onChange={ handleFieldChange(
 									'hideCheckoutButton'
@@ -322,11 +322,11 @@ export function Rules() {
 								checked={ !! rulesForm.showPriceByQuantity }
 								help={ __(
 									'Show a live total price that updates with the selected quantity.',
-									'easy-min-max'
+									'syzenlabs-quantity-limits'
 								) }
 								label={ __(
 									'Show Total Price By Quantity',
-									'easy-min-max'
+									'syzenlabs-quantity-limits'
 								) }
 								onChange={ handleFieldChange(
 									'showPriceByQuantity'
@@ -337,11 +337,11 @@ export function Rules() {
 								checked={ !! rulesForm.showQuantityInArchive }
 								help={ __(
 									'Render the quantity selector directly on shop and archive listings.',
-									'easy-min-max'
+									'syzenlabs-quantity-limits'
 								) }
 								label={ __(
 									'Show Quantity In Archive',
-									'easy-min-max'
+									'syzenlabs-quantity-limits'
 								) }
 								onChange={ handleFieldChange(
 									'showQuantityInArchive'
@@ -352,11 +352,11 @@ export function Rules() {
 								checked={ !! rulesForm.showQuantityDropdown }
 								help={ __(
 									'Replace the quantity input with a dropdown selector on matching product pages.',
-									'easy-min-max'
+									'syzenlabs-quantity-limits'
 								) }
 								label={ __(
 									'Show Quantity Dropdown',
-									'easy-min-max'
+									'syzenlabs-quantity-limits'
 								) }
 								onChange={ handleFieldChange(
 									'showQuantityDropdown'
@@ -369,7 +369,7 @@ export function Rules() {
 								<TextField
 									label={ __(
 										'Quantity Dropdown Options',
-										'easy-min-max'
+										'syzenlabs-quantity-limits'
 									) }
 									value={ quantityDropdownText }
 									disabled={
@@ -377,7 +377,7 @@ export function Rules() {
 									}
 									help={ __(
 										'Enter one quantity option per line. Duplicate values are ignored.',
-										'easy-min-max'
+										'syzenlabs-quantity-limits'
 									) }
 									rows={ 5 }
 									onChange={ handleQuantityDropdownChange }
@@ -386,25 +386,25 @@ export function Rules() {
 						) } */ }
 					</div>
 
-					<div className="rounded-(--eamm-border-radius-md) border border-[#DCDCDE] bg-white p-4">
+					<div className="rounded-(--syzeql-border-radius-md) border border-[#DCDCDE] bg-white p-4">
 						<div className="mb-4">
-							<p className="m-0 font-medium text-(--eamm-text-main)">
-								{ __( 'Custom CSS', 'easy-min-max' ) }
+							<p className="m-0 font-medium text-(--syzeql-text-main)">
+								{ __( 'Custom CSS', 'syzenlabs-quantity-limits' ) }
 							</p>
-							<p className="mt-1 mb-0 text-sm text-(--eamm-text-sub)">
+							<p className="mt-1 mb-0 text-sm text-(--syzeql-text-sub)">
 								{ __(
 									'Add rule-specific CSS that will be printed on the frontend when this rule applies.',
-									'easy-min-max'
+									'syzenlabs-quantity-limits'
 								) }
 							</p>
 						</div>
 
 						<TextareaControl
-							label={ __( 'CSS Rules', 'easy-min-max' ) }
+							label={ __( 'CSS Rules', 'syzenlabs-quantity-limits' ) }
 							value={ rulesForm.customCss }
 							help={ __(
 								'Write plain CSS without wrapping <style> tags.',
-								'easy-min-max'
+								'syzenlabs-quantity-limits'
 							) }
 							rows={ 8 }
 							onChange={ handleFieldChange( 'customCss' ) }

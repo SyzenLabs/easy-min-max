@@ -9,8 +9,8 @@ defaultConfig = {
 	...defaultConfig,
 	context: __dirname,
 	entry: {
-		'eamm-backend': './src/index.js',
-		'eamm-frontend': './src/frontend/index.js',
+		'syzeql-backend': './src/index.js',
+		'syzeql-frontend': './src/frontend/index.js',
 	},
 	output: {
 		...( defaultConfig.output || {} ),

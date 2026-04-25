@@ -2,10 +2,10 @@
 /**
  * Options Action.
  *
- * @package EAMM\Options
+ * @package SYZEQL\Options
  */
 
-namespace EAMM\Includes\Rest;
+namespace SYZEQL\Includes\Rest;
 
 defined( 'ABSPATH' ) || exit;
 

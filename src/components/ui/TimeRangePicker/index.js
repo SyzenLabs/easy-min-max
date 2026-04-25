@@ -38,9 +38,9 @@ export function TimeRangePicker( {
 	step = 60,
 	disabled = false,
 	showTimezone = true,
-	startPlaceholder = __( 'Start time', 'easy-min-max' ),
-	endPlaceholder = __( 'End time', 'easy-min-max' ),
-	timezonePlaceholder = __( 'Select timezone…', 'easy-min-max' ),
+	startPlaceholder = __( 'Start time', 'syzenlabs-quantity-limits' ),
+	endPlaceholder = __( 'End time', 'syzenlabs-quantity-limits' ),
+	timezonePlaceholder = __( 'Select timezone…', 'syzenlabs-quantity-limits' ),
 } ) {
 	const isControlled = value !== undefined;
 	const [ internal, setInternal ] = useState( () => ( {
@@ -103,7 +103,7 @@ export function TimeRangePicker( {
 
 	const label = () => {
 		if ( ! current.start && ! current.end ) {
-			return __( 'Select time range…', 'easy-min-max' );
+			return __( 'Select time range…', 'syzenlabs-quantity-limits' );
 		}
 		const base = `${ formatTime12h( current.start ) } - ${ formatTime12h(
 			current.end
@@ -156,7 +156,7 @@ export function TimeRangePicker( {
 							__next40pxDefaultSize
 							label={ __(
 								'Start Time',
-								'easy-min-max'
+								'syzenlabs-quantity-limits'
 							) }
 							type="time"
 							value={ draft.start || '' }
@@ -169,7 +169,7 @@ export function TimeRangePicker( {
 							__next40pxDefaultSize
 							label={ __(
 								'End Time',
-								'easy-min-max'
+								'syzenlabs-quantity-limits'
 							) }
 							type="time"
 							value={ draft.end || '' }
@@ -203,7 +203,7 @@ export function TimeRangePicker( {
 								onClose();
 							} }
 						>
-							{ __( 'Save', 'easy-min-max' ) }
+							{ __( 'Save', 'syzenlabs-quantity-limits' ) }
 						</Button>
 					</HStack>
 				</VStack>

@@ -11,158 +11,158 @@
 
 :root {
 	/* === Font === */
-	--eamm-font-family: "Inter", sans-serif;
-	--eamm-default-font-size: 14px;
-	--eamm-default-line-height: 20px;
+	--syzeql-font-family: "Inter", sans-serif;
+	--syzeql-default-font-size: 14px;
+	--syzeql-default-line-height: 20px;
 
 	/* === Font Sizes === */
-	--eamm-font-size-2xs: 11px;
-	--eamm-font-size-xs: 12px;
-	--eamm-font-size-sm: 14px;
-	--eamm-font-size-md: 16px;
-	--eamm-font-size-lg: 18px;
-	--eamm-font-size-xl: 20px;
-	--eamm-font-size-2xl: 24px;
-	--eamm-font-size-3xl: 28px;
-	--eamm-font-size-4xl: 32px;
-	--eamm-font-size-5xl: 36px;
-	--eamm-font-size-6xl: 40px;
+	--syzeql-font-size-2xs: 11px;
+	--syzeql-font-size-xs: 12px;
+	--syzeql-font-size-sm: 14px;
+	--syzeql-font-size-md: 16px;
+	--syzeql-font-size-lg: 18px;
+	--syzeql-font-size-xl: 20px;
+	--syzeql-font-size-2xl: 24px;
+	--syzeql-font-size-3xl: 28px;
+	--syzeql-font-size-4xl: 32px;
+	--syzeql-font-size-5xl: 36px;
+	--syzeql-font-size-6xl: 40px;
 
 	/* === Font Line Heights === */
-	--eamm-font-line-height-2xs: 12px; // 11 / 12
-	--eamm-font-line-height-xs: 16px; // 12 / 16
-	--eamm-font-line-height-sm: 20px; // 14 / 20
-	--eamm-font-line-height-md: 24px; // 16 / 24
-	--eamm-font-line-height-lg: 28px; // 18 / 28
-	--eamm-font-line-height-xl: 28px; // 20 / 28
-	--eamm-font-line-height-2xl: 32px; // 24 / 32
-	--eamm-font-line-height-3xl: 36px; // 28 / 36
-	--eamm-font-line-height-4xl: 40px; // 32 / 40
-	--eamm-font-line-height-5xl: 44px; // 36 / 44
-	--eamm-font-line-height-6xl: 48px; // 40 / 48
+	--syzeql-font-line-height-2xs: 12px; // 11 / 12
+	--syzeql-font-line-height-xs: 16px; // 12 / 16
+	--syzeql-font-line-height-sm: 20px; // 14 / 20
+	--syzeql-font-line-height-md: 24px; // 16 / 24
+	--syzeql-font-line-height-lg: 28px; // 18 / 28
+	--syzeql-font-line-height-xl: 28px; // 20 / 28
+	--syzeql-font-line-height-2xl: 32px; // 24 / 32
+	--syzeql-font-line-height-3xl: 36px; // 28 / 36
+	--syzeql-font-line-height-4xl: 40px; // 32 / 40
+	--syzeql-font-line-height-5xl: 44px; // 36 / 44
+	--syzeql-font-line-height-6xl: 48px; // 40 / 48
 
 	/* === Font Weights === */
-	--eamm-font-weight-bold: 700;
-	--eamm-font-weight-semibold: 600;
-	--eamm-font-weight-medium: 500;
-	--eamm-font-weight-regular: 400;
+	--syzeql-font-weight-bold: 700;
+	--syzeql-font-weight-semibold: 600;
+	--syzeql-font-weight-medium: 500;
+	--syzeql-font-weight-regular: 400;
 
 	/* === Transitions === */
-	--eamm-transition-lg: 0.5s;
-	--eamm-transition-md: 0.3s;
-	--eamm-transition-sm: 0.2s;
+	--syzeql-transition-lg: 0.5s;
+	--syzeql-transition-md: 0.3s;
+	--syzeql-transition-sm: 0.2s;
 
 	/* === Container === */
-	--eamm-container-max-width: 1352px;
+	--syzeql-container-max-width: 1352px;
 
 	/* === Border Radius === */
-	--eamm-border-radius-xs: 2px;
-	--eamm-border-radius-sm: 4px;
-	// --eamm-border-radius-sm: 0px;
-	--eamm-border-radius-md: 8px;
-	// --eamm-border-radius-md: 0px;
-	--eamm-border-radius-lg: 12px;
-	// --eamm-border-radius-lg: 0px;
-	--eamm-border-radius-full: 9999px;
+	--syzeql-border-radius-xs: 2px;
+	--syzeql-border-radius-sm: 4px;
+	// --syzeql-border-radius-sm: 0px;
+	--syzeql-border-radius-md: 8px;
+	// --syzeql-border-radius-md: 0px;
+	--syzeql-border-radius-lg: 12px;
+	// --syzeql-border-radius-lg: 0px;
+	--syzeql-border-radius-full: 9999px;
 
 	/* === State Tokens === */
-	--eamm-state-faded-dark: var(--eamm-neutral-800);
-	--eamm-state-faded-base: var(--eamm-neutral-500);
-	--eamm-state-faded-light: var(--eamm-neutral-200);
-	--eamm-state-faded-lighter: var(--eamm-neutral-100);
+	--syzeql-state-faded-dark: var(--syzeql-neutral-800);
+	--syzeql-state-faded-base: var(--syzeql-neutral-500);
+	--syzeql-state-faded-light: var(--syzeql-neutral-200);
+	--syzeql-state-faded-lighter: var(--syzeql-neutral-100);
 
-	--eamm-state-information-dark: var(--eamm-blue-950);
-	--eamm-state-information-base: var(--eamm-blue-500);
-	--eamm-state-information-light: var(--eamm-blue-200);
-	--eamm-state-information-lighter: var(--eamm-blue-50);
+	--syzeql-state-information-dark: var(--syzeql-blue-950);
+	--syzeql-state-information-base: var(--syzeql-blue-500);
+	--syzeql-state-information-light: var(--syzeql-blue-200);
+	--syzeql-state-information-lighter: var(--syzeql-blue-50);
 
-	--eamm-state-warning-dark: var(--eamm-orange-950);
-	--eamm-state-warning-base: var(--eamm-orange-500);
-	--eamm-state-warning-light: var(--eamm-orange-200);
-	--eamm-state-warning-lighter: var(--eamm-orange-50);
+	--syzeql-state-warning-dark: var(--syzeql-orange-950);
+	--syzeql-state-warning-base: var(--syzeql-orange-500);
+	--syzeql-state-warning-light: var(--syzeql-orange-200);
+	--syzeql-state-warning-lighter: var(--syzeql-orange-50);
 
-	--eamm-state-error-dark: var(--eamm-red-950);
-	--eamm-state-error-base: var(--eamm-red-500);
-	--eamm-state-error-light: var(--eamm-red-200);
-	--eamm-state-error-lighter: var(--eamm-red-50);
+	--syzeql-state-error-dark: var(--syzeql-red-950);
+	--syzeql-state-error-base: var(--syzeql-red-500);
+	--syzeql-state-error-light: var(--syzeql-red-200);
+	--syzeql-state-error-lighter: var(--syzeql-red-50);
 
-	--eamm-state-success-dark: var(--eamm-green-950);
-	--eamm-state-success-base: var(--eamm-green-500);
-	--eamm-state-success-light: var(--eamm-green-200);
-	--eamm-state-success-lighter: var(--eamm-green-50);
+	--syzeql-state-success-dark: var(--syzeql-green-950);
+	--syzeql-state-success-base: var(--syzeql-green-500);
+	--syzeql-state-success-light: var(--syzeql-green-200);
+	--syzeql-state-success-lighter: var(--syzeql-green-50);
 
-	--eamm-state-away-dark: var(--eamm-yellow-950);
-	--eamm-state-away-base: var(--eamm-yellow-500);
-	--eamm-state-away-light: var(--eamm-yellow-200);
-	--eamm-state-away-lighter: var(--eamm-yellow-50);
+	--syzeql-state-away-dark: var(--syzeql-yellow-950);
+	--syzeql-state-away-base: var(--syzeql-yellow-500);
+	--syzeql-state-away-light: var(--syzeql-yellow-200);
+	--syzeql-state-away-lighter: var(--syzeql-yellow-50);
 
-	--eamm-state-feature-dark: var(--eamm-purple-950);
-	--eamm-state-feature-base: var(--eamm-purple-500);
-	--eamm-state-feature-light: var(--eamm-purple-200);
-	--eamm-state-feature-lighter: var(--eamm-purple-50);
+	--syzeql-state-feature-dark: var(--syzeql-purple-950);
+	--syzeql-state-feature-base: var(--syzeql-purple-500);
+	--syzeql-state-feature-light: var(--syzeql-purple-200);
+	--syzeql-state-feature-lighter: var(--syzeql-purple-50);
 
-	--eamm-state-verified-dark: var(--eamm-sky-950);
-	--eamm-state-verified-base: var(--eamm-sky-500);
-	--eamm-state-verified-light: var(--eamm-sky-200);
-	--eamm-state-verified-lighter: var(--eamm-sky-50);
+	--syzeql-state-verified-dark: var(--syzeql-sky-950);
+	--syzeql-state-verified-base: var(--syzeql-sky-500);
+	--syzeql-state-verified-light: var(--syzeql-sky-200);
+	--syzeql-state-verified-lighter: var(--syzeql-sky-50);
 
-	--eamm-state-highlighted-dark: var(--eamm-pink-950);
-	--eamm-state-highlighted-base: var(--eamm-pink-500);
-	--eamm-state-highlighted-light: var(--eamm-pink-200);
-	--eamm-state-highlighted-lighter: var(--eamm-pink-50);
+	--syzeql-state-highlighted-dark: var(--syzeql-pink-950);
+	--syzeql-state-highlighted-base: var(--syzeql-pink-500);
+	--syzeql-state-highlighted-light: var(--syzeql-pink-200);
+	--syzeql-state-highlighted-lighter: var(--syzeql-pink-50);
 
-	--eamm-state-stable-dark: var(--eamm-teal-950);
-	--eamm-state-stable-base: var(--eamm-teal-500);
-	--eamm-state-stable-light: var(--eamm-teal-200);
-	--eamm-state-stable-lighter: var(--eamm-teal-50);
+	--syzeql-state-stable-dark: var(--syzeql-teal-950);
+	--syzeql-state-stable-base: var(--syzeql-teal-500);
+	--syzeql-state-stable-light: var(--syzeql-teal-200);
+	--syzeql-state-stable-lighter: var(--syzeql-teal-50);
 
 	/* === Primary Color ===*/
-	--eamm-color-primary-dark: var(--eamm-sky-blue-800);
-	--eamm-color-primary-darker: var(--eamm-sky-blue-700);
-	--eamm-color-primary-base: var(--eamm-sky-blue-500);
-	--eamm-color-primary-alpha-16: var(--eamm-sky-blue-alpha-16);
-	--eamm-color-primary-alpha-10: var(--eamm-sky-blue-alpha-10);
+	--syzeql-color-primary-dark: var(--syzeql-sky-blue-800);
+	--syzeql-color-primary-darker: var(--syzeql-sky-blue-700);
+	--syzeql-color-primary-base: var(--syzeql-sky-blue-500);
+	--syzeql-color-primary-alpha-16: var(--syzeql-sky-blue-alpha-16);
+	--syzeql-color-primary-alpha-10: var(--syzeql-sky-blue-alpha-10);
 
 	/* === Static Tokens === */
-	--eamm-static-black: var(--eamm-neutral-950);
-	--eamm-static-white: var(--eamm-neutral-0);
+	--syzeql-static-black: var(--syzeql-neutral-950);
+	--syzeql-static-white: var(--syzeql-neutral-0);
 
 	/* === Background Tokens === */
-	--eamm-bg-strong: var(--eamm-neutral-950);
-	--eamm-bg-surface: var(--eamm-neutral-800);
-	--eamm-bg-sub: var(--eamm-neutral-300);
-	--eamm-bg-soft: var(--eamm-neutral-200);
-	--eamm-bg-weak: var(--eamm-neutral-50);
-	--eamm-bg-white: var(--eamm-neutral-0);
-	--eamm-bg-special: var(--eamm-sky-blue-500);
+	--syzeql-bg-strong: var(--syzeql-neutral-950);
+	--syzeql-bg-surface: var(--syzeql-neutral-800);
+	--syzeql-bg-sub: var(--syzeql-neutral-300);
+	--syzeql-bg-soft: var(--syzeql-neutral-200);
+	--syzeql-bg-weak: var(--syzeql-neutral-50);
+	--syzeql-bg-white: var(--syzeql-neutral-0);
+	--syzeql-bg-special: var(--syzeql-sky-blue-500);
 
 	/* === Text Tokens === */
-	--eamm-text-strong: var(--eamm-neutral-950);
-	--eamm-text-sub: var(--eamm-neutral-600);
-	--eamm-text-soft: var(--eamm-neutral-400);
-	--eamm-text-disabled: var(--eamm-neutral-400);
-	--eamm-text-white: var(--eamm-neutral-0);
-	--eamm-text-special: var(--eamm-sky-blue-500);
-	--eamm-text-placeholder: var(--eamm-neutral-600);
+	--syzeql-text-strong: var(--syzeql-neutral-950);
+	--syzeql-text-sub: var(--syzeql-neutral-600);
+	--syzeql-text-soft: var(--syzeql-neutral-400);
+	--syzeql-text-disabled: var(--syzeql-neutral-400);
+	--syzeql-text-white: var(--syzeql-neutral-0);
+	--syzeql-text-special: var(--syzeql-sky-blue-500);
+	--syzeql-text-placeholder: var(--syzeql-neutral-600);
 
 	/* === Stroke/Border Tokens === */
-	--eamm-stroke-strong: var(--eamm-neutral-950);
-	--eamm-stroke-sub: var(--eamm-neutral-400);
-	--eamm-stroke-soft: var(--eamm-neutral-200);
-	--eamm-stroke-white: var(--eamm-neutral-0);
-	--eamm-stroke-transparent: transparent;
-	--eamm-stroke-special: var(--eamm-sky-blue-500);
+	--syzeql-stroke-strong: var(--syzeql-neutral-950);
+	--syzeql-stroke-sub: var(--syzeql-neutral-400);
+	--syzeql-stroke-soft: var(--syzeql-neutral-200);
+	--syzeql-stroke-white: var(--syzeql-neutral-0);
+	--syzeql-stroke-transparent: transparent;
+	--syzeql-stroke-special: var(--syzeql-sky-blue-500);
 
 	/* === Shadow Tokens === */
-	--eamm-shadow-xsm: 0px 1px 2px 0px var(--eamm-shadow-bg-xsm);
-	--eamm-shadow-sm: 0px 2px 6px 0px var(--eamm-shadow-bg-sm);
-	--eamm-shadow-md: 0px 16px 32px -12px var(--eamm-shadow-bg-md);
-	--eamm-shadow-lg: 0px 16px 40px -8px var(--eamm-shadow-bg-lg);
-	--eamm-shadow-xl: 0px 24px 56px -4px var(--eamm-shadow-bg-xl);
-	--eamm-shadow-2xl: 0px 40px 96px -8px var(--eamm-shadow-bg-2xl);
-	--eamm-shadow-right: 16px 0px 32px 0px var(--eamm-shadow-bg-right);
-	--eamm-shadow-left: -16px 0px 32px 0px var(--eamm-shadow-bg-left);
-	--eamm-shadow-btn-sm: 0px 2px 2px 0px var(--eamm-shadow-bg-btn-sm);
-	--eamm-shadow-btn-lg: 0px 6px 10px 0px var(--eamm-shadow-bg-btn-lg),
-		0px 2px 4px 0px var(--eamm-shadow-bg-btn-lg);
+	--syzeql-shadow-xsm: 0px 1px 2px 0px var(--syzeql-shadow-bg-xsm);
+	--syzeql-shadow-sm: 0px 2px 6px 0px var(--syzeql-shadow-bg-sm);
+	--syzeql-shadow-md: 0px 16px 32px -12px var(--syzeql-shadow-bg-md);
+	--syzeql-shadow-lg: 0px 16px 40px -8px var(--syzeql-shadow-bg-lg);
+	--syzeql-shadow-xl: 0px 24px 56px -4px var(--syzeql-shadow-bg-xl);
+	--syzeql-shadow-2xl: 0px 40px 96px -8px var(--syzeql-shadow-bg-2xl);
+	--syzeql-shadow-right: 16px 0px 32px 0px var(--syzeql-shadow-bg-right);
+	--syzeql-shadow-left: -16px 0px 32px 0px var(--syzeql-shadow-bg-left);
+	--syzeql-shadow-btn-sm: 0px 2px 2px 0px var(--syzeql-shadow-bg-btn-sm);
+	--syzeql-shadow-btn-lg: 0px 6px 10px 0px var(--syzeql-shadow-bg-btn-lg),
+		0px 2px 4px 0px var(--syzeql-shadow-bg-btn-lg);
 }

@@ -5,13 +5,13 @@ import { RulesListEmpty } from './components/rules-list-empty';
 import { RulesListHeader } from './components/rules-list-header';
 
 import {
-	Button,
-	Card,
-	CardBody,
-	CardHeader,
-	__experimentalHStack as HStack,
-	Spinner,
-	__experimentalText as Text,
+    Button,
+    Card,
+    CardBody,
+    CardHeader,
+    __experimentalHStack as HStack,
+    Spinner,
+    __experimentalText as Text,
 } from '@wordpress/components';
 import { __ } from '@wordpress/i18n';
 
@@ -100,14 +100,14 @@ export default function ShippingRules() {
 	}, [ state.searchQuery, state.filterStatus, ruleState.rules ] );
 
 	return (
-		<div className="mt-5! eamm-container">
+		<div className="mt-5! syzeql-container">
 			<HStack wrap={ true }>
 				<Text
 					weight={ wpConfig.weight.medium }
 					size={ wpConfig.size[ '2xl' ] }
 					lineHeight={ wpConfig.lineHeight[ '2xl' ] }
 				>
-					{ __( 'Manage Rules', 'easy-min-max' ) }
+					{ __( 'Manage Rules', 'syzenlabs-quantity-limits' ) }
 				</Text>
 
 				<Button
@@ -117,7 +117,7 @@ export default function ShippingRules() {
 					href="#rule-add"
 					variant="primary"
 				>
-					{ __( 'Add Rule', 'easy-min-max' ) }
+					{ __( 'Add Rule', 'syzenlabs-quantity-limits' ) }
 				</Button>
 			</HStack>
 			<Card className="mt-6!">

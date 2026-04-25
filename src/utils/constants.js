@@ -3,10 +3,10 @@ import { getUuid, showLicensePage } from '.';
 
 export const SCENARIOS = [
 	{
-		title: __( 'Cart Weight-based shipping', 'easy-min-max' ),
+		title: __( 'Cart Weight-based shipping', 'syzenlabs-quantity-limits' ),
 		description: __(
 			"A sample scenario of weight-based shipping. You can easily customize to fit your store's requirements.",
-			'easy-min-max'
+			'syzenlabs-quantity-limits'
 		),
 		pro: false,
 		tableData: {
@@ -82,10 +82,10 @@ export const SCENARIOS = [
 	},
 
 	{
-		title: __( 'Cart Quantity-based Shipping', 'easy-min-max' ),
+		title: __( 'Cart Quantity-based Shipping', 'syzenlabs-quantity-limits' ),
 		description: __(
 			'Here’s an example scenario for setting up shipping rates based on the total quantity of items in the cart.',
-			'easy-min-max'
+			'syzenlabs-quantity-limits'
 		),
 		pro: false,
 		tableData: {
@@ -161,10 +161,10 @@ export const SCENARIOS = [
 	},
 
 	{
-		title: __( 'Country + Cart Weight', 'easy-min-max' ),
+		title: __( 'Country + Cart Weight', 'syzenlabs-quantity-limits' ),
 		description: __(
 			'This example shows a combination of country-based rules with cart-weight conditions to set precise shipping rates.',
-			'easy-min-max'
+			'syzenlabs-quantity-limits'
 		),
 		pro: true,
 		tableData: {
@@ -357,10 +357,10 @@ export const SCENARIOS = [
 	},
 
 	{
-		title: __( 'Country + Weight with Variable Charges', 'easy-min-max' ),
+		title: __( 'Country + Weight with Variable Charges', 'syzenlabs-quantity-limits' ),
 		description: __(
 			'This example shows a combination of country-based rules, weight ranges, and flexible variable charges.',
-			'easy-min-max'
+			'syzenlabs-quantity-limits'
 		),
 		pro: true,
 		tableData: {
@@ -435,37 +435,37 @@ export const SCENARIOS = [
 
 export const CALCULATION_METHOD_OPTIONS = [
 	{
-		label: __( 'Manual Rates', 'easy-min-max' ),
+		label: __( 'Manual Rates', 'syzenlabs-quantity-limits' ),
 		value: 'general',
 		help: __(
 			'Selecting this option lets you set your preferred conditions for manually calculating shipping rates.',
-			'easy-min-max'
+			'syzenlabs-quantity-limits'
 		),
 	},
 	{
-		label: __( 'Carrier Live Rates (Beta)', 'easy-min-max' ),
+		label: __( 'Carrier Live Rates (Beta)', 'syzenlabs-quantity-limits' ),
 		value: 'carrier',
 		pro: true,
 		help: __(
 			"Selecting this option will help you choose and configure your preferred shipping carrier so that the shipping rate will be calculated in real time via the carrier's API.",
-			'easy-min-max'
+			'syzenlabs-quantity-limits'
 		),
 	},
 ];
 
 export const SHIPPING_METHOD_TYPE_OPTIONS = [
 	{
-		label: __( 'Flexible Rate', 'easy-min-max' ),
+		label: __( 'Flexible Rate', 'syzenlabs-quantity-limits' ),
 		value: 'flexible_amount',
 		color: 'blue',
 	},
 	{
-		label: __( 'Flat Rate', 'easy-min-max' ),
+		label: __( 'Flat Rate', 'syzenlabs-quantity-limits' ),
 		value: 'flat_amount',
 		color: 'orange',
 	},
 	{
-		label: __( 'Free Shipping', 'easy-min-max' ),
+		label: __( 'Free Shipping', 'syzenlabs-quantity-limits' ),
 		value: 'free_shipping',
 		color: 'green',
 	},
@@ -474,65 +474,65 @@ export const SHIPPING_METHOD_TYPE_OPTIONS = [
 export const DAYS_OF_WEEK = [
 	{
 		value: '0',
-		label: __( 'Sunday', 'easy-min-max' ),
+		label: __( 'Sunday', 'syzenlabs-quantity-limits' ),
 	},
 	{
 		value: '1',
-		label: __( 'Monday', 'easy-min-max' ),
+		label: __( 'Monday', 'syzenlabs-quantity-limits' ),
 	},
 	{
 		value: '2',
-		label: __( 'Tuesday', 'easy-min-max' ),
+		label: __( 'Tuesday', 'syzenlabs-quantity-limits' ),
 	},
 	{
 		value: '3',
-		label: __( 'Wednesday', 'easy-min-max' ),
+		label: __( 'Wednesday', 'syzenlabs-quantity-limits' ),
 	},
 	{
 		value: '4',
-		label: __( 'Thursday', 'easy-min-max' ),
+		label: __( 'Thursday', 'syzenlabs-quantity-limits' ),
 	},
 	{
 		value: '5',
-		label: __( 'Friday', 'easy-min-max' ),
+		label: __( 'Friday', 'syzenlabs-quantity-limits' ),
 	},
 	{
 		value: '6',
-		label: __( 'Saturday', 'easy-min-max' ),
+		label: __( 'Saturday', 'syzenlabs-quantity-limits' ),
 	},
 ];
 
 export const TAX_STATUS_OPTIONS = [
-	{ value: 'taxable', label: __( 'Taxable', 'easy-min-max' ) },
-	{ value: 'none', label: __( 'None', 'easy-min-max' ) },
+	{ value: 'taxable', label: __( 'Taxable', 'syzenlabs-quantity-limits' ) },
+	{ value: 'none', label: __( 'None', 'syzenlabs-quantity-limits' ) },
 ];
 
 export const SCENARIO_VISIBILITY_BASE_OPTIONS = [
 	{
 		value: 'logged_in',
-		label: __( 'Logged-In Users', 'easy-min-max' ),
+		label: __( 'Logged-In Users', 'syzenlabs-quantity-limits' ),
 	},
 	{
 		value: 'logged_out',
-		label: __( 'Logged-Out Users', 'easy-min-max' ),
+		label: __( 'Logged-Out Users', 'syzenlabs-quantity-limits' ),
 	},
-	{ value: 'both', label: __( 'Everyone', 'easy-min-max' ) },
+	{ value: 'both', label: __( 'Everyone', 'syzenlabs-quantity-limits' ) },
 ];
 
 export const HANDLING_FEE_OPTIONS = [
-	{ value: 'fixed', label: __( 'Fixed Amount', 'easy-min-max' ) },
+	{ value: 'fixed', label: __( 'Fixed Amount', 'syzenlabs-quantity-limits' ) },
 	{
 		value: 'percentage',
-		label: __( 'Percentage', 'easy-min-max' ),
+		label: __( 'Percentage', 'syzenlabs-quantity-limits' ),
 	},
 ];
 
 export const APPLY_HANDLING_TO_OPTIONS = [
 	{
 		value: 'entire_order',
-		label: __( 'Entire Order', 'easy-min-max' ),
+		label: __( 'Entire Order', 'syzenlabs-quantity-limits' ),
 	},
-	{ value: 'per_item', label: __( 'Per Item', 'easy-min-max' ) },
+	{ value: 'per_item', label: __( 'Per Item', 'syzenlabs-quantity-limits' ) },
 	// { value: 'per_package', label: 'Per Package' }, // TODO @samin: Add this when implementing carriers.
 ];
 
@@ -541,14 +541,14 @@ export const FLAT_RATE_CALCULATION_TYPE_OPTIONS = [
 		value: 'per_class',
 		label: __(
 			'Per Class: Charge shipping for each shipping class individually.',
-			'easy-min-max'
+			'syzenlabs-quantity-limits'
 		),
 	},
 	{
 		value: 'per_order',
 		label: __(
 			'Per Order: Charge shipping for the most expensive shipping class.',
-			'easy-min-max'
+			'syzenlabs-quantity-limits'
 		),
 	},
 ];
@@ -907,20 +907,20 @@ export const TIMEZONES = [
 export const getMenuItems = () => {
 	const menuItems = [
 		// { to: 'design-system', label: 'DS' },
-		{ to: 'overview', label: __( 'Overview', 'easy-min-max' ) },
+		{ to: 'overview', label: __( 'Overview', 'syzenlabs-quantity-limits' ) },
 		{
 			to: 'rules',
-			label: __( 'Rules', 'easy-min-max' ),
+			label: __( 'Rules', 'syzenlabs-quantity-limits' ),
 		},
 		// {
 		// 	to: 'logs-analytics',
-		// 	label: __( 'Analytics & Logs', 'easy-min-max' ),
+		// 	label: __( 'Analytics & Logs', 'syzenlabs-quantity-limits' ),
 		// },
-		// { to: 'settings', label: __( 'Settings', 'easy-min-max' ) },
+		// { to: 'settings', label: __( 'Settings', 'syzenlabs-quantity-limits' ) },
 		// { divider: true },
 		// {
 		// 	to: 'plugins',
-		// 	label: __( 'WPXPO Plugins', 'easy-min-max' ),
+		// 	label: __( 'WPXPO Plugins', 'syzenlabs-quantity-limits' ),
 		// 	leftIcon: 'connect',
 		// },
 	];
@@ -928,7 +928,7 @@ export const getMenuItems = () => {
 	if ( showLicensePage() ) {
 		menuItems.splice( 4, 0, {
 			to: 'license',
-			label: __( 'License', 'easy-min-max' ),
+			label: __( 'License', 'syzenlabs-quantity-limits' ),
 		} );
 	}
 
@@ -936,9 +936,9 @@ export const getMenuItems = () => {
 };
 
 export const PRO_FEATURES_LIST = [
-	__( 'Create unlimited shipping rules', 'easy-min-max' ),
-	__( 'Stack unlimited rule groups', 'easy-min-max' ),
-	__( 'Fully unlocked carrier integrations', 'easy-min-max' ),
-	__( 'Fully unlock table rates', 'easy-min-max' ),
-	__( 'Unlock handling fees, visibility, and more!', 'easy-min-max' ),
+	__( 'Create unlimited shipping rules', 'syzenlabs-quantity-limits' ),
+	__( 'Stack unlimited rule groups', 'syzenlabs-quantity-limits' ),
+	__( 'Fully unlocked carrier integrations', 'syzenlabs-quantity-limits' ),
+	__( 'Fully unlock table rates', 'syzenlabs-quantity-limits' ),
+	__( 'Unlock handling fees, visibility, and more!', 'syzenlabs-quantity-limits' ),
 ];

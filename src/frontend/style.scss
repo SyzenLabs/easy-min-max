@@ -1,4 +1,4 @@
-.eamm-qty-select {
+.syzeql-qty-select {
 	min-width: 7rem;
 	border: 1px solid #c2c7d0;
 	border-radius: 0.45rem;
@@ -23,13 +23,13 @@
 		box-shadow 0.18s ease;
 }
 
-.eamm-qty-select:focus {
+.syzeql-qty-select:focus {
 	outline: none;
 	border-color: #2563eb;
 	box-shadow: 0 0 0 3px rgba(37, 99, 235, 0.14);
 }
 
-.eamm-total-price {
+.syzeql-total-price {
 	display: inline-flex;
 	align-items: center;
 	gap: 0.5rem;
@@ -44,11 +44,11 @@
 	box-shadow: 0 10px 25px rgba(15, 23, 42, 0.05);
 }
 
-.eamm-total-price[hidden] {
+.syzeql-total-price[hidden] {
 	display: none;
 }
 
-form.cart .eamm-total-price {
+form.cart .syzeql-total-price {
 	width: 100%;
 	justify-content: space-between;
 }

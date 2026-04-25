@@ -19,7 +19,7 @@ const handlePageHash = ( url ) => {
 	let hash = 'overview';
 	if ( url ) {
 		const currUrl = new URL( window.location.href );
-		if ( currUrl.searchParams.get( 'page' ) === 'eamm-dashboard' ) {
+		if ( currUrl.searchParams.get( 'page' ) === 'syzeql-dashboard' ) {
 			hash = currUrl.hash.replace( '#', '' );
 		}
 	}

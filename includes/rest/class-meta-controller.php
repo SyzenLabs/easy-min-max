@@ -1,6 +1,6 @@
 <?php
 
-namespace EAMM\Includes\Rest;
+namespace SYZEQL\Includes\Rest;
 
 use WC_Shipping_Zones;
 use WP_REST_Request;
@@ -14,7 +14,7 @@ class MetaController {
 
 	public function register_routes() {
 		register_rest_route(
-			'eamm/v1',
+			'syzeql/v1',
 			'/meta',
 			array(
 				array(

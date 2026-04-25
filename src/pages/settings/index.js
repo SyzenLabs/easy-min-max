@@ -3,14 +3,14 @@ import { getSettings } from '@/utils';
 import { wpConfig } from '@/utils/wpc-config';
 import apiFetch from '@wordpress/api-fetch';
 import {
-	Button,
-	Card,
-	CardBody,
-	CheckboxControl,
-	__experimentalDivider as Divider,
-	__experimentalHStack as HStack,
-	__experimentalText as Text,
-	__experimentalVStack as VStack
+    Button,
+    Card,
+    CardBody,
+    CheckboxControl,
+    __experimentalDivider as Divider,
+    __experimentalHStack as HStack,
+    __experimentalText as Text,
+    __experimentalVStack as VStack
 } from '@wordpress/components';
 import { useCallback, useState } from '@wordpress/element';
 import { __ } from '@wordpress/i18n';
@@ -27,7 +27,7 @@ export default function Settings() {
 			try {
 				const response = await apiFetch( {
 					method: 'POST',
-					path: '/easy-min-max/v1/settings',
+					path: '/syzenlabs-quantity-limits/v1/settings',
 					data: {
 						data,
 					},
@@ -38,12 +38,12 @@ export default function Settings() {
 				}
 
 				showToast(
-					__( 'Settings updated successfully', 'easy-min-max' ),
+					__( 'Settings updated successfully', 'syzenlabs-quantity-limits' ),
 					'success'
 				);
 			} catch ( error ) {
 				showToast(
-					__( 'Failed to update settings', 'easy-min-max' ),
+					__( 'Failed to update settings', 'syzenlabs-quantity-limits' ),
 					'error'
 				);
 			} finally {
@@ -54,7 +54,7 @@ export default function Settings() {
 	);
 
 	return (
-		<div className="mt-5! eamm-container">
+		<div className="mt-5! syzeql-container">
 			<Card>
 				<CardBody>
 					<VStack spacing={ 6 }>
@@ -65,14 +65,14 @@ export default function Settings() {
 									size={ wpConfig.size.xl }
 									lineHeight={ wpConfig.lineHeight.m }
 								>
-									{ __( 'General Settings', 'easy-min-max' ) }
+									{ __( 'General Settings', 'syzenlabs-quantity-limits' ) }
 								</Text>
 							</VStack>
 							<VStack spacing={ 6 }>
 
 								<CheckboxControl
 									__nextHasNoMarginBottom
-									label={ __( 'Debug Mode', 'easy-min-max' ) }
+									label={ __( 'Debug Mode', 'syzenlabs-quantity-limits' ) }
 									checked={ state.debugMode }
 									onChange={ ( value ) => {
 										setState( ( prev ) => ( {
@@ -88,7 +88,7 @@ export default function Settings() {
 										<span className="text-[#cc1818]">
 											{ __(
 												'Delete Data on Uninstall',
-												'easy-min-max'
+												'syzenlabs-quantity-limits'
 											) }
 										</span>
 									}
@@ -96,13 +96,13 @@ export default function Settings() {
 										<>
 											{ __(
 												'Permanently deletes all plugin data upon uninstalling the plugin.',
-												'easy-min-max'
+												'syzenlabs-quantity-limits'
 											) }
 											&nbsp;
 											<span className="font-bold uppercase">
 												{ __(
 													'Use with caution.',
-													'easy-min-max'
+													'syzenlabs-quantity-limits'
 												) }
 											</span>
 										</>
@@ -126,9 +126,9 @@ export default function Settings() {
 								isBusy={ saving }
 							>
 								{ saving ? (
-									<>{ __( 'Saving…', 'easy-min-max' ) }</>
+									<>{ __( 'Saving…', 'syzenlabs-quantity-limits' ) }</>
 								) : (
-									__( 'Save', 'easy-min-max' )
+									__( 'Save', 'syzenlabs-quantity-limits' )
 								) }
 							</Button>
 						</HStack>

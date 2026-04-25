@@ -1,11 +1,11 @@
 <?php // phpcs:ignore
 
-namespace EAMM\Traits;
+namespace SYZEQL\Traits;
 
 /**
  * Singleton trait to implement singleton pattern in classes.
  *
- * @package EAMM\Traits
+ * @package SYZEQL\Traits
  */
 trait Singleton {
 	/**

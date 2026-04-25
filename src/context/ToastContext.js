@@ -16,7 +16,7 @@ export const useToast = () => {
 		throw new Error(
 			__(
 				'useToast must be used within a ToastProvider',
-				'easy-min-max'
+				'syzenlabs-quantity-limits'
 			)
 		);
 	}

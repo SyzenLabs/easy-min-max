@@ -2,27 +2,28 @@ import { useEffect } from '@wordpress/element';
 
 const PopupLayout = ( { children } ) => {
 	useEffect( () => {
-		document.documentElement.classList.add( 'eamm-popup-layout-open' );
+		document.documentElement.classList.add( 'syzeql-popup-layout-open' );
 		return () => {
 			document.documentElement.classList.remove(
-				'eamm-popup-layout-open'
+				'syzeql-popup-layout-open'
 			);
 		};
 	}, [] );
 
-	return <div className="eamm-popup-layout">{ children }</div>;
+	return <div className="syzeql-popup-layout">{ children }</div>;
 };
 
 const PopupLayoutHeader = ( { children } ) => {
 	return (
-		<div className="eamm-popup-layout-header">
-			<div className="eamm-popup-layout-header-inner">{ children }</div>
+		<div className="syzeql-popup-layout-header">
+			<div className="syzeql-popup-layout-header-inner">{ children }</div>
 		</div>
 	);
 };
 
 const PopupLayoutBody = ( { children } ) => {
-	return <div className="eamm-popup-layout-body">{ children }</div>;
+	return <div className="syzeql-popup-layout-body">{ children }</div>;
 };
 
 export { PopupLayout, PopupLayoutBody, PopupLayoutHeader };
+

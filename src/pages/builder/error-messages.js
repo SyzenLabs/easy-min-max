@@ -1,19 +1,19 @@
 import { TinyEditor } from '@/components/ui/rich-text-editor';
 import { useRuleStore } from '@/store/useRuleStore';
 import {
-	Card,
-	CardBody,
-	CardHeader,
-	__experimentalHStack as HStack,
-	__experimentalHeading as Heading,
-	Icon,
-	Tooltip,
+    Card,
+    CardBody,
+    CardHeader,
+    __experimentalHStack as HStack,
+    __experimentalHeading as Heading,
+    Icon,
+    Tooltip,
 } from '@wordpress/components';
 import { __ } from '@wordpress/i18n';
 
 const messageTokenHelp = __(
 	'Available placeholders: [current_quantity], [min_quantity], [max_quantity], [min_price], [max_price], [product_name], [step_quantity], [inputed_quantity], [variation_name], [fixed_quanitity].',
-	'easy-min-max'
+	'syzenlabs-quantity-limits'
 );
 
 export function ErrorMessages() {
@@ -31,12 +31,12 @@ export function ErrorMessages() {
 			<CardHeader>
 				<HStack spacing={ 2 } expanded={ false }>
 					<Heading level={ 3 }>
-						{ __( 'Validation Messages', 'easy-min-max' ) }
+						{ __( 'Validation Messages', 'syzenlabs-quantity-limits' ) }
 					</Heading>
 					<Tooltip
 						text={ __(
 							'Customize the notices shown when customers break a quantity or price rule.',
-							'easy-min-max'
+							'syzenlabs-quantity-limits'
 						) }
 					>
 						<span>
@@ -50,7 +50,7 @@ export function ErrorMessages() {
 					<TinyEditor
 						label={ __(
 							'Minimum Quantity Message',
-							'easy-min-max'
+							'syzenlabs-quantity-limits'
 						) }
 						value={ rulesForm.minQuantityMessage }
 						help={ messageTokenHelp }
@@ -59,20 +59,20 @@ export function ErrorMessages() {
 					<TinyEditor
 						label={ __(
 							'Maximum Quantity Message',
-							'easy-min-max'
+							'syzenlabs-quantity-limits'
 						) }
 						value={ rulesForm.maxQuantityMessage }
 						help={ messageTokenHelp }
 						onChange={ handleFieldChange( 'maxQuantityMessage' ) }
 					/>
 					<TinyEditor
-						label={ __( 'Minimum Price Message', 'easy-min-max' ) }
+						label={ __( 'Minimum Price Message', 'syzenlabs-quantity-limits' ) }
 						value={ rulesForm.minPriceMessage }
 						help={ messageTokenHelp }
 						onChange={ handleFieldChange( 'minPriceMessage' ) }
 					/>
 					<TinyEditor
-						label={ __( 'Maximum Price Message', 'easy-min-max' ) }
+						label={ __( 'Maximum Price Message', 'syzenlabs-quantity-limits' ) }
 						value={ rulesForm.maxPriceMessage }
 						help={ messageTokenHelp }
 						onChange={ handleFieldChange( 'maxPriceMessage' ) }

@@ -14,20 +14,20 @@ import { useEffect, useMemo } from '@wordpress/element';
 import { __ } from '@wordpress/i18n';
 
 const REVIEW_URL =
-	'https://wordpress.org/support/plugin/easy-min-max/reviews?rate=5#new-post';
+	'https://wordpress.org/support/plugin/syzenlabs-quantity-limits/reviews?rate=5#new-post';
 
 const featureItems = [
 	__(
 		'Set minimum and maximum quantity rules for products.',
-		'easy-min-max'
+		'syzenlabs-quantity-limits'
 	),
 	__(
 		'Limit orders by price and apply step or fixed quantities.',
-		'easy-min-max'
+		'syzenlabs-quantity-limits'
 	),
 	__(
 		'Target rules with product, cart, customer, and location conditions.',
-		'easy-min-max'
+		'syzenlabs-quantity-limits'
 	),
 ];
 
@@ -97,7 +97,7 @@ const Overview = () => {
 	}, [ state.rules ] );
 
 	return (
-		<div className="mt-5! eamm-container">
+		<div className="mt-5! syzeql-container">
 			<VStack spacing={ 6 }>
 				<Card>
 					<CardBody>
@@ -111,7 +111,7 @@ const Overview = () => {
 									>
 										{ __(
 											'Control quantity limits with confidence',
-											'easy-min-max'
+											'syzenlabs-quantity-limits'
 										) }
 									</Text>
 									<Text
@@ -121,7 +121,7 @@ const Overview = () => {
 									>
 										{ __(
 											'Easy Min Max helps you enforce minimum and maximum quantity or price rules across your WooCommerce store without overcomplicating setup.',
-											'easy-min-max'
+											'syzenlabs-quantity-limits'
 										) }
 									</Text>
 								</VStack>
@@ -134,7 +134,7 @@ const Overview = () => {
 											setCurrentNav( 'rule-add' )
 										}
 									>
-										{ __( 'Create Rule', 'easy-min-max' ) }
+										{ __( 'Create Rule', 'syzenlabs-quantity-limits' ) }
 									</Button>
 									<Button
 										__next40pxDefaultSize
@@ -143,7 +143,7 @@ const Overview = () => {
 											setCurrentNav( 'rules' )
 										}
 									>
-										{ __( 'View Rules', 'easy-min-max' ) }
+										{ __( 'View Rules', 'syzenlabs-quantity-limits' ) }
 									</Button>
 								</HStack>
 							</VStack>
@@ -157,7 +157,7 @@ const Overview = () => {
 									height="167"
 									alt={ __(
 										'Easy Min Max overview illustration',
-										'easy-min-max'
+										'syzenlabs-quantity-limits'
 									) }
 								/>
 							</div>
@@ -167,27 +167,27 @@ const Overview = () => {
 
 				<div className="grid gap-4 md:grid-cols-3">
 					<StatsCard
-						label={ __( 'Total rules', 'easy-min-max' ) }
+						label={ __( 'Total rules', 'syzenlabs-quantity-limits' ) }
 						value={ stats.total }
 						help={ __(
 							'All quantity and price rules in this store.',
-							'easy-min-max'
+							'syzenlabs-quantity-limits'
 						) }
 					/>
 					<StatsCard
-						label={ __( 'Published', 'easy-min-max' ) }
+						label={ __( 'Published', 'syzenlabs-quantity-limits' ) }
 						value={ stats.published }
 						help={ __(
 							'Rules that can affect storefront behavior.',
-							'easy-min-max'
+							'syzenlabs-quantity-limits'
 						) }
 					/>
 					<StatsCard
-						label={ __( 'Drafts', 'easy-min-max' ) }
+						label={ __( 'Drafts', 'syzenlabs-quantity-limits' ) }
 						value={ stats.draft }
 						help={ __(
 							'Rules you can finish before publishing.',
-							'easy-min-max'
+							'syzenlabs-quantity-limits'
 						) }
 					/>
 				</div>
@@ -204,13 +204,13 @@ const Overview = () => {
 									>
 										{ __(
 											'What you can do with Easy Min Max',
-											'easy-min-max'
+											'syzenlabs-quantity-limits'
 										) }
 									</Text>
 									<Text variant="muted">
 										{ __(
 											'Keep your setup focused and build only the rules your store needs.',
-											'easy-min-max'
+											'syzenlabs-quantity-limits'
 										) }
 									</Text>
 								</VStack>
@@ -243,13 +243,13 @@ const Overview = () => {
 									>
 										{ __(
 											'Enjoying Easy Min Max?',
-											'easy-min-max'
+											'syzenlabs-quantity-limits'
 										) }
 									</Text>
 									<Text variant="muted">
 										{ __(
 											'If Easy Min Max is helping you manage quantity rules more smoothly, a quick review on WordPress.org helps more store owners discover it.',
-											'easy-min-max'
+											'syzenlabs-quantity-limits'
 										) }
 									</Text>
 								</VStack>
@@ -263,7 +263,7 @@ const Overview = () => {
 									>
 										{ __(
 											'Review on WordPress.org',
-											'easy-min-max'
+											'syzenlabs-quantity-limits'
 										) }
 									</Button>
 								</VStack>

@@ -2,19 +2,19 @@ $select-min-width: fit-content;
 $select-z-index: 999999;
 
 // Important: hide overflow scroll when select is open
-#eamm-dashboard-wrap:has(.eamm-select-open) .eamm-popup-layout {
+#syzeql-dashboard-wrap:has(.syzeql-select-open) .syzeql-popup-layout {
 	scrollbar-gutter: stable;
 	@apply overflow-hidden;
 }
 
 // Important: hide overflow scroll when select is open
-html:not(:has(.eamm-popup-layout)) {
-	&:has(.eamm-select-open) {
+html:not(:has(.syzeql-popup-layout)) {
+	&:has(.syzeql-select-open) {
 		scrollbar-gutter: stable;
 		@apply overflow-hidden;
 	}
 }
-.eamm-select-component {
+.syzeql-select-component {
 	@apply relative cursor-pointer;
 	min-width: $select-min-width;
 	.components-input-control__input {
@@ -22,83 +22,83 @@ html:not(:has(.eamm-popup-layout)) {
 	}
 }
 
-.eamm-select-trigger-component {
+.syzeql-select-trigger-component {
 	@apply border border-solid rounded-md bg-white px-2.5 py-2 flex justify-between items-center cursor-pointer focus:ring-2 focus:ring-blue-500 focus:outline-none;
-	border-color: var(--eamm-stroke-sub);
-	background-color: var(--eamm-bg-white);
+	border-color: var(--syzeql-stroke-sub);
+	background-color: var(--syzeql-bg-white);
 
-	.eamm-select-trigger-icon {
+	.syzeql-select-trigger-icon {
 		@apply transition-all duration-200 ease-out;
 	}
 }
 
-.eamm-select-value-component {
-	color: var(--eamm-text-sub);
+.syzeql-select-value-component {
+	color: var(--syzeql-text-sub);
 	@apply text-nowrap;
 
-	&.eamm-select-value-placeholder {
-		color: var(--eamm-text-placeholder);
+	&.syzeql-select-value-placeholder {
+		color: var(--syzeql-text-placeholder);
 	}
 }
 
-.eamm-select-content-component {
+.syzeql-select-content-component {
 	@apply fixed flex flex-col outline outline-solid bg-white rounded-md shadow-[0_4px_6px_-1px_rgba(0,0,0,0.1),0_2px_4px_-1px_rgba(0,0,0,0.06)] translate-y-1 transition-[opacity_0.1s_ease-out,transform_0.1s_ease-out] max-h-[min(24rem,calc(100vh-1rem))] overflow-y-auto;
-	outline-color: var(--eamm-stroke-sub);
-	background: var(--eamm-bg-white);
+	outline-color: var(--syzeql-stroke-sub);
+	background: var(--syzeql-bg-white);
 	z-index: $select-z-index;
 
-	.eamm-select-content-body {
+	.syzeql-select-content-body {
 		@apply p-1;
 	}
 }
 
-.eamm-select-open {
+.syzeql-select-open {
 	@apply opacity-100 translate-y-0 pointer-events-auto h-auto;
 
-	&.eamm-select-trigger-icon {
+	&.syzeql-select-trigger-icon {
 		@apply rotate-180;
 	}
 }
 
-.eamm-select-close {
+.syzeql-select-close {
 	@apply h-0 -translate-y-2.5;
 }
 
-.eamm-select-group-item-component {
+.syzeql-select-group-item-component {
 	&:first-child {
-		.eamm-select-label-component {
+		.syzeql-select-label-component {
 			@apply rounded-t-md;
 		}
 	}
 	&:last-child {
-		.eamm-select-item-component {
+		.syzeql-select-item-component {
 			&:last-child {
 				@apply rounded-b-md;
 			}
 		}
 	}
 
-	.eamm-select-item-component {
+	.syzeql-select-item-component {
 		@apply py-1.5 px-5;
 	}
 }
 
-.eamm-select-label-component {
-	@apply py-1.5 px-4 bg-(--eamm-bg-weak) text-(--eamm-text-soft);
-	font-size: var(--eamm-font-size-sm);
-	line-height: var(--eamm-font-line-height-sm);
-	font-weight: var(--eamm-font-weight-medium);
-	background-color: var(--eamm-bg-weak);
-	color: var(--eamm-text-soft);
+.syzeql-select-label-component {
+	@apply py-1.5 px-4 bg-(--syzeql-bg-weak) text-(--syzeql-text-soft);
+	font-size: var(--syzeql-font-size-sm);
+	line-height: var(--syzeql-font-line-height-sm);
+	font-weight: var(--syzeql-font-weight-medium);
+	background-color: var(--syzeql-bg-weak);
+	color: var(--syzeql-text-soft);
 }
 
-.eamm-select-item-component {
-	@apply cursor-pointer py-1.5 px-4 text-(--eamm-text-sub) transition-all duration-200 ease-out flex items-center gap-1 justify-between text-nowrap;
-	font-size: var(--eamm-font-size-sm);
-	line-height: var(--eamm-font-line-height-sm);
-	color: var(--eamm-text-sub);
+.syzeql-select-item-component {
+	@apply cursor-pointer py-1.5 px-4 text-(--syzeql-text-sub) transition-all duration-200 ease-out flex items-center gap-1 justify-between text-nowrap;
+	font-size: var(--syzeql-font-size-sm);
+	line-height: var(--syzeql-font-line-height-sm);
+	color: var(--syzeql-text-sub);
 	&:hover {
-		background: var(--eamm-bg-soft);
+		background: var(--syzeql-bg-soft);
 	}
 
 	&:first-child {
@@ -109,32 +109,32 @@ html:not(:has(.eamm-popup-layout)) {
 		@apply rounded-b-md;
 	}
 
-	// &.eamm-select-item-selected {
-	// 	color: var(--eamm-text-white);
+	// &.syzeql-select-item-selected {
+	// 	color: var(--syzeql-text-white);
 	// 	background: var(--wp-admin-theme-color);
 	// }
 }
 
-.eamm-select-search-component {
+.syzeql-select-search-component {
 	@apply mb-1 p-1 sticky top-0 backdrop-blur-[5px] z-9999 min-w-55;
 }
 
-.eamm-select-no-data {
-	@apply text-center text-(--eamm-text-sub) py-2.5 px-2.5 text-nowrap;
-	font-size: var(--eamm-font-size-xs);
-	line-height: var(--eamm-font-line-height-xs);
-	font-weight: var(--eamm-font-weight-medium);
-	color: var(--eamm-text-sub);
+.syzeql-select-no-data {
+	@apply text-center text-(--syzeql-text-sub) py-2.5 px-2.5 text-nowrap;
+	font-size: var(--syzeql-font-size-xs);
+	line-height: var(--syzeql-font-line-height-xs);
+	font-weight: var(--syzeql-font-weight-medium);
+	color: var(--syzeql-text-sub);
 }
 
-.eamm-select-trigger-icons {
+.syzeql-select-trigger-icons {
 	@apply flex gap-1 items-center;
 }
 
-.eamm-select-item-selected {
+.syzeql-select-item-selected {
 	&,
 	&:hover {
-		color: var(--eamm-text-white) !important;
+		color: var(--syzeql-text-white) !important;
 		background: var(--wp-admin-theme-color) !important;
 	}
 }

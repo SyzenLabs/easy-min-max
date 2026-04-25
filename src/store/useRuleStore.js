@@ -3,11 +3,11 @@ import { useToast } from '@/context/ToastContext';
 import { getUuid } from '@/utils';
 import apiFetch from '@wordpress/api-fetch';
 import {
-	createContext,
-	useCallback,
-	useContext,
-	useMemo,
-	useState,
+    createContext,
+    useCallback,
+    useContext,
+    useMemo,
+    useState,
 } from '@wordpress/element';
 import { __ } from '@wordpress/i18n';
 
@@ -123,7 +123,7 @@ export const RuleStoreProvider = ( { children } ) => {
 		try {
 			const response = await apiFetch( {
 				method: 'GET',
-				path: '/eamm/v1/rules',
+				path: '/syzeql/v1/rules',
 			} );
 
 			if ( ! response.success ) {
@@ -138,7 +138,7 @@ export const RuleStoreProvider = ( { children } ) => {
 			return response.data;
 		} catch ( error ) {
 			showToast?.(
-				__( 'Error fetching rules', 'easy-min-max' ),
+				__( 'Error fetching rules', 'syzenlabs-quantity-limits' ),
 				'error'
 			);
 		}
@@ -148,7 +148,7 @@ export const RuleStoreProvider = ( { children } ) => {
 		async ( ruleId ) => {
 			try {
 				const response = await apiFetch( {
-					path: `/eamm/v1/rules/${ ruleId }`,
+					path: `/syzeql/v1/rules/${ ruleId }`,
 					method: 'GET',
 				} );
 
@@ -165,7 +165,7 @@ export const RuleStoreProvider = ( { children } ) => {
 				return response.data;
 			} catch ( error ) {
 				showToast?.(
-					__( 'Error fetching rule', 'easy-min-max' ),
+					__( 'Error fetching rule', 'syzenlabs-quantity-limits' ),
 					'error'
 				);
 			} finally {
@@ -190,7 +190,7 @@ export const RuleStoreProvider = ( { children } ) => {
 
 			try {
 				const response = await apiFetch( {
-					path: '/eamm/v1/rules',
+					path: '/syzeql/v1/rules',
 					method: 'POST',
 					data,
 				} );
@@ -203,7 +203,7 @@ export const RuleStoreProvider = ( { children } ) => {
 					showToast?.(
 						__(
 							'Shipping rule updated successfully',
-							'easy-min-max'
+							'syzenlabs-quantity-limits'
 						),
 						'success'
 					);
@@ -211,7 +211,7 @@ export const RuleStoreProvider = ( { children } ) => {
 					showToast?.(
 						__(
 							'Shipping rule saved successfully',
-							'easy-min-max'
+							'syzenlabs-quantity-limits'
 						),
 						'success',
 						3000
@@ -222,7 +222,7 @@ export const RuleStoreProvider = ( { children } ) => {
 				return responseData;
 			} catch ( error ) {
 				showToast?.(
-					__( 'Error saving rule', 'easy-min-max' ),
+					__( 'Error saving rule', 'syzenlabs-quantity-limits' ),
 					'warning',
 					3000
 				);
@@ -279,7 +279,7 @@ export const RuleStoreProvider = ( { children } ) => {
 
 			try {
 				const response = await apiFetch( {
-					path: `/eamm/v1/rules/${ id }`,
+					path: `/syzeql/v1/rules/${ id }`,
 					method: 'DELETE',
 				} );
 
@@ -288,7 +288,7 @@ export const RuleStoreProvider = ( { children } ) => {
 				}
 
 				showToast?.(
-					__( 'Rule deleted successfully', 'easy-min-max' ),
+					__( 'Rule deleted successfully', 'syzenlabs-quantity-limits' ),
 					'success'
 				);
 				setCurrentNav?.( 'rules' );
@@ -297,7 +297,7 @@ export const RuleStoreProvider = ( { children } ) => {
 				return response.data;
 			} catch ( error ) {
 				showToast?.(
-					__( 'Error deleting rule.', 'easy-min-max' ),
+					__( 'Error deleting rule.', 'syzenlabs-quantity-limits' ),
 					'danger'
 				);
 			} finally {
@@ -321,20 +321,20 @@ export const RuleStoreProvider = ( { children } ) => {
 
 			try {
 				const response = await apiFetch( {
-					path: `/eamm/v1/rules/${ id }/duplicate`,
+					path: `/syzeql/v1/rules/${ id }/duplicate`,
 					method: 'POST',
 				} );
 
 				if ( response.success ) {
 					showToast?.(
-						__( 'Rule duplicated successfully', 'easy-min-max' ),
+						__( 'Rule duplicated successfully', 'syzenlabs-quantity-limits' ),
 						'success'
 					);
 					return response.data.id;
 				}
 			} catch ( error ) {
 				showToast?.(
-					__( 'Error duplicating rule', 'easy-min-max' ),
+					__( 'Error duplicating rule', 'syzenlabs-quantity-limits' ),
 					'danger'
 				);
 			} finally {

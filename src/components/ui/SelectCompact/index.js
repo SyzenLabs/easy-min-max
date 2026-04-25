@@ -144,8 +144,8 @@ function SelectCompactContent( { options = [], search = false, onClose } ) {
 			{ search && <SelectSearch /> }
 			{ renderOptions() }
 			{ totalVisibleItems === 0 && (
-				<div className="eamm-select-no-data">
-					{ __( 'No options found', 'easy-min-max' ) }
+				<div className="syzeql-select-no-data">
+					{ __( 'No options found', 'syzenlabs-quantity-limits' ) }
 				</div>
 			) }
 		</>
@@ -252,3 +252,4 @@ function SelectCompact( {
 	);
 }
 export { SelectCompact };
+
