@@ -11,7 +11,6 @@ class Notice {
 
 	const ACTIVATION_PENDING_KEY = 'syzeql_notice_activation_pending';
 	const ACTIVATION_DONE_KEY    = 'syzeql_notice_activation_done';
-	const INSTALL_TS_KEY         = 'syzeql_notice_install_ts';
 	const RATING_DONE_KEY        = 'syzeql_notice_rating_done';
 	const RATING_REMIND_KEY      = 'syzeql_notice_rating_remind';
 	const NOTICE_NONCE_ACTION    = 'syzeql_notice_nonce';
@@ -39,11 +38,8 @@ class Notice {
 			return;
 		}
 
-		set_transient( self::ACTIVATION_PENDING_KEY, 1, 14 * DAY_IN_SECONDS );
-
-		if ( false === get_transient( self::INSTALL_TS_KEY ) ) {
-			set_transient( self::INSTALL_TS_KEY, time(), 365 * DAY_IN_SECONDS );
-		}
+		set_transient( self::ACTIVATION_PENDING_KEY, 1, 1 * DAY_IN_SECONDS );
+		set_transient( self::RATING_REMIND_KEY, 1, 7 * DAY_IN_SECONDS );
 	}
 
 	/**
@@ -56,14 +52,40 @@ class Notice {
 			return;
 		}
 
-		$install_ts = get_transient( self::INSTALL_TS_KEY );
-		if ( false === $install_ts ) {
-			set_transient( self::INSTALL_TS_KEY, time(), 365 * DAY_IN_SECONDS );
-			$install_ts = time();
+		$this->render_activation_notice();
+		$this->render_rating_notice();
+	}
+
+	/**
+	 * Should show leads notice.
+	 *
+	 * @return boolean
+	 */
+	private function should_show_leads_notice() {
+		$pending = get_transient( self::ACTIVATION_PENDING_KEY );
+		$done    = get_option( self::ACTIVATION_DONE_KEY, false );
+
+		if ( false !== $pending || 1 === $done ) {
+			return false;
 		}
 
-		$this->render_activation_notice();
-		$this->render_rating_notice( (int) $install_ts );
+		return true;
+	}
+
+	/**
+	 * Should show admin review notice.
+	 *
+	 * @return boolean
+	 */
+	private function should_show_review_admin_notice() {
+		$remind = get_transient( self::RATING_REMIND_KEY );
+		$done   = get_option( self::RATING_DONE_KEY, false );
+
+		if ( false !== $remind || 1 === $done ) {
+			return false;
+		}
+
+		return true;
 	}
 
 	/**
@@ -72,19 +94,17 @@ class Notice {
 	 * @return void
 	 */
 	private function render_activation_notice() {
-		// $pending = get_transient( self::ACTIVATION_PENDING_KEY );
-		// $done    = get_transient( self::ACTIVATION_DONE_KEY );
 
-		// if ( false === $pending || false !== $done ) {
-		// 	return;
-		// }
+		if ( ! $this->should_show_leads_notice() ) {
+			return;
+		}
 
 		$nonce = wp_create_nonce( self::NOTICE_NONCE_ACTION );
 		?>
 		<div class="notice notice-info syzeql-admin-notice" data-type="activation" style="position: relative; padding: 12px 40px 12px 12px;">
 			<button type="button" class="notice-dismiss syzeql-notice-action" data-notice-action="consent-reject" data-nonce="<?php echo esc_attr( $nonce ); ?>" style="top: 6px; right: 4px;"><span class="screen-reader-text"><?php esc_html_e( 'Dismiss', 'syzenlabs-quantity-limits' ); ?></span></button>
 			<p>
-				<strong><?php esc_html_e( 'Help us improve Easy Min Max', 'syzenlabs-quantity-limits' ); ?></strong>
+				<strong><?php esc_html_e( 'Easy Min Max is a 100% free non-profit plugin, built with the spirit of open-source and for helping small business owners.', 'syzenlabs-quantity-limits' ); ?></strong>
 				<?php esc_html_e( 'Can we collect anonymous usage data to improve features and stability?', 'syzenlabs-quantity-limits' ); ?>
 			</p>
 			<p>
@@ -97,22 +117,11 @@ class Notice {
 	/**
 	 * Render 7-day rating notice.
 	 *
-	 * @param int $install_ts Installation timestamp.
 	 * @return void
 	 */
-	private function render_rating_notice( $install_ts ) {
-		if ( $install_ts <= 0 ) {
-			return;
-		}
+	private function render_rating_notice() {
 
-		if ( time() < ( $install_ts + ( 7 * DAY_IN_SECONDS ) ) ) {
-			return;
-		}
-
-		$done         = get_transient( self::RATING_DONE_KEY );
-		$remind_until = (int) get_transient( self::RATING_REMIND_KEY );
-
-		if ( false !== $done || $remind_until > time() ) {
+		if ( ! $this->should_show_review_admin_notice() ) {
 			return;
 		}
 
@@ -147,28 +156,20 @@ class Notice {
 		$action = sanitize_text_field( wp_unslash( $_POST['notice_action'] ?? '' ) ); // phpcs:ignore
 
 		switch ( $action ) {
-			case 'consent-accept':
+			case 'consent-accept': // Intentional fallthrough.
 				Analytics::send( Analytics::NOTICE_ACCEPT_ACTION );
-				set_transient( self::ACTIVATION_DONE_KEY, 'accepted', 365 * DAY_IN_SECONDS );
-				delete_transient( self::ACTIVATION_PENDING_KEY );
-				break;
-
 			case 'consent-reject':
-				set_transient( self::ACTIVATION_DONE_KEY, 'rejected', 365 * DAY_IN_SECONDS );
+				update_option( self::ACTIVATION_DONE_KEY, 1 );
 				delete_transient( self::ACTIVATION_PENDING_KEY );
 				break;
 
 			case 'rating-open':
-				set_transient( self::RATING_DONE_KEY, 'clicked', 365 * DAY_IN_SECONDS );
-				delete_transient( self::RATING_REMIND_KEY );
-				break;
-
 			case 'rating-remind':
 				set_transient( self::RATING_REMIND_KEY, time() + ( 7 * DAY_IN_SECONDS ), 7 * DAY_IN_SECONDS );
 				break;
 
 			case 'rating-reviewed':
-				set_transient( self::RATING_DONE_KEY, 'reviewed', 365 * DAY_IN_SECONDS );
+				update_option( self::RATING_DONE_KEY, 1 );
 				delete_transient( self::RATING_REMIND_KEY );
 				break;
 

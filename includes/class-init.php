@@ -42,7 +42,7 @@ class Init {
 
 		if ( is_admin() ) {
 			new Options();
-			new Notice();
+			// new Notice();
 			add_action( 'admin_enqueue_scripts', array( $this, 'admin_scripts_callback' ) );
 		} else {
 			new Frontend();
