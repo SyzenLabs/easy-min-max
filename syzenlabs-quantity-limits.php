@@ -1,17 +1,17 @@
 <?php
 /**
- * Plugin Name: Easy Min Max - Min Max Order Limits & Step Control for WooCommerce
- * Description: Epic Plugin
+ * Plugin Name: Easy Min Max - Set Minimum/Maximum Quantity & Price Limits with Step Control for WooCommerce
+ * Description: Set minimum and maximum quantity and price rules for WooCommerce products with flexible conditions and storefront validation.
  * Version:     1.0.0
- * Author:      WPXPO
- * Author URI:  https://www.wpxpo.com/about
+ * Author:      SyzenLabs
+ * Author URI:  https://www.syzenlabs.com
  * Requires Plugins: woocommerce
  * Text Domain: syzenlabs-quantity-limits
  * Domain Path: /languages
  * License:     GPLv3
  * License URI: http://www.gnu.org/licenses/gpl-3.0.html
  *
- * @package Set minimum and maximum quantity and price rules for WooCommerce products with flexible conditions and storefront validation.
+ * @package syzenlabs-quantity-limits
  */
 
 use SYZEQL\Includes\Init;

@@ -10,6 +10,7 @@ use SYZEQL\Includes\Frontend\Frontend;
 use SYZEQL\Includes\Utils\Options;
 use SYZEQL\Includes\Rest\Rest;
 use SYZEQL\Includes\Utils\Hooks;
+use SYZEQL\Includes\Utils\Notice;
 
 defined( 'ABSPATH' ) || exit;
 
@@ -41,6 +42,7 @@ class Init {
 
 		if ( is_admin() ) {
 			new Options();
+			new Notice();
 			add_action( 'admin_enqueue_scripts', array( $this, 'admin_scripts_callback' ) );
 		} else {
 			new Frontend();
@@ -80,7 +82,7 @@ class Init {
 			return;
 		}
 
-		if ( $in_wc_submenu_page || $in_wc_instance_page ) {
+		if ( $in_wc_submenu_page ) {
 
 			$this->load_styles(
 				array(
@@ -90,9 +92,7 @@ class Init {
 
 			$this->load_scripts(
 				array(
-					'in_wc_instance_page' => $in_wc_instance_page,
-					'instance_id'         => $instance_id,
-					'asset'               => $asset,
+					'asset' => $asset,
 				)
 			);
 		}
@@ -124,17 +124,7 @@ class Init {
 	 * @return void
 	 */
 	private function load_scripts( $args ) {
-		$in_wc_instance_page = $args['in_wc_instance_page'];
-		$instance_id         = $args['instance_id'];
-		$asset               = $args['asset'];
-
-		$current_zone_id = null;
-		if ( $in_wc_instance_page && class_exists( '\\WC_Shipping_Zones' ) && $instance_id ) {
-			$zone = \WC_Shipping_Zones::get_zone_by( 'instance_id', $instance_id );
-			if ( $zone && is_object( $zone ) && method_exists( $zone, 'get_id' ) ) {
-				$current_zone_id = (int) $zone->get_id();
-			}
-		}
+		$asset = $args['asset'];
 
 		$user_info = get_userdata( get_current_user_id() );
 
@@ -166,11 +156,8 @@ class Init {
 					'name'  => $user_info->first_name ? $user_info->first_name . ( $user_info->last_name ? ' ' . $user_info->last_name : '' ) : $user_info->user_login,
 					'email' => $user_info->user_email,
 				),
-				'show_lic_page'    => defined( 'SYZEQL_PRO_VER' ) ? 'true' : 'false',
 				'settings'         => DB::get_instance()->get_settings(),
 				'flags'            => array(),
-				'currentZoneId'    => $current_zone_id,
-				'helloBar'         => Utils::get_transient_without_cache( 'syzeql_helloBar_ysl_2026_1' ),
 				'isWooMarketplace' => defined( 'SYZEQL_WOO_MARKETPLACE' ) && SYZEQL_WOO_MARKETPLACE === true ? 'true' : 'false',
 			)
 		);

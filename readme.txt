@@ -1,4 +1,4 @@
-=== Easy Min Max - Min Max Order Limits & Step Control for WooCommerce ===
+=== Easy Min Max - Set Minimum/Maximum Quantity & Price Limits with Step Control for WooCommerce ===
 Contributors: f00d, syzenlabs
 Tags: minmax, quantity, price, product restrictions
 Requires at least: 6.4
