@@ -408,7 +408,7 @@ class Frontend {
 			}
 
 			if ( ! $this->is_valid_step_quantity( (float) $quantity, $limits ) ) {
-				wc_add_notice( $this->get_step_quantity_message( $product, $quantity, $limits ), 'error' );
+				wc_add_notice( $this->get_step_quantity_message( $rule, $product, $quantity, $limits ), 'error' );
 				return false;
 			}
 		}
@@ -501,28 +501,24 @@ class Frontend {
 	/**
 	 * Build a fallback validation message for invalid step quantities.
 	 *
+	 * @param array      $rule     Rule config.
 	 * @param WC_Product $product  Product being validated.
 	 * @param float|int  $quantity Submitted quantity.
 	 * @param array      $limits   Resolved rule limits.
 	 * @return string
 	 */
-	private function get_step_quantity_message( $product, $quantity, $limits ) {
-		$step = wc_format_decimal( $limits['step_qty'] );
+	private function get_step_quantity_message( $rule, $product, $quantity, $limits ) {
+		$template = isset( $rule['stepQuantityMessage'] ) ? (string) $rule['stepQuantityMessage'] : '';
 
-		if ( null !== $limits['min_qty'] ) {
-			return sprintf(
-				/* translators: 1: quantity step, 2: minimum quantity */
-				__( 'Please choose a quantity in increments of %1$s starting from %2$s.', 'syzenlabs-quantity-limits' ),
-				$step,
-				wc_format_decimal( $limits['min_qty'] )
-			);
+		if ( '' === trim( wp_strip_all_tags( $template ) ) ) {
+			if ( null !== $limits['min_qty'] ) {
+				$template = __( 'Please choose a quantity in increments of [step_quantity] starting from [min_quantity].', 'syzenlabs-quantity-limits' );
+			} else {
+				$template = __( 'Please choose a quantity in increments of [step_quantity].', 'syzenlabs-quantity-limits' );
+			}
 		}
 
-		return sprintf(
-			/* translators: %s: quantity step */
-			__( 'Please choose a quantity in increments of %s.', 'syzenlabs-quantity-limits' ),
-			$step
-		);
+		return $this->format_message( $template, $product, $quantity, $limits );
 	}
 
 	/**

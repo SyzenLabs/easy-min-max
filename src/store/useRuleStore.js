@@ -50,6 +50,8 @@ const getDefaultRulesForm = () => ( {
 	quantityDropdownOptions: createDefaultQuantityDropdownOptions(),
 	minQuantityMessage: 'You must order at least [min_quantity] items.',
 	maxQuantityMessage: 'You cannot order more than [max_quantity] items.',
+	stepQuantityMessage:
+		'Please choose a quantity in increments of [step_quantity] starting from [min_quantity].',
 	minPriceMessage: 'Your order must be at least [min_price].',
 	maxPriceMessage: 'Your order cannot exceed [max_price].',
 	customCss: '',
@@ -160,7 +162,10 @@ export const RuleStoreProvider = ( { children } ) => {
 				setState( ( prev ) => ( {
 					...prev,
 					hasUnsavedChanges: false,
-					rulesForm: response.data,
+					rulesForm: {
+						...getDefaultRulesForm(),
+						...response.data,
+					},
 				} ) );
 
 				return response.data;

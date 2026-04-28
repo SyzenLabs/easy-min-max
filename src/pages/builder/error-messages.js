@@ -31,7 +31,10 @@ export function ErrorMessages() {
 			<CardHeader>
 				<HStack spacing={ 2 } expanded={ false }>
 					<Heading level={ 3 }>
-						{ __( 'Validation Messages', 'syzenlabs-quantity-limits' ) }
+						{ __(
+							'Validation Messages',
+							'syzenlabs-quantity-limits'
+						) }
 					</Heading>
 					<Tooltip
 						text={ __(
@@ -66,13 +69,28 @@ export function ErrorMessages() {
 						onChange={ handleFieldChange( 'maxQuantityMessage' ) }
 					/>
 					<TinyEditor
-						label={ __( 'Minimum Price Message', 'syzenlabs-quantity-limits' ) }
+						label={ __(
+							'Step Quantity Message',
+							'syzenlabs-quantity-limits'
+						) }
+						value={ rulesForm.stepQuantityMessage || '' }
+						help={ messageTokenHelp }
+						onChange={ handleFieldChange( 'stepQuantityMessage' ) }
+					/>
+					<TinyEditor
+						label={ __(
+							'Minimum Price Message',
+							'syzenlabs-quantity-limits'
+						) }
 						value={ rulesForm.minPriceMessage }
 						help={ messageTokenHelp }
 						onChange={ handleFieldChange( 'minPriceMessage' ) }
 					/>
 					<TinyEditor
-						label={ __( 'Maximum Price Message', 'syzenlabs-quantity-limits' ) }
+						label={ __(
+							'Maximum Price Message',
+							'syzenlabs-quantity-limits'
+						) }
 						value={ rulesForm.maxPriceMessage }
 						help={ messageTokenHelp }
 						onChange={ handleFieldChange( 'maxPriceMessage' ) }
