@@ -6,10 +6,10 @@ import { useToast } from '@/context/ToastContext';
 import { getCurrencyCode, getDimensionUnit, getWeightUnit } from '@/utils';
 import apiFetch from '@wordpress/api-fetch';
 import {
-    createContext,
-    useCallback,
-    useContext,
-    useState,
+	createContext,
+	useCallback,
+	useContext,
+	useState,
 } from '@wordpress/element';
 import { __ } from '@wordpress/i18n';
 
@@ -186,7 +186,10 @@ export const ShippingOptionsProvider = ( { children } ) => {
 			setAttributeData( response.data );
 		} catch ( error ) {
 			showToast(
-				__( 'Failed to fetch attributes!', 'syzenlabs-quantity-limits' ),
+				__(
+					'Failed to fetch attributes!',
+					'syzenlabs-quantity-limits'
+				),
 				'warning',
 				3000
 			);
@@ -213,7 +216,10 @@ export const ShippingOptionsProvider = ( { children } ) => {
 				value: 'Cart',
 				children: [
 					{
-						label: __( 'Cart Quantity', 'syzenlabs-quantity-limits' ),
+						label: __(
+							'Cart Quantity',
+							'syzenlabs-quantity-limits'
+						),
 						value: 'cart_quantity',
 						operatorType: 'Type1',
 						component: 'Input',
@@ -233,7 +239,10 @@ export const ShippingOptionsProvider = ( { children } ) => {
 						},
 					},
 					{
-						label: __( 'Cart Subtotal', 'syzenlabs-quantity-limits' ),
+						label: __(
+							'Cart Subtotal',
+							'syzenlabs-quantity-limits'
+						),
 						value: 'cart_subtotal',
 						operatorType: 'Type1',
 						component: 'Input',
@@ -253,7 +262,10 @@ export const ShippingOptionsProvider = ( { children } ) => {
 						},
 					},
 					{
-						label: __( 'Cart Coupons', 'syzenlabs-quantity-limits' ),
+						label: __(
+							'Cart Coupons',
+							'syzenlabs-quantity-limits'
+						),
 						value: 'cart_coupons',
 						operatorType: 'Type2',
 						component: 'MultiSelect',
@@ -315,7 +327,10 @@ export const ShippingOptionsProvider = ( { children } ) => {
 						data: optionsData?.current_product || [],
 					},
 					{
-						label: __( 'Product Categories', 'syzenlabs-quantity-limits' ),
+						label: __(
+							'Product Categories',
+							'syzenlabs-quantity-limits'
+						),
 						value: 'category_products',
 						operatorType: 'Type2',
 						component: 'MultiSelect',
@@ -323,7 +338,10 @@ export const ShippingOptionsProvider = ( { children } ) => {
 						data: optionsData?.category_products || [],
 					},
 					{
-						label: __( 'Product Tags', 'syzenlabs-quantity-limits' ),
+						label: __(
+							'Product Tags',
+							'syzenlabs-quantity-limits'
+						),
 						value: 'tag_products',
 						operatorType: 'Type2',
 						component: 'MultiSelect',
@@ -339,7 +357,10 @@ export const ShippingOptionsProvider = ( { children } ) => {
 					// 	data: optionsData?.attribute || [],
 					// },
 					{
-						label: __( 'Product Shipping Class', 'syzenlabs-quantity-limits' ),
+						label: __(
+							'Product Shipping Class',
+							'syzenlabs-quantity-limits'
+						),
 						value: 'shipping_class',
 						operatorType: 'Type2',
 						component: 'MultiSelect',
@@ -347,7 +368,10 @@ export const ShippingOptionsProvider = ( { children } ) => {
 						data: optionsData?.shippingClass || [],
 					},
 					{
-						label: __( 'Product Quantity', 'syzenlabs-quantity-limits' ),
+						label: __(
+							'Product Quantity',
+							'syzenlabs-quantity-limits'
+						),
 						value: 'product_quantity',
 						operatorType: 'Type1',
 						component: 'Input',
@@ -357,7 +381,10 @@ export const ShippingOptionsProvider = ( { children } ) => {
 						},
 					},
 					{
-						label: __( 'Product Price', 'syzenlabs-quantity-limits' ),
+						label: __(
+							'Product Price',
+							'syzenlabs-quantity-limits'
+						),
 						value: 'product_price',
 						operatorType: 'Type1',
 						component: 'Input',
@@ -367,7 +394,10 @@ export const ShippingOptionsProvider = ( { children } ) => {
 						},
 					},
 					{
-						label: __( 'Product Total', 'syzenlabs-quantity-limits' ),
+						label: __(
+							'Product Total',
+							'syzenlabs-quantity-limits'
+						),
 						value: 'product_total',
 						operatorType: 'Type1',
 						component: 'Input',
@@ -377,7 +407,10 @@ export const ShippingOptionsProvider = ( { children } ) => {
 						},
 					},
 					{
-						label: __( 'Product Weight', 'syzenlabs-quantity-limits' ),
+						label: __(
+							'Product Weight',
+							'syzenlabs-quantity-limits'
+						),
 						value: 'product_weight',
 						operatorType: 'Type1',
 						component: 'Input',
@@ -387,7 +420,10 @@ export const ShippingOptionsProvider = ( { children } ) => {
 						},
 					},
 					{
-						label: __( 'Product Height', 'syzenlabs-quantity-limits' ),
+						label: __(
+							'Product Height',
+							'syzenlabs-quantity-limits'
+						),
 						value: 'product_height',
 						operatorType: 'Type1',
 						component: 'Input',
@@ -397,7 +433,10 @@ export const ShippingOptionsProvider = ( { children } ) => {
 						},
 					},
 					{
-						label: __( 'Product Width', 'syzenlabs-quantity-limits' ),
+						label: __(
+							'Product Width',
+							'syzenlabs-quantity-limits'
+						),
 						value: 'product_width',
 						operatorType: 'Type1',
 						component: 'Input',
@@ -407,7 +446,10 @@ export const ShippingOptionsProvider = ( { children } ) => {
 						},
 					},
 					{
-						label: __( 'Product Length', 'syzenlabs-quantity-limits' ),
+						label: __(
+							'Product Length',
+							'syzenlabs-quantity-limits'
+						),
 						value: 'product_length',
 						operatorType: 'Type1',
 						component: 'Input',
@@ -417,7 +459,10 @@ export const ShippingOptionsProvider = ( { children } ) => {
 						},
 					},
 					{
-						label: __( 'Product Volume', 'syzenlabs-quantity-limits' ),
+						label: __(
+							'Product Volume',
+							'syzenlabs-quantity-limits'
+						),
 						value: 'product_volume',
 						operatorType: 'Type1',
 						component: 'Input',
@@ -467,7 +512,10 @@ export const ShippingOptionsProvider = ( { children } ) => {
 						},
 					},
 					{
-						label: __( 'First Order Spent', 'syzenlabs-quantity-limits' ),
+						label: __(
+							'First Order Spent',
+							'syzenlabs-quantity-limits'
+						),
 						value: 'first_order_spent_amount',
 						operatorType: 'Type1',
 						component: 'Input',
@@ -477,7 +525,10 @@ export const ShippingOptionsProvider = ( { children } ) => {
 						},
 					},
 					{
-						label: __( 'Last Order Spent', 'syzenlabs-quantity-limits' ),
+						label: __(
+							'Last Order Spent',
+							'syzenlabs-quantity-limits'
+						),
 						value: 'last_order_spent_amount',
 						operatorType: 'Type1',
 						component: 'Input',
@@ -487,7 +538,10 @@ export const ShippingOptionsProvider = ( { children } ) => {
 						},
 					},
 					{
-						label: __( 'Total Number of Orders', 'syzenlabs-quantity-limits' ),
+						label: __(
+							'Total Number of Orders',
+							'syzenlabs-quantity-limits'
+						),
 						value: 'last_orders_count',
 						operatorType: 'Type1',
 						component: 'Input',
@@ -528,7 +582,10 @@ export const ShippingOptionsProvider = ( { children } ) => {
 						},
 					},
 					{
-						label: __( 'Zip/Postcode', 'syzenlabs-quantity-limits' ),
+						label: __(
+							'Zip/Postcode',
+							'syzenlabs-quantity-limits'
+						),
 						value: 'zip_code',
 						operatorType: 'Type2',
 						component: 'Input',

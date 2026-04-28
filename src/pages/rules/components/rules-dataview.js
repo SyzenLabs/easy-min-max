@@ -1,6 +1,5 @@
 import { useCallback, useEffect, useMemo, useState } from '@wordpress/element';
 
-
 import { useNav } from '@/context/NavContext';
 import { useRuleStore } from '@/store/useRuleStore';
 
@@ -8,14 +7,14 @@ import { DataViews } from '@wordpress/dataviews/wp';
 import { __, _n } from '@wordpress/i18n';
 
 import {
-    Button,
-    __experimentalDivider as Divider,
-    FormToggle,
-    __experimentalHStack as HStack,
-    Icon,
-    Spinner,
-    __experimentalText as Text,
-    __experimentalVStack as VStack,
+	Button,
+	__experimentalDivider as Divider,
+	FormToggle,
+	__experimentalHStack as HStack,
+	Icon,
+	Spinner,
+	__experimentalText as Text,
+	__experimentalVStack as VStack,
 } from '@wordpress/components';
 
 import { copy, pencil, trash } from '@wordpress/icons';
@@ -143,7 +142,7 @@ export default function RulesDataView( { state, setState, filteredRules } ) {
 							checked={ item?.publishMode === 'publish' }
 							onChange={ () => handleStatusToggle( item ) }
 							aria-label={ __(
-								'Toggle shipping method status',
+								'Toggle rule status',
 								'syzenlabs-quantity-limits'
 							) }
 						/>
@@ -160,7 +159,7 @@ export default function RulesDataView( { state, setState, filteredRules } ) {
 			perPage: state.perPage,
 			search: '',
 			filters: [],
-			fields: [ 'status', 'methodType', 'zoneName' ],
+			fields: [ 'status' ],
 			titleField: 'name',
 			layout: {
 				density: 'balanced',
@@ -184,7 +183,7 @@ export default function RulesDataView( { state, setState, filteredRules } ) {
 		return [
 			{
 				id: 'edit',
-				label: __( 'Edit Method', 'syzenlabs-quantity-limits' ),
+				label: __( 'Edit Rule', 'syzenlabs-quantity-limits' ),
 				icon: <Icon icon={ pencil } />,
 				callback: ( items ) => {
 					redirectToEdit( items?.[ 0 ]?.id );
@@ -192,10 +191,13 @@ export default function RulesDataView( { state, setState, filteredRules } ) {
 			},
 			{
 				id: 'duplicate',
-				label: __( 'Duplicate Method', 'syzenlabs-quantity-limits' ),
+				label: __( 'Duplicate Rule', 'syzenlabs-quantity-limits' ),
 				icon: <Icon icon={ copy } />,
 
-				modalHeader: __( 'Duplicate Shipping Method', 'syzenlabs-quantity-limits' ),
+				modalHeader: __(
+					'Duplicate Rule',
+					'syzenlabs-quantity-limits'
+				),
 
 				RenderModal: ( { items, closeModal } ) => {
 					const [ isDuplicating, setIsDuplicating ] =
@@ -217,7 +219,7 @@ export default function RulesDataView( { state, setState, filteredRules } ) {
 							<VStack spacing={ 5 }>
 								<Text>
 									{ __(
-										'Are you sure you want to duplicate this shipping method?',
+										'Are you sure you want to duplicate this rule?',
 										'syzenlabs-quantity-limits'
 									) }
 								</Text>
@@ -231,7 +233,10 @@ export default function RulesDataView( { state, setState, filteredRules } ) {
 										onClick={ closeModal }
 										disabled={ isDuplicating }
 									>
-										{ __( 'Cancel', 'syzenlabs-quantity-limits' ) }
+										{ __(
+											'Cancel',
+											'syzenlabs-quantity-limits'
+										) }
 									</Button>
 									<Button
 										variant="primary"
@@ -258,14 +263,14 @@ export default function RulesDataView( { state, setState, filteredRules } ) {
 				id: 'delete',
 				label: ( items ) =>
 					items?.length > 1
-						? __( 'Delete Methods', 'syzenlabs-quantity-limits' )
-						: __( 'Delete Method', 'syzenlabs-quantity-limits' ),
+						? __( 'Delete Rules', 'syzenlabs-quantity-limits' )
+						: __( 'Delete Rule', 'syzenlabs-quantity-limits' ),
 				icon: <Icon icon={ trash } />,
 				supportsBulk: true,
 				modalHeader: ( items ) =>
 					_n(
-						'Delete Shipping Method',
-						'Delete Shipping Methods',
+						'Delete Rule',
+						'Delete Rules',
 						items.length,
 						'syzenlabs-quantity-limits'
 					),
@@ -287,8 +292,8 @@ export default function RulesDataView( { state, setState, filteredRules } ) {
 							<VStack spacing={ 5 }>
 								<Text>
 									{ _n(
-										'Are you sure you want to delete this shipping method? This action cannot be undone.',
-										'Are you sure you want to delete selected shipping methods? This action cannot be undone.',
+										'Are you sure you want to delete this rule? This action cannot be undone.',
+										'Are you sure you want to delete selected rules? This action cannot be undone.',
 										items.length,
 										'syzenlabs-quantity-limits'
 									) }
@@ -303,7 +308,10 @@ export default function RulesDataView( { state, setState, filteredRules } ) {
 										onClick={ closeModal }
 										disabled={ isDeleting }
 									>
-										{ __( 'Cancel', 'syzenlabs-quantity-limits' ) }
+										{ __(
+											'Cancel',
+											'syzenlabs-quantity-limits'
+										) }
 									</Button>
 									<Button
 										variant="primary"
@@ -312,8 +320,14 @@ export default function RulesDataView( { state, setState, filteredRules } ) {
 										isBusy={ isDeleting }
 									>
 										{ isDeleting
-											? __( 'Deleting…', 'syzenlabs-quantity-limits' )
-											: __( 'Delete', 'syzenlabs-quantity-limits' ) }
+											? __(
+													'Deleting…',
+													'syzenlabs-quantity-limits'
+											  )
+											: __(
+													'Delete',
+													'syzenlabs-quantity-limits'
+											  ) }
 									</Button>
 								</HStack>
 							</VStack>
