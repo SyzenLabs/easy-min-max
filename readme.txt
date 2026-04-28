@@ -14,7 +14,7 @@ Set minimum and maximum quantity and price rules for WooCommerce products with f
 
 Easy Min Max helps you control how customers buy products in WooCommerce.
 
-Create publishable rules that enforce minimum quantity, maximum quantity, step quantity, initial quantity, fixed quantity, minimum price, and maximum price. Each rule can be targeted with flexible condition groups, so you can apply restrictions only when they are relevant.
+Create publishable rules that enforce minimum quantity, maximum quantity, step quantity, initial quantity, fixed quantity, minimum price, and maximum price. Step and quantity fields can also use decimal values such as 0.5 or 0.25 when your products need fractional purchase increments. Each rule can be targeted with flexible condition groups, so you can apply restrictions only when they are relevant.
 
 The plugin validates rules on product pages, in the cart, during checkout, and through WooCommerce Store API requests. That keeps the same buying restrictions active across classic and block-based flows.
 
@@ -22,7 +22,7 @@ The plugin validates rules on product pages, in the cart, during checkout, and t
 
 * Set minimum and maximum quantity per matching rule
 * Set minimum and maximum price thresholds
-* Define step quantity increments
+* Define integer or decimal step quantity increments
 * Prefill an initial quantity on product pages
 * Lock matching products to a fixed quantity
 * Disable minimum quantity when stock falls below the configured minimum
@@ -53,6 +53,7 @@ Typical use cases include:
 * Require customers to buy at least 6 units of selected products
 * Limit specific products to a maximum of 2 per order
 * Sell an item only in packs of 5 using step quantity or fixed quantity
+* Sell measured or fractional products in increments such as 0.5 or 0.25
 * Enforce a minimum or maximum product price threshold before purchase
 * Apply different restrictions for specific categories, user roles, or locations
 

@@ -167,6 +167,13 @@ export function Rules() {
 									'Define the allowed quantity thresholds for matching products.',
 									'syzenlabs-quantity-limits'
 								) }
+								&nbsp;
+								<strong>
+									{ __(
+										'Supports Decimal values.',
+										'syzenlabs-quantity-limits'
+									) }
+								</strong>
 							</p>
 						</div>
 
@@ -203,7 +210,7 @@ export function Rules() {
 								value={ rulesForm.step }
 								disabled={ quantityRulesDisabled }
 								help={ __(
-									'Customers can increase quantity in this increment.',
+									'Customers can increase quantity in this increment. Decimal values such as 0.5 or 0.25 are supported.',
 									'syzenlabs-quantity-limits'
 								) }
 								onChange={ handleFieldChange( 'step' ) }

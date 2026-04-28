@@ -5,6 +5,8 @@
 
 namespace SYZEQL\Includes\Utils;
 
+use SYZEQL\Includes\DB;
+
 if ( ! defined( 'ABSPATH' ) ) {
 	exit; // Exit if accessed directly.
 }
@@ -19,7 +21,97 @@ class Hooks {
 	 */
 	public function __construct() {
 		// All Woo Hook Related Work goes here.
+		$this->maybe_enable_decimal_quantities();
 		add_filter( 'syzeql_get_allowed_html_tags', array( $this, 'allowed_html_tags' ), 10, 1 );
+	}
+
+	/**
+	 * Enable decimal WooCommerce quantities when any saved rule uses decimal values.
+	 *
+	 * @return void
+	 */
+	private function maybe_enable_decimal_quantities() {
+		$rules = DB::get_instance()->get_rules();
+
+		if ( ! $this->has_decimal_quantity_rules( $rules ) ) {
+			return;
+		}
+
+		remove_filter( 'woocommerce_stock_amount', 'intval' );
+		add_filter( 'woocommerce_stock_amount', array( $this, 'stock_amount' ), 10 );
+	}
+
+	/**
+	 * Normalize WooCommerce stock amounts to floats when decimal quantity rules exist.
+	 *
+	 * @param int|float|string $amount Stock amount.
+	 * @return int|float
+	 */
+	public function stock_amount( $amount ) {
+		if ( ! is_numeric( $amount ) ) {
+			return intval( $amount );
+		}
+
+		return (float) $amount;
+	}
+
+	/**
+	 * Determine whether any saved rule uses decimal quantity values.
+	 *
+	 * @param array $rules Rules to inspect.
+	 * @return bool
+	 */
+	private function has_decimal_quantity_rules( $rules ) {
+		foreach ( $rules as $rule ) {
+			if ( $this->rule_uses_decimal_quantities( $rule ) ) {
+				return true;
+			}
+		}
+
+		return false;
+	}
+
+	/**
+	 * Determine whether a rule uses any decimal quantity values.
+	 *
+	 * @param array $rule Rule configuration.
+	 * @return bool
+	 */
+	private function rule_uses_decimal_quantities( $rule ) {
+		$fields = array(
+			$rule['minQuantity'] ?? null,
+			$rule['maxQuantity'] ?? null,
+			$rule['step'] ?? null,
+			$rule['initialQuantity'] ?? null,
+		);
+
+		if ( ! empty( $rule['enableFixedQuantity'] ) ) {
+			$fields[] = $rule['fixedQuantity'] ?? null;
+		}
+
+		foreach ( $fields as $value ) {
+			if ( $this->is_decimal_number( $value ) ) {
+				return true;
+			}
+		}
+
+		return false;
+	}
+
+	/**
+	 * Determine whether a numeric value contains a decimal component.
+	 *
+	 * @param mixed $value Value to inspect.
+	 * @return bool
+	 */
+	private function is_decimal_number( $value ) {
+		if ( ! is_numeric( $value ) ) {
+			return false;
+		}
+
+		$number = (float) $value;
+
+		return abs( $number - round( $number ) ) > 0.00001;
 	}
 
 	/**

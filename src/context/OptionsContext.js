@@ -199,18 +199,18 @@ export const ShippingOptionsProvider = ( { children } ) => {
 
 	const getDefaultOptions = useCallback( () => {
 		const _def = [
-			{
-				label: __( 'General', 'syzenlabs-quantity-limits' ),
-				value: 'General',
-				children: [
-					{
-						label: __( 'Always', 'syzenlabs-quantity-limits' ),
-						value: 'always',
-						operatorType: null,
-						component: null,
-					},
-				],
-			},
+			// {
+			// 	label: __( 'General', 'syzenlabs-quantity-limits' ),
+			// 	value: 'General',
+			// 	children: [
+			// 		{
+			// 			label: __( 'Always', 'syzenlabs-quantity-limits' ),
+			// 			value: 'always',
+			// 			operatorType: null,
+			// 			component: null,
+			// 		},
+			// 	],
+			// },
 			{
 				label: __( 'Cart Specific', 'syzenlabs-quantity-limits' ),
 				value: 'Cart',

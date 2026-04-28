@@ -125,6 +125,12 @@ class Frontend {
 		if ( null !== $limits['initial_qty'] ) {
 			$args['input_value'] = (float) $limits['initial_qty'];
 		}
+
+		if ( $this->limits_allow_decimal_quantities( $limits ) ) {
+			$args['pattern']   = '';
+			$args['inputmode'] = 'decimal';
+		}
+
 		return $args;
 	}
 
@@ -202,7 +208,7 @@ class Frontend {
 	 * @return array Modified variation data.
 	 */
 	public function variation_data( $data, $_product, $variation ) {
-		$limits                       = $this->get_combined_limits( $variation );
+		$limits                         = $this->get_combined_limits( $variation );
 		$data['syzeql_min_qty']         = $limits['min_qty'];
 		$data['syzeql_max_qty']         = $limits['max_qty'];
 		$data['syzeql_step_qty']        = $limits['step_qty'];
@@ -369,7 +375,7 @@ class Frontend {
 	 *
 	 * @param bool       $passed   Whether validation has passed so far.
 	 * @param WC_Product $product  Product being validated.
-	 * @param int        $quantity Requested quantity.
+	 * @param float|int  $quantity Requested quantity.
 	 * @return bool
 	 */
 	private function validate_quantity( $passed, $product, $quantity ) {
@@ -398,6 +404,11 @@ class Frontend {
 
 			if ( null !== $max && $quantity > $max ) {
 				wc_add_notice( $this->format_message( $rule['maxQuantityMessage'] ?? '', $product, $quantity, $limits ), 'error' );
+				return false;
+			}
+
+			if ( ! $this->is_valid_step_quantity( (float) $quantity, $limits ) ) {
+				wc_add_notice( $this->get_step_quantity_message( $product, $quantity, $limits ), 'error' );
 				return false;
 			}
 		}
@@ -488,6 +499,33 @@ class Frontend {
 	}
 
 	/**
+	 * Build a fallback validation message for invalid step quantities.
+	 *
+	 * @param WC_Product $product  Product being validated.
+	 * @param float|int  $quantity Submitted quantity.
+	 * @param array      $limits   Resolved rule limits.
+	 * @return string
+	 */
+	private function get_step_quantity_message( $product, $quantity, $limits ) {
+		$step = wc_format_decimal( $limits['step_qty'] );
+
+		if ( null !== $limits['min_qty'] ) {
+			return sprintf(
+				/* translators: 1: quantity step, 2: minimum quantity */
+				__( 'Please choose a quantity in increments of %1$s starting from %2$s.', 'syzenlabs-quantity-limits' ),
+				$step,
+				wc_format_decimal( $limits['min_qty'] )
+			);
+		}
+
+		return sprintf(
+			/* translators: %s: quantity step */
+			__( 'Please choose a quantity in increments of %s.', 'syzenlabs-quantity-limits' ),
+			$step
+		);
+	}
+
+	/**
 	 * Filter: Hide the checkout button in the cart widget if rule requires.
 	 *
 	 * @param bool $hidden Existing widget hidden state.
@@ -532,6 +570,59 @@ class Frontend {
 		}
 
 		return false;
+	}
+
+	/**
+	 * Determine whether the resolved limits need decimal input behavior.
+	 *
+	 * @param array $limits Resolved rule limits.
+	 * @return bool
+	 */
+	private function limits_allow_decimal_quantities( $limits ) {
+		foreach ( array( 'min_qty', 'max_qty', 'step_qty', 'initial_qty', 'fixed_qty' ) as $key ) {
+			if ( $this->is_decimal_number( $limits[ $key ] ?? null ) ) {
+				return true;
+			}
+		}
+
+		return false;
+	}
+
+	/**
+	 * Determine whether a quantity satisfies the configured step.
+	 *
+	 * @param float $quantity Submitted quantity.
+	 * @param array $limits   Resolved rule limits.
+	 * @return bool
+	 */
+	private function is_valid_step_quantity( $quantity, $limits ) {
+		$step = isset( $limits['step_qty'] ) ? (float) $limits['step_qty'] : 0.0;
+
+		if ( $step <= 0 ) {
+			return true;
+		}
+
+		$base_value = null !== $limits['min_qty'] ? (float) $limits['min_qty'] : 0.0;
+		$ratio      = ( $quantity - $base_value ) / $step;
+		$rounded    = round( $ratio );
+
+		return abs( $ratio - $rounded ) < 0.00001;
+	}
+
+	/**
+	 * Determine whether a numeric value contains a decimal component.
+	 *
+	 * @param mixed $value Value to inspect.
+	 * @return bool
+	 */
+	private function is_decimal_number( $value ) {
+		if ( ! is_numeric( $value ) ) {
+			return false;
+		}
+
+		$number = (float) $value;
+
+		return abs( $number - round( $number ) ) > 0.00001;
 	}
 
 	/**
