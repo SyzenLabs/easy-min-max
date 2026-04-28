@@ -12,8 +12,8 @@ import {
 import { __ } from '@wordpress/i18n';
 
 export const createEmptyCondition = () => ( {
-	type: 'General',
-	field: 'always',
+	type: '',
+	field: '',
 	operator: null,
 	value: [],
 	// eslint-disable-next-line camelcase
