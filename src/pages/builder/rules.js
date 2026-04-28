@@ -1,17 +1,17 @@
 import { useRuleStore } from '@/store/useRuleStore';
 import { getCurrencyCode } from '@/utils';
 import {
-    Card,
-    CardBody,
-    CardHeader,
-    __experimentalHeading as Heading,
-    __experimentalHStack as HStack,
-    Icon,
-    __experimentalInputControl as InputControl,
-    __experimentalInputControlSuffixWrapper as InputControlSuffixWrapper,
-    TextareaControl,
-    ToggleControl,
-    Tooltip,
+	Card,
+	CardBody,
+	CardHeader,
+	__experimentalHeading as Heading,
+	__experimentalHStack as HStack,
+	Icon,
+	__experimentalInputControl as InputControl,
+	__experimentalInputControlSuffixWrapper as InputControlSuffixWrapper,
+	TextareaControl,
+	ToggleControl,
+	Tooltip,
 } from '@wordpress/components';
 import { useEffect, useState } from '@wordpress/element';
 import { __ } from '@wordpress/i18n';
@@ -157,7 +157,10 @@ export function Rules() {
 					<div className="rounded-(--syzeql-border-radius-md) border border-[#DCDCDE] bg-white p-4">
 						<div className="mb-4">
 							<p className="m-0 font-medium text-(--syzeql-text-main)">
-								{ __( 'Quantity Limits', 'syzenlabs-quantity-limits' ) }
+								{ __(
+									'Quantity Limits',
+									'syzenlabs-quantity-limits'
+								) }
 							</p>
 							<p className="mt-1 mb-0 text-sm text-(--syzeql-text-sub)">
 								{ __(
@@ -193,7 +196,10 @@ export function Rules() {
 								/>
 							</div>
 							<NumberField
-								label={ __( 'Step Quantity', 'syzenlabs-quantity-limits' ) }
+								label={ __(
+									'Step Quantity',
+									'syzenlabs-quantity-limits'
+								) }
 								value={ rulesForm.step }
 								disabled={ quantityRulesDisabled }
 								help={ __(
@@ -270,7 +276,10 @@ export function Rules() {
 					<div className="rounded-(--syzeql-border-radius-md) border border-[#DCDCDE] bg-white p-4">
 						<div className="mb-4">
 							<p className="m-0 font-medium text-(--syzeql-text-main)">
-								{ __( 'Price Limits', 'syzenlabs-quantity-limits' ) }
+								{ __(
+									'Price Limits',
+									'syzenlabs-quantity-limits'
+								) }
 							</p>
 							<p className="mt-1 mb-0 text-sm text-(--syzeql-text-sub)">
 								{ __(
@@ -389,7 +398,10 @@ export function Rules() {
 					<div className="rounded-(--syzeql-border-radius-md) border border-[#DCDCDE] bg-white p-4">
 						<div className="mb-4">
 							<p className="m-0 font-medium text-(--syzeql-text-main)">
-								{ __( 'Custom CSS', 'syzenlabs-quantity-limits' ) }
+								{ __(
+									'Custom CSS',
+									'syzenlabs-quantity-limits'
+								) }
 							</p>
 							<p className="mt-1 mb-0 text-sm text-(--syzeql-text-sub)">
 								{ __(
@@ -400,7 +412,10 @@ export function Rules() {
 						</div>
 
 						<TextareaControl
-							label={ __( 'CSS Rules', 'syzenlabs-quantity-limits' ) }
+							label={ __(
+								'CSS Rules',
+								'syzenlabs-quantity-limits'
+							) }
 							value={ rulesForm.customCss }
 							help={ __(
 								'Write plain CSS without wrapping <style> tags.',

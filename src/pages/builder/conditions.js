@@ -2,15 +2,16 @@
 import { useShippingOptions } from '@/context/OptionsContext';
 import { createEmptyCondition, useRuleStore } from '@/store/useRuleStore';
 import {
-    Button,
-    Card,
-    CardBody,
-    CardHeader,
-    Flex,
-    __experimentalHeading as Heading,
-    __experimentalHStack as HStack,
-    Icon,
-    Tooltip,
+	Button,
+	Card,
+	CardBody,
+	CardHeader,
+	Flex,
+	__experimentalHeading as Heading,
+	__experimentalHStack as HStack,
+	Icon,
+	ToggleControl,
+	Tooltip,
 } from '@wordpress/components';
 import { __ } from '@wordpress/i18n';
 import ConditionItemOperationField from './components/ConditionItemOperationField';
@@ -126,164 +127,206 @@ export function Conditions() {
 				</HStack>
 			</CardHeader>
 			<CardBody>
-				<div>
-					{ conditionGroups.map( ( group, groupIndex ) => (
-						<div key={ `condition-group-${ groupIndex }` }>
-							<div className="rounded-(--syzeql-border-radius-md) border border-[#DCDCDE] bg-white p-4">
-								<Flex
-									justify="space-between"
-									align="start"
-									gap={ 4 }
-								>
-									<div>
-										<p className="m-0 font-medium text-(--syzeql-text-main)">
+				<ToggleControl
+					__next40pxDefaultSize={ true }
+					__nextHasNoMarginBottom={ true }
+					checked={ rulesForm.enableConditions }
+					help={ __(
+						'When enabled, the rule will only apply if the specified conditions are met.',
+						'syzenlabs-quantity-limits'
+					) }
+					label={ __(
+						'Enable Conditions',
+						'syzenlabs-quantity-limits'
+					) }
+					className="mb-4"
+					onChange={ () => {
+						updateBuilder( ( prev ) => {
+							return {
+								...prev,
+								enableConditions: ! prev.enableConditions,
+							};
+						} );
+					} }
+				/>
+
+				{ rulesForm.enableConditions && (
+					<div>
+						{ conditionGroups.map( ( group, groupIndex ) => (
+							<div key={ `condition-group-${ groupIndex }` }>
+								<div className="rounded-(--syzeql-border-radius-md) border border-[#DCDCDE] bg-white p-4">
+									<Flex
+										justify="space-between"
+										align="start"
+										gap={ 4 }
+									>
+										<div>
+											<p className="m-0 font-medium text-(--syzeql-text-main)">
+												{ __(
+													'Condition Group',
+													'syzenlabs-quantity-limits'
+												) }{ ' ' }
+												{ groupIndex + 1 }
+											</p>
+											<p className="mt-1 mb-0 text-sm text-(--syzeql-text-sub)">
+												{ __(
+													'All conditions in this group must be true.',
+													'syzenlabs-quantity-limits'
+												) }
+											</p>
+										</div>
+
+										<Button
+											__next40pxDefaultSize
+											variant="secondary"
+											isDestructive
+											icon="trash"
+											disabled={
+												conditionGroups.length === 1
+											}
+											onClick={ () =>
+												handleRemoveGroup( groupIndex )
+											}
+										>
 											{ __(
-												'Condition Group',
-												'syzenlabs-quantity-limits'
-											) }{ ' ' }
-											{ groupIndex + 1 }
-										</p>
-										<p className="mt-1 mb-0 text-sm text-(--syzeql-text-sub)">
-											{ __(
-												'All conditions in this group must be true.',
+												'Remove Group',
 												'syzenlabs-quantity-limits'
 											) }
-										</p>
+										</Button>
+									</Flex>
+
+									<div className="flex flex-col gap-3 mt-4">
+										{ group.map(
+											( condition, conditionIndex ) => {
+												const selectedOptions =
+													getSelectedConditionOptions(
+														condition.type,
+														condition.field
+													);
+
+												return (
+													<div
+														key={ `condition-${ groupIndex }-${ conditionIndex }` }
+														className="grid gap-3 md:grid-cols-[minmax(0,1fr)_minmax(0,1fr)_minmax(0,1.2fr)_auto]"
+													>
+														<ConditionItemTypeField
+															options={
+																conditionOptions
+															}
+															selected={
+																condition
+															}
+															onChange={ (
+																value
+															) =>
+																handleConditionChange(
+																	groupIndex,
+																	conditionIndex,
+																	value
+																)
+															}
+														/>
+														<div>
+															<ConditionItemOperationField
+																selected={
+																	condition
+																}
+																selectedOptions={
+																	selectedOptions
+																}
+																onChange={ (
+																	value
+																) =>
+																	handleConditionChange(
+																		groupIndex,
+																		conditionIndex,
+																		value
+																	)
+																}
+															/>
+														</div>
+														<div>
+															<ConditionItemValueField
+																selected={
+																	condition
+																}
+																selectedOptions={
+																	selectedOptions
+																}
+																onChange={ (
+																	value
+																) =>
+																	handleConditionChange(
+																		groupIndex,
+																		conditionIndex,
+																		value
+																	)
+																}
+															/>
+														</div>
+														<Button
+															__next40pxDefaultSize
+															variant="secondary"
+															isDestructive
+															icon="trash"
+															disabled={
+																group.length ===
+																1
+															}
+															onClick={ () =>
+																handleRemoveCondition(
+																	groupIndex,
+																	conditionIndex
+																)
+															}
+														/>
+													</div>
+												);
+											}
+										) }
 									</div>
 
 									<Button
 										__next40pxDefaultSize
-										variant="secondary"
-										isDestructive
-										icon="trash"
-										disabled={
-											conditionGroups.length === 1
-										}
+										className="mt-4!"
+										variant="primary"
+										icon="plus-alt2"
 										onClick={ () =>
-											handleRemoveGroup( groupIndex )
+											handleAddCondition( groupIndex )
 										}
 									>
-										{ __( 'Remove Group', 'syzenlabs-quantity-limits' ) }
+										{ __(
+											'Add Condition',
+											'syzenlabs-quantity-limits'
+										) }
 									</Button>
-								</Flex>
-
-								<div className="flex flex-col gap-3 mt-4">
-									{ group.map(
-										( condition, conditionIndex ) => {
-											const selectedOptions =
-												getSelectedConditionOptions(
-													condition.type,
-													condition.field
-												);
-
-											return (
-												<div
-													key={ `condition-${ groupIndex }-${ conditionIndex }` }
-													className="grid gap-3 md:grid-cols-[minmax(0,1fr)_minmax(0,1fr)_minmax(0,1.2fr)_auto]"
-												>
-													<ConditionItemTypeField
-														options={
-															conditionOptions
-														}
-														selected={ condition }
-														onChange={ ( value ) =>
-															handleConditionChange(
-																groupIndex,
-																conditionIndex,
-																value
-															)
-														}
-													/>
-													<div>
-														<ConditionItemOperationField
-															selected={
-																condition
-															}
-															selectedOptions={
-																selectedOptions
-															}
-															onChange={ (
-																value
-															) =>
-																handleConditionChange(
-																	groupIndex,
-																	conditionIndex,
-																	value
-																)
-															}
-														/>
-													</div>
-													<div>
-														<ConditionItemValueField
-															selected={
-																condition
-															}
-															selectedOptions={
-																selectedOptions
-															}
-															onChange={ (
-																value
-															) =>
-																handleConditionChange(
-																	groupIndex,
-																	conditionIndex,
-																	value
-																)
-															}
-														/>
-													</div>
-													<Button
-														__next40pxDefaultSize
-														variant="secondary"
-														isDestructive
-														icon="trash"
-														disabled={
-															group.length === 1
-														}
-														onClick={ () =>
-															handleRemoveCondition(
-																groupIndex,
-																conditionIndex
-															)
-														}
-													/>
-												</div>
-											);
-										}
-									) }
 								</div>
 
-								<Button
-									__next40pxDefaultSize
-									className="mt-4!"
-									variant="primary"
-									icon="plus-alt2"
-									onClick={ () =>
-										handleAddCondition( groupIndex )
-									}
-								>
-									{ __( 'Add Condition', 'syzenlabs-quantity-limits' ) }
-								</Button>
+								{ groupIndex < conditionGroups.length - 1 && (
+									<div className="my-3 text-center text-xl font-bold tracking-wide text-(--syzeql-text-sub) uppercase">
+										{ __(
+											'Or',
+											'syzenlabs-quantity-limits'
+										) }
+									</div>
+								) }
 							</div>
+						) ) }
 
-							{ groupIndex < conditionGroups.length - 1 && (
-								<div className="my-3 text-center text-xl font-bold tracking-wide text-(--syzeql-text-sub) uppercase">
-									{ __( 'Or', 'syzenlabs-quantity-limits' ) }
-								</div>
+						<Button
+							__next40pxDefaultSize
+							variant="secondary"
+							icon="plus-alt2"
+							className="mt-4!"
+							onClick={ handleAddGroup }
+						>
+							{ __(
+								'Add Condition Group',
+								'syzenlabs-quantity-limits'
 							) }
-						</div>
-					) ) }
-
-					<Button
-						__next40pxDefaultSize
-						variant="secondary"
-						icon="plus-alt2"
-						className="mt-4!"
-						onClick={ handleAddGroup }
-					>
-						{ __( 'Add Condition Group', 'syzenlabs-quantity-limits' ) }
-					</Button>
-				</div>
+						</Button>
+					</div>
+				) }
 			</CardBody>
 		</Card>
 	);

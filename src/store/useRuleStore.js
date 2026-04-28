@@ -3,11 +3,11 @@ import { useToast } from '@/context/ToastContext';
 import { getUuid } from '@/utils';
 import apiFetch from '@wordpress/api-fetch';
 import {
-    createContext,
-    useCallback,
-    useContext,
-    useMemo,
-    useState,
+	createContext,
+	useCallback,
+	useContext,
+	useMemo,
+	useState,
 } from '@wordpress/element';
 import { __ } from '@wordpress/i18n';
 
@@ -53,6 +53,7 @@ const getDefaultRulesForm = () => ( {
 	minPriceMessage: 'Your order must be at least [min_price].',
 	maxPriceMessage: 'Your order cannot exceed [max_price].',
 	customCss: '',
+	enableConditions: false,
 	conditionGroups: [ [ createEmptyCondition() ] ],
 } );
 
@@ -288,7 +289,10 @@ export const RuleStoreProvider = ( { children } ) => {
 				}
 
 				showToast?.(
-					__( 'Rule deleted successfully', 'syzenlabs-quantity-limits' ),
+					__(
+						'Rule deleted successfully',
+						'syzenlabs-quantity-limits'
+					),
 					'success'
 				);
 				setCurrentNav?.( 'rules' );
@@ -327,7 +331,10 @@ export const RuleStoreProvider = ( { children } ) => {
 
 				if ( response.success ) {
 					showToast?.(
-						__( 'Rule duplicated successfully', 'syzenlabs-quantity-limits' ),
+						__(
+							'Rule duplicated successfully',
+							'syzenlabs-quantity-limits'
+						),
 						'success'
 					);
 					return response.data.id;

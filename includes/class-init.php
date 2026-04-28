@@ -56,19 +56,9 @@ class Init {
 	 */
 	public function admin_scripts_callback() {
 		global $pagenow;
-		$page            = sanitize_text_field( wp_unslash( $_GET['page'] ?? '' ) ); // phpcs:ignore WordPress.Security.NonceVerification.Recommended
-		$tab             = sanitize_text_field( wp_unslash( $_GET['tab'] ?? '' ) ); // phpcs:ignore WordPress.Security.NonceVerification.Recommended
-		$has_zone_id     = (bool) sanitize_text_field( wp_unslash( $_GET['zone_id'] ?? '' ) ); // phpcs:ignore WordPress.Security.NonceVerification.Recommended
-		$has_instance_id = (bool) sanitize_text_field( wp_unslash( $_GET['instance_id'] ?? '' ) ); // phpcs:ignore WordPress.Security.NonceVerification.Recommended
-		$instance_id     = absint( sanitize_text_field( wp_unslash( $_GET['instance_id'] ?? 0 ) ) ); // phpcs:ignore WordPress.Security.NonceVerification.Recommended
+		$page = sanitize_text_field( wp_unslash( $_GET['page'] ?? '' ) ); // phpcs:ignore WordPress.Security.NonceVerification.Recommended
 
 		$in_wc_submenu_page = ( 'admin.php' === $pagenow && 'syzeql-dashboard' === $page );
-
-		$in_wc_instance_page = ( 'admin.php' === $pagenow
-			&& 'wc-settings' === $page
-			&& 'shipping' === $tab
-			&& $has_instance_id
-			&& ! $has_zone_id );
 
 		$asset_file = SYZEQL_PATH . 'assets/js/syzeql-backend.asset.php';
 

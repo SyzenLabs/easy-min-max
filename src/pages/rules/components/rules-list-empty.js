@@ -1,10 +1,10 @@
 import { getBaseUrl } from '@/utils';
 import { wpConfig } from '@/utils/wpc-config';
 import {
-    Button,
-    Icon,
-    __experimentalText as Text,
-    __experimentalVStack as VStack,
+	Button,
+	Icon,
+	__experimentalText as Text,
+	__experimentalVStack as VStack,
 } from '@wordpress/components';
 import { __ } from '@wordpress/i18n';
 
@@ -17,7 +17,10 @@ export function RulesListEmpty() {
 				src={ getBaseUrl( 'assets/img/shipping-rules-empty-list.png' ) }
 				width="200"
 				height="167"
-				alt={ __( 'Wow Shipping Methods Empty List', 'syzenlabs-quantity-limits' ) }
+				alt={ __(
+					'Wow Shipping Methods Empty List',
+					'syzenlabs-quantity-limits'
+				) }
 			/>
 			<VStack spacing={ 2 } alignment="center">
 				<Text
@@ -26,7 +29,7 @@ export function RulesListEmpty() {
 					lineHeight={ wpConfig.lineHeight.m }
 				>
 					{ __(
-						"You Haven't Created Any Shipping Methods",
+						"You Haven't Created Any Rules",
 						'syzenlabs-quantity-limits'
 					) }
 				</Text>
@@ -38,7 +41,7 @@ export function RulesListEmpty() {
 					variant="muted"
 				>
 					{ __(
-						'Shipping rules let you control costs and logic based on cart value, weight, quantity, and more.',
+						'Rules let you control quantity and price based on cart value, weight, quantity, and more.',
 						'syzenlabs-quantity-limits'
 					) }
 				</Text>
@@ -46,11 +49,11 @@ export function RulesListEmpty() {
 			<Button
 				__next40pxDefaultSize
 				variant="primary"
-				href="#shipping-methods-add"
+				href="#rule-add"
 				icon={ <Icon icon={ plus } /> }
 				iconPosition="left"
 			>
-				{ __( 'Add Shipping Method', 'syzenlabs-quantity-limits' ) }
+				{ __( 'Add Rule', 'syzenlabs-quantity-limits' ) }
 			</Button>
 		</VStack>
 	);

@@ -704,9 +704,13 @@ class Frontend {
 		$applicable_rules = array();
 
 		foreach ( $this->rules as $rule ) {
-			if ( ConditionEvaluator::evaluate_condition_groups( $rule['conditionGroups'] ?? array(), $product ) ) {
-				$applicable_rules[] = $rule;
+			if ( ! empty( $rule['enableConditions'] ) ) {
+				if ( ! ConditionEvaluator::evaluate_condition_groups( $rule['conditionGroups'] ?? array(), $product ) ) {
+					continue;
+				}
 			}
+
+			$applicable_rules[] = $rule;
 		}
 
 		return $applicable_rules;
