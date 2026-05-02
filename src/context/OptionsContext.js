@@ -6,10 +6,10 @@ import { useToast } from '@/context/ToastContext';
 import { getCurrencyCode, getDimensionUnit, getWeightUnit } from '@/utils';
 import apiFetch from '@wordpress/api-fetch';
 import {
-	createContext,
-	useCallback,
-	useContext,
-	useState,
+    createContext,
+    useCallback,
+    useContext,
+    useState,
 } from '@wordpress/element';
 import { __ } from '@wordpress/i18n';
 
@@ -469,6 +469,19 @@ export const ShippingOptionsProvider = ( { children } ) => {
 						inputProps: {
 							type: 'number',
 							unit: getDimensionUnit( true ),
+						},
+					},
+					{
+						label: __(
+							'Product Total Sales',
+							'syzenlabs-quantity-limits'
+						),
+						value: 'product_sales',
+						operatorType: 'Type1',
+						component: 'Input',
+						inputProps: {
+							type: 'number',
+							unit: __( 'Sale(s)', 'syzenlabs-quantity-limits' ),
 						},
 					},
 				],

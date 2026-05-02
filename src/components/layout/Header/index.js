@@ -1,7 +1,7 @@
 import {
-    Card,
-    CardBody,
-    __experimentalHStack as HStack,
+	Card,
+	CardBody,
+	__experimentalHStack as HStack,
 } from '@wordpress/components';
 
 import { WtrsBadge } from '@/components/ui';
@@ -23,8 +23,8 @@ export default function Header() {
 						inlineEnd: 'xSmall',
 					} }
 				>
-					<HStack className="py-3 syzeql-container">
-						<HStack spacing={ 3 } expanded={ false }>
+					<div className="grid grid-cols-3 py-3 syzeql-container">
+						<div className="flex items-center gap-3">
 							<HamburgerMenu />
 
 							{ /* eslint-disable-next-line jsx-a11y/click-events-have-key-events, jsx-a11y/no-noninteractive-element-interactions */ }
@@ -38,14 +38,14 @@ export default function Header() {
 								Easy Min Max
 							</span>
 							<WtrsBadge>{ getVersion() }</WtrsBadge>
-						</HStack>
+						</div>
 
 						<MenuItems />
 
 						<HStack spacing={ 2 } expanded={ false }>
 							{ /* <AiButton /> */ }
 						</HStack>
-					</HStack>
+					</div>
 				</CardBody>
 			</Card>
 		</>

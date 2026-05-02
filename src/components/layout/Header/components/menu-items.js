@@ -1,12 +1,12 @@
 import { useNav } from '@/context/NavContext';
 import { getMenuItems } from '@/utils/constants';
 import {
-    Button,
-    __experimentalDivider as Divider,
-    DropdownMenu,
-    __experimentalHStack as HStack,
-    MenuGroup,
-    MenuItemsChoice,
+	Button,
+	__experimentalDivider as Divider,
+	DropdownMenu,
+	__experimentalHStack as HStack,
+	MenuGroup,
+	MenuItemsChoice,
 } from '@wordpress/components';
 import { useMemo } from '@wordpress/element';
 import { __ } from '@wordpress/i18n';
@@ -25,7 +25,7 @@ const MenuItems = () => {
 			spacing={ 2 }
 			expanded={ false }
 			alignment="stretch"
-			className="syzeql-header-menu-items hidden! lg:flex!"
+			className="syzeql-header-menu-items place-self-center hidden! lg:flex!"
 		>
 			{ menuItems.map( ( item, index ) => {
 				if ( item.divider ) {

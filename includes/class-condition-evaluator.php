@@ -1,4 +1,4 @@
-<?php //phpcs:ignore
+﻿<?php //phpcs:ignore
 /**
  * Condition Evaluator.
  *
@@ -490,6 +490,16 @@ class ConditionEvaluator {
 							}
 						}
 						return $volumes;
+
+					case 'product_sales':
+						$sales = array();
+						foreach ( $product_items as $product_item ) {
+							$product = $product_item['data'];
+							if ( $product ) {
+								$sales[] = (float) $product->get_total_sales();
+							}
+						}
+						return $sales;
 				}
 				break;
 
@@ -571,6 +581,10 @@ class ConditionEvaluator {
 			return false;
 		}
 
+		if ( 'product_sales' === $value ) {
+			return false;
+		}
+
 		return true;
 	}
 
@@ -645,6 +659,7 @@ class ConditionEvaluator {
 					case 'product_width':
 					case 'product_length':
 					case 'product_volume':
+					case 'product_sales':
 						$values = is_array( $resolved_value ) ? $resolved_value : array();
 						return self::compare_numeric_array_values( $values, $operator, $condition_value, $min_range, $max_range );
 				}
