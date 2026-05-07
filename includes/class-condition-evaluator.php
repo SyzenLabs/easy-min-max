@@ -1,13 +1,6 @@
-﻿<?php //phpcs:ignore
-/**
- * Condition Evaluator.
- *
- * @package SYZEQL\Evaluator
- */
+<?php // phpcs:ignore
 
 namespace SYZEQL\Includes;
-
-use SYZEQL\Includes\Utils\Flags;
 
 defined( 'ABSPATH' ) || exit;
 

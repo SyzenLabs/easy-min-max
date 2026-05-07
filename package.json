@@ -16,7 +16,7 @@
 		"ver-update": "node ./scripts/ver-updater.js",
 		"open-build": "node ./scripts/open-build.js",
 		"build": "npm run build:gulp && npm run build:webpack && composer install-prefixed && gulp package && npm run open-build",
-		"release": "npm run ver-update && npm run build:gulp && npm run build:webpack && composer install-prefixed && npm run i18n:make-pot && gulp package && npm run open-build",
+		"release": "npm run ver-update && npm run build:gulp && npm run build:webpack && npm run i18n:make-pot && gulp package && npm run open-build",
 		"release:ci": "npm run build:gulp && npm run build:webpack && composer install-prefixed && gulp package-ci",
 		"deps:key": "node ./scripts/update-deps-key.mjs",
 		"build:gulp": "gulp build",

@@ -101,7 +101,12 @@ Yes. Validation is applied on add to cart, cart updates, checkout, and WooCommer
 
 The plugin does not load its main functionality until WooCommerce is available.
 
+== Screenshots ==
+
+1. Minimum and maximum quantity/price settings.
+2. Advanced Conditions
+
 == Changelog ==
 
-= 1.0.0 - 03 Apr 2026 =
+= 1.0.0 - 07 May 2026 =
 * Initial release.
