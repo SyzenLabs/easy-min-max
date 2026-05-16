@@ -1,10 +1,10 @@
 === Easy Min Max - Set Minimum/Maximum Quantity & Price Limits with Step Control for WooCommerce ===
-Contributors: f00d, syzenlabs
+Contributors: syzenlabs
 Tags: minmax, quantity, price, product restrictions
 Requires at least: 6.4
 Tested up to: 6.9
 Requires PHP: 7.4
-Stable tag: 1.0.0
+Stable tag: 1.0.1
 License: GPLv3
 License URI: http://www.gnu.org/licenses/gpl-3.0.html
 
@@ -101,12 +101,31 @@ Yes. Validation is applied on add to cart, cart updates, checkout, and WooCommer
 
 The plugin does not load its main functionality until WooCommerce is available.
 
+= Is Easy Min Max really free forever? =
+
+Yes. Easy Min Max is 100% free forever — no premium upgrades, no subscriptions, and no hidden fees. You may use it on unlimited sites.
+
+= Where can I report bugs or request new features? =
+
+Please use the WordPress.org support page for this plugin to report bugs or request features: https://wordpress.org/support/plugin/syzenlabs-quantity-limits/ . Using the support page helps us track and prioritize issues and feature requests.
+
+== Support ==
+
+Found a bug or want to request a new feature? Please open a thread on the plugin's WordPress support page: https://wordpress.org/support/plugin/syzenlabs-quantity-limits/ .
+
+== Pricing ==
+
+This plugin is 100% free forever. There is no paid or premium tier — no purchases, subscriptions, or feature locks.
+
 == Screenshots ==
 
 1. Minimum and maximum quantity/price settings.
 2. Advanced Conditions
 
 == Changelog ==
+
+= 1.0.1 - 16 May 2026 =
+* Code cleanup and optimization.
 
 = 1.0.0 - 07 May 2026 =
 * Initial release.
