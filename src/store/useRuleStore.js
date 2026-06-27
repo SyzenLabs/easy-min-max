@@ -3,11 +3,11 @@ import { useToast } from '@/context/ToastContext';
 import { getUuid } from '@/utils';
 import apiFetch from '@wordpress/api-fetch';
 import {
-	createContext,
-	useCallback,
-	useContext,
-	useMemo,
-	useState,
+    createContext,
+    useCallback,
+    useContext,
+    useMemo,
+    useState,
 } from '@wordpress/element';
 import { __ } from '@wordpress/i18n';
 
@@ -54,7 +54,6 @@ const getDefaultRulesForm = () => ( {
 		'Please choose a quantity in increments of [step_quantity] starting from [min_quantity].',
 	minPriceMessage: 'Your order must be at least [min_price].',
 	maxPriceMessage: 'Your order cannot exceed [max_price].',
-	customCss: '',
 	enableConditions: false,
 	conditionGroups: [ [ createEmptyCondition() ] ],
 } );

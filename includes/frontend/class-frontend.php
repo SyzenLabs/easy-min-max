@@ -62,7 +62,6 @@ class Frontend {
 		add_filter( 'woocommerce_available_variation', array( $this, 'variation_data' ), 10, 3 );
 		add_action( 'woocommerce_after_shop_loop_item', array( $this, 'archive_quantity_input' ), 15 );
 		add_action( 'wp_enqueue_scripts', array( $this, 'enqueue_assets' ) );
-		add_action( 'wp_head', array( $this, 'custom_css' ) );
 		add_action( 'woocommerce_before_add_to_cart_button', array( $this, 'total_price_markup' ) );
 		add_filter( 'woocommerce_add_to_cart_validation', array( $this, 'add_to_cart_validation' ), 10, 4 );
 		add_filter( 'woocommerce_update_cart_validation', array( $this, 'update_cart_validation' ), 10, 4 );
@@ -272,31 +271,6 @@ class Frontend {
 			'syzeqlSettings',
 			$this->get_frontend_settings()
 		);
-	}
-
-	/**
-	 * Output custom CSS from active rules.
-	 *
-	 * Collects `customCss` values from all rules and prints them inside a
-	 * `<style>` tag in the page `<head>`.
-	 *
-	 * @return void
-	 */
-	public function custom_css() {
-		$css_chunks = array();
-		$product    = $this->get_current_product();
-
-		foreach ( $this->get_applicable_rules( $product ) as $rule ) {
-			if ( empty( $rule['customCss'] ) ) {
-				continue;
-			}
-
-			$css_chunks[] = wp_strip_all_tags( $rule['customCss'] );
-		}
-
-		if ( ! empty( $css_chunks ) ) {
-			echo '<style id="syzeql-custom-css">' . esc_html( implode( "\n", $css_chunks ) ) . '</style>';
-		}
 	}
 
 	/**

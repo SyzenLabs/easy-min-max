@@ -1,6 +1,6 @@
 <?php
 /**
- * Plugin Name: Easy Min Max - Set Minimum/Maximum Quantity & Price Limits with Step Control for WooCommerce
+ * Plugin Name: Syzenlabs Easy Min Max - Minimum/Maximum Quantity, Price Limits & Step Control for WooCommerce
  * Description: Set minimum and maximum quantity and price rules for WooCommerce products with flexible conditions and storefront validation.
  * Version:     1.0.1
  * Author:      SyzenLabs

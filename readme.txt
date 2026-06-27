@@ -1,8 +1,8 @@
-=== Easy Min Max - Set Minimum/Maximum Quantity & Price Limits with Step Control for WooCommerce ===
+=== Syzenlabs Easy Min Max - Minimum/Maximum Quantity, Price Limits & Step Control for WooCommerce ===
 Contributors: syzenlabs
 Tags: minmax, quantity, price, product restrictions
 Requires at least: 6.4
-Tested up to: 6.9
+Tested up to: 7.0
 Requires PHP: 7.4
 Stable tag: 1.0.1
 License: GPLv3
@@ -111,11 +111,23 @@ Please use the WordPress.org support page for this plugin to report bugs or requ
 
 == Support ==
 
-Found a bug or want to request a new feature? Please open a thread on the plugin's WordPress support page: https://wordpress.org/support/plugin/syzenlabs-quantity-limits/ .
+Found a bug or want to request a new feature? Please open a thread on the plugin's [WordPress support page](https://wordpress.org/support/plugin/syzenlabs-quantity-limits/) .
+
+== Privacy & Data Usage ==
+
+This plugin uses [IPInfo](https://ipinfo.io/) to determine the user’s country only for analytics purposes. The request is made only after the user gives consent (e.g., admin notice banner, plugin deactivation survey). Only the country code is logged for analytics.
+
+IPInfo Terms of Service: https://ipinfo.io/terms-of-service
+
+IPInfo Privacy Policy: https://ipinfo.io/privacy-policy
 
 == Pricing ==
 
 This plugin is 100% free forever. There is no paid or premium tier — no purchases, subscriptions, or feature locks.
+
+== Development ==
+
+The plugin is open source and contributions are welcome. Please submit pull requests or open issues on the [GitHub repository](https://github.com/SyzenLabs/syzenlabs-quantity-limits).
 
 == Screenshots ==
 
@@ -123,6 +135,14 @@ This plugin is 100% free forever. There is no paid or premium tier — no purcha
 2. Advanced Conditions
 
 == Changelog ==
+
+= 1.0.2 - 13 Jun 2026 =
+* Renamed plugin display title to be more distinctive and reviewer-friendly.
+* Removed rule-level custom CSS storage, UI field, and frontend output.
+* Changed review prompt link to show all WordPress.org reviews.
+* Documented the public source repository for generated CSS and JavaScript.
+* Documented IPInfo analytics usage, shared data, consent timing, terms, and privacy links.
+* Replaced direct core admin file include with conditional `require_once` before `get_plugins()`.
 
 = 1.0.1 - 16 May 2026 =
 * Code cleanup and optimization.

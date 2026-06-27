@@ -58,25 +58,34 @@ class Analytics {
 	}
 
 	/**
-	 * Get All the Installed Plugin Data
+	 * Get all the installed plugin data.
 	 *
 	 * @return array
 	 */
 	private static function get_installed_plugins() {
 		if ( ! function_exists( 'get_plugins' ) ) {
-			include ABSPATH . '/wp-admin/includes/plugin.php';
+			require_once ABSPATH . 'wp-admin/includes/plugin.php';
 		}
 
+		$all_plugins    = get_plugins();
 		$active         = array();
 		$inactive       = array();
-		$all_plugins    = get_plugins();
 		$active_plugins = get_option( 'active_plugins', array() );
+
 		if ( is_multisite() ) {
-			$active_plugins = array_merge( $active_plugins, array_keys( get_site_option( 'active_sitewide_plugins', array() ) ) );
+			$active_plugins = array_merge(
+				$active_plugins,
+				array_keys( get_site_option( 'active_sitewide_plugins', array() ) )
+			);
 		}
 
 		foreach ( $all_plugins as $key => $plugin ) {
 			$slug = dirname( $key );
+
+			if ( '.' === $slug ) {
+				$slug = basename( $key, '.php' );
+			}
+
 			if ( empty( $slug ) || self::PLUGIN_SLUG === $slug ) {
 				continue;
 			}
@@ -89,8 +98,8 @@ class Analytics {
 		}
 
 		return array(
-			'active'   => $active,
-			'inactive' => $inactive,
+			'active'   => array_values( array_unique( $active ) ),
+			'inactive' => array_values( array_unique( $inactive ) ),
 		);
 	}
 

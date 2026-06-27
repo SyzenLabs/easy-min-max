@@ -49,6 +49,7 @@ const excludedFiles = [
 	'!./.gitignore',
 	'!./src/**',
 	'!./build/**',
+	'!./docs/**',
 	'!./**/*.LICENSE.txt',
 	'!.*',
 	'!./docs/**',

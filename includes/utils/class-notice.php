@@ -15,7 +15,7 @@ class Notice {
 	const RATING_REMIND_KEY      = 'syzeql_notice_rating_remind';
 	const NOTICE_NONCE_ACTION    = 'syzeql_notice_nonce';
 	const AJAX_ACTION            = 'syzeql_notice_response';
-	const RATING_URL             = 'https://wordpress.org/support/plugin/syzenlabs-quantity-limits/reviews/?rate=5#new-post';
+	const RATING_URL             = 'https://wordpress.org/support/plugin/syzenlabs-quantity-limits/reviews';
 
 	/**
 	 * Setup hooks.

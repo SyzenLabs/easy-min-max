@@ -62,7 +62,13 @@ class DB {
 	 * @return array Array of shipping rules.
 	 */
 	public function get_rules() {
-		return get_option( self::OPTION_KEY, array() );
+		$rules = get_option( self::OPTION_KEY, array() );
+
+		if ( empty( $rules ) || ! is_array( $rules ) ) {
+			return array();
+		}
+
+		return array_map( array( $this, 'strip_disallowed_rule_fields' ), $rules );
 	}
 
 
@@ -73,6 +79,8 @@ class DB {
 	 * @return bool|WP_Error True if new rule created, false if updated.
 	 */
 	public function update_rule( $rule_data ) {
+		$rule_data = $this->strip_disallowed_rule_fields( $rule_data );
+
 		if ( empty( $rule_data['id'] ) ) {
 			return new WP_Error( 'missing_id', 'Rule ID is required', array( 'status' => 400 ) );
 		}
@@ -181,5 +189,25 @@ class DB {
 		}
 
 		return $dates;
+	}
+
+	/**
+	 * Remove rule fields that allow arbitrary code insertion.
+	 *
+	 * @param mixed $rule Rule payload.
+	 * @return array
+	 */
+	private function strip_disallowed_rule_fields( $rule ) {
+		if ( ! is_array( $rule ) ) {
+			return array();
+		}
+
+		unset( $rule['customCss'] );
+		unset( $rule['customJs'] );
+		unset( $rule['customJS'] );
+		unset( $rule['customPhp'] );
+		unset( $rule['customPHP'] );
+
+		return $rule;
 	}
 }
