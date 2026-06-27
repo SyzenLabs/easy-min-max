@@ -1,8 +1,8 @@
 <?php
 /**
- * Plugin Name: Syzenlabs Easy Min Max - Minimum/Maximum Quantity, Price Limits & Step Control for WooCommerce
+ * Plugin Name: Syzenlabs Easy Min Max - Minimum/Maximum Quantity, Price Limits & Step Control
  * Description: Set minimum and maximum quantity and price rules for WooCommerce products with flexible conditions and storefront validation.
- * Version:     1.0.1
+ * Version:     1.0.2
  * Author:      SyzenLabs
  * Author URI:  https://www.syzenlabs.com
  * Requires Plugins: woocommerce
@@ -19,7 +19,7 @@ use SYZEQL\Includes\Init;
 defined( 'ABSPATH' ) || exit;
 
 // Define Vars.
-define( 'SYZEQL_VER', '1.0.1' );
+define( 'SYZEQL_VER', '1.0.2' );
 define( 'SYZEQL_URL', plugin_dir_url( __FILE__ ) );
 define( 'SYZEQL_BASE', plugin_basename( __FILE__ ) );
 define( 'SYZEQL_PATH', plugin_dir_path( __FILE__ ) );
