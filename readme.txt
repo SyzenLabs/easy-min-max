@@ -115,11 +115,21 @@ Found a bug or want to request a new feature? Please open a thread on the plugin
 
 == Privacy & Data Usage ==
 
-This plugin uses [IPInfo](https://ipinfo.io/) to determine the user’s country only for analytics purposes. The request is made only after the user gives consent (e.g., admin notice banner, plugin deactivation survey). Only the country code is logged for analytics.
+This plugin connects to external services only from the WordPress admin area and only when an administrator takes an action that triggers analytics or feedback, such as accepting the admin notice or submitting the plugin deactivation survey.
+
+The plugin uses [IPInfo](https://ipinfo.io/) to determine the site's country code for analytics. The request is made when the analytics/feedback action runs. The plugin stores only the returned country code in the analytics payload.
 
 IPInfo Terms of Service: https://ipinfo.io/terms-of-service
 
 IPInfo Privacy Policy: https://ipinfo.io/privacy-policy
+
+The plugin sends analytics and optional deactivation feedback to a SyzenLabs endpoint hosted on Google Apps Script: https://script.google.com/macros/s/AKfycbxEq9h_wRGa3r-ZhkHiikDtu5Wok0CMco9Wn57FdiGL3Szh_OmG1ai8d7Ms0Lj3SbJZnA/exec
+
+This endpoint is used to help SyzenLabs understand plugin usage and improve the product. When sent, the payload can include the action type, administrator name and email, site URL, product slug, active theme, active/inactive plugin slugs, country code, and optional deactivation feedback selected or typed by the administrator.
+
+Google Terms of Service: https://policies.google.com/terms
+
+Google Privacy Policy: https://policies.google.com/privacy
 
 == Pricing ==
 
@@ -136,12 +146,12 @@ The plugin is open source and contributions are welcome. Please submit pull requ
 
 == Changelog ==
 
-= 1.0.2 - 13 Jun 2026 =
+= 1.0.2 - 27 Jun 2026 =
 * Renamed plugin display title to be more distinctive and reviewer-friendly.
 * Removed rule-level custom CSS storage, UI field, and frontend output.
 * Changed review prompt link to show all WordPress.org reviews.
 * Documented the public source repository for generated CSS and JavaScript.
-* Documented IPInfo analytics usage, shared data, consent timing, terms, and privacy links.
+* Documented IPInfo and Google Apps Script analytics usage, shared data, trigger timing, terms, and privacy links.
 * Replaced direct core admin file include with conditional `require_once` before `get_plugins()`.
 
 = 1.0.1 - 16 May 2026 =
