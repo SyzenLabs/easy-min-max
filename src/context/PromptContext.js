@@ -1,9 +1,9 @@
 import { Prompt } from '@/components/ui';
 import {
-    createContext,
-    useCallback,
-    useContext,
-    useState,
+	createContext,
+	useCallback,
+	useContext,
+	useState,
 } from '@wordpress/element';
 import { __ } from '@wordpress/i18n';
 

@@ -1,18 +1,18 @@
 import {
-    Select,
-    SelectContext,
-    SelectGroupItem,
-    SelectItem,
-    SelectSearch,
+	Select,
+	SelectContext,
+	SelectGroupItem,
+	SelectItem,
+	SelectSearch,
 } from '@/components/ui';
 import { cn } from '@/utils';
 import {
-    Button,
-    Dropdown,
-    Icon,
-    __experimentalInputControl as InputControl,
-    __experimentalInputControlSuffixWrapper as InputControlSuffixWrapper,
-    Spinner,
+	Button,
+	Dropdown,
+	Icon,
+	__experimentalInputControl as InputControl,
+	__experimentalInputControlSuffixWrapper as InputControlSuffixWrapper,
+	Spinner,
 } from '@wordpress/components';
 import { useContext, useState } from '@wordpress/element';
 import { __ } from '@wordpress/i18n';
@@ -252,4 +252,3 @@ function SelectCompact( {
 	);
 }
 export { SelectCompact };
-

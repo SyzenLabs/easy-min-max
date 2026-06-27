@@ -34,4 +34,3 @@ const ProButton = ( { className = '' } ) => {
 };
 
 export { ProButton };
-

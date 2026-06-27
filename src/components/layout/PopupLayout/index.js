@@ -26,4 +26,3 @@ const PopupLayoutBody = ( { children } ) => {
 };
 
 export { PopupLayout, PopupLayoutBody, PopupLayoutHeader };
-

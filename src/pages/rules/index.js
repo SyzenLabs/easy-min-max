@@ -5,13 +5,13 @@ import { RulesListEmpty } from './components/rules-list-empty';
 import { RulesListHeader } from './components/rules-list-header';
 
 import {
-    Button,
-    Card,
-    CardBody,
-    CardHeader,
-    __experimentalHStack as HStack,
-    Spinner,
-    __experimentalText as Text,
+	Button,
+	Card,
+	CardBody,
+	CardHeader,
+	__experimentalHStack as HStack,
+	Spinner,
+	__experimentalText as Text,
 } from '@wordpress/components';
 import { __ } from '@wordpress/i18n';
 

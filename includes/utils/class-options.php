@@ -42,7 +42,7 @@ class Options {
 		}
 
 		$html  = '<span>';
-		$html .= '<span>If you like <span style="color:#0062ff;font-weight:bold;">Easy Min Max</span>, please leave us a <a class="syzeql-link" href="https://wordpress.org/support/plugin/syzenlabs-quantity-limits/reviews?rate=5#new-post" target="_blank">★★★★★</a> rating!</span>';
+		$html .= '<span>If you like <span style="color:#0062ff;font-weight:bold;">Easy Min Max</span>, please leave us a <a class="syzeql-link" href="https://wordpress.org/support/plugin/syzenlabs-quantity-limits/reviews#new-post" target="_blank">★★★★★</a> rating!</span>';
 		$html .= '</span>';
 
 		return $html;

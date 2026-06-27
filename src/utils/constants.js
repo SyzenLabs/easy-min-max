@@ -82,7 +82,10 @@ export const SCENARIOS = [
 	},
 
 	{
-		title: __( 'Cart Quantity-based Shipping', 'syzenlabs-quantity-limits' ),
+		title: __(
+			'Cart Quantity-based Shipping',
+			'syzenlabs-quantity-limits'
+		),
 		description: __(
 			'Here’s an example scenario for setting up shipping rates based on the total quantity of items in the cart.',
 			'syzenlabs-quantity-limits'
@@ -357,7 +360,10 @@ export const SCENARIOS = [
 	},
 
 	{
-		title: __( 'Country + Weight with Variable Charges', 'syzenlabs-quantity-limits' ),
+		title: __(
+			'Country + Weight with Variable Charges',
+			'syzenlabs-quantity-limits'
+		),
 		description: __(
 			'This example shows a combination of country-based rules, weight ranges, and flexible variable charges.',
 			'syzenlabs-quantity-limits'
@@ -520,7 +526,10 @@ export const SCENARIO_VISIBILITY_BASE_OPTIONS = [
 ];
 
 export const HANDLING_FEE_OPTIONS = [
-	{ value: 'fixed', label: __( 'Fixed Amount', 'syzenlabs-quantity-limits' ) },
+	{
+		value: 'fixed',
+		label: __( 'Fixed Amount', 'syzenlabs-quantity-limits' ),
+	},
 	{
 		value: 'percentage',
 		label: __( 'Percentage', 'syzenlabs-quantity-limits' ),
@@ -907,7 +916,10 @@ export const TIMEZONES = [
 export const getMenuItems = () => {
 	const menuItems = [
 		// { to: 'design-system', label: 'DS' },
-		{ to: 'overview', label: __( 'Overview', 'syzenlabs-quantity-limits' ) },
+		{
+			to: 'overview',
+			label: __( 'Overview', 'syzenlabs-quantity-limits' ),
+		},
 		{
 			to: 'rules',
 			label: __( 'Rules', 'syzenlabs-quantity-limits' ),
@@ -940,5 +952,8 @@ export const PRO_FEATURES_LIST = [
 	__( 'Stack unlimited rule groups', 'syzenlabs-quantity-limits' ),
 	__( 'Fully unlocked carrier integrations', 'syzenlabs-quantity-limits' ),
 	__( 'Fully unlock table rates', 'syzenlabs-quantity-limits' ),
-	__( 'Unlock handling fees, visibility, and more!', 'syzenlabs-quantity-limits' ),
+	__(
+		'Unlock handling fees, visibility, and more!',
+		'syzenlabs-quantity-limits'
+	),
 ];

@@ -3,13 +3,13 @@ import { TIMEZONES } from '@/utils/constants';
 import { __ } from '@wordpress/i18n';
 
 import {
-    Button,
-    Dropdown,
-    __experimentalHStack as HStack,
-    Icon,
-    __experimentalInputControl as InputControl,
-    __experimentalInputControlSuffixWrapper as InputControlSuffixWrapper,
-    __experimentalVStack as VStack,
+	Button,
+	Dropdown,
+	__experimentalHStack as HStack,
+	Icon,
+	__experimentalInputControl as InputControl,
+	__experimentalInputControlSuffixWrapper as InputControlSuffixWrapper,
+	__experimentalVStack as VStack,
 } from '@wordpress/components';
 import { chevronDown, chevronUp } from '@wordpress/icons';
 

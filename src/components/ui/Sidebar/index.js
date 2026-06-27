@@ -1,16 +1,16 @@
 // import { Button } from '@/components/ui';
 import { cn } from '@/utils';
 import {
-    Button,
-    __experimentalElevation as Elevation,
+	Button,
+	__experimentalElevation as Elevation,
 } from '@wordpress/components';
 import {
-    createContext,
-    forwardRef,
-    useContext,
-    useEffect,
-    useImperativeHandle,
-    useState,
+	createContext,
+	forwardRef,
+	useContext,
+	useEffect,
+	useImperativeHandle,
+	useState,
 } from '@wordpress/element';
 import { close } from '@wordpress/icons';
 // import './style.scss';
@@ -73,7 +73,10 @@ const SidebarTrigger = forwardRef(
 			<div
 				role="button"
 				tabIndex={ -1 }
-				className={ cn( 'syzeql-sidebar-trigger-component', className ) }
+				className={ cn(
+					'syzeql-sidebar-trigger-component',
+					className
+				) }
 				{ ...props }
 				onClick={ openModal }
 				onKeyDown={ ( e ) => {
@@ -194,11 +197,10 @@ function SidebarBody( { children, className = '', ...props } ) {
 }
 
 export {
-    Sidebar,
-    SidebarBody,
-    SidebarContent,
-    SidebarFooter,
-    SidebarHeader,
-    SidebarTrigger
+	Sidebar,
+	SidebarBody,
+	SidebarContent,
+	SidebarFooter,
+	SidebarHeader,
+	SidebarTrigger,
 };
-

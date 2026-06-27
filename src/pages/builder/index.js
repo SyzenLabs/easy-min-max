@@ -1,21 +1,21 @@
 import {
-    PopupLayout,
-    PopupLayoutBody,
-    PopupLayoutHeader,
+	PopupLayout,
+	PopupLayoutBody,
+	PopupLayoutHeader,
 } from '@/components/layout';
 import { Skeleton, SkeletonGroup, SkeletonItems } from '@/components/ui';
 import { useShippingOptions } from '@/context/OptionsContext';
 import { usePrompt } from '@/context/PromptContext';
 import { useRuleStore } from '@/store/useRuleStore';
 import {
-    Button,
-    __experimentalHStack as HStack,
-    Icon,
-    __experimentalInputControl as InputControl,
-    __experimentalToggleGroupControl as ToggleGroupControl,
-    __experimentalToggleGroupControlOption as ToggleGroupControlOption,
-    Tooltip,
-    __experimentalVStack as VStack,
+	Button,
+	__experimentalHStack as HStack,
+	Icon,
+	__experimentalInputControl as InputControl,
+	__experimentalToggleGroupControl as ToggleGroupControl,
+	__experimentalToggleGroupControlOption as ToggleGroupControlOption,
+	Tooltip,
+	__experimentalVStack as VStack,
 } from '@wordpress/components';
 import { Fragment, useCallback, useEffect, useState } from '@wordpress/element';
 import { __ } from '@wordpress/i18n';
@@ -104,7 +104,10 @@ function RulesAddEditHeader( { editId } ) {
 					<InputControl
 						__next40pxDefaultSize
 						className="w-full!"
-						placeholder={ __( 'Enter rule name…', 'syzenlabs-quantity-limits' ) }
+						placeholder={ __(
+							'Enter rule name…',
+							'syzenlabs-quantity-limits'
+						) }
 						value={ rule.title || '' }
 						onChange={ ( _v ) => {
 							updateBuilder( 'title', _v );

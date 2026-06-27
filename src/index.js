@@ -1,9 +1,9 @@
 import {
-    createRoot,
-    Fragment,
-    useCallback,
-    useEffect,
-    useMemo,
+	createRoot,
+	Fragment,
+	useCallback,
+	useEffect,
+	useMemo,
 } from '@wordpress/element';
 
 import { Header } from '@/components/layout';
@@ -41,7 +41,9 @@ const App = () => {
 				! e.target.classList?.contains( 'ultp-reserve-button' )
 			) {
 				if ( e.target.href ) {
-					if ( e.target.href.indexOf( 'page=syzeql-dashboard#' ) > 0 ) {
+					if (
+						e.target.href.indexOf( 'page=syzeql-dashboard#' ) > 0
+					) {
 						const slug = e.target.href.split( '#' );
 						if ( slug[ 1 ] ) {
 							setCurrentNav( slug[ 1 ] );

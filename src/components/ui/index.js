@@ -53,6 +53,5 @@ export {
 	TimeRangePicker,
 	ToastContainer,
 	WeekdayPicker,
-	Badge as WtrsBadge
+	Badge as WtrsBadge,
 };
-

@@ -1,23 +1,23 @@
 import {
-    FileUploader,
-    Sidebar,
-    SidebarBody,
-    SidebarContent,
-    SidebarFooter,
-    SidebarHeader,
-    SidebarTrigger,
+	FileUploader,
+	Sidebar,
+	SidebarBody,
+	SidebarContent,
+	SidebarFooter,
+	SidebarHeader,
+	SidebarTrigger,
 } from '@/components/ui';
 import { useToast } from '@/context/ToastContext';
 import { useRuleStore } from '@/store/useRuleStore';
 import { csvToJson } from '@/utils';
 import apiFetch from '@wordpress/api-fetch';
 import {
-    Button,
-    __experimentalHeading as Heading,
-    __experimentalHStack as HStack,
-    Icon,
-    __experimentalText as Text,
-    __experimentalVStack as VStack,
+	Button,
+	__experimentalHeading as Heading,
+	__experimentalHStack as HStack,
+	Icon,
+	__experimentalText as Text,
+	__experimentalVStack as VStack,
 } from '@wordpress/components';
 import { useCallback, useMemo, useRef, useState } from '@wordpress/element';
 import { __, sprintf } from '@wordpress/i18n';
@@ -57,7 +57,10 @@ function ImportRules( { children } ) {
 			}
 
 			showToast(
-				__( 'Shipping rules imported successfully', 'syzenlabs-quantity-limits' ),
+				__(
+					'Shipping rules imported successfully',
+					'syzenlabs-quantity-limits'
+				),
 				'success',
 				3000
 			);
@@ -70,7 +73,10 @@ function ImportRules( { children } ) {
 			return response.data;
 		} catch ( error ) {
 			showToast(
-				__( 'Error importing shipping rules', 'syzenlabs-quantity-limits' ),
+				__(
+					'Error importing shipping rules',
+					'syzenlabs-quantity-limits'
+				),
 				'warning',
 				3000
 			);
@@ -84,7 +90,10 @@ function ImportRules( { children } ) {
 			setState( ( prev ) => ( {
 				...prev,
 				importLoading: true,
-				progressText: __( 'Uploading File…', 'syzenlabs-quantity-limits' ),
+				progressText: __(
+					'Uploading File…',
+					'syzenlabs-quantity-limits'
+				),
 			} ) );
 
 			try {
@@ -114,7 +123,10 @@ function ImportRules( { children } ) {
 				return response.data;
 			} catch ( error ) {
 				showToast(
-					__( 'Error importing shipping rules', 'syzenlabs-quantity-limits' ),
+					__(
+						'Error importing shipping rules',
+						'syzenlabs-quantity-limits'
+					),
 					'error'
 				);
 			} finally {
@@ -153,7 +165,10 @@ function ImportRules( { children } ) {
 			</SidebarTrigger>
 			<SidebarContent>
 				<SidebarHeader>
-					{ __( 'Import Shipping Method', 'syzenlabs-quantity-limits' ) }
+					{ __(
+						'Import Shipping Method',
+						'syzenlabs-quantity-limits'
+					) }
 				</SidebarHeader>
 				<SidebarBody>
 					<VStack spacing={ 4 }>
@@ -162,7 +177,10 @@ function ImportRules( { children } ) {
 						) : (
 							<>
 								<Text>
-									{ __( 'Upload CSV', 'syzenlabs-quantity-limits' ) }
+									{ __(
+										'Upload CSV',
+										'syzenlabs-quantity-limits'
+									) }
 								</Text>
 								<FileUploader
 									accept=".csv"
@@ -192,7 +210,10 @@ function ImportRules( { children } ) {
 							variant="primary"
 							onClick={ handleImportAnotherFile }
 						>
-							{ __( 'Import Another File', 'syzenlabs-quantity-limits' ) }
+							{ __(
+								'Import Another File',
+								'syzenlabs-quantity-limits'
+							) }
 						</Button>
 					</SidebarFooter>
 				) }
@@ -305,7 +326,9 @@ function ImportCompleted( { importResult } ) {
 			</VStack>
 			{ errors.length > 0 && (
 				<VStack spacing={ 2 }>
-					<Text>{ __( 'Error List', 'syzenlabs-quantity-limits' ) }</Text>
+					<Text>
+						{ __( 'Error List', 'syzenlabs-quantity-limits' ) }
+					</Text>
 					<VStack
 						spacing={ 1 }
 						style={ {
@@ -337,4 +360,3 @@ function ImportCompleted( { importResult } ) {
 }
 
 export { ImportRules };
-

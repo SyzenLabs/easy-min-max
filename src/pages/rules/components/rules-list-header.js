@@ -7,12 +7,12 @@ import { useRuleStore } from '@/store/useRuleStore';
 import { downloadAsCSV } from '@/utils';
 import apiFetch from '@wordpress/api-fetch';
 import {
-    Button,
-    __experimentalHStack as HStack,
-    Icon,
-    __experimentalInputControl as InputControl,
-    __experimentalInputControlPrefixWrapper as InputControlPrefixWrapper,
-    SelectControl,
+	Button,
+	__experimentalHStack as HStack,
+	Icon,
+	__experimentalInputControl as InputControl,
+	__experimentalInputControlPrefixWrapper as InputControlPrefixWrapper,
+	SelectControl,
 } from '@wordpress/components';
 import { __ } from '@wordpress/i18n';
 
@@ -68,7 +68,10 @@ export function RulesListHeader( { state, setState, filteredRules } ) {
 			} );
 			if ( ! data.success ) {
 				throw new Error(
-					__( 'Error while exporting rules', 'syzenlabs-quantity-limits' )
+					__(
+						'Error while exporting rules',
+						'syzenlabs-quantity-limits'
+					)
 				);
 			}
 			const {
@@ -78,12 +81,18 @@ export function RulesListHeader( { state, setState, filteredRules } ) {
 			if ( csvData.length > 0 ) {
 				await downloadAsCSV( filename, csvData );
 				showToast(
-					__( 'Rules exported successfully', 'syzenlabs-quantity-limits' ),
+					__(
+						'Rules exported successfully',
+						'syzenlabs-quantity-limits'
+					),
 					'success'
 				);
 			} else {
 				showToast(
-					__( 'No rules found to export', 'syzenlabs-quantity-limits' ),
+					__(
+						'No rules found to export',
+						'syzenlabs-quantity-limits'
+					),
 					'warning'
 				);
 			}
@@ -91,7 +100,10 @@ export function RulesListHeader( { state, setState, filteredRules } ) {
 			// eslint-disable-next-line no-console
 			console.log( err );
 			showToast(
-				__( 'Error while exporting rules', 'syzenlabs-quantity-limits' ),
+				__(
+					'Error while exporting rules',
+					'syzenlabs-quantity-limits'
+				),
 				'error'
 			);
 		} finally {
@@ -180,7 +192,10 @@ export function RulesListHeader( { state, setState, filteredRules } ) {
 				return response.data;
 			} catch ( error ) {
 				showToast(
-					__( 'Error performing bulk operation', 'syzenlabs-quantity-limits' ),
+					__(
+						'Error performing bulk operation',
+						'syzenlabs-quantity-limits'
+					),
 					'error'
 				);
 			} finally {
@@ -202,7 +217,10 @@ export function RulesListHeader( { state, setState, filteredRules } ) {
 					options={ [
 						{
 							value: '',
-							label: __( 'Bulk Actions', 'syzenlabs-quantity-limits' ),
+							label: __(
+								'Bulk Actions',
+								'syzenlabs-quantity-limits'
+							),
 							disabled: true,
 						},
 						{
@@ -254,21 +272,24 @@ export function RulesListHeader( { state, setState, filteredRules } ) {
 					options={ [
 						{
 							value: 'all',
-							label: `${ __( 'All Status', 'syzenlabs-quantity-limits' ) } (${
-								countByStatus.all
-							})`,
+							label: `${ __(
+								'All Status',
+								'syzenlabs-quantity-limits'
+							) } (${ countByStatus.all })`,
 						},
 						{
 							value: 'publish',
-							label: `${ __( 'Publish', 'syzenlabs-quantity-limits' ) } (${
-								countByStatus.publish
-							})`,
+							label: `${ __(
+								'Publish',
+								'syzenlabs-quantity-limits'
+							) } (${ countByStatus.publish })`,
 						},
 						{
 							value: 'draft',
-							label: `${ __( 'Draft', 'syzenlabs-quantity-limits' ) } (${
-								countByStatus.draft
-							})`,
+							label: `${ __(
+								'Draft',
+								'syzenlabs-quantity-limits'
+							) } (${ countByStatus.draft })`,
 						},
 					] }
 					onChange={ ( value ) =>

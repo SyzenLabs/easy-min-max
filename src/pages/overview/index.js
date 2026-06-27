@@ -3,18 +3,18 @@ import { useRuleStore } from '@/store/useRuleStore';
 import { getBaseUrl } from '@/utils';
 import { wpConfig } from '@/utils/wpc-config';
 import {
-    Button,
-    Card,
-    CardBody,
-    __experimentalHStack as HStack,
-    __experimentalText as Text,
-    __experimentalVStack as VStack,
+	Button,
+	Card,
+	CardBody,
+	__experimentalHStack as HStack,
+	__experimentalText as Text,
+	__experimentalVStack as VStack,
 } from '@wordpress/components';
 import { useEffect, useMemo } from '@wordpress/element';
 import { __ } from '@wordpress/i18n';
 
 const REVIEW_URL =
-	'https://wordpress.org/support/plugin/syzenlabs-quantity-limits/reviews?rate=5#new-post';
+	'https://wordpress.org/support/plugin/syzenlabs-quantity-limits/reviews#new-post';
 
 const featureItems = [
 	__(
@@ -134,7 +134,10 @@ const Overview = () => {
 											setCurrentNav( 'rule-add' )
 										}
 									>
-										{ __( 'Create Rule', 'syzenlabs-quantity-limits' ) }
+										{ __(
+											'Create Rule',
+											'syzenlabs-quantity-limits'
+										) }
 									</Button>
 									<Button
 										__next40pxDefaultSize
@@ -143,7 +146,10 @@ const Overview = () => {
 											setCurrentNav( 'rules' )
 										}
 									>
-										{ __( 'View Rules', 'syzenlabs-quantity-limits' ) }
+										{ __(
+											'View Rules',
+											'syzenlabs-quantity-limits'
+										) }
 									</Button>
 								</HStack>
 							</VStack>
@@ -167,7 +173,10 @@ const Overview = () => {
 
 				<div className="grid gap-4 md:grid-cols-3">
 					<StatsCard
-						label={ __( 'Total rules', 'syzenlabs-quantity-limits' ) }
+						label={ __(
+							'Total rules',
+							'syzenlabs-quantity-limits'
+						) }
 						value={ stats.total }
 						help={ __(
 							'All quantity and price rules in this store.',
@@ -195,7 +204,11 @@ const Overview = () => {
 				<div className="grid gap-4 lg:grid-cols-[1.2fr_.8fr]">
 					<Card className="h-full">
 						<CardBody className="h-full">
-							<VStack spacing={ 4 } alignment="topLeft" className="h-full justify-between">
+							<VStack
+								spacing={ 4 }
+								alignment="topLeft"
+								className="justify-between h-full"
+							>
 								<VStack spacing={ 2 } alignment="topLeft">
 									<Text
 										size={ wpConfig.size.xl }

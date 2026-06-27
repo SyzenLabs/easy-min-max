@@ -2,11 +2,11 @@ import { MultiSelect, SelectCompact } from '@/components/ui';
 import { cn } from '@/utils';
 import { DAYS_OF_WEEK, TIMEZONES } from '@/utils/constants';
 import {
-    Button,
-    Dropdown,
-    __experimentalHStack as HStack,
-    Icon,
-    __experimentalVStack as VStack,
+	Button,
+	Dropdown,
+	__experimentalHStack as HStack,
+	Icon,
+	__experimentalVStack as VStack,
 } from '@wordpress/components';
 import { useCallback, useState } from '@wordpress/element';
 import { __ } from '@wordpress/i18n';

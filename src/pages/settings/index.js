@@ -3,14 +3,14 @@ import { getSettings } from '@/utils';
 import { wpConfig } from '@/utils/wpc-config';
 import apiFetch from '@wordpress/api-fetch';
 import {
-    Button,
-    Card,
-    CardBody,
-    CheckboxControl,
-    __experimentalDivider as Divider,
-    __experimentalHStack as HStack,
-    __experimentalText as Text,
-    __experimentalVStack as VStack
+	Button,
+	Card,
+	CardBody,
+	CheckboxControl,
+	__experimentalDivider as Divider,
+	__experimentalHStack as HStack,
+	__experimentalText as Text,
+	__experimentalVStack as VStack,
 } from '@wordpress/components';
 import { useCallback, useState } from '@wordpress/element';
 import { __ } from '@wordpress/i18n';
@@ -38,12 +38,18 @@ export default function Settings() {
 				}
 
 				showToast(
-					__( 'Settings updated successfully', 'syzenlabs-quantity-limits' ),
+					__(
+						'Settings updated successfully',
+						'syzenlabs-quantity-limits'
+					),
 					'success'
 				);
 			} catch ( error ) {
 				showToast(
-					__( 'Failed to update settings', 'syzenlabs-quantity-limits' ),
+					__(
+						'Failed to update settings',
+						'syzenlabs-quantity-limits'
+					),
 					'error'
 				);
 			} finally {
@@ -65,14 +71,19 @@ export default function Settings() {
 									size={ wpConfig.size.xl }
 									lineHeight={ wpConfig.lineHeight.m }
 								>
-									{ __( 'General Settings', 'syzenlabs-quantity-limits' ) }
+									{ __(
+										'General Settings',
+										'syzenlabs-quantity-limits'
+									) }
 								</Text>
 							</VStack>
 							<VStack spacing={ 6 }>
-
 								<CheckboxControl
 									__nextHasNoMarginBottom
-									label={ __( 'Debug Mode', 'syzenlabs-quantity-limits' ) }
+									label={ __(
+										'Debug Mode',
+										'syzenlabs-quantity-limits'
+									) }
 									checked={ state.debugMode }
 									onChange={ ( value ) => {
 										setState( ( prev ) => ( {
@@ -126,7 +137,12 @@ export default function Settings() {
 								isBusy={ saving }
 							>
 								{ saving ? (
-									<>{ __( 'Saving…', 'syzenlabs-quantity-limits' ) }</>
+									<>
+										{ __(
+											'Saving…',
+											'syzenlabs-quantity-limits'
+										) }
+									</>
 								) : (
 									__( 'Save', 'syzenlabs-quantity-limits' )
 								) }

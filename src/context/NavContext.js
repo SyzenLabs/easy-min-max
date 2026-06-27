@@ -1,8 +1,8 @@
 import {
-    createContext,
-    useContext,
-    useEffect,
-    useState,
+	createContext,
+	useContext,
+	useEffect,
+	useState,
 } from '@wordpress/element';
 
 const NavContext = createContext();

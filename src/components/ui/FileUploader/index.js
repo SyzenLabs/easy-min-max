@@ -1,12 +1,12 @@
 import { cn } from '@/utils';
 import { Button, Icon, ProgressBar } from '@wordpress/components';
 import {
-    createContext,
-    useCallback,
-    useContext,
-    useEffect,
-    useRef,
-    useState,
+	createContext,
+	useCallback,
+	useContext,
+	useEffect,
+	useRef,
+	useState,
 } from '@wordpress/element';
 import { __ } from '@wordpress/i18n';
 
@@ -451,4 +451,3 @@ function FileUploaderLoader( {
 }
 
 export { FileUploader };
-

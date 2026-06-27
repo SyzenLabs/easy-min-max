@@ -10,6 +10,7 @@ defaultConfig = {
 	context: __dirname,
 	entry: {
 		'syzeql-backend': './src/index.js',
+		'syzeql-admin-notice': './src/admin-notice.js',
 		'syzeql-frontend': './src/frontend/index.js',
 	},
 	output: {

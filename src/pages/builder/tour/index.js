@@ -105,7 +105,10 @@ export function newUserTour() {
 			{
 				element: '#syzeql-shipping-zone-section',
 				popover: {
-					title: __( 'Add Shipping Zone', 'syzenlabs-quantity-limits' ),
+					title: __(
+						'Add Shipping Zone',
+						'syzenlabs-quantity-limits'
+					),
 					description: __(
 						'Set your targeted zone for this shipping rule. You can either select an existing shipping zone or create a new one.',
 						'syzenlabs-quantity-limits'
@@ -162,7 +165,10 @@ export function newUserTour() {
 			{
 				element: '#syzeql-publish-section',
 				popover: {
-					title: __( 'Publish or Draft', 'syzenlabs-quantity-limits' ),
+					title: __(
+						'Publish or Draft',
+						'syzenlabs-quantity-limits'
+					),
 					description: __(
 						"Once you're done with the configuration, you can publish the shipping rule to make it available for the shoppers. Alternatively, you can save it as a draft to continue the configuration at a later time.",
 						'syzenlabs-quantity-limits'

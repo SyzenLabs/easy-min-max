@@ -1,16 +1,16 @@
 import { useRuleStore } from '@/store/useRuleStore';
 import { getCurrencyCode } from '@/utils';
 import {
-    Card,
-    CardBody,
-    CardHeader,
-    __experimentalHeading as Heading,
-    __experimentalHStack as HStack,
-    Icon,
-    __experimentalInputControl as InputControl,
-    __experimentalInputControlSuffixWrapper as InputControlSuffixWrapper,
-    ToggleControl,
-    Tooltip,
+	Card,
+	CardBody,
+	CardHeader,
+	__experimentalHeading as Heading,
+	__experimentalHStack as HStack,
+	Icon,
+	__experimentalInputControl as InputControl,
+	__experimentalInputControlSuffixWrapper as InputControlSuffixWrapper,
+	ToggleControl,
+	Tooltip,
 } from '@wordpress/components';
 import { useEffect, useState } from '@wordpress/element';
 import { __ } from '@wordpress/i18n';
@@ -400,7 +400,6 @@ export function Rules() {
 							</div>
 						) } */ }
 					</div>
-
 				</div>
 			</CardBody>
 		</Card>

@@ -1,13 +1,13 @@
 import { TinyEditor } from '@/components/ui/rich-text-editor';
 import { useRuleStore } from '@/store/useRuleStore';
 import {
-    Card,
-    CardBody,
-    CardHeader,
-    __experimentalHStack as HStack,
-    __experimentalHeading as Heading,
-    Icon,
-    Tooltip,
+	Card,
+	CardBody,
+	CardHeader,
+	__experimentalHStack as HStack,
+	__experimentalHeading as Heading,
+	Icon,
+	Tooltip,
 } from '@wordpress/components';
 import { __ } from '@wordpress/i18n';
 

@@ -1,34 +1,34 @@
 import { cn, getUuid } from '@/utils';
 import {
-    createContext,
-    useContext,
-    useEffect,
-    useId,
-    useMemo,
-    useRef,
-    useState,
+	createContext,
+	useContext,
+	useEffect,
+	useId,
+	useMemo,
+	useRef,
+	useState,
 } from '@wordpress/element';
 import { __ } from '@wordpress/i18n';
 
 // import './style.scss';
 
 import {
-    chevronDown,
-    chevronUp,
-    closeSmall,
-    search as wpSearchIcon,
+	chevronDown,
+	chevronUp,
+	closeSmall,
+	search as wpSearchIcon,
 } from '@wordpress/icons';
 
 import {
-    BaseControl,
-    Button,
-    CheckboxControl,
-    Dropdown,
-    Icon,
-    __experimentalInputControl as InputControl,
-    __experimentalInputControlPrefixWrapper as InputControlPrefixWrapper,
-    __experimentalInputControlSuffixWrapper as InputControlSuffixWrapper,
-    Spinner,
+	BaseControl,
+	Button,
+	CheckboxControl,
+	Dropdown,
+	Icon,
+	__experimentalInputControl as InputControl,
+	__experimentalInputControlPrefixWrapper as InputControlPrefixWrapper,
+	__experimentalInputControlSuffixWrapper as InputControlSuffixWrapper,
+	Spinner,
 } from '@wordpress/components';
 
 const MultiSelectContext = createContext();
@@ -506,4 +506,3 @@ function _MultiSelectContent2() {
 }
 
 export { MultiSelect };
-

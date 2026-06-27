@@ -23,7 +23,7 @@ class Notice {
 	public function __construct() {
 		add_action( 'activated_plugin', array( $this, 'on_plugin_activation' ) );
 		add_action( 'admin_notices', array( $this, 'render_notices' ) );
-		add_action( 'admin_footer', array( $this, 'print_notice_script' ) );
+		add_action( 'admin_enqueue_scripts', array( $this, 'enqueue_notice_script' ) );
 		add_action( 'wp_ajax_' . self::AJAX_ACTION, array( $this, 'handle_notice_response' ) );
 	}
 
@@ -181,77 +181,37 @@ class Notice {
 	}
 
 	/**
-	 * Print lightweight JS for notice AJAX submission.
+	 * Enqueue JS for notice AJAX submission.
 	 *
 	 * @return void
 	 */
-	public function print_notice_script() {
+	public function enqueue_notice_script() {
 		if ( ! is_admin() || ! current_user_can( 'manage_options' ) ) {
 			return;
 		}
 
-		$ajax_action = esc_js( self::AJAX_ACTION );
-		$ajax_url    = esc_url( admin_url( 'admin-ajax.php' ) );
+		if ( ! $this->should_show_leads_notice() && ! $this->should_show_review_admin_notice() ) {
+			return;
+		}
 
-		$script = <<<JS
-            (function () {
-                function request(action, nonce, done) {
-                    var body = new URLSearchParams();
-                    body.append('action', '{$ajax_action}');
-                    body.append('notice_action', action);
-                    body.append('nonce', nonce);
+		$asset_file = SYZEQL_PATH . 'assets/js/syzeql-admin-notice.asset.php';
+		$asset      = file_exists( $asset_file ) ? require $asset_file : array();
 
-                    window.fetch('{$ajax_url}', {
-                        method: 'POST',
-                        credentials: 'same-origin',
-                        headers: {
-                            'Content-Type': 'application/x-www-form-urlencoded; charset=UTF-8'
-                        },
-                        body: body.toString()
-                    }).then(function () {
-                        if (typeof done === 'function') {
-                            done();
-                        }
-                    });
-                }
+		wp_enqueue_script(
+			'syzeql-admin-notice',
+			SYZEQL_URL . 'assets/js/syzeql-admin-notice.js',
+			$asset['dependencies'] ?? array(),
+			$asset['version'] ?? SYZEQL_VER,
+			true
+		);
 
-                document.addEventListener('click', function (event) {
-                    var button = event.target.closest('.syzeql-notice-action');
-                    if (!button) {
-                        return;
-                    }
-
-                    var action = button.getAttribute('data-notice-action');
-                    var nonce = button.getAttribute('data-nonce');
-                    var notice = button.closest('.syzeql-admin-notice');
-
-                    if (!action || !nonce) {
-                        return;
-                    }
-
-                    if ('a' === button.tagName.toLowerCase()) {
-                        event.preventDefault();
-                        var href = button.getAttribute('href') || '';
-                        request(action, nonce, function () {
-                            if (notice) {
-                                notice.remove();
-                            }
-                            if (href) {
-                                window.open(href, '_blank', 'noopener,noreferrer');
-                            }
-                        });
-                        return;
-                    }
-
-                    request(action, nonce, function () {
-                        if (notice) {
-                            notice.remove();
-                        }
-                    });
-                });
-            })();
-        JS;
-
-		wp_print_inline_script_tag( $script );
+		wp_localize_script(
+			'syzeql-admin-notice',
+			'syzeqlNotice',
+			array(
+				'ajaxAction' => self::AJAX_ACTION,
+				'ajaxUrl'    => admin_url( 'admin-ajax.php' ),
+			)
+		);
 	}
 }
